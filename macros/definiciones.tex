@@ -1,0 +1,353 @@
+% ======================
+% =========CODIGO=======
+% ======================
+
+\newcommand{\codigoPython}[1]{
+  \begin{snugshade} % el color está definido en shadecolor  
+    \lstinputlisting[language=python]{./codigos-\guia/#1}
+  \end{snugshade}
+}
+
+% Definiciones y nuevos comandos:def
+% =============
+% Conjuntos
+\DeclareMathOperator{\partes}{\mathcal P}
+\DeclareMathOperator{\relacion}{\,\mathcal{R}\,}
+\DeclareMathOperator{\norelacion}{\,\cancel{\relacion}\,}
+\DeclareMathOperator{\universo}{\mathcal U}
+\DeclareMathOperator{\reales}{\mathbb R}
+\DeclareMathOperator{\naturales}{\mathbb N}
+\DeclareMathOperator{\enteros}{\mathbb Z}
+\DeclareMathOperator{\racionales}{\mathbb Q}
+\DeclareMathOperator{\irracionales}{\mathbb I}
+\DeclareMathOperator{\complejos}{\mathbb C}
+
+\DeclareMathOperator{\K}{\mathbb K} % cuerpo K
+\DeclareMathOperator{\vacio}{\varnothing}
+\DeclareMathOperator{\union}{\cup}
+\DeclareMathOperator{\inter}{\cap}
+\DeclareMathOperator{\diferencia}{\ \setminus \ }
+\DeclareMathOperator{\y}{\land}
+\def\o{\lor}
+\def\neg{\sim}
+
+\DeclareMathOperator{\equivalente}{\leftrightsquigarrow}
+\def\entonces{\implies}
+\def\noEntonces{\centernot\Rightarrow}
+
+\def\sisolosi{\iff} % largo
+\def\sii{\Leftrightarrow} % corto
+
+\def\clase{\overline}
+\def\ord{\text{ord}}
+
+\def\existe{\,\exists\,}
+\def\noexiste{\,\nexists\,}
+\def\paratodo{\ \, \forall}
+\def\distinto{\neq}
+\def\en{\in}
+\def\talque{\;/\;}
+
+% =====
+\def\qvq{\text{ quiero ver que }}
+
+%funciones
+\DeclareMathOperator{\dom}{Dom}
+\DeclareMathOperator{\cod}{Cod}
+\def\F{\mathcal F}
+\def\comp{\circ}
+\def\inv{^{-1}}
+\def\infinito{\infty}
+
+% Llaves, paréntesis, contenedores
+\newcommand{\llave}[2]{ \left\{ \begin{array}{#1} #2 \end{array}\right. }
+\newcommand{\llaveInv}[2]{ \left\} \begin{array}{#1} #2 \end{array}\right. }
+\newcommand{\llaves}[2]{ \left\{ \begin{array}{#1} #2 \end{array} \right\} }
+\newcommand{\matriz}[2]{\left( \begin{array}{#1} #2 \end{array} \right)}
+\newcommand{\deter}[2]{\left| \begin{array}{#1} #2 \end{array} \right|}
+\newcommand{\lista}[2][(1)]{\begin{enumerate}[\bf #1]\setlength\itemsep{-0.6ex} #2 \end{enumerate}}
+\newcommand{\listal}[2][-0.6ex]{\begin{enumerate}[\bf(a)]\setlength\itemsep{#1} #2 \end{enumerate}}
+
+% naturales
+\newcommand{\sumatoria}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\productoria}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\kmasuno}[1]{\underbrace{#1}_{k+1\text{-ésimo}}}
+\newcommand{\HI}[1]{\underbrace{#1}_{\text{HI}}}
+
+% % enteros
+\def\divideA{\, \big| \,}
+\def\noDivide{\centernot\divideA}
+\def\congruente{\, \equiv \,}
+\def\noCongruente{\, \not\equiv \,}
+\newcommand{\congruencia}[3]{#1 \equiv #2 \;(#3)}
+\newcommand{\noCongruencia}[3]{#1 \not\equiv #2 \;(#3)}
+\newcommand{\conga}[1]{\stackrel{\mathclap{(#1)}}{\congruente}}
+\newcommand{\divset}[2]{\mathcal{D}(#1) = \set{#2}}
+\newcommand{\divsetP}[2]{\mathcal{D_+}(#1) = \set{#2}}
+\newcommand{\ub}[2]{ \underbrace{\textstyle #1}_{\mathclap{#2}} }
+\newcommand{\ob}[2]{ \overbrace{\textstyle #1}^{\mathclap{#2}} }
+\def\cop{\, \perp \, }
+\def\nocop{\, \not\perp \, }
+
+% complejos
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\argumento}{arg}
+\newcommand{\conj}[1]{\overline{#1}}
+
+% Polinomios
+\DeclareMathOperator{\cp}{cp}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\mult}{mult}
+\newcommand{\divPol}[2]{\polylongdiv[style=D]{#1}{#2}}
+\newcommand{\mcd}[2]{\polylonggcd{#1}{#2}}
+
+% =====
+% Miscelanea
+% =====
+\def\ot{\leftarrow}
+\newcommand{\estabien}{{\color{blue} Consultado, está bien. \checkmark}}
+\newcommand{\hacer}{
+  {\color{red!80!black}{\tiny\faIcon{flushed}... hay que hacerlo! \faIcon{sad-cry}}}\par
+  {\color{black!70!white}
+    \tiny Si querés mandá la solución $\to$ \href{\dirTelegram}{\blue{al grupo de Telegram}  \small\telegram},
+    o  mejor aún si querés subirlo en \LaTeX $\to$ \href{\dirRepo}{una \textit{pull request} al \small \github}.
+  }\par
+}
+
+\newcommand{\Hacer}{{\color{black!30!red}\Large Hacer!}}
+\def\Tilde{\quad\checkmark}
+\def\ytext{\quad\text{y}\quad}
+\def\otext{\quad\text{o}\quad}
+\newcommand{\cajaResultado}[1]{\fcolorbox{orange}{white}{\ensuremath{\displaystyle#1}}}
+
+% Estrellita para hacer llamadas de atención, viene en divertidos colores
+% para coleccionar.
+\newcommand{\llamada}[1]{
+  \begingroup% Scope para la variable colortemp
+  \ifcase \numexpr#1 mod 6\relax
+    \def\colortemp{cyan}
+  \or
+    \def\colortemp{magenta}
+  \or
+    \def\colortemp{OliveGreen}
+  \or
+    \def\colortemp{YellowOrange}
+  \or
+    \def\colortemp{Cerulean}
+  \or
+    \def\colortemp{Violet}
+  \or
+    \def\colortemp{Purple}
+  \fi
+  \textcolor{\colortemp}{\text{{\tiny \faIcon{star}}}^{\scriptscriptstyle#1}}
+  \endgroup
+}
+
+% separadores
+\newcommand{\separador}{
+  \par\noindent\rule{\linewidth}{0.4pt}\par
+}
+\newcommand{\separadorCorto}{
+  \par\noindent\rule{0.5\linewidth}{0.4pt}\par
+}
+
+% Colores
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{OliveGreen}{#1}}
+\newcommand{\blue}[1]{\textcolor{Cerulean}{#1}}
+\newcommand{\cyan}[1]{\textcolor{cyan}{#1}}
+\newcommand{\yellow}[1]{\textcolor{YellowOrange}{#1}}
+\newcommand{\orange}[1]{\textcolor{Orange}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+\newcommand{\purple}[1]{\textcolor{purple}{#1}}
+\newcommand{\rosa}[1]{\textcolor{pink}{#1}}
+\newcommand{\transparente}[1]{\color[rgb]{1,1,1,0.5}{#1}}
+
+\definecolor{shadecolor}{RGB}{240,255,255}
+\newenvironment{sombrita}{\begin{snugshade}}{\end{snugshade}}
+
+% Conjuntos entre llaves y paréntesis
+% te ahorrás escribir los \left y \right, así dejando el código más legible.
+\newcommand{\set}[1] { \left\{ #1 \right\} }
+\newcommand{\parentesis}[1]{ \left( #1 \right) }
+
+% Stackrel text. Es para ahorrarse ecribir el \text
+\newcommand{\stacktext}[2]{ \stackrel{\text{#1}}{#2} }
+
+% Dado que muchas veces ponemos cosas sobre un signo '='
+%  acá está el comando para escribir \igual{arriba}[abajo] con texto!
+\NewDocumentCommand{\igual}{m o}{
+  \IfNoValueTF{#2}{
+    \overset{\mathclap{\text{#1}}}=
+  }{
+    \overset{\mathclap{\text{#1}}}{\underset{\mathclap{\text{#2}}}=}
+  }
+}
+% Dado que muchas veces ponemos cosas sobre un signo '='
+%  acá está el comando para escribir \igual{arriba}[abajo] con texto!
+\NewDocumentCommand{\mayorIgual}{m o}{
+  \IfNoValueTF{#2}{
+    \overset{\mathclap{\text{#1}}}\geq
+  }{
+    \overset{\mathclap{\text{#1}}}{\underset{\mathclap{\text{#2}}}\geq}
+  }
+}
+% Dado que muchas veces ponemos cosas sobre un signo '='
+%  acá está el comando para escribir \igual{arriba}[abajo] con texto!
+\NewDocumentCommand{\menorIgual}{m o}{
+  \IfNoValueTF{#2}{
+    \overset{\mathclap{\text{#1}}}\leq
+  }{
+    \overset{\mathclap{\text{#1}}}{\underset{\mathclap{\text{#2}}}\leq}
+  }
+}
+
+%=======================================================
+% Comandos con flechas extensibles.
+%=======================================================
+% *Flechita* extensible con texto {arriba} y [abajo] 
+\NewDocumentCommand{\flecha}{m o}{%
+  \IfNoValueTF{#2}{%
+    \xrightarrow[]{\text{#1}}
+  }{
+    \xrightarrow[\text{#2}]{\text{#1}}
+  }
+}
+% *Si solo si* extensible con texto {arriba} y [abajo] 
+\NewDocumentCommand{\Sii}{m o}{%
+  \IfNoValueTF{#2}{%
+    \xLeftrightarrow[]{\text{#1}}
+  }{
+    \xLeftrightarrow[\text{#2}]{\text{#1}}
+  }
+}
+
+% *Si solo si* extensible con texto {arriba} y [abajo] 
+\NewDocumentCommand{\Entonces}{m o}{%
+  \IfNoValueTF{#2}{%
+    \xRightarrow[]{\text{#1}}
+  }{
+    \xRightarrow[\text{#2}]{\text{#1}}
+  }
+}
+
+%=======================================================
+% fin comandos con flechas extensibles.
+
+% como el stackrel pero también se puede poner algo debajo
+\newcommand{\taa}[3]{ % [t]exto [a]rriba y [a]bajo
+  \overset{\mathclap{#1}}{\underset{\mathclap{#2}}{#3}}
+}
+
+%Update time
+\def\update{\tiny
+  {\today\ @ \currenttime}
+}
+\def\updateDos{
+  {\today\ @ \currenttime}
+}
+
+% Contributors
+\newcommand{\aporte}[2]{
+  \href{#1}{#2}
+}
+
+\newenvironment{aportes}{
+  \vspace{10pt}
+  \begin{minipage}{0.9\linewidth}
+    \tt\footnotesize
+    Dale las gracias y un poco de amor \rosa{\faIcon{heart}} a los que contribuyeron!
+    Gracias por tu aporte:
+    \vspace{-10pt}
+    \begin{multicols}{3}
+      \begin{itemize}[label={\tiny\yellow{\faIcon{medal}}}]
+        }{
+      \end{itemize}
+    \end{multicols}
+  \end{minipage}
+  \medskip
+}
+
+%=======================================================
+% sección ejercicio con su respectivo formato y contador
+%=======================================================
+\newcounter{ejercicio}[section] % contador que se resetea en cada sección
+\renewcommand{\theejercicio}{\arabic{ejercicio}} % el contador es un número arabic
+\newcommand{\ejercicio}{%
+  \stepcounter{ejercicio}% incremento en uno
+  \titleformat{\section}[runin]{\bfseries}{\theejercicio}{1em}{}%
+  \section*{\theejercicio.}\labelEjercicio{ej:\theejercicio}
+}
+
+% Label y refencia para ejercicio hay alguna forma más elegante de hacer esto?
+\newcommand{\labelEjercicio}[1]{
+  \addtocounter{ejercicio}{-1} % counter - 1
+  \refstepcounter{ejercicio} % referencia al anterior y luego + 1
+  \label{#1}}
+\newcommand{\refEjercicio}[1]{{\bf\ref{#1}.}}
+
+\def\fueguito{{\color{orange}{\faIcon{fire}}}}
+\newcounter{ejExtra}[section] % contador que se resetea en cada sección
+\renewcommand{\theejExtra}{\arabic{ejExtra}} % el contador es un número arabic
+\newcommand{\ejExtra}{%
+  \stepcounter{ejExtra}% incremento en uno
+  \titleformat{\section}[runin]{\bfseries}{\theejExtra}{1em}{}%
+  % Es como una sección. Le pongo un ícono, luego el número del ejercicio con la etiqueta para poder
+  % linkearlo en el índice u otro lugar.
+  % con \ref{ejExtra:{numero del ejercicio}} es que salto al ejercicio.
+  \section*{\fueguito\theejExtra.}\labelEjExtra{ejExtra:\theejExtra}
+}
+
+% Label y refencia para ejercicio hay alguna forma más elegante de hacer esto?
+\newcommand{\labelEjExtra}[1]{
+  \addtocounter{ejExtra}{-1} % counter - 1
+  \refstepcounter{ejExtra} % referencia al anterior y luego + 1
+  \label{#1} % etiqueta para cada ejercicio extra
+}
+% Con esto llamos al ejercicio extra
+\newcommand{\refEjExtra}[1]{
+  {\fueguito\bf\ref{#1}.}
+}
+
+%=======================================================
+% fin sección ejercicio con su respectivo formato y contador
+%=======================================================
+
+\newenvironment{enunciado}[1]{% Toma un parametro obligatorio: \ejExtra o \ejercicio 
+  \par
+  \noindent
+  \begin{minipage}{\linewidth}
+    \separador % linea sobre el enunciado
+    #1
+    }% contenido
+    {
+    \separadorCorto % linea debajo del enunciado
+    \par
+  \end{minipage}\par
+}
+
+%%% Emoticones
+\def\meh{\faIcon[regular]{meh}}
+\def\mehBlank{\faIcon[regular]{meh-blank}}
+\def\rollingEyes{\faIcon[regular]{meh-rolling-eyes}}
+\def\surprise{\faIcon[regular]{surprise}}
+
+%%% (☞⌐▀͡ ͜ʖ͡▀ )☞ Yo mama
+\def\superIdol{https://www.youtube.com/watch?v=DKpaKHUlyBY}
+\def\videosTeresa{https://www.youtube.com/@AlgebraIC-gu7oc/videos}
+\def\videosPracticas{https://www.youtube.com/playlist?list=PLEtdiZTXB5c5e9BOcqbnROTHevanNfz6U}
+\def\justDoIt{https://www.youtube.com/watch?v=ZXsQAXx_ao0}
+\def\dontWorryAboutAThing{https://www.youtube.com/watch?v=4k2PJFPu57Y}
+\def\zanguango{https://www.youtube.com/watch?v=Uzcl2gNL3zg&t=10s}
+\def\chinito{https://www.youtube.com/watch?v=ebz4xuPf-is}
+\def\neverGonnaGiveYouUp{https://www.youtube.com/watch?v=dQw4w9WgXcQ}
+\def\mindExplosion{https://www.youtube.com/watch?v=9CS7j5I6aOc}
+
+%%% Iconos más usados
+\def\github{{\color{violet!80!black}{\faIcon{github}}}}
+\def\instagram{\faIcon{instagram}}
+\def\tiktok{\faIcon{tiktok}}
+\def\linkedin{\blue{\faIcon{linkedin}}}
+\def\youtube{\color{red!70}{\faIcon{youtube}}}
+\def\telegram{\blue{\faIcon{telegram}}}

@@ -1,0 +1,40 @@
+%=========================
+% Un poco de Bling-Bling, carátula e índice
+%=========================
+
+%------
+%\guia está definido en padres de este archivo
+%------
+
+\maketitle  % para que aparezca el título en el documento
+
+\vfill
+
+\begin{center}
+  \hypertarget{indice-\guia}{\Large\textit{Choose your destiny: }}\par
+  {\tiny\textit{(dobleclick en los ejercicio para saltar) }}
+
+  \begin{itemize}
+    \item[\tiny\faIcon{meh-blank}] \hyperlink{teoria-\guia}{Notas teóricas}
+
+    \item[\tiny\faIcon{meh}]
+          Ejercicios de la guía:
+          \begin{multicols}{8}
+            \foreach \ejer in {1,...,\cantidadEjerciciosGuia}{
+                \refEjercicio{ej:\ejer}\\
+              }
+          \end{multicols}
+
+          %\item[\tiny\faIcon{angry}] Ejercicios de Parciales
+          %      \begin{multicols}{8}
+          %        \foreach \extras in {1,...,\cantidadEjerciciosExtras}{
+          %            \refEjExtra{ejExtra:\extras}\\
+          %          }
+          %      \end{multicols}
+
+  \end{itemize}
+\end{center}
+
+\vfill
+
+\newpage % nueva página

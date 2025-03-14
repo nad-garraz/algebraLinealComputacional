@@ -1,0 +1,46 @@
+%%% MACRO LOCAL
+\newcommand{\qrWeb}[1]{
+  \qrcode{#1}\par
+  \texttt{\tiny#1}
+}
+%%% FIN MACRO LOCAL
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\noindent\makebox[\textwidth]{
+  \begin{minipage}{0.7\textwidth}
+    \centering
+
+    {\LARGE
+      Esta Guía \guia\ que tenés se actualizó por última vez:
+
+      \red{\updateDos}
+
+      Escaneá el QR para bajarte (quizás) una versión
+      más nueva:
+      \par
+
+      \bigskip
+
+      Guía \guia \par\medskip
+    }
+    \qrcode[height=4cm]{\dirGuia{\guia}}
+    \vspace{2cm}
+
+    { \Large
+      El resto de las guías repo en \href{\dirRepo}{github\github} para
+      descargar las guías con los últimos updates.\par\medskip
+    }
+    \qrcode[height=4cm]{\dirRepo}
+    \vspace{2cm}
+
+    { \Large
+      Si querés mandar un ejercicio o avisar de algún error,
+      lo más fácil es por \href{\dirTelegram}{Telegram \telegram}.\par\medskip
+    }
+    \qrcode[height=4cm]{\dirTelegram}
+  \end{minipage}
+}
+
+\vspace*{\fill}
