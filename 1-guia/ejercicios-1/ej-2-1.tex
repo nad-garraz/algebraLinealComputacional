@@ -1,0 +1,141 @@
+\begin{enunciado}{\ejercicio}
+  \begin{enumerate}[label=(\alph*)]
+    \item Determinar los valores $k \en \reales$ para que el siguiente sistema tenga solución
+          única, infinitas soluciones, o no tenga solución:
+          $$
+            \llave{ccc}{
+              x_1 + k x_2 - x_3 & = & 1\\
+              -x_1 + x_2 + k^2x_3 & = & -1\\
+              x_1 + kx_2 + (k - 2)x_3 & = & 2
+            }
+          $$
+
+    \item
+          Considerar el sistema homogéneo asociado y dar los valores de $k$ para los cuales
+          admite solución no trivial. Para esos $k$, resolverlo.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        No tengo ganas de triangular. Ejercicios con letras y matrices cuadradas, calculo determinante de la
+        matriz de coeficiente:
+        $$
+          \begin{array}{ccl}
+            \deter{ccc}{
+            \blue{1}  & k     & -1    \\
+            \blue{-1} & 1     & k^2   \\
+            \blue{1}  & k     & k - 2
+            }
+                      & =     &
+            \blue{1} \cdot
+            \deter{cc}{
+            1         & k^2           \\
+            k         & k - 2
+            }
+            +
+            (\blue{-1}) \cdot (-1)^3
+            \deter{cc}{
+            k         & -1            \\
+            k         & k - 2
+            }
+            +
+            (\blue{1}) \cdot (-1)^4
+            \deter{cc}{
+            k         & -1            \\
+            1         & k^2
+            }
+            \\
+                      & =     &
+            k^2 - 1 = 0
+            \sii
+            k = 1 \otext k = -1
+          \end{array}
+        $$
+
+        Por lo tanto sé que para que el sistema \underline{no tenga solución única}
+        debe ocurrir que:
+        $$
+          \cajaResultado{
+            k = 1 \otext k = -1
+          }
+        $$
+        Ahora hay que probar a mano con cada valor de $k$
+        para ver en cada caso si el sistema queda \textit{indeterminado} o \textit{incompatible}
+
+        \medskip
+
+        Si $\blue{k} = \blue{1}$:
+        $$
+          \matriz{ccc|c}{
+            1  & \blue{1}     & -1 &1    \\
+            -1 & 1     & \blue{1}^2  & -1 \\
+            1  & \blue{1}     & \blue{1} - 2 &-2
+          }
+          \triangulacion{
+            F_2 + F_1 \to F_2\\
+            F_3 - F_1 \to F_3
+          }
+          \matriz{ccc|c}{
+            1  & 1 & -1 & 1 \\
+            0  & 2 & 0  & 0 \\\rowcolor{red!10}
+            0  & 0 & 0  & -3
+          }
+        $$
+        No hay solución con $k = 1$
+
+        Si $\blue{k} = \blue{-1}$:
+        $$
+          \matriz{ccc|c}{
+            1  & \blue{-1}     & -1 &1    \\
+            -1 & 1     & (\blue{-1})^2  & -1 \\
+            1  & \blue{-1}     & \blue{-1} - 2 &-2
+          }
+          \triangulacion{
+            F_2 + F_1 \to F_2\\
+            F_3 - F_1 \to F_3
+          }
+          \matriz{ccc|c}{
+            1  & -1 & -1 & 1 \\\rowcolor{red!10}
+            0  & 0 & 0  & 0 \\
+            0  & -2 & -4  & -1
+          }\llamada1
+        $$
+        Habrá infinitas soluciones con $k = -1$
+
+  \item El sistema homogéneo asociado en el caso $\blue{k} = \blue{-1}$:
+        $$
+          \llave{ccc}{
+            x_1 + \blue{-1} x_2 - x_3 & = & 0\\
+            -x_1 + x_2 + (\blue{-1})^2x_3 & = & 0\\
+            x_1 + \blue{-1} x_2 + (\blue{-1} - 2)x_3 & = & 0
+          }
+        $$
+
+        Utilizando la triangulación de antes ($\llamada1$) el sistema quedaría así:
+        $$
+          \llave{ccl}{
+            x_1 - x_2 - x_3 &=& 0 \\
+            - 2x_2 - 4x_3 &=& 0
+          }
+          \sii
+          x =
+          \matriz{c}{
+            x_1\\
+            x_2\\
+            x_3
+          }
+          =
+          x_3 \cdot
+          \matriz{c}{
+            -1 \\
+            -2 \\
+            1
+          }
+        $$
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

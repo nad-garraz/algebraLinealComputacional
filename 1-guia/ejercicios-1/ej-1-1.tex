@@ -1,10 +1,144 @@
 \begin{enunciado}{\ejercicio}
+  Resolver los siguientes sistemas de ecuaciones lineales no homogéneos y los sistemas homogéneos asosciados en $\reales$ o en $\complejos$.
+  Si la solución única, puede verificarse el resultado en \texttt{Python} utilizando el comando \texttt{np.lianlg.solve}.
+  \begin{enumerate}[label=(\alph*)]
+    \begin{multicols}{2}
+      \item $
+        \llave{ccc}{
+          x_1 + x_2 - 2x_3 + x_4 & = & -2\\
+          3x_1 - 2x_2 + x_3 + 5x_4 & = & 3\\
+          x_1 - x_2 + x_3 + 2x_4 & = & 2
+        }
+      $
+
+      \item $
+        \llave{ccc}{
+          x_1 + x_2 + x_3 - 2x_4 + x_5 & = & 1\\
+          x_1 - 3x_2 + x_3 + x_4 + x_5 & = & 0\\
+          3x_1 - 5x_2 + 3x_3 + 3x_5 & = & 0
+        }
+      $
+
+      \item $
+        \llave{ccc}{
+          ix_1 - (1 + i)x_2 & = & -1\\
+          x_1 - 2x_2 + x_3  & = & 0\\
+          x_1 + 2ix_2 - x_3 & = & 2i
+        }
+      $
+
+      \item $\llave{ccc}{
+          2x_1 + (-1 + i)x_2 + x_4 & = & 2\\
+          -x_1 + 3x_2 - 3ix_3 + 5x_4 & = & 1
+        }
+      $
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
-\codigoPython{ej-1/codigo1-1.py}
 
+%%
+%% \codigoPython{ej-1/codigo1-1.py}
+%%
 
+\begin{enumerate}[label=(\alph*)]
+  \item  Sistema con más incógnitas que ecuaciones, así que lo de la solución única, bien gracias. En forma matricial para hacer
+        la gracia de triangular y coso:
+        $$
+          \begin{array}{ccc}
+            \matriz{cccc|c}{
+            1 & 1   & - 2          & 1            & -2           \\
+            3 & - 2 & 1            & 5            & 3            \\
+            1 & - 1 & 1            & 2            & 2
+            }
+              &
+            \triangulacion{
+            F_2 - 3F_1 \to F_2                                   \\
+              F_3 - F_1 \to F_3
+            }
+              &
+            \matriz{cccc|c}{
+            1 & 1   & - 2          & 1            & -2           \\
+            0 & -5  & 5            & 2            & 9            \\
+            0 & -2  & 3            & 1            & 4
+            }                                                    \\
+              &
+            \triangulacion{
+            -\frac{1}{5} \cdot F_2 \to F_2                       \\
+            }
+              &
+            \matriz{cccc|c}{
+            1 & 1   & - 2          & 1            & -2           \\
+            0 & 1   & -\frac{7}{5} & -\frac{2}{5} & -\frac{9}{5} \\
+            0 & -2  & 3            & 1            & 4
+            }                                                    \\
+              &
+            \triangulacion{
+            F_3 + 2F_2 \to F_3                                   \\
+            }
+              &
+            \matriz{cccc|c}{
+            1 & 1   & - 2          & 1            & -2           \\
+            0 & 1   & -\frac{7}{5} & -\frac{2}{5} & -\frac{9}{5} \\
+            0 & 0   & \frac{1}{5}  & \frac{1}{5}  & \frac{2}{5}
+            }
+          \end{array}
+        $$
+        Cosa de lo más espantosa. Empiezo a escribir las ecuaciones:
+        $$
+          \llave{rclcl}{
+            x_1 + x_2 - 2x_3 + x_4 & = & -2
+            & \Sii{$\llamada2 \text{ y } \llamada1$} &
+            x_1 = -2x_4 + 1 \\
+            x_2 - \frac{7}{5}x_3 - \frac{2}{5}x_4 & = & -\frac{9}{5}
+            & \Sii{$\llamada1$} &
+            x_2 \igual{$\llamada2$} -x_4 +1\\
+            \frac{1}{5}x_3 + \frac{1}{5}x_4 & = & \frac{2}{5}
+            & \sii &
+            x_3 \igual{$\llamada1$} -x_4 + 2
+          }
+        $$
+        Yo estaba buscando algo de la pinta  $x^T = (x_1, x_2, x_3, x_4)$:
+        $$
+          \cajaResultado{
+            x = \matriz{c}{
+              x_1\\
+              x_2\\
+              x_3\\
+              x_4
+            }
+            =
+            \matriz{c}{
+              -2x_4 + 1 \\
+              -x_4 +1\\
+              -x_4 + 2\\
+              -x_4
+            }
+            =
+            x_4 \cdot
+            \matriz{c}{
+              -2\\
+              -1 \\
+              -1\\
+              1
+            }
+            +
+            \matriz{c}{
+              1\\
+              1\\
+              2\\
+              0
+            }
+          }
+        $$
+
+\item \hacer
+
+\item \hacer
+
+\item \hacer
+\end{enumerate}
 
 % Contribuciones
-%\begin{aportes}
-%  \item \aporte{\dirRepo}{naD GarRaz \github}
-%\end{aportes}
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

@@ -42,8 +42,7 @@
 \def\ord{\text{ord}}
 
 \def\existe{\,\exists\,}
-\def\noexiste{\,\nexists\,}
-\def\paratodo{\ \, \forall}
+\def\noexiste{\,\nexists\,} \def\paratodo{\ \, \forall}
 \def\distinto{\neq}
 \def\en{\in}
 \def\talque{\;/\;}
@@ -63,7 +62,10 @@
 \newcommand{\llave}[2]{ \left\{ \begin{array}{#1} #2 \end{array}\right. }
 \newcommand{\llaveInv}[2]{ \left\} \begin{array}{#1} #2 \end{array}\right. }
 \newcommand{\llaves}[2]{ \left\{ \begin{array}{#1} #2 \end{array} \right\} }
+
 \newcommand{\matriz}[2]{\left( \begin{array}{#1} #2 \end{array} \right)}
+\newcommand{\triangulacion}[1]{\ensuremath{\begin{array}{c} #1 \end{array}}}
+\newcommand{\triangulacion}[1]{\Sii{\ensuremath{\begin{array}{c} #1 \end{array}}}}
 \newcommand{\deter}[2]{\left| \begin{array}{#1} #2 \end{array} \right|}
 \newcommand{\lista}[2][(1)]{\begin{enumerate}[\bf #1]\setlength\itemsep{-0.6ex} #2 \end{enumerate}}
 \newcommand{\listal}[2][-0.6ex]{\begin{enumerate}[\bf(a)]\setlength\itemsep{#1} #2 \end{enumerate}}
@@ -276,8 +278,8 @@
 \renewcommand{\theejercicio}{\arabic{ejercicio}} % el contador es un número arabic
 \newcommand{\ejercicio}{%
   \stepcounter{ejercicio}% incremento en uno
-  \titleformat{\section}[runin]{\bfseries}{\theejercicio}{1em}{}%
-  \section*{\theejercicio.}\labelEjercicio{ej:\theejercicio}
+  \titleformat{\section}[runin]{\bfseries}{\theejercicio}{}{}%
+  \section*{Ejercicio \theejercicio.}\labelEjercicio{ej:\theejercicio}
 }
 
 % Label y refencia para ejercicio hay alguna forma más elegante de hacer esto?
