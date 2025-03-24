@@ -1,3 +1,95 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Hallar un sistema de generadores para $S \inter T$ y para $S + T$ como subespacios de $V$, y
+  determinar si la suma es directa en cada uno de los siguientes casos:
+  \begin{enumerate}[label=(\alph*)]
+    \item $V = \reales^3,\, S = \set{(x,y,z) : 3x - 2y + z = 0}$ y $T = \set{(x, y ,z) : x + z =0}$.
+    \item $V = \reales^3,\, S = \set{(x,y,z) : 3x - 2y + z = 0,\, x-y = 0}$ y $T = \ket{(1,1,0),\, (5,7,3)}$.
+    \item $V = \reales^3,\, S = \ket{(1,1,3), (1,3,5), (6,12,24)}$ y $T = \ket{(1,1,0),\, (3,2,1)}$.
+    \item $V = \reales^{3 \times 3},\, S = \set{(x_{ij}) / x_{ij} = x_{ji} \paratodo i, j}$ y $T = \set{(x_{ij})\, /\,  x_{11} + x_{12} + x_{13} = 0}$.
+    \item $V = \complejos^3,\, S = \ket{(i, 1, 3 3-i), (4,1 - i, 0)}$ y $T = \set{(x \en \complejos^3) : (1 - i)x_1 - 4x_2 + x_3 = 0}$.
+  \end{enumerate}
+  \begin{enumerate}[label=(\alph*)]
+    \item \hacer
+    \item \hacer
+    \item \hacer
+
+    \item  $S$ es un subespacios describiendo matrices \textit{simétricas}, es decir que $A = A^T$ y T el subespacio con matrices de
+          traza 0, es decir, $\sum t_{ii} = 0$. Escrito esto un poco más en extensión:
+          $$
+            S =
+            \matriz{ccc}{
+              s_{11} & s_{12} & s_{13}\\
+              s_{12} & s_{22} & s_{23}\\
+              s_{13} & s_{23} & s_{33}
+            }
+            \ytext
+            T =
+            \matriz{ccc}{
+              -(t_{22} + t_{33}) & t_{12} & t_{13}\\
+              t_{21} & t_{22} & t_{23}\\
+              t_{31} & t_{32} & t_{33}
+            }
+            \entonces
+            S \inter T =
+            \matriz{ccc}{
+              -(x_{22} + x_{33}) & x_{12} & x_{13}\\
+              x_{12} & x_{22} & x_{23}\\
+              x_{13} & x_{23} & x_{33}
+            }
+          $$
+          En la última matriz tengo algo que cumple ambas condiciones de las descripciones por comprensión de los subespacios $S$ y $T$.
+          El sistema de generadores buscado para la intersección:
+          $$
+            \cajaResultado{
+              S \inter T =
+              \ket{
+                \matriz{ccc}{
+                  -1 & 0 & 0\\
+                  0 & 1 & 0\\
+                  0 & 0 & 0
+                }
+                ;\;
+                \matriz{ccc}{
+                  -1 & 0 & 0\\
+                  0 & 0 & 0\\
+                  0 & 0 & 1
+                }
+                ;\;
+                \matriz{ccc}{
+                  0 & 1 & 0\\
+                  1 & 0 & 0\\
+                  0 & 0 & 0
+                }
+                ;\;
+                \matriz{ccc}{
+                  0 & 0 & 1\\
+                  0 & 0 & 0\\
+                  1 & 0 & 0
+                }
+                ;\;
+                \matriz{ccc}{
+                  0 & 0 & 0\\
+                  0 & 0 & 1\\
+                  0 & 1 & 0
+                }
+              }
+            }
+          $$
+
+          \bigskip
+
+          La suma de estos subespacios tiene pinta de ser todo $\reales^{3 \times 3}$ a ver que onda la dimensión:
+          $$
+            \cajaResultado{
+              \dim(S + T) = \dim(S) + \dim(T) - \dim(S \inter T) = 6 + 8 - 5 = 9
+            }
+          $$
+          Tuqui.
+
+    \item \hacer
+  \end{enumerate}
 \end{enunciado}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

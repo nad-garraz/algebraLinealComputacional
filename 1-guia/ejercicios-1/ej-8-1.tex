@@ -1,3 +1,139 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Determinar todos los $k \en \reales$ para los cuales:
+  \begin{enumerate}[label=(\alph*)]
+    \item $\ket{(-2, 1, 6), (3, 0, -8)} = \ket{(1,k,2k), (-1,-1, k^2-2), (1,1,k)}$.
+    \item $S \inter T = \ket{(0,1,1)}$ siendo $S = \set{x \en \reales : x_1 + x_2 - x_3 = 0} \ytext T = \ket{(1,k,2), (-1,2,k)}$.
+  \end{enumerate}
+
+  \begin{enumerate}[label=(\alph*)]
+    \item  Lo primero que quiero hacer es que los generadores sean \textit{linealmente independientes} y porque me gusta determinantes {\tiny\surprise}:
+          $$
+            \begin{array}{rrl}
+              \deter{ccc}{
+              1  & k    & 2k                   \\
+              -1 & -1   & k^2 - 2              \\
+              1  & 1    & k                    \\
+              }
+              \triangulacion{
+                F_2 + F_3 \to F_3
+              }
+              \deter{ccc}{
+              1  & k    & 2k                   \\
+              -1 & -1   & k^2 - 2              \\ \rowcolor{Cerulean!10}
+              0  & 0    & k^2 + k - 2
+              }
+                 & =    &
+              (-1)^6 \cdot ( k^2 + k - 2)
+              \cdot
+              \deter{cc}{
+              1  & k                           \\
+              -1 & -1
+              }                                \\
+                 & =    &
+              (k^2 + k - 2) \cdot (-1 + k) = 0 \\
+                 & \sii &
+              k \en \set{-2, 1}
+            \end{array}
+          $$
+          Así me saco el tema de las $k$ de encima, pero bueh todavía no se termina:
+          $$
+            \ket{(-2, 1, 6), (3, 0, -8)}
+            \igual{?}
+            \llave{lcl}{
+              \ket{(1,-2,-4), (-1,-1,2), (1,1,-2)  }= \ket{(1,-2,-4), (1,1,-2)} & \text{ si } & k = -2\\
+              \ket{(1,1,2), (-1,-1,-1), (1,1,1) }= \ket{(1,1,2), (1,1,1)} & \text{ si }&  k = 1
+            }
+          $$
+          Para que los los subespacios sean iguales, por ejemplo podría ver si se intersectan en todos sus elementos. Voy a
+          buscar la expresión por comprensión de $\ket{(-2, 1, 6), (3, 0, -8)}$:
+          $$
+            \begin{array}{rcl}
+              \matriz{cc|c}{
+              -2 & 3  & x_1                                     \\
+              1  & 0  & x_2                                     \\
+              6  & -8 & x_3                                     \\
+              }
+              \triangulacion{
+                F_1 \leftrightarrow F_2
+              }
+              \matriz{cc|c}{
+              1  & 0  & x_2                                     \\
+              -2 & 3  & x_1                                     \\
+              6  & -8 & x_3
+              }
+                 &
+              \triangulacion{
+              F_2 + 2 F_1 \to F_2                               \\
+                F_3 - 6 F_1 \to F_3
+              }
+                 &
+              \matriz{cc|c}{
+              1  & 0  & x_2                                     \\
+              0  & 3  & x_1 + 2 x_2                             \\
+              0  & -8 & x_3 - 6 x_2
+              }                                                 \\
+                 &
+              \triangulacion{
+                \frac{1}{3}F_2 \to F_2
+              }
+                 &
+              \matriz{cc|c}{
+              1  & 0  & x_2                                     \\
+              0  & 1  & \frac{1}{3}x_1 + \frac{2}{3} x_2        \\
+              0  & -8 & x_3 - 6 x_2
+              }                                                 \\
+                 &
+              \triangulacion{
+                F_3 + 8F_2 \to F_3
+              }
+                 &
+              \matriz{cc|c}{
+              1  & 0  & x_2                                     \\
+              0  & 1  & \frac{1}{3}x_1 + \frac{2}{3} x_2        \\ \rowcolor{red!10}
+              0  & 0  & \frac{8}{3} x_1 - \frac{2}{3} x_2 + x_3
+              }
+            \end{array}
+          $$
+          Dado que ese sistema no puede dar un absurdo, porque el subespacio claramente no es $\vacio$ se debe cumplir:
+          $$
+            \ket{(-2, 1, 6), (3, 0, -8)} =
+            \set{ x \en \reales^3 : 8 x_1 - 2 x_2 + 3x_3 =0 } \llamada1
+          $$
+          Encontrar la intersección ahora es fácil:
+
+          \medskip
+
+          \textit{Caso con $k = -2$}:
+          $$
+            (a + b,-2a + b,-4a -2 b)
+            \flecha{meto en}[$\llamada1$]
+            8(a + b) - 2 (-2a + b) + 3 (-4a - 2b) = 0 \paratodo a \text{ y } b \en \K
+          $$
+          Los subespacios son iguales con $k = -2$
+
+          \medskip
+
+          \textit{Caso con $k = 1$}:
+          $$
+            (a + b, a + b, 2a + b)
+            \flecha{meto en}[$\llamada1$]
+            8(a + b) - 2 (a + b) + 3 (2a + b) = 0
+            \sii
+            b = -\frac{4}{3}a
+          $$
+          Los subespacios tienen intersección pero no son iguales
+
+          Concluímos que el único valor de $k$ para el cual los subespacios son iguales es:
+          $$
+            \cajaResultado{
+              k  = -2
+            }
+          $$
+
+    \item  \hacer
+  \end{enumerate}
 \end{enunciado}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

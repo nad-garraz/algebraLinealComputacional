@@ -1,3 +1,115 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Encontrar un sistema de generadores para los siguientes espacios vectoriales:
+  \begin{enumerate}[label=(\alph*)]
+    \item $\set{(x,y,z) \en \reales^3 : x + y - z = 0;\; x - y = 0}$
+
+    \item $\set{\mathbf{A} \en \complejos^{3 \times 3} : \mathbf{A} = - \mathbf{A}^t}$
+
+    \item $\set{\mathbf{A} \en \reales^{3 \times 3} : tr(\mathbf{A}) = 0}$
+
+    \item $\set{x \en \complejos^4 : x_1 + x_2 - i x_4 = 0; ix_1 + (1+i)x_2 - x_3 = 0}$
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item $\ket{1,1,2}$
+
+  \item Describo a $\mathbf{A}$ y a $-\mathbf{A}^t$ como :
+        $$
+          \mathbf{A} = \set{a_{ij} \en \complejos : 1\leq i, j \leq 3}
+          \ytext
+          -\mathbf{A}^t = \set{- a_{ji} \en \complejos : 1\leq i, j \leq 3}
+        $$
+        O escrito en idioma humano:
+        $$
+          \mathbf{A} =
+          \matriz{ccc}{
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{12} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+          }
+          \ytext
+          \mathbf{A}^T =
+          \matriz{ccc}{
+          -a_{11} & -a_{21} & -a_{31} \\
+          -a_{12} & -a_{22} & -a_{32} \\
+          -a_{13} & -a_{23} & -a_{33}
+          }
+        $$
+        Entonces los elementos de la diagonal \textit{no se mueven, solo cambian de signo}, mientas que los
+        elementos fuera de la diagonal tienen esa reflexión respecto a la diagonal:
+        $$
+          a_{ij} \igual{?}  - a_{ji}
+          \sii
+          a_{ij} =
+          \llave{rcl}{
+            0 & \text{ si } & i = j \\
+            -a_{ji}  & \text{ si } & i \distinto j
+          }
+        $$
+        Estoy buscando algo de la pinta:
+        $$
+          \matriz{ccc}{
+            a_{11} & a_{12} & a_{13} \\
+            a_{21} & a_{12} & a_{23} \\
+            a_{31} & a_{32} & a_{33}
+          }
+          =
+          \matriz{ccc}{
+          0 & -a_{21} & -a_{31} \\
+          a_{21} & 0 & -a_{32} \\
+          a_{31} & a_{32} & 0
+          }
+          =
+          a_{21} \cdot
+          \matriz{ccc}{
+            0 & -1 & 0 \\
+            1 & 0 & 0 \\
+            0 & 0 & 0
+          }
+          +
+          a_{31} \cdot
+          \matriz{ccc}{
+            0 & 0 & -1 \\
+            0 & 0 & 0 \\
+            1 & 0 & 0
+          }
+          +
+          a_{32} \cdot
+          \matriz{ccc}{
+            0 & 0 & 0 \\
+            0 & 0 & -1 \\
+            0 & 1 & 0
+          }
+        $$
+        El conjunto de generadores buscado:
+        $$
+          \cajaResultado{
+            \ket{
+              \matriz{ccc}{
+                0 & -1 & 0 \\
+                1 & 0 & 0 \\
+                0 & 0 & 0
+              };\;
+              \matriz{ccc}{
+                0 & 0 & -1 \\
+                0 & 0 & 0 \\
+                1 & 0 & 0
+              }
+              ;\;
+              \matriz{ccc}{
+                0 & 0 & 0 \\
+                0 & 0 & -1 \\
+                0 & 1 & 0
+              }
+            }}
+        $$
+
+  \item \hacer
+
+  \item \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
