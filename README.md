@@ -22,16 +22,12 @@
 
 ```
 
-## Las guías resueltas:
+## Ejercicios resueltos de ALC. Primere cuatri 2025:
 
-En cada directorio `i-guia` vas a encontrar el archivo `i-sol.pdf` que no es otra cosa que la última actualización de la guía `i-ésima` y al final tenés ejerecicios sacados de parciales resueltos. _Sin necesidad de compilar nada_.
-Los archivos son largos como para andar scrolleando todo el tiempo, *usá* los `links`, que para algo los puse.
-Así que en el índice, pie de página y referencias podés hacer doble click para saltar y algún que otro _easter egg_.
-
+La idea es siempre la misma: Entre todos seguramente podemos hacer un materia de calidad. Mandar fotos
+es muy lindo, pero es una manera poco eficiente de transmitir la info. En este formato se pueden corregir
+y mejorar los aportes, ya sea en estilo o didáctica.
 
 Podés usar el código como quieras siguiendo esta licencia: [CC BY-NC](https://creativecommons.org/licenses/by-nc/4.0/)
 
 _"Un Apunte para gobernarlos a todos, un Apunte para encontrarlos, Un Apunte para atraerlos a todos y en la tinieblas atraparlos"_
-
-_¡Una estrellita 🌟 al repo es siempre bienvenida!_
-`(^_^)/`
