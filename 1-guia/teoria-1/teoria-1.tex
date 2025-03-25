@@ -1,1 +1,113 @@
-acá sería la teoría
+\textit{Repaso CBC}
+\begin{enumerate}[label=\faIcon{gamepad}$_{\arabic*)}$]
+	\item \textit{Cálculo de determinantes:}
+
+	      \begin{enumerate}[label=\tiny\faIcon{poo}]
+		      \item Si $A\in \reales^{ 2 \times 2  }\bigg/\longrightarrow \det(A)=\deter{cc}{
+				            a_{11} & a_{12}\\
+				            a_{21} & a_{22}
+			            } = a_{11}a_{22}\red{-}a_{12}a_{21}  $
+
+		      \item Si $A\in \reales^{n \times n} (n\geq2)$, un ejemplo con $n=3$:
+		            $$
+			            \det(A)=\deter{rrr}{
+				            \red{ a_{11} }& \red {a_{12} }& \red{ a_{13} }\\
+				            a_{21} & a_{22} & a_{23}\\
+				            a_{31} & a_{32} & a_{33}
+			            } = \red{a_{11}}\cdot(-1)^{\red{1}+\red{1}} \deter{cc}{
+				            a_{22} & a_{23}\\
+				            a_{32} & a_{33}
+			            } + \red{a_{12}}\cdot(-1)^{\red{1}+\red{2}} \deter{cc}{
+				            a_{21} & a_{23}\\
+				            a_{31} & a_{33}
+			            } + \red{a_{13}}\cdot(-1)^{\red{1}+\red{3}} \deter{cc}{
+				            a_{21} & a_{22}\\
+				            a_{31} & a_{32}
+			            }
+		            $$
+
+		      \item
+		            Y si pinta desarrollar por otra columna o fila:
+		            $$
+			            \det(A)=\deter{rrr}{
+				            a_{11} & \red{ a_{12} }& a_{13} \\
+				            a_{21} & \red{ a_{22} }& a_{23}\\
+				            a_{31} & \red{ a_{32} }& a_{33}
+			            }	=	\red{a_{12}}\cdot(-1)^{\red{1}+\red{2}} \deter{cc}{
+				            a_{21} & a_{23}\\
+				            a_{31} & a_{33}
+			            } + \red{a_{22}}\cdot(-1)^{\red{2}+\red{2}} \deter{cc}{
+				            a_{11} & a_{13}\\
+				            a_{31} & a_{33}
+			            } + \red{a_{32}}\cdot(-1)^{\red{3}+\red{2}} \deter{cc}{
+				            a_{11} & a_{13}\\
+				            a_{21} & a_{23}
+			            }
+		            $$
+	      \end{enumerate}
+
+	\item \textit{Clasificación de un sistema a partir de su determinante:}
+	      \begin{enumerate}[label=\tiny\faIcon{poo}]
+		      \item Dado un sistema de ecuaciones:
+		            $$
+			            \llave{ccc}{
+			            a_{11}\red{x_1}+a_{12}\red{x_2}+\cdots+a_{1n}\red{x_n} & = & \blue{b_1},\\
+			            a_{21}\red{x_1}+a_{22}\red{x_2}+\cdots+a_{2n}\red{x_n} & = & \blue{b_2},\\
+			            \vdots & = & \vdots\\
+			            a_{n1}\red{x_1}+a_{n2}\red{x_2}+\cdots+a_{nn}\red{x_n} & = & \blue{b_n}
+			            }
+		            $$
+
+		      \item Se lo puede llevar a forma matricial así:
+		            $$
+			            \matriz{cccc}{
+			            a_{11}  & a_{12} & \cdots & a_{1n} \\
+			            a_{21}  &a_{22} & \cdots & a_{2n}\\
+			            \vdots&\vdots&\ddots&\vdots\\
+			            a_{n1}& a_{n2} & \cdots & a_{nn}
+			            }
+			            \matriz{c}{
+				            \red{x_1}\\
+				            \red{x_2}\\
+				            \vdots\\
+				            \red{x_n}
+			            }  = \matriz{c}{
+				            \blue{b_1}\\
+				            \blue{b_2}\\
+				            \vdots\\
+				            \blue{b_n}
+			            }$$
+
+		      \item En notación compacta:
+		            $$
+			            A \cdot \mathbf{\red{x}} = \mathbf{\blue{b}}
+			            \flecha{sist. homogéneo}[$\mathbf{\blue{b}}=0$]
+			            A \cdot \mathbf{\red{x}} = \blue{0}
+		            $$
+
+		      \item
+		            Dado un sistema:
+		            $$
+			            A \cdot \mathbf{\red{x}} = \mathbf{\blue{b}}
+		            $$
+		            $$
+			            \atencion
+			            \begin{array}{c}
+				            \llave{lcl}{
+				            \mathrm{si} & \left|A\right| \neq 0                        & \flecha{seguro}[tengo] \boxed{\text{S.C.D.}}\leftarrow\boxed{\text{UNA SOLA SOLUCIÓN}}\leftarrow\boxed{\text{A ES INVERSIBLE}} \\
+				            \mathrm{si} & \left|A\right| = 0                           & \flecha{\smallatencion  dos}[casos]
+					            \llave{lcl}{
+				            \mathrm{si} & A \cdot \mathbf{\red{x}} = \blue{0}          & \flecha{tengo}[entonces] \boxed{  \text{S.C.I.} }                                                                              \\
+				            \mathrm{si} & A \cdot \mathbf{\red{x}} = \mathbf{\blue{b}} & \flecha{tengo dependiendo}[de \textbf{\blue{b}}]
+						            \llave{c}{
+				            \boxed{\text{S.C.I.}}                                                                                                                                                                       \\
+				            \text{o}                                                                                                                                                                                    \\
+							            \boxed{ \text{S.I.} }
+						            }
+					            }
+				            }
+			            \end{array}
+		            $$
+	      \end{enumerate}
+
+\end{enumerate}

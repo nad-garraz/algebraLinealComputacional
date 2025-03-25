@@ -47,22 +47,22 @@
 %-------------------------------------------------------
 
 
-%\newpage % página nueva
-%
-%%=========================
-%% Ejercicios extras, parciales, etc.
-%%=========================
-%
-%\subsubsection*{\hypertarget{extras-\guia}{{\Large\color{orange}{\faIcon{fire}}} Ejercicios de parciales:}}
-%
-%\foreach \x in {1,...,\cantidadEjerciciosExtras} { % cantidad de ejercicios extras
-%		\IfFileExists{./ejercicios-\guia-extra/ej-extra-\x-\guia.tex}{
-%			\input{./ejercicios-\guia-extra/ej-extra-\x-\guia.tex}
-%		}{
-%			\typeout{¡Atención! El archivo ./ejercicios-\guia-extra/ej-extra-\x-\guia.tex no está.
-%             Revisar variable: 'cantidadEjerciciosExtras' en \guia-sol.tex}
-%		}
-%	}
+\newpage % página nueva
+
+%=========================
+% Ejercicios extras, parciales, etc.
+%=========================
+
+\subsubsection*{\hypertarget{extras-\guia}{{\Large\color{orange}{\faIcon{fire}}} Ejercicios de parciales:}}
+
+\foreach \x in {1,...,\cantidadEjerciciosExtras} { % cantidad de ejercicios extras
+		\IfFileExists{./ejercicios-\guia-extra/ej-extra-\x-\guia.tex}{
+			\input{./ejercicios-\guia-extra/ej-extra-\x-\guia.tex}
+		}{
+			\typeout{¡Atención! El archivo ./ejercicios-\guia-extra/ej-extra-\x-\guia.tex no está.
+             Revisar variable: 'cantidadEjerciciosExtras' en \guia-sol.tex}
+		}
+	}
 
 %-------------------------------------------------------
 %--------------------------------------------------------
