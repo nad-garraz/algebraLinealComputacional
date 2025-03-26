@@ -17,7 +17,7 @@
 \usepackage[dvipsnames,table]{xcolor} % Para colorear el texto: black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow.
 \usepackage{color} % Para colorear el texto: black, blue, brown, cyan, darkgray, gray, green, lightgray, lime, magenta, olive, orange, pink, purple, red, teal, violet, white, yellow.
 \usepackage{enumitem} % Cambiar labels y más flexibilidad para el enumerate
-\usepackage{multicol} 
+\usepackage{multicol}
 \usepackage{tikz} % para graficar
 \usepackage{cancel} % cancelar fórmulas
 \usepackage{titlesec} % para editar titulos y hacer secciones con formato a medida
@@ -48,18 +48,15 @@ showspaces=false,
 showstringspaces=false,
 inputencoding=utf8,
 literate=%
-         {á}{{\'a}}1
-         {é}{{\'e}}1
-         {í}{{\'i}}1
-         {ó}{{\'o}}1
-         {ú}{{\'u}}1
-         {ñ}{{\~n}}1
+  {á}{{\'a}}1
+{é}{{\'e}}1
+{í}{{\'i}}1
+{ó}{{\'o}}1
+{ú}{{\'u}}1
+{ñ}{{\~n}}1
 }
 
-
 \usepackage{fancyhdr} % Encabezados y pie de páginas
-
-
 
 % para hacer los graficos tipo grafos
 \usetikzlibrary{shapes,arrows.meta, chains, matrix, calc, trees, positioning, fit}
@@ -68,17 +65,17 @@ literate=%
 % En general quiero que este paquete sea el último en importarse
 \usepackage{hyperref} % para que haya links navegables en el PDF
 \hypersetup{
-    pdftitle={Apunté Único de Álgebra Lineal Computacional},
-    pdfauthor={Por los alumnos y exalumnos de ALC},
-    pdfkeywords={algebra lineal computacional, ALC, resueltos, guías resueltas},
-    colorlinks=true,
-    pdfborder={0,0,0}, % sin border
-    citecolor=cyan,
-    %refcolor=magenta,
-    linkcolor=blue!80!red,
-    filecolor=green,
-    urlcolor=red!10!purple,
-    }
+  pdftitle={Apunté Único de Álgebra Lineal Computacional},
+  pdfauthor={Por los alumnos y exalumnos de ALC},
+  pdfkeywords={algebra lineal computacional, ALC, resueltos, guías resueltas},
+  colorlinks=true,
+  pdfborder={0 0 0}, % sin border
+  citecolor=cyan,
+  %refcolor=magenta,
+  linkcolor=blue!80!red,
+  filecolor=green,
+  urlcolor=red!10!purple,
+}
 \urlstyle{same}
 
 \setlength{\parindent}{0pt} % Para que no haya indentación en las nuevas líneas.
