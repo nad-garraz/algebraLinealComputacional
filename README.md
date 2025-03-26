@@ -23,7 +23,8 @@
 ```
 
 Los pdfs que querés están en:
-[Guía 1](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/1-guia/1-sol.pdf)
+
+- [Guía 1](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/1-guia/1-sol.pdf)
 
 ## Apunte Único ALC. Primere cuatri 2025:
 
@@ -43,22 +44,22 @@ git clone https://github.com/nad-garraz/algebraLinealComputacional
 2 - Creas una rama en la cual laburar, con un nombre descriptivo onda _"ej-10-guia-2"_ y la pusheas así
     los demás nos enteramos de la existencia de esa rama
 ```
-git switch -c _nombre-nueva-rama_
-git push origin _nombre-nueva-rama_
+git switch -c nombre-nueva-rama
+git push origin nombre-nueva-rama
 ```
 
 3 - Codeas en el archivo del ejercicio que querés hacer, por ejemplo el "ej-10-2.tex". Agregas el archivo para que git lo sepa y
     commiteas los cambios con un comentario descriptivo, "Agrego ej-10-2.tex inciso a y b"
 ```
-git add _ej-10-2.tex_ 
-git commit -m _"Comentario descriptivo sobre lo que hiciste"_
+git add ej-10-2.tex 
+git commit -m "Comentario descriptivo sobre lo que hiciste"
 ```
 
 4 - Si ya terminaste y querés subir los cambios a github vas a primero hacer un pull, 
     por si alguien cambió algo mientras laburabas en tu rama. Luego vas a hacer un push
 ```
 git pull
-git push origin _nombre-nueva-rama_
+git push origin nombre-nueva-rama
 ```
 5 - Los cambios deberían aparecer en github, EN TU RAMA. Para fusionar vas a hacer una PULL REQUEST
     desde la página. Cuando estés ahí vas a tener que esperar el visto bueno para la fusión y luego
@@ -68,7 +69,7 @@ git push origin _nombre-nueva-rama_
 ```
 git branch
 git switch main
-git branch -D _nombre-nueva-rama_
+git branch -D nombre-nueva-rama
 ```
 
 Si tenés preguntas sobre el workflow preguntá en el grupo de [Telegram](https://t.me/+1znt2GV1i8cwMTNh)
