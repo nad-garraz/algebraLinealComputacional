@@ -130,55 +130,112 @@
             }
           }
         $$
+        Resolución del sistema homogéneo asociado:
+        $$
+          \begin{array}{cccc}
+               \matriz{cccc|c}{
+               1  &  1   &  -2  &  1  &  0 \\
+               3  &  -2  &   1  &  5  &  0  \\
+               1  &  -1  &   1  &  2  &  0
+               }
+               &
+            \flecha{como \quad arriba}
+               & 
+               \matriz{cccc|c}{
+               1  &  1  &       -2       &        1        &   0 \\
+               0  &  1  &  -\frac{7}{5}  &  -\frac{2}{5}   &   0 \\
+               0  &  0  &   \frac{1}{5}  &    \frac{1}{5}  &   0
+               }
+          \end{array}
+        $$
+        paso a sistema de ecuaciones:
+        $$
+          \llave{rclcl}{
+            x_1 + x_2 - 2x_3 + x_4 & = & 0
+            & \Sii{$\llamada2 \text{ y } \llamada1$} &
+            x_1 = -x_3 + 2x_3 + x_3 = 2x_3\\
+            x_2 - \frac{7}{5}x_3 - \frac{2}{5}x_4 & = & 0
+            & \Sii{$\llamada1$} &
+            x_2 = \frac{7}{5}x_3 - \frac{2}{5}x_3 \igual{$\llamada2$} x_3\\
+            \frac{1}{5}x_3 + \frac{1}{5}x_4 & = & 0
+            & \sii &
+            x_4 \igual{$\llamada1$} -x_3
+          }
+        $$
+        Yo estaba buscando algo de la pinta  $x^T = (x_1, x_2, x_3, x_4)$:
+        $$
+          \cajaResultado{
+            x = \matriz{c}{
+              x_1\\
+              x_2\\
+              x_3\\
+              x_4
+            }
+            =
+            \matriz{c}{
+              2x_3 \\
+              x_3\\
+              x_3\\
+              -x_3
+            }
+            =
+            x_3 \cdot
+            \matriz{c}{
+              2\\
+              1 \\
+              1\\
+              -1
+            }
+          }
+        $$
 
   \item Como el item anterior, mas incognitas que ecuaciones, asi que no tiene solución única.
         $$
           \begin{array}{ccc}
             \matriz{ccccc|c}{
-            1 & 1  & 1 & -2 & 1 & 1  \\
-            1 & -3 & 1 & 1  & 1 & 0  \\
-            3 & -5 & 3 & 0  & 3 & 0
+            1 & 1   & 1  & -2  & 1  & 1         \\
+            1 & -3  & 1  & 1   & 1  & 0         \\
+            3 & -5  & 3  & 0   & 3  & 0
             }
               &
             \triangulacion{
-            F_2 - F_1 \to F_2        \\
-              F_3 - 3F_1 \to F_3
+            F_2 - F_1 \to F_2                                   \\
+            F_3 - 3F_1 \to F_3
             }
               &
             \matriz{ccccc|c}{
-            1 & 1  & 1 & -2 & 1 & 1  \\
-            0 & -4 & 0 & 3  & 0 & -1 \\
-            0 & -8 & 0 & 6  & 0 & -3
-            }                        \\
+            1 & 1   & 1  & -2  & 1  & 1         \\
+            0 & -4  & 0  & 3   & 0  & -1         \\
+            0 & -8  & 0  & 6   & 0  & -3
+            }                                                    \\
               &
             \triangulacion{
-              F_3 - 2F_2 \to F_3
+            F_3 - 2F_2 \to F_3
             }
               &
             \matriz{ccccc|c}{
-            1 & 1  & 1 & -2 & 1 & 1  \\
-            0 & -4 & 0 & 3  & 0 & -1 \\
-            0 & 0  & 0 & 0  & 0 & 0
-            }                        \\
+            1 & 1   & 1  & -2  & 1  & 1         \\
+            0 & -4  & 0  & 3   & 0  & -1         \\
+            0 & 0   & 0  & 0   & 0  & 0
+            }                                                    \\
           \end{array}
         $$
-        Como en la ultima ecuación quedó que $0 = -1$, no existe solución. ABS!
-        Resolución del sistema homogéneo asociado:
+        Como en la ultima ecuación quedó que $0 = -1$, no existe solución. ABS!        Resolución del sistema homogéneo asociado:
         $$
           \begin{array}{ccc}
             \matriz{ccccc|c}{
-            1 & 1  & 1 & -2 & 1 & 0  \\
-            1 & -3 & 1 & 1  & 1 & 0  \\
-            3 & -5 & 3 & 0  & 3 & 0
+            1 & 1   & 1  & -2  & 1  & 0         \\
+            1 & -3  & 1  & 1   & 1  & 0         \\
+            3 & -5  & 3  & 0   & 3  & 0
             }
               &
-            Como \hspace{0.1cm} arriba
+           \flecha{como \quad arriba}
               &
             \matriz{ccccc|c}{
-            1 & 1  & 1 & -2 & 1 & 1  \\
-            0 & -4 & 0 & 3  & 0 & -1 \\
-            0 & 0  & 0 & 0  & 0 & 0
-            }                        \\
+            1 & 1   & 1  & -2  & 1  & 1         \\
+            0 & -4  & 0  & 3   & 0  & -1         \\
+            0 & 0   & 0  & 0   & 0  & 0
+            }                                                    \\
           \end{array}
         $$
         Quedando el siguiente  sistema de ecuaciones:
@@ -187,7 +244,7 @@
             x_1 + x_2 + x_3 - 2x_4  & = &  0
             & \Sii{$\llamada1$} &
             x_1 = \frac{5}{3}x_2 - x_3 - x_5 \\
-
+            
             -4x_2 + 3x_4 & = & 0
             & \Sii{} &
             x_4 \igual{$\llamada1$} \frac{4}{3}x_2
@@ -240,14 +297,13 @@
             }
           }
         $$
-
   \item
         Hermosos y molestos números complejos. Acá probablemente se use mucho lo de $\times \ytext \div$
         por el conjugado mucho para sacar números con parte imaginaria del denominador, quiero decir:
         $$
           \frac{1}{z} \cdot \frac{\blue{\conj{z}}}{\blue{\conj{z}}} = \frac{\conj{z}}{|z|^2}
           \quad
-          \Entonces{$z = a + ib$}
+          \Entonces{z = a + ib}
           \quad
           \frac{1}{z} = \frac{a -ib}{a^2 + b^2}
         $$
@@ -340,23 +396,72 @@
             }
           }
         $$
+        Resolución del sistema homogéneo asociado:
+        $$
+          \begin{array}{ccl}
+            \matriz{ccc|c}{
+            i & - 1 - i & 0  & 0 \\
+            1 & - 2     & 1  & 0  \\
+            1 & 2i      & -1 & 0
+            }
+              &
+            \flecha{como \quad arriba}
+              &
+            \matriz{ccc|c}{
+            1 & - 1 + i & 0  & 0  \\
+            0 & -1 - i  & 1  & 0 \\\
+            0 & 0       & 0  & 0
+            }
+          \end{array}
+        $$
+        Paso a sistema y resuelvo:
+        $$
+          \llave{ccccl}{
+            x_1  + (- 1 + i)x_2  & = & 0 & \to & x_1 = (1 - i)x_2\\
+            -(1 + i)x_2  + x_3  & = & 0 & \to & x_3 = (1 + i)x_2
+          }
+        $$
+        Yo estaba buscando algo de la pinta  $x^T = (x_1, x_2, x_3)$:
+        $$
+          \cajaResultado{
+            x = \matriz{c}{
+              x_1\\
+              x_2\\
+              x_3
+            }
+            =
+            \matriz{c}{
+              (1-i) \cdot x_2 \\
+              x_2              \\
+              (1 + i)x_2
+            }
+            =
+            x_2 \cdot
+            \matriz{c}{
+              1 - i\\
+              1   \\
+              1 + i
+            }
+          }
+        $$
+        
 
   \item Hay mas incognitas que ecuaciones, no va a tener solución unica.
         $$
           \begin{array}{ccc}
             \matriz{cccc|c}{
-            2  & -1+i & 0   & 1  & 2 \\
-            -1 & 3    & -3i & 5  & 1
+             2   &  -1+i  &  0    &   1   &   2        \\
+            -1   &    3   & -3i   &   5   &   1
             }
-               &
+              &
             \triangulacion{
-              2F_2 + F_1 \to F_2
+            2F_2 + F_1 \to F_2
             }
-               &
+              &
             \matriz{cccc|c}{
-            2  & -1+i & 0   & 1  & 2 \\
-            0  & 5+i  & -6i & 11 & 4
-            }                        \\
+            2   &  -1+i    &    0   &   1    &  2         \\
+            0   &   5+i    &   -6i  &   11   &  4
+            }                                                    \\
           \end{array}
         $$
         Paso a sistema y resuelvo:
@@ -368,17 +473,17 @@
         $$
         utilizo el resultado de $x_4$ en la otra ecuación:
         $$
-          6ix_3 = (5+i)x_2+11x_4-4 \igual{$\llamada1$} (5+i)x_2+11(2-2x_1+(1-i)x_2)-4=
+        6ix_3 = (5+i)x_2+11x_4-4 \igual{$\llamada1$} (5+i)x_2+11(2-2x_1+(1-i)x_2)-4= 
         $$
         $$
-          =(5+i)x_2+22-22x_1+(11-11i)x_2-4 = (16-10i)x_2-22x_1+18
+        =(5+i)x_2+22-22x_1+(11-11i)x_2-4 = (16-10i)x_2-22x_1+18
         $$
         \\
         $$
-          x_3 = \frac{(16-10i)x_2-22x_1+18}{6i} = \frac{(8-5i)x_2-11x_1+9}{3i} \cdot \frac{-3i}{-3i}
+        x_3 = \frac{(16-10i)x_2-22x_1+18}{6i} = \frac{(8-5i)x_2-11x_1+9}{3i} \cdot \frac{-3i}{-3i}
         $$
         $$
-          x_3= -\frac{(-15-24i)x_2+33ix_1-27i}{9} = \frac{-5-8i}{3}x_2 + \frac{11i}{3}x_1 -3i
+        x_3= -\frac{(-15-24i)x_2+33ix_1-27i}{9} = \frac{-5-8i}{3}x_2 + \frac{11i}{3}x_1 -3i
         $$
         Yo estaba buscando algo de la pinta  $x^T = (x_1, x_2, x_3, x_4)$:
         $$
@@ -394,7 +499,7 @@
               x_1 \\
               x_2\\
               \frac{-5-8i}{3}x_2 + \frac{11i}{3}x_1 -3i\\
-              2-2x_1-(-1+i)x_2
+              2-2x_1-(-1+i)x_2              
             }
             =
             x_1 \cdot
@@ -421,9 +526,82 @@
             }
           }
         $$
+        Resolución del sistema homogéneo asociado:
+        $$
+          \begin{array}{ccc}
+            \matriz{cccc|c}{
+             2   &  -1+i  &  0    &   1   &   0        \\
+            -1   &    3   & -3i   &   5   &   0
+            }
+              &
+            \flecha{como \quad arriba}
+              &
+            \matriz{cccc|c}{
+            2   &  -1+i    &    0   &   1    &  0         \\
+            0   &   5+i    &   -6i  &   11   &  0
+            }                                                    \\
+          \end{array}
+        $$
+        Paso a sistema y resuelvo:
+        $$
+          \llave{ccccl}{
+            2x_1  + (- 1 + i)x_2 + x_4  & = & 0 & \to & x_4 \igual{$\llamada1$} -2x_1-(-1+i)x_2\\
+            (5 + i)x_2  - 6ix_3 + 11x_4  & = & 0  
+          }
+        $$
+        utilizo el resultado de $x_4$ en la otra ecuación:
+        $$
+        6ix_3 = (5+i)x_2+11x_4 \igual{$\llamada1$} (5+i)x_2+11(-2x_1+(1-i)x_2)= 
+        $$
+        $$
+        =(5+i)x_2-22x_1+(11-11i)x_2 = (16-10i)x_2-22x_1
+        $$
+        \\
+        $$
+        x_3 = \frac{(16-10i)x_2-22x_1}{6i} = \frac{(8-5i)x_2-11x_1}{3i} \cdot \frac{-3i}{-3i}
+        $$
+        $$
+        x_3= -\frac{(-15-24i)x_2+33ix_1}{9} = \frac{-5-8i}{3}x_2 + \frac{11i}{3}x_1
+        $$
+        Yo estaba buscando algo de la pinta  $x^T = (x_1, x_2, x_3, x_4)$:
+        $$
+          \cajaResultado{
+            x = \matriz{c}{
+              x_1\\
+              x_2\\
+              x_3\\
+              x_4
+            }
+            =
+            \matriz{c}{
+              x_1 \\
+              x_2\\
+              \frac{-5-8i}{3}x_2 + \frac{11i}{3}x_1 \\
+              -2x_1-(-1+i)x_2              
+            }
+            =
+            x_1 \cdot
+            \matriz{c}{
+              1\\
+              0 \\
+              \frac{11i}{3} \\
+              -2
+            }
+            +
+            x_2 \cdot
+            \matriz{c}{
+              0\\
+              1\\
+              \frac{-5-8i}{3}\\
+              1-i
+            }
+          }
+        $$
+
 \end{enumerate}
 
+% Contribuciones
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
-  \item \aporte{https://github.com/totoquik}{Tomás A. \github}
+   \item \aporte{https://github.com/totoquik}{Tomás A. \github}
 \end{aportes}
