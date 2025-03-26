@@ -1,4 +1,80 @@
-\textit{Repaso CBC}
+\textit{Espacios Vectoriales: Palabras guías}
+
+En un conjunto $A \distinto \vacio$
+\begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
+  \item \textit{Operación: $(a * b) = c$}. Es una función $* : A \times A \to A$
+        \begin{enumerate}[label=\roman*)]
+          \item\label{item1} $*$ es \textit{asociativa} si $(a * b) * c = a * (b * c) \paratodo a, b, c \en A$.
+          \item\label{item2} $*$ \textit{tiene elemento neutro $e$} si $e * a = a * e = a \paratodo a \en A$.
+          \item\label{item3} si $*$ \textit{tiene elemento neutro $e$} todo elemento tiene \textit{inverso} para $*$
+                si $\paratodo a \en A\quad a * a' = a' * a = e$.
+          \item\label{item4} $*$ es \textit{conmutativa} si $a * b = b * a \paratodo a, b \en A$.
+        \end{enumerate}
+
+  \item \textit{Grupo: $(A, *)$} es un grupo si se satisfacen \ref{item1}, \ref{item2}y \ref{item3}. Si además se satisface \ref{item4}
+        se tiene un \textit{grupo abeliano o conmutativo}.
+
+  \item \textit{Anillo: $(A, +, \cdot)$}. Para ser anillo se debe cumplir:
+        \begin{enumerate}[label=\roman*)]
+          \item $(A, +)$ es un grupo abeliano o conmutativo.
+          \item $\cdot$ es una operación asociativa y tiene elemento neutro.
+          \item Vale distribuir:
+                $
+                  \llave{l}{
+                    a \cdot (b+c) = a \cdot b + a \cdot c \\
+                    (b+c) \cdot a = b \cdot a + c \cdot a
+                  }
+                $
+        \end{enumerate}
+        Si además de cumplir eso, $\cdot$ es conmutativa $(A, +, \cdot)$ es un \textit{anillo conmutativo}.
+
+  \item \textit{Cuerpo $(K, + , \cdot)$:} Un conjunto $K$, $ + \text{ y } \cdot$ operaciones de $K$, es un cuerpo
+        si $(K, +, \cdot)$ es un anillo conmutativo y todo elemento no nulo de $K$ tiene inverso.
+        \begin{enumerate}[label=\roman*)]
+          \item $(A, +) $ es un grupo abeliano o conmutativo,
+          \item $(K - \set{0}, \cdot)$ es un grupo abeliano, y
+          \item vale la propiedad distributiva de $\cdot$ con respecto a $+$.
+        \end{enumerate}
+
+  \item \textit{Acción $\accion$:} es una función $\accion : A \times B \to B$.
+
+  \item \textit{$K-$espacio vectorial:} Sea $(K, +, \cdot)$ un cuerpo. Sea $V$ un conjunto no vacío, sea $+$ una operación en
+        $V$ y sea $\accion$ una acción de $K$ en $V$. Se dice que $(V, +, \accion)$ es un $K-$\textit{espacio vectorial} si se
+        cumplen las siguiente condiciones:
+
+        \begin{enumerate}[label=\roman*)]
+          \item $(V, +)$ es un grupo abeliano.
+
+          \item La acción $\accion$: $K \times V \to V$ satisface:
+                \begin{enumerate}[label=\alph*)]
+                  \item $a \accion (v + w) = a \accion v + a \accion w  \paratodo a \en K; \paratodo v, w \en V$.
+                  \item $(a + b) \accion v = a \accion v  + b \accion v$
+                  \item $1 \accion v = v \paratodo v \en V$.
+                  \item $(a \accion b) \accion v = a \accion (b \accion v) \paratodo a, b \en K; \paratodo v \en V$.
+                \end{enumerate}
+
+                Los elementos de $V$ son \textit{vectores} y los elementos de $K$ se llaman \textit{escalares}. La acción $\accion$
+                se llama \textit{producto por escalares}.
+
+                \faIcon{exclamation-triangle}Dejo de escribir a "$\accion$" en rojo, porque no hay problema cuando el punto "$\cdot$"
+                actúa sobre un elemento de $K$ y uno de $V$ o entre  2 de $K$.
+        \end{enumerate}
+
+  \item \textit{Subespacios:} Subconjunto de un $K-$ espacio vectorial. Sea V un $K-$espacio vectoria y sea $S \subseteq V$. Entonces $S$ es
+        un subespacio de $V$ si y solo si valen las siguientes condiciones:
+        \begin{enumerate}[label=\roman*)]
+          \item $0 \en S$
+          \item $v, w \en S \entonces v + w \en S$
+          \item $\lambda \en K, v \en S \entonces \lambda \cdot v \en S.$
+        \end{enumerate}
+\end{enumerate}
+
+\bigskip
+
+\textit{Repaso determinante:}
+
+\bigskip
+
 \begin{enumerate}[label=\faIcon{gamepad}$_{\arabic*)}$]
   \item \textit{Cálculo de determinantes:}
 
@@ -111,68 +187,3 @@
                 $$
         \end{enumerate}
 \end{enumerate}
-
-%\textiir{Cuerpo}
-%\begin{enumerate}[label=\roman*)] 
-% \item \K es un cuerpo si posee dos operaciones $+$ y $\dcot$ con los siguientes propiedades $\parartodo a \ytext b \en \K$
-%         \begin{itemize}
-%                 \item asociativa $(a+b)+c = a + (b+C)$
-%                \item conmutaitva $a+b = b+a$
-%                \item elemento neutro $a+0 = a = 0+ a$
-%                \item elemento inverso $a+(-a) = 0$
-%                \item distributiva $a\cdot (b+c) = a\cdot b + a\cdot c$
-%                \item conmutativa
-%         \end{itemize}
-% \item def Sea(\K, +, \cdot) un cuerpo. Sea \V un conjunto no vavío, + una operación en \V y \cdot una acción de \K en \V
-%         +: \V \to \V
-%                \blue{\cdot} : \K \times \V \to \V
-%
-%                Entonces (V, +, \cdot) es un \K-espacio vectorial si se cumple:
-%                \begin{enumerate}[label=\roman*)] 
-%                        \item asociatividad +  \to u + (v + w) = (u+v) + w 
-%                 \item conmutatividad
-%                 \item elemento neutro + 
-%                 \item    inverso + 
-%                 \item compatibilidad de  \blue{\cdot} y \cdot  
-%                         \to a \blue{\cdot} ( b \cdot v ) = (a \blue{\cdot} b) \cdot v
-%                 \item elemento neutro $1\cdot v = v$
-%                 \item distributiav de \cdot respecto a + en \V
-%                 \item distributiva de \cdot respecto a + en \K:
-%                 \end{enumerate}
-%                 Ejemplos de \K espacio vectorial: \K, \K^n, \K^{m \times n} 
-% \end{enumerate}
-%
-% \textit{Subespacios}
-% def: Sea $V$ un $K$ e.v, un subconjunto $\S \subseteq \V$ no vacío se dice subespacio de $V$ si la suma y el producto por un escalar son una operación y 
-% una acción en $S$ que lo convierte en un $K-e.v$.
-%
-% \textit{ejemplo}
-%
-%$$
-%\begin{array}{c}
-% S = \set{ (u,v,0) \en \reales^3, u,v \en \reales} \to es un e.v
-% S = \set{ (u.v.1) \en \reales^3 , u, v \en \reales} ¿es subespacio? \to no
-%\end{array}
-% $$
-%
-% En general se tiene que si $(V,+,\cdot) $ es un $K$ ev y $S$ un subespacio de $V$ 
-% \sii
-% \begin{enumerate}[label=\arabic*)] 
-%  \item  $0 \en S$ 
-%  \item $+ : S \times S \to S$ ($+$ es cerrado por $S$)
-%  \item  $\cdot : S \times S \to S$ (\cdot es cerrado por $S$)
-%  \end{enumerate}
-%
-%
-%  Determinar si $S$ es subespacio $S = \set{(v_1,v_2,v_3) \en \reales^3: v_1 - v_2 + 3v_3 = 0}$
-%  \begin{itemize}
-%        \item compruebo que dos vectores al sumarse caigan en $S$
-%        \item compurebo que un escalar por un vector caiga en $S$
-%  \end{itemize}
-%
-%  \textit{Generadores}
-%
-%  Dados $v_1,\ldots,v_n \en V$ una combinación lineal de $v_1,\ldots, v_n$ es un elemento 
-%  $a_1v_1 + \cdots + a_nv_m \en V$ $a_1, \ldots, a_n \en K$
-%
-%
