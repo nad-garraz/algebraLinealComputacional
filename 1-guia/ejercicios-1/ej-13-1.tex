@@ -1,3 +1,67 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sean $m, n$ y $r \en \naturales$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que si $A \en K^{m \times n}$ satisface que $Ax = 0  \paratodo x \en K^n$, entonces $A=0$.
+          Deducir que si $A,B \en K^{m \times n}$ satisfacen que $Ax = Bx \paratodo x \en K^n$, entonces $A = B$.
+
+    \item Probar que si $A \en K^{m \times n}, B \en K^{n \times r}$ con $B = (b_{ij})$ y, para $1 \leq j \leq r$,
+          $B_j =
+            \matriz{c}{
+              b_{ij}\\
+              \vdots\\
+              b_{nj}
+            }
+          $
+          es la columna $j-$ésima de $B$, entonces $AB = (AB_1 | \cdots | AB_r)$ (es decir, $AB_j$ es la columna $j-$ésima de $AB$).
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Tengo $A \en K^{n \times n}$ entonces $Ax$:
+        $$
+          \matriz{ccc}{
+            a_{11} & \dots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \dots & a_{mn}
+          }
+          \cdot
+          \matriz{c}{
+            x_1 \\
+            \vdots \\
+            x_n
+          }
+          =
+          x_1 \cdot
+          \matriz{c}{
+            a_{11} \\
+            \vdots \\
+            a_{m1}
+          }
+          +
+          \dots
+          +
+          x_n \cdot
+          \matriz{c}{
+            a_{1n} \\
+            \vdots \\
+            a_{mn}
+          }
+          = 0
+        $$
+
+        Probando particularmente con la base canónica de $K^n$ $x \en K^n$ con $x \en B$, donde
+        $$
+          B = \set{(1, 0, \dots, 0); (0, 1, \dots, 0); \dots; (0, \dots, 1)}
+        $$ muestro así que las columnas de $A$ son siempre nulas.
+
+  \item Usando lo que hice en el anterior:
+        $$
+          Ax = Bx \sisolosi \blue{(A - B)} x = 0 \sisolosi \blue{C}x = 0
+        $$
+        Dado que $Cx = 0 \paratodo x \en K^n$ se muestra que $A = B$.
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
