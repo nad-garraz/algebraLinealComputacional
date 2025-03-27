@@ -1,3 +1,127 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Dadas las bases de $\reales^3$, $B = \set{(1,1,0); (0,1,1); (1,0,1)}$ y $B'= \set{(-1,1,1);(2,0,1);(1,-1,3)}$
+  \begin{enumerate}[label=(\alph*)]
+    \item Calcular $[(1,1,0)]_B$
+          \ytext  $[(1,1,0)]_B'$.
+
+    \item Calcular la matiz de cambio de base $C(B,B')$.
+
+    \item Comprobar que $C(B, B')[(1,1,0)]_B  = [(1,1,0)]_{B'}$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        Para calcular las coordenadas en una base $B$:
+        $$
+          (1,1,0) = a (1,1,0) + b(0,1,1) + c(1,0,1)
+          \Sii{a ojímetro}
+          \llave{l}{
+            a = 1 \\
+            b = 0 \\
+            c = 0
+          }
+          \entonces
+          \cajaResultado{
+            [(1,1,0)]_B = (1,0,0)
+          }
+        $$
+
+        En la base $B'$ voy a tener que hacer más cuentas:
+        $$
+          \begin{array}{c}
+            (1,1,0) = a (-1,1,1) + b(2,0,1) + c(1,-1,3) \\
+            \matriz{ccc|c}{
+            -1 & 2 & 1            & 1                   \\
+            1  & 0 & -1           & 1                   \\
+            1  & 1 & 3            & 0
+            }
+            \Sii{\magic}
+            \llave{ccc}{
+            a  & = & \frac{1}{2}                        \\
+            b  & = & 1                                  \\
+            c  & = & -\frac{1}{2}
+            }
+            \entonces
+            \cajaResultado{
+              [(1,1,0)]_{B'} = (\frac{1}{2},2,-\frac{1}{2})
+            }
+          \end{array}
+        $$
+
+        \copyPaste
+        \codigoPython{ej-15/codigo15-1.py}
+
+  \item Quiero la matriz que tiene por columnas a las coordenas de los generadores de $B$ en la base $B'$:
+        $$
+          \begin{array}{c}
+            C(B,B') =
+            \matriz{ccc}{
+            a_1           & a_2 & a_3                                                                                   \\
+            b_1           & b_2 & b_3                                                                                   \\
+            c_1           & c_2 & c_3
+            }
+            \Entonces{donde}
+            \llave{ccc}{
+            (1,1,0)       & =   & a_1 (-1,1,1) + b_1 (2,0,1) + c_1 (1,-1,3)                                             \\
+            (0,1,1)       & =   & a_2 (-1,1,1) + b_2 (2,0,1) + c_2 (1,-1,3)                                             \\
+            (1,0,1)       & =   & a_3 (-1,1,1) + b_3 (2,0,1) + c_3 (1,-1,3)
+            }                                                                                                           \\
+            \matriz{ccc|c|c|c}{
+            -1            & 2   & 1                                         & 1            & 0            & 1           \\
+            1             & 0   & -1                                        & 1            & 1            & 0           \\
+            1             & 1   & 3                                         & 0            & 1            & 1
+            }
+            \Sii{\magic}
+            \matriz{ccc|c|c|c}{
+            1             & 0   & 0                                         & \frac{1}{2}  & \frac{7}{8}  & \frac{1}{8} \\
+            0             & 1   & 0                                         & 1            & \frac{1}{2}  & \frac{1}{2} \\
+            0             & 0   & 1                                         & -\frac{1}{2} & -\frac{1}{8} & \frac{1}{8}
+            }
+            \sii
+            \llave{ccc}{
+            (a_1,b_1,c_1) & =   & (\frac{1}{2} ,1,-\frac{1}{2})                                                         \\
+            (a_2,b_2,c_2) & =   & (\frac{7}{8} ,\frac{1}{2},-\frac{1}{8})                                               \\
+            (a_3,b_3,c_3) & =   & (\frac{1}{8} ,\frac{1}{2},\frac{1}{8})
+            }
+          \end{array}
+        $$
+
+        \copyPaste
+
+        \codigoPython{ej-15/codigo15-2.py}
+
+        Finalmente la matriz $C(B,B')$:
+        $$
+          \cajaResultado{
+            C(B, B') =
+            \matriz{ccc}{
+              \frac{1}{2}  & \frac{7}{8}  & \frac{1}{8}\\
+              1            & \frac{1}{2}  & \frac{1}{2}\\
+              -\frac{1}{2} & -\frac{1}{8} & \frac{1}{8}
+            }
+          }
+        $$
+
+  \item Lo que hay que hacer es :
+        $$
+          C(B, B')
+          \cdot
+          \matriz{c}{
+            1\\
+            0\\
+            0
+          }
+          \igual{\red{!}}
+          \matriz{c}{
+            \frac{1}{2}\\
+            1\\
+            -\frac{1}{2}
+          }
+        $$
+        Tuqui. Da eso.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
