@@ -70,7 +70,7 @@
           \matriz{ccc|c}{
             1  & \blue{1}     & -1 &1    \\
             -1 & 1     & \blue{1}^2  & -1 \\
-            1  & \blue{1}     & \blue{1} - 2 &-2
+            1  & \blue{1}     & \blue{1} - 2 & 2
           }
           \triangulacion{
             F_2 + F_1 \to F_2\\
@@ -79,7 +79,7 @@
           \matriz{ccc|c}{
             1  & 1 & -1 & 1 \\
             0  & 2 & 0  & 0 \\\rowcolor{red!10}
-            0  & 0 & 0  & -3
+            0  & 0 & 0  & 1
           }
         $$
         No hay solución con $k = 1$
@@ -89,7 +89,7 @@
           \matriz{ccc|c}{
             1  & \blue{-1}     & -1 &1    \\
             -1 & 1     & (\blue{-1})^2  & -1 \\
-            1  & \blue{-1}     & \blue{-1} - 2 &-2
+            1  & \blue{-1}     & \blue{-1} - 2 & 2
           }
           \triangulacion{
             F_2 + F_1 \to F_2\\
@@ -98,7 +98,7 @@
           \matriz{ccc|c}{
             1  & -1 & -1 & 1 \\\rowcolor{red!10}
             0  & 0 & 0  & 0 \\
-            0  & -2 & -4  & -1
+            0  & 0 & -2  & 1
           }\llamada1
         $$
         Habrá infinitas soluciones con $k = -1$
@@ -116,7 +116,7 @@
         $$
           \llave{ccl}{
             x_1 - x_2 - x_3 &=& 0 \\
-            - 2x_2 - 4x_3 &=& 0
+            - 2x_3 &=& 0
           }
           \sii
           x =
@@ -126,11 +126,17 @@
             x_3
           }
           =
-          x_3 \cdot
           \matriz{c}{
-            -1 \\
-            -2 \\
-            1
+            x_1\\
+            x_1\\
+            0
+          }
+          =
+          x_1 \cdot
+          \matriz{c}{
+            1 \\
+            1 \\
+            0
           }
         $$
 
