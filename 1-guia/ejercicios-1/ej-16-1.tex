@@ -1,3 +1,91 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sean $A, A' \en K^{m \times n}; B \en K^{n \times r}; D, D' \en K^{n \times n}; \alpha \en K$. Probar:
+  \begin{enumerate}[label=(\roman*)]
+    \item $(A + A')^t = A^t + (A')^t$
+    \item $(\alpha A)^t = \alpha A^t$
+    \item $(AB)^t = B^tA^t$
+    \item $AA^t \ytext A^tA$ son matrices simétricas.
+    \item $tr(D + D') = tr(D) + tr(D')$
+    \item $tr(\alpha D) = \alpha tr(D)$
+    \item $tr(D D') = tr(D'D)$
+  \end{enumerate}
 \end{enunciado}
+
+Voy a usar \hyperlink{teoria-1:operaciones-matrices}{operaciones de matrices {\tiny($\ot$ click)}}:
+\begin{enumerate}[label=(\alph*)]
+  \item Si tengo una suma de matrices $A + A'$ para cada elemento será:
+        $$
+          (A + A')_{ij} =
+          (a + a')_{ij}
+          \Sii{transpongo}
+          (a + a')_{ji}
+          \igual{def}[$+$]
+          a_{ji} + a'_{ji}
+          \igual{def}
+          (A^t + (A')^t)_{ij}
+          \text{\quad para cada } 1 \leq i \leq m, 1 \leq j \leq n
+        $$
+
+  \item Tengo ahora un producto de un escalar por una matriz:
+        $$
+          (\alpha \cdot A)_{ij}
+          \igual{def}
+          \alpha a_{ij}
+          \Sii{transpongo}[$\alpha^t = \alpha$]
+          \alpha a_{ji}
+          \igual{def}
+          (\alpha A)_{ji}
+          = \alpha A^t
+          \text{\quad para cada } 1 \leq i \leq m, 1 \leq j \leq n
+        $$
+
+  \item Tengo ahora un producto matricial $AB$:
+        $$
+          \begin{array}{c}
+            (AB)_{ij}
+            \igual{def}
+            \sumatoria{k = 1}{n} a_{ik}b_{kj} = a_{i1}b_{1j} + \dots +  a_{in}b_{nj} \llamada1
+            \text{\quad para cada } 1 \leq i \leq m, 1 \leq j \leq r
+            \\
+          \end{array}
+        $$
+        Por otro lado, y te voy pidiendo perdón por esos índices:
+        $$
+          \begin{array}{c}
+            (B^t)_{fg} \igual{def}[\red{!}] b_{gf}
+            \ytext
+            (A^t)_{g'h} \igual{def}[\red{!}] a_{hg'}
+            \quad \text{ donde }
+            \llave{l}{
+            1 \leq g,\, g' \leq n \\
+            1 \leq f \leq r       \\
+            1 \leq h \leq m       \\
+            }                     \\
+            (B^t A^t)_{fh} \igual{def}
+            \sumatoria{\blue{k} = 1}{\magenta{n}} b_{f\blue{k}}a_{\blue{k}h} = b_{f1}a_{1h} + \dots +  b_{f\magenta{n}}a_{\magenta{n}h}
+            \text{\quad para cada } 1 \leq f \leq r, 1 \leq h \leq m
+          \end{array}
+        $$
+
+        Ese último resultado con $f = j$ y $h = i$ queda:
+        $$
+          (B^t A^t)_{\red{ji}} \igual{def}
+          \sumatoria{k = 1}{\blue{n}} b_{\red{j}k}a_{k\red{i}} =
+          \ub{b_{\red{j}1}a_{1\red{i}} + \dots +  b_{\red{j}\blue{n}}a_{\blue{n}\red{i}}}{ = \llamada1}
+          =
+          (AB)_{ij}
+          \igual{\red{!}}
+          ((AB)_{ji})^t
+        $$
+        Y como los índices son mudos \mehBlank:
+        $$
+          \cajaResultado{
+            (AB)^t = B^t A^t
+          }
+        $$
+        ¿Puede ser que haya dado mil vueltas más de las necesarias? Sí \meh. ¡Bienvenida será tu resolución más elegante!
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

@@ -186,10 +186,43 @@ En un conjunto $A \distinto \vacio$
                   \end{array}
                 $$
         \end{enumerate}
+
+  \item Matrices:
+        \begin{itemize}
+          \item \textit{Definición de matriz:}
+                $$
+                  A \en K^{m \times n} =
+                  \set{
+                    \matriz{ccc}{
+                      a_{11} & \cdots & a_{1n}\\
+                      \vdots & \ddots & \vdots\\
+                      a_{m1} & \cdots & a_{mn}
+                    }
+                    / a_{ij} \en K \paratodo 1 \leq i \leq n, 1\leq j \leq m
+                  }.
+                $$
+
+          \item \textit{Igualdad de matrices:}
+
+                Dos matrices de la misma dimensión A y A' serán iguales:
+                $$
+                  A = A' \sisolosi a_{ij} = a'_{ij} \text{\quad para cada\quad} 1 \leq i \leq n,\, 1\leq j \leq m
+                $$
+
+          \item \hypertarget{teoria-1:operaciones-matrices}{\textit{Operaciones de matrices:}}
+
+                \textit{Suma \blue{$A + A'$}, producto de un escalar por una matriz \green{$\alpha A$} y producto entre 2 matrices} \magenta{$A \cdot B$}.
+                $$
+                  \begin{array}{c}
+                    \blue{(a + a')_{ij} = a_{ij} + a'_{ij}   (\qquad 1 \leq i \leq m, 1 \leq j \leq n)} \\
+                    \green{(\alpha a)_{ij} = \alpha a_{ij}   (\qquad 1 \leq i \leq m, 1 \leq j \leq n)} \\
+                    \magenta{c_{ij} = \sumatoria{k=1}{m} a_{ik}b_{kj} \qquad 1 \leq i \leq n, 1 \leq j \leq r}.
+                  \end{array}
+                $$
+        \end{itemize}
 \end{enumerate}
 
 \newpage
-
 \subsection*{Notas del labo}
 
 \textit{Escribir $0.25$ en base $10$}:
