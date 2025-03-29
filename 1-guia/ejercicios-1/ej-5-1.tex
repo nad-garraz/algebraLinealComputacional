@@ -106,7 +106,43 @@
             }}
         $$
 
-  \item \hacer
+  \item Veo que tr(a) es la función que suma los elementos de la diagonal principal de una matriz.
+  
+  La matriz expandida es de la forma:
+
+  $$
+        \textstyle
+   \matriz{ccc}{
+     A_{11} & A_{2} & A_{13} \\
+     A_{12} & A_{22} & A_{23} \\
+     A_{13} & A_{23} & A_{33}
+   }
+   $$
+
+   Entonces, la restricción que me impone este subespacio es: 
+
+   $$ A_{11} + A_{22} + A_{33} = 0 $$
+
+   Despejando de la ecuación nos queda:
+$$ A_{11}  = -A_{22} - A_{33}$$
+   Que de forma matricial queda
+
+
+   $$
+    \ket{
+    \matriz{ccc}{
+      A_{-A_{22} - A_{33}} & A_{12} & A_{13} \\
+      A_{12} & A_{22} & A_{23} \\
+      A_{13} & A_{23} & A_{33}
+    }
+   }
+   $$
+
+   \red{Los generadores serían separar cada uno de las variables independientes en distintas matrices y luego tomar
+   sus coeficientes. En este caso no se hizo así porque no me entró en la hoja}
+
+
+
 
   \item \hacer
 \end{enumerate}
