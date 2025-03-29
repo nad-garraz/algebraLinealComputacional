@@ -49,7 +49,7 @@
         $$
         Estoy buscando algo de la pinta:
         $$
-        \textstyle
+          \textstyle
           \matriz{ccc}{
             a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{12} & a_{23} \\
@@ -106,47 +106,167 @@
             }}
         $$
 
-  \item Veo que tr(a) es la función que suma los elementos de la diagonal principal de una matriz.
-  
-  La matriz expandida es de la forma:
+  \item Veo que $tr(A)$ es la función que suma los elementos de la diagonal principal de una matriz.
 
-  $$
-        \textstyle
-   \matriz{ccc}{
-     A_{11} & A_{2} & A_{13} \\
-     A_{12} & A_{22} & A_{23} \\
-     A_{13} & A_{23} & A_{33}
-   }
-   $$
+        La matriz expandida es de la forma:
+        $$
+          \matriz{ccc}{
+            A_{11} & A_{12} & A_{13} \\
+            A_{21} & A_{22} & A_{23} \\
+            A_{31} & A_{32} & A_{33}
+          }
+        $$
 
-   Entonces, la restricción que me impone este subespacio es: 
+        Entonces, la restricción que me impone este subespacio es:
+        $$
+          A_{11} + A_{22} + A_{33} = 0
+        $$
+        Despejando de la ecuación nos queda:
+        $$
+          A_{11}  = \blue{-A_{22} - A_{33}}
+        $$
+        Que de forma matricial queda:
+        $$
+          {\everymath{\scriptstyle}
+              \begin{array}{ccl}
+                \matriz{ccc}{
+                \blue{-A_{22} - A_{33}} & A_{12} & A_{13} \\
+                A_{21}                  & A_{22} & A_{23} \\
+                A_{31}                  & A_{32} & A_{33}
+                }
+                                        & =      &
+                A_{22}
+                \cdot
+                \matriz{ccc}{
+                -1                      & 0      & 0      \\
+                0                       & 1      & 0      \\
+                0                       & 0      & 0
+                }
+                +
+                A_{33}
+                \cdot
+                \matriz{ccc}{
+                -1                      & 0      & 0      \\
+                0                       & 0      & 0      \\
+                0                       & 0      & 1
+                }
+                }
+                +
+                A_{12}
+                \cdot
+                \matriz{ccc}{
+                0                       & 1      & 0      \\
+                0                       & 0      & 0      \\
+                0                       & 0      & 0
+                }
+                +
+                A_{13}
+                \cdot
+                \matriz{ccc}{
+                0                       & 0      & 1      \\
+                0                       & 0      & 0      \\
+                0                       & 0      & 0
+                }+
+                \\
 
-   $$ A_{11} + A_{22} + A_{33} = 0 $$
+                                        & +      &
+                A_{21}
+                \cdot
+                \matriz{ccc}{
+                0                       & 0      & 0      \\
+                1                       & 0      & 0      \\
+                0                       & 0      & 0
+                }
+                +
+                A_{23}
+                \cdot
+                \matriz{ccc}{
+                0                       & 0      & 0      \\
+                0                       & 0      & 1      \\
+                0                       & 0      & 0
+                }
+                +
+                A_{31}
+                \cdot
+                \matriz{ccc}{
+                0                       & 0      & 0      \\
+                0                       & 0      & 0      \\
+                1                       & 0      & 0
+                }
+                +
+                A_{32}
+                \cdot
+                \matriz{ccc}{
+                0                       & 0      & 0      \\
+                0                       & 0      & 0      \\
+                0                       & 1      & 0
+                }
+              \end{array}
+            }
+        $$
 
-   Despejando de la ecuación nos queda:
-$$ A_{11}  = -A_{22} - A_{33}$$
-   Que de forma matricial queda
+        Cada coeficiente que quedó libre es un generador:
+        {
+        \tiny
+        $$
+          \ket{
+            \matriz{ccc}{
+              -1                      & 0      & 0      \\
+              0                       & 1      & 0      \\
+              0                       & 0      & 0
+            }
+            ;
+            \matriz{ccc}{
+              -1                      & 0      & 0      \\
+              0                       & 0      & 0      \\
+              0                       & 0      & 1
+            }
+            ;
+            \matriz{ccc}{
+              0                       & 1      & 0      \\
+              0                       & 0      & 0      \\
+              0                       & 0      & 0
+            }
+            ;
+            \matriz{ccc}{
+              0                       & 0      & 1      \\
+              0                       & 0      & 0      \\
+              0                       & 0      & 0
+            }
+            ;
+            \matriz{ccc}{
+              0                       & 0      & 0      \\
+              1                       & 0      & 0      \\
+              0                       & 0      & 0
+            }
+            ;
+            \matriz{ccc}{
+              0                       & 0      & 0      \\
+              0                       & 0      & 1      \\
+              0                       & 0      & 0
+            }
+            ;
+            \matriz{ccc}{
+              0                       & 0      & 0      \\
+              0                       & 0      & 0      \\
+              1                       & 0      & 0
+            }
+            ;
+            \matriz{ccc}{
+              0                       & 0      & 0      \\
+              0                       & 0      & 0      \\
+              0                       & 1      & 0
+            }
+          }
+        $$
+        }
 
-
-   $$
-    \ket{
-    \matriz{ccc}{
-      A_{-A_{22} - A_{33}} & A_{12} & A_{13} \\
-      A_{12} & A_{22} & A_{23} \\
-      A_{13} & A_{23} & A_{33}
-    }
-   }
-   $$
-
-   \red{Los generadores serían separar cada uno de las variables independientes en distintas matrices y luego tomar
-   sus coeficientes. En este caso no se hizo así porque no me entró en la hoja}
-
-
-
+        Cualquier combinación lineal de esas matrices satisface que su traza sea cero.
 
   \item \hacer
 \end{enumerate}
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
+  \item \aporte{https://github.com/misProyectosPropios}{Iñaki Frutos \github}
 \end{aportes}
