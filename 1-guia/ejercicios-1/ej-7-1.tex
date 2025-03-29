@@ -45,10 +45,9 @@
         Por lo tanto para encontrar una base \textit{linda} de $S + T$, tengo que encontrar un conjunto de generadores, \textit{linealmente independientes}
         que tenga adentro a todo $S$ y a todo $T$. Saco un sistema de generadores de $S$ y uno de $T$:
         $$
-          \begin{array}{c}
-            S = \ket{(1, 0, -3); (0, 1, 2)} \\
-            T = \ket{(-1, 0, 1); (0, 1, 0)}
-          \end{array}
+          S = \ket{(1, 0, -3); (0, 1, 2)}
+          \ytext
+          T = \ket{(-1, 0, 1); (0, 1, 0)}
         $$
         Un sistema de generadores de $S + T = \ket{(1, 0, -3); (0, 1, 2); (-1, 0, 1); (0, 1, 0)}$. Esto \ul{no es una base}, porque tiene seguro
         algún vector l.d. con el resto. Entonces puedo sacar ese vector y ver si el resto son l.i.:
@@ -84,11 +83,14 @@
             S + T = \set{(1,0,-3), (0,1,2), (0,0,-2)}
           }
         $$
-        A mí m gusta usar una base que tenga la info de la intersección y saber a qué subespacio pertenece cada vector, porque me da más control
-        en caso de tener que hacer algo luego con esa base.
+        A mí me gusta usar una base que tenga la info de la intersección y saber a qué subespacio pertenece cada vector, porque me da más control
+        en caso de tener que hacer algo luego con esa base. Onda, mirá el $(0,0,-2)$ de la base anterior, ese vector no está ni en $S$ ni en $T$!
+        Da un poco de miedito, no {\tiny\marron{\poo}}?
 
-        Me armo una con un vector de $S$ y uno de $T$ sacados a ojo y también uso la intersección $\blue{(-1,-1,1)}$ que ya se calculó antes.
-        Esto va a ser un subespacio suma, porque tiene a todo $S$ y a todo $T$:
+        \medskip
+
+        Por eso me armo una base con un vector de $S$ y uno de $T$ sacados a ojo y también uso la intersección
+        $\blue{(-1,-1,1)}$ que ya se calculó antes. Esto va a ser un subespacio de $S + T$, porque tiene a todo $S$ y a todo $T$:
         $$
           \cajaResultado{
             S + T = \{\oa{(1,0,-3)}{\en S}, \ua{\oa{\blue{(1,1, -1)}}{\en S}}{\en T}, \ua{(1,0,-1)}{\en T}\}
@@ -100,6 +102,7 @@
         \codigoPython{ej-7/codigo7-1.py}
 
   \item \hacer
+
   \item \hacer
 
   \item  $S$ es un subespacios describiendo matrices \textit{simétricas}, es decir que $A = A^T$ y T el subespacio con matrices de
