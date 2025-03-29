@@ -23,10 +23,15 @@
             y = -z\\
             x = - z
           }
-          \entonces
+          \Entonces{meto en}[$(x,y,z)$]
+          (x,y,z) = (-z, -z, z) = z\cdot(-1,-1,1)
+        $$
+        Obteniendo así una base de la intersección:
+        $$
           S \inter T = \set{(-1, -1, 1)}
         $$
-        Sé que $\dim(S \inter T) = 1$ por lo tanto
+        La intersección está generada por un solo vector así que $\dim(S \inter T) = 1$ por lo tanto usando el teorema de la dimensión
+        para la suma de subespacios:
         $$
           \dim(S + T) = \dim(S) + \dim(T) - \dim(S \inter T) = 2 + 2 - 1 = 3.
         $$
@@ -101,9 +106,97 @@
         \copyPaste
         \codigoPython{ej-7/codigo7-1.py}
 
-  \item \hacer
+        Los subespacios \underline{no están} en suma directa.
 
-  \item \hacer
+  \item Se puede ver a ojo que $\dim(S) = 1$ y que $\dim{T} = 2$ es decir que podrían estar en suma directa, porque podría no haber intersección.
+        Voy a intentar calcularla. Me armo un elemento genérico de $T$ y veo si cumple las ecuaciones de $S$:
+        $$
+          t_g = a\cdot(1,1,0) + b \cdot (5,7,3) = (\blue{a + 5b, a + 7b, 3b})
+          \to
+          \llave{l}{
+            3 \cdot (\blue{a + 5b}) - 2 \cdot (\blue{a + 7b}) + \blue{3b} = 0 \Sii{$\llamada1$} a = 0\\
+            (\blue{a + 5b}) - (\blue{a + 7b}) = 0 \sii b \igual{$\llamada1$} 0
+          }
+        $$
+
+        Ese resultado me dice que la intersección es el $0$ o dicho de otra manera no tienen intersección:
+        $$
+          \cajaResultado{
+            B_{S \sumaDirecta T} = \reales^3
+          }
+        $$
+        Los subespacios $S$ y $T$ están en suma directa.
+
+  \item  Lo primero que odio cuando veo este ejercicio es que tengo que ver si $S$ tiene generadores \textit{linealmente dependientes}
+        y lo segundo que odio es que voy a tener que pasar a ecuaciones algo, para que sea fácil de calcular la intersección:
+        $$
+          \matriz{ccc}{
+            1 & 1 & 3 \\
+            1 & 3 & 5 \\
+            6 & 12 & 24
+          }
+          \triangulacion{
+            F_2 - F_1 \to F_2\\
+            F_3 - 6F_1 \to F_3
+          }
+          \matriz{ccc}{
+            1 & 1 & 3 \\
+            0 & 2 & 2 \\ \rowcolor{red!10}
+            0 & 6 & 6
+          }
+          \flecha{me quedo con}[estos generadores]
+          S = \set{(1,1,3); (0,1,1)}
+        $$
+        Sé que \ul{seguro} va a haber una intersección entre $S$ y $T$, porque hay 4 vectores y estoy laburando en $\reales^3$.
+        Busco las ecuaciones que generan a $S$:
+        $$
+          \matriz{cc|c}{
+            1 & 0 & x_1 \\
+            1 & 1 & x_2 \\
+            3 & 1 & x_3
+          }
+          \triangulacion{
+            F_2 - F_1 \to F_2\\
+            F_3 - 3F_1 \to F_3
+          }
+          \matriz{cc|c}{
+            1 & 0 & x_1 \\
+            0 & 1 & x_2 - x_1 \\
+            0 & 1 & x_3 - 3x_1
+          }
+          \triangulacion{
+            F_3 - F_2 \to F_3
+          }
+          \matriz{cc|c}{
+            1 & 0 & x_1 \\
+            0 & 1 & x_2 - x_1 \\ \rowcolor{Cerulean!20}
+            0 & 0 & x_3 - x_2 - 2x_1
+          }
+        $$
+        Para que ese sistema sea compatible necesito que:
+        $$
+          x_3 - x_2 - 2x_1 = 0 \entonces S = \set{(x_1, x_2, x_3) / x_3 - x_2 - 2x_1 \igual{$\llamada1$} 0}
+        $$
+
+        Listo, ahora es cuestión de hacer como en el item anterior, agarro un genérico de $T$ y lo meto en la ecuación de $S$:
+        $$
+          t_g \igual{$\llamada2$} (a + 3b, a + 2b, b)
+          \flecha{meto en}[$\llamada1$]
+          \llave{l}{
+            b - (a + 2b) - 2 (a + 3b) = 0
+            \sii
+            a = -\frac{8}{3}b
+            \flecha{reemplazo}[en $\llamada2$]
+            t_g = b \cdot (\frac{1}{3}, -\frac{2}{3}, 1)
+          }
+        $$
+
+        Ese vector $t_g$, es un vector de $T$ que también cumple la ecuación de $S$ por lo tanto también está en $S$:
+        $$
+          B_{S \inter T} \igual{\red{!}} \set{1, -2, 3}
+        $$
+
+        Los subespacios \ul{no} están en suma directa. Y $S + T \igual{\red{!}} \reales^3$.
 
   \item  $S$ es un subespacios describiendo matrices \textit{simétricas}, es decir que $A = A^T$ y T el subespacio con matrices de
         traza 0, es decir, $\sum t_{ii} = 0$. Escrito esto un poco más en extensión:
