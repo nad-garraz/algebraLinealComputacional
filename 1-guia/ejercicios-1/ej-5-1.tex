@@ -106,7 +106,47 @@
             }}
         $$
 
-  \item \hacer
+  \item Veo que tr(a) es la función que suma los elementos de la diagonal principal de una matriz.
+  
+  La matriz expandida es de la forma:
+
+  $$
+        \textstyle
+   \matriz{ccc}{
+     A_{11} & A_{2} & A_{13} \\
+     A_{12} & A_{22} & A_{23} \\
+     A_{13} & A_{23} & A_{33}
+   }
+   $$
+
+   Entonces, la restricción que me impone este subespacio es: 
+
+   $$ A_{11} + A_{22} + A_{33} = 0 $$
+
+   Despejando de la ecuación nos queda:
+$$
+   \cajaResultado{
+   A_{11}  = -A_{22} - A_{33}
+   }
+   $$
+   O de forma matricial
+
+
+   $$
+   \cajaResultado{
+    \ket{
+    \matriz{ccc}{
+      A_{-A_{22} - A_{33}} & A_{2} & A_{13} \\
+      A_{12} & A_{22} & A_{23} \\
+      A_{13} & A_{23} & A_{33}
+    }
+    }
+   }
+
+   $$
+
+
+
 
   \item \hacer
 \end{enumerate}
