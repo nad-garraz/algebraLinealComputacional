@@ -11,7 +11,94 @@
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-  \item \hacer
+  \item Si los subespacios tienen intersección es una buena idea calcularla para armar el subespacio suma. Busco $S \inter T$,
+        para eso pido que $(x, y, z)$ cumpla ambas ecuaciónes de los subespacios:
+        $$
+          \llave{rcl}{
+            3x - 2 y  + z & = &  0 \\
+            x + z & = &  0
+          }
+          \to
+          \llave{rcl}{
+            y = -z\\
+            x = - z
+          }
+          \entonces
+          S \inter T = \set{(-1, -1, 1)}
+        $$
+        Sé que $\dim(S \inter T) = 1$ por lo tanto
+        $$
+          \dim(S + T) = \dim(S) + \dim(T) - \dim(S \inter T) = 2 + 2 - 1 = 3.
+        $$
+        Es así que:
+        $$\cajaResultado{
+            S + T = \reales^3 \entonces B_{S+T} = \set{(1,0,0); (0,1,0); (0,0,1)}
+          }.
+        $$
+
+        Peeeeero suponete que querés hacerlo de formás más mecánica, lo que podrías hacer es armar la base con algo de info:
+
+        Sé que:
+        $$
+          \dim(S) = 2,\, \dim(T) = 2
+        $$
+        Por lo tanto para encontrar una base \textit{linda} de $S + T$, tengo que encontrar un conjunto de generadores, \textit{linealmente independientes}
+        que tenga adentro a todo $S$ y a todo $T$. Saco un sistema de generadores de $S$ y uno de $T$:
+        $$
+          \begin{array}{c}
+            S = \ket{(1, 0, -3); (0, 1, 2)} \\
+            T = \ket{(-1, 0, 1); (0, 1, 0)}
+          \end{array}
+        $$
+        Un sistema de generadores de $S + T = \ket{(1, 0, -3); (0, 1, 2); (-1, 0, 1); (0, 1, 0)}$. Esto \ul{no es una base}, porque tiene seguro
+        algún vector l.d. con el resto. Entonces puedo sacar ese vector y ver si el resto son l.i.:
+        $$
+          \matriz{ccc}{
+            1 & 0 & -3 \\
+            0 & 1 & 2 \\
+            -1 & 0 & 1 \\
+            0 & 1 & 0
+          }
+          \triangulacion{
+            F_3 + F_1 \to F3
+          }
+          \matriz{ccc}{
+            1 & 0 & -3 \\
+            0 & 1 & 2 \\
+            0 & 0 & -2 \\
+            0 & 1 & 0
+          }
+          \triangulacion{
+            F_4 - F_2 \to F4
+          }
+          \matriz{ccc}{
+            1 & 0 & -3 \\
+            0 & 1 & 2 \\
+            0 & 0 & -2 \\\rowcolor{red!10}
+            0 & 0 & -2
+          }
+        $$
+        Listo me quedo con los 3 vectores que sobrevivieron a la triangulación. Una base de $S+T$:
+        $$
+          \cajaResultado{
+            S + T = \set{(1,0,-3), (0,1,2), (0,0,-2)}
+          }
+        $$
+        A mí m gusta usar una base que tenga la info de la intersección y saber a qué subespacio pertenece cada vector, porque me da más control
+        en caso de tener que hacer algo luego con esa base.
+
+        Me armo una con un vector de $S$ y uno de $T$ sacados a ojo y también uso la intersección $\blue{(-1,-1,1)}$ que ya se calculó antes.
+        Esto va a ser un subespacio suma, porque tiene a todo $S$ y a todo $T$:
+        $$
+          \cajaResultado{
+            S + T = \{\oa{(1,0,-3)}{\en S}, \ua{\oa{\blue{(1,1, -1)}}{\en S}}{\en T}, \ua{(1,0,-1)}{\en T}\}
+          }
+        $$
+        Son \textit{linealmente independientes}, sí. De no haberlo sido elegía otro vector hasta que alguno dé.
+        Comprobalo con este código:
+        \copyPaste
+        \codigoPython{ej-7/codigo7-1.py}
+
   \item \hacer
   \item \hacer
 
