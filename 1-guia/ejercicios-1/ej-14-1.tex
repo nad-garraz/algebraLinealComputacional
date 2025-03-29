@@ -130,3 +130,213 @@
   ¿Qué otras particiones válidas son posibles?
 \end{enunciado}
 
+¡¿Que interesante, no?!, peero: {\tiny\textit{¿Qué es esta verga?}}. A esta altura ya está clarísimo que para
+poder multiplicar dos matrices, se tiene que cumplir que \textit{la cantidad de columnas del primer factor sea igual
+  a la cantidad de filas del segundo}:
+$$
+  M \cdot M'
+  \text{  se puede hacer si }
+  M \en K^{n \times \blue{m}}
+  \ytext
+  M' \en K^{\blue{m} \times l}
+$$
+
+Hay que prestar atención a eso y después hacer el producto y suma en bloques, es un \textit{parecido pero distinto}.
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        $$
+          A =
+          \matriz{c|cc}{
+            \yellow{1} & \green{3} & \green{0} \\ \hline
+            \blue{0} & \purple{1} & \purple{2} \\
+            \blue{1} & \purple{0} & \purple{1}
+          }
+          B =
+          \matriz{c|cc}{
+            \yellow{1} & \green{1} & \green{1} \\\hline
+            \blue{3} & \purple{0} & \purple{1} \\
+            \blue{2} & \purple{0} & \purple{2}
+          }
+        $$
+        Multiplico $A \cdot B$ en bloques:
+        \begin{enumerate}[label=\tiny\faIcon{calculator}$_{\arabic*)}$]
+          \item Busco el bloque $C_{11}$ ¿Se podrá hacer el cálculo?:
+                $$
+                  \yellow{A_{11}} \cdot \yellow{B_{11}}
+                  +
+                  \green{A_{12} \cdot \blue{B_{21}}} =
+                  \yellow{[\, 1 \, ]} \cdot \yellow{[1]}  +
+                  \green{
+                    \bloque{cc}{
+                      3 & 0
+                    }
+                  }
+                  \cdot
+                  \blue{
+                    \bloque{c}{
+                      3\\
+                      2
+                    }
+                  }
+                  = 10 = C_{11} \en K^{1 \times 1}
+                $$
+
+          \item Busco el bloque $C_{12}$ ¿Se podrá hacer el cálculo? {\tiny \rollingEyes}:
+                $$
+                  \yellow{A_{11}} \cdot \green{B_{12}}
+                  +
+                  \green{A_{12} \cdot \purple{B_{22}}} =
+                  \yellow{[\, 1 \, ]} \cdot \green{[\,1\ 1\,]}  +
+                  \green{
+                    \bloque{cc}{
+                      3 & 0
+                    }
+                  }
+                  \cdot
+                  \purple{
+                    \bloque{cc}{
+                      0 & 1\\
+                      0 & 2
+                    }
+                  }
+                  =
+                  \bloque{c c}{
+                    1 & 4
+                  }
+                  =
+                  C_{12} \en K^{1 \times 2}
+                $$
+
+          \item Busco el bloque $C_{21}$ ¿Se podrá hacer el cálculo? \rollingEyes:
+                $$
+                  \blue{A_{21}} \cdot \yellow{B_{11}}
+                  +
+                  \purple{A_{22} \cdot \blue{B_{21}}} =
+                  \blue{
+                    \bloque{c}{
+                      0\\
+                      1
+                    }
+                  }
+                  \cdot
+                  \yellow{
+                    [\, 1\, ]
+                  }
+                  +
+                  \purple{
+                    \bloque{cc}{
+                      1 & 2\\
+                      0 & 1
+                    }
+                  }
+                  \cdot
+                  \blue{
+                    \bloque{c}{
+                      3\\
+                      2
+                    }
+                  }
+                  =
+                  \bloque{c}{
+                    0\\
+                    1
+                  }
+                  +
+                  \bloque{c}{
+                    7\\
+                    2
+                  }
+                  =
+                  \bloque{c}{
+                    7\\
+                    3
+                  }
+                  =
+                  C_{21} \en K^{2 \times 1}
+                $$
+
+          \item Busco el bloque $C_{22}$ ¿Se podrá hacer el cálculo? {\LARGE \rollingEyes}:
+                $$
+                  \blue{A_{21}} \cdot \green{B_{12}}
+                  +
+                  \purple{A_{22} \cdot \purple{B_{22}}}
+                  =
+                  \blue{
+                    \bloque{c}{
+                      0\\
+                      1
+                    }
+                  }
+                  \cdot
+                  \green{
+                    \bloque{cc}{
+                      1 & 1
+                    }
+                  }
+                  +
+                  \purple{
+                    \bloque{cc}{
+                      1 & 2\\
+                      0 & 1
+                    }
+                  }
+                  \cdot
+                  \purple{
+                    \bloque{cc}{
+                      0 & 1\\
+                      0 & 2
+                    }
+                  }
+                  =
+                  \bloque{cc}{
+                    0 & 0\\
+                    1 & 1
+                  }
+                  +
+                  \bloque{cc}{
+                    0 & 5 \\
+                    0 & 2
+                  }
+                  =
+                  \bloque{cc}{
+                    0 & 5 \\
+                    1 & 3
+                  }
+                  =
+                  C_{22} \en K^{2 \times 2}
+                $$
+        \end{enumerate}
+
+        Si todavía no te volaste la tapa de los sesos esto queda así:
+        $$
+          \cajaResultado{
+            A \cdot B =
+            \matriz{c|cc}{
+              \yellow{1} & \green{3} & \green{0} \\ \hline
+              \blue{0} & \purple{1} & \purple{2} \\
+              \blue{1} & \purple{0} & \purple{1}
+            }
+            \cdot
+            \matriz{c|cc}{
+              \yellow{1} & \green{1} & \green{1} \\\hline
+              \blue{3} & \purple{0} & \purple{1} \\
+              \blue{2} & \purple{0} & \purple{2}
+            }
+            =
+            \matriz{c|cc}{
+              10 & 1 & 4 \\\hline
+              7 & 0 & 5  \\
+              3 & 1 & 3
+            }
+          }
+        $$
+        Sí, multiplicar en bloques dio lo mismo que multiplicar como siempre. ¿Es magia? NO, es \magic \textit{matemagia} \magic.
+
+  \item \hacer
+  \item \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
