@@ -14,6 +14,9 @@
 \end{enunciado}
 
 Voy a usar \hyperlink{teoria-1:operaciones-matrices}{operaciones de matrices {\tiny($\ot$ click)}}:
+
+\red{\atencion}Mucha antención a los índices de las matrices que de eso trata este ejercicio básicamente.
+
 \begin{enumerate}[label=(\alph*)]
   \item  Quiero probar que $(A + A')^t = A^t + (A')^t$. Un elemento de la suma:
         $$
@@ -66,10 +69,67 @@ Voy a usar \hyperlink{teoria-1:operaciones-matrices}{operaciones de matrices {\t
           }.
         $
 
-  \item \hacer
-  \item \hacer
-  \item \hacer
-  \item \hacer
+  \item Uso el truco de la multiplicación y transposición como antes:
+        $$
+          [A A^t]_{ij} =
+          \sumatoria{k = 1}{n} A_{ik} A^t_{kj} =
+          \sumatoria{k = 1}{n}  A^t_{kj} A_{ik}=
+          \sumatoria{k = 1}{n}  A_{jk} A^t_{ki} =
+          [A A^t]_{ji} =
+            [(A A^t)^t]_{ij}
+          \text{\quad para cada } 1 \leq i \leq m, 1 \leq j \leq n
+        $$
+        Así queda que una matriz es igual a su transpuesta, por lo tanto
+        es simétrica.
+
+        Sería lo mismo mostrarlo para para $A^tA$.
+
+        Entonces queda mostrado que
+        $
+          \cajaResultado{
+            AA^t \ytext A^tA
+            \text{ son matrices simétricas}}.
+        $
+
+  \item Quiero mostrar que: $tr(D + D') = tr(D) + tr(D')$.
+        La traza la calculo sumando los elementos diagonales de la matriz:
+        $$
+          tr(D + D') =
+          \sumatoria{k = 1}{n} D_{kk} + D'_{kk}
+          \sumatoria{k = 1}{n}D_{kk} +
+          \sumatoria{k = 1}{n}D'_{kk} =
+          tr(D) + tr(D')
+        $$
+        Tuqui.
+
+  \item Quiero mostrar que: $tr(\alpha D) = \alpha tr(D)$.
+        $$
+          tr(\alpha D) =
+          \sumatoria{k = 1}{n} \alpha D_{kk} =
+          \alpha \cdot \sumatoria{k = 1}{n}D_{kk} =
+          \alpha \cdot tr(D)
+        $$
+        Tuqui.
+
+  \item Quiero mostrar que: $tr(DD') = tr(D'D)$. Parecido a lo hecho antes:
+        $$
+          \begin{array}{rcl}
+            tr(DD') =
+            \sumatoria{\blue{k} = 1}{n} [DD']_{\blue{kk}} & = &
+            \sumatoria{\blue{k} = 1}{n}
+            \sumatoria{\purple{l} = 1}{n} D_{\blue{k}\purple{l}}D'_{\purple{l}\blue{k}} \\
+                                                          & = &
+            \sumatoria{\blue{k} = 1}{n}
+            \sumatoria{\purple{l} = 1}{n} D'_{\purple{l}\blue{k}}D_{\blue{k}\purple{l}} \\
+                                                          & = &
+            \sumatoria{\purple{l} = 1}{n}
+            \sumatoria{\blue{k} = 1}{n} D'_{\purple{l}\blue{k}}D_{\blue{k}\purple{l}}   \\
+                                                          & = &
+            \sumatoria{\purple{l} = 1}{n} [D'D]_{\purple{ll}}  = tr(D'D)
+          \end{array}
+        $$
+        Tuqui.
+
 \end{enumerate}
 
 \begin{aportes}
