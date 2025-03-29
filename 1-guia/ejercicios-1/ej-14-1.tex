@@ -333,9 +333,356 @@ Hay que prestar atención a eso y después hacer el producto y suma en bloques, 
         $$
         Sí, multiplicar en bloques dio lo mismo que multiplicar como siempre. ¿Es magia? NO, es \magic \textit{matemagia} \magic.
 
-  \item \hacer
-  \item \hacer
+  \item
+        $$
+          A =
+          \matriz{cc|c}{
+            \yellow{1} & \yellow{3} & \green{0} \\ \hline
+            \blue{0} & \blue{1} & \purple{2} \\
+            \blue{1} & \blue{0} & \purple{1}
+          }
+          B =
+          \matriz{c|cc}{
+            \yellow{1} & \green{1} & \green{1} \\\hline
+            \blue{3} & \purple{0} & \purple{1} \\
+            \blue{2} & \purple{0} & \purple{2}
+          }
+        $$
+        Multiplico $A \cdot B$ en bloques:
+        \begin{enumerate}[label=\tiny\faIcon{calculator}$_{\arabic*)}$]
+          \item Busco el bloque $C_{11}$ ¿Se podrá hacer el cálculo?:
+                $$
+                  \yellow{A_{11}} \cdot \yellow{B_{11}}
+                  +
+                  \green{A_{12} \cdot \blue{B_{21}}} =
+                  \yellow{
+                    \bloque{cc}{
+                      1 & 3
+                    }
+                  }
+                  \cdot
+                  \yellow{
+                    \bloque{c}{
+                      1
+                    }
+                  }  +
+                  \green{
+                    \bloque{c}{
+                      0
+                    }
+                  }
+                  \cdot
+                  \blue{
+                    \bloque{c}{
+                      3\\
+                      2
+                    }
+                  }
+                  \to \text{Se pudrió todo}
+                $$
+        \end{enumerate}
+        No me \textit{matchean} las dimensiones como para poder multiplicar.
+
+  \item
+        $$
+          A =
+          \matriz{c|cc}{
+            \yellow{1} & \green{3} & \green{0} \\
+            \yellow{0} & \green{1} & \green{2} \\\hline
+            \blue{1} & \purple{0} & \purple{1}
+          }
+          B =
+          \matriz{c|cc}{
+            \yellow{1} & \green{1} & \green{1} \\\hline
+            \blue{3} & \purple{0} & \purple{1} \\
+            \blue{2} & \purple{0} & \purple{2}
+          }
+        $$
+        Multiplico $A \cdot B$ en bloques:
+        \begin{enumerate}[label=\tiny\faIcon{calculator}$_{\arabic*)}$]
+          \item Busco el bloque $C_{11}$ ¿Se podrá hacer el cálculo?:
+                $$
+                  \yellow{A_{11}} \cdot \yellow{B_{11}}
+                  +
+                  \green{A_{12} \cdot \blue{B_{21}}} =
+                  \yellow{
+                    \bloque{c}{
+                      1\\
+                      0
+                    }
+                  }
+                  \cdot
+                  \yellow{
+                    \bloque{c}{
+                      1
+                    }
+                  }
+                  +
+                  \green{
+                    \bloque{cc}{
+                      3 & 0 \\
+                      1 & 2
+                    }
+                  }
+                  \cdot
+                  \blue{
+                    \bloque{c}{
+                      3\\
+                      2
+                    }
+                  }
+                  =
+                  \bloque{c}{
+                    1\\
+                    0
+                  }
+                  +
+                  \bloque{c}{
+                    9\\
+                    7
+                  }
+                  =
+                  \bloque{c}{
+                    10\\
+                    7
+                  }
+                  = C_{11} \en K^{2 \times 1}
+                $$
+
+          \item Busco el bloque $C_{12}$ ¿Se podrá hacer el cálculo? {\tiny \rollingEyes}:
+                $$
+                  \yellow{A_{11}} \cdot \green{B_{12}}
+                  +
+                  \green{A_{12} \cdot \purple{B_{22}}} =
+                  \yellow{
+                    \bloque{c}{
+                      1\\
+                      0
+                    }
+                  }
+                  \cdot
+                  \green{
+                    \bloque{cc}{
+                      1 & 1
+                    }
+                  }
+                  +
+                  \green{
+                    \bloque{cc}{
+                      3 & 0\\
+                      1 & 2
+                    }
+                  }
+                  \cdot
+                  \purple{
+                    \bloque{cc}{
+                      0 & 1\\
+                      0 & 2
+                    }
+                  }
+                  =
+                  \bloque{cc}{
+                    1 & 1\\
+                    0 & 0
+                  }
+                  +
+                  \bloque{cc}{
+                    0 & 3\\
+                    0 & 5
+                  }
+                  =
+                  \bloque{cc}{
+                    1 & 4\\
+                    0 & 5
+                  }
+                  =
+                  C_{12} \en K^{2 \times 2}
+                $$
+
+          \item Busco el bloque $C_{21}$ ¿Se podrá hacer el cálculo? \rollingEyes:
+                $$
+                  \blue{A_{21}} \cdot \yellow{B_{11}}
+                  +
+                  \purple{A_{22} \cdot \blue{B_{21}}} =
+                  \blue{
+                    \bloque{c}{
+                      1
+                    }
+                  }
+                  \cdot
+                  \yellow{
+                    \bloque{c}{
+                      1
+                    }
+                  }
+                  +
+                  \purple{
+                    \bloque{cc}{
+                      0 & 1
+                    }
+                  }
+                  \cdot
+                  \blue{
+                    \bloque{c}{
+                      3\\
+                      2
+                    }
+                  }
+                  =
+                  \bloque{c}{
+                    1
+                  }
+                  +
+                  \bloque{c}{
+                    2
+                  }
+                  =
+                  \bloque{c}{
+                    3
+                  }
+                  =
+                  C_{21} \en K^{1 \times 1}
+                $$
+
+          \item Busco el bloque $C_{22}$ ¿Se podrá hacer el cálculo? {\LARGE \rollingEyes}:
+                $$
+                  \blue{A_{21}} \cdot \green{B_{12}}
+                  +
+                  \purple{A_{22} \cdot \purple{B_{22}}}
+                  =
+                  \blue{
+                    \bloque{c}{
+                      1
+                    }
+                  }
+                  \cdot
+                  \green{
+                    \bloque{cc}{
+                      1 & 1
+                    }
+                  }
+                  +
+                  \purple{
+                    \bloque{cc}{
+                      0 & 1
+                    }
+                  }
+                  \cdot
+                  \purple{
+                    \bloque{cc}{
+                      0 & 1\\
+                      0 & 2
+                    }
+                  }
+                  =
+                  \bloque{cc}{
+                    1 & 1
+                  }
+                  +
+                  \bloque{cc}{
+                    0 & 2
+                  }
+                  =
+                  \bloque{cc}{
+                    1 & 3
+                  }
+                  =
+                  C_{22} \en K^{2 \times 2}
+                $$
+
+                Esto queda así:
+                $$
+                  \cajaResultado{
+                    A \cdot B =
+                    \matriz{c|cc}{
+                      \yellow{1} & \green{3} & \green{0} \\
+                      \yellow{0} & \green{1} & \green{2} \\\hline
+                      \blue{1} & \purple{0} & \purple{1}
+                    }
+                    \cdot
+                    \matriz{c|cc}{
+                      \yellow{1} & \green{1} & \green{1} \\\hline
+                      \blue{3} & \purple{0} & \purple{1} \\
+                      \blue{2} & \purple{0} & \purple{2}
+                    }
+                    =
+                    \matriz{c|cc}{
+                      10 & 1 & 4 \\
+                      7 & 0 & 5  \\\hline
+                      3 & 1 & 3
+                    }
+                  }
+                $$
+        \end{enumerate}
 \end{enumerate}
+
+¿Hay más particiones que funcionarían?
+Creo que la cosa es que:
+
+\begin{center}
+  \begin{minipage}{0.8\textwidth}
+    Se multiplican siempre bloques de la pinta $A_{i\red{j}} \cdot B_{\red{j}k}$.
+    Necesito entonces que los bloques que forman la \textit{columna bloque} \red{j}-ésima tengan igual
+    cantidad de \ul{columnas} como \ul{filas} los bloques que forman la \textit{fila bloque} \red{j}-ésima.
+  \end{minipage}\hfill
+\end{center}
+
+Si, no se entendió nada, eso. Ya vendrá alguien y lo escribirá mejor. Ejemplo:
+
+$$
+  A =
+  \matriz{cc|c}{
+    \blue{a_{11}} & \blue{a_{12}} & a_{13} \\
+    \blue{a_{21}} & \blue{a_{22}} & a_{23} \\\hline
+    \blue{a_{31}} & \blue{a_{32}} & a_{33}
+  }
+  B =
+  \matriz{cc|c}{
+    \magenta{a_{11}} & \magenta{a_{12}} & \magenta{a_{13}} \\\hline
+    a_{21} & a_{22} & a_{23} \\
+    a_{31} & a_{32} & a_{33}
+  }
+  \to
+  \text{No se puede}
+$$
+
+No va a poderse multiplicar, porque la columa 1 de bloques azules, son bloques con \red{2} columnas,
+mientras que la fila 1 de bloques magenta tiene solo \red{1} fila por bloque.
+
+$$
+  A =
+  \matriz{cc|c}{
+    \blue{a_{11}} & \blue{a_{12}} & a_{13} \\
+    \blue{a_{21}} & \blue{a_{22}} & a_{23} \\\hline
+    \blue{a_{31}} & \blue{a_{32}} & a_{33}
+  }
+  B =
+  \matriz{cc|c}{
+    \magenta{a_{11}} & \magenta{a_{12}} & \magenta{a_{13}} \\
+    \magenta{a_{21}} & \magenta{a_{22}} & \magenta{a_{23}} \\\hline
+    a_{31} & a_{32} & a_{33}
+  }
+  \to
+  \text{Se puede \checkmark}
+$$
+$$
+  A =
+  \matriz{cc|c}{
+    \blue{a_{11}} & \blue{a_{12}} & a_{13} \\\hline
+    \blue{a_{21}} & \blue{a_{22}} & a_{23} \\
+    \blue{a_{31}} & \blue{a_{32}} & a_{33}
+  }
+  B =
+  \matriz{cc|c}{
+    \magenta{a_{11}} & \magenta{a_{12}} & \magenta{a_{13}} \\
+    \magenta{a_{21}} & \magenta{a_{22}} & \magenta{a_{23}} \\\hline
+    a_{31} & a_{32} & a_{33}
+  }
+  \to
+  \text{Se puede \checkmark}
+$$
+
+me aburrí
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
