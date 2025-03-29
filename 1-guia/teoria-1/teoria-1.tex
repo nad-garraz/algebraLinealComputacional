@@ -68,7 +68,7 @@ En un conjunto $A \distinto \vacio$
           \item $\lambda \en K, v \en S \entonces \lambda \cdot v \en S.$
         \end{enumerate}
 
-\item \hypertarget{teoria-1:combinacion-lineal}{\textit{\ul{Combinación lineal:}}}
+  \item \hypertarget{teoria-1:combinacion-lineal}{\textit{\ul{Combinación lineal:}}}
 
         Sea $V$ un $K-$espacio vectorial, y sea $G = \set{v_1,\ldots,v_r} \subseteq V$.
         Una \textit{combinación lineal de $G$} es un elemento $v \en V$ tal que $v = \sumatoria{i=1}{r} \alpha_i \cdot v_i$ con
@@ -126,25 +126,25 @@ En un conjunto $A \distinto \vacio$
                       \vdots & \ddots & \vdots\\
                       a_{m1} & \cdots & a_{mn}
                     }
-                    / a_{ij} \en K \paratodo 1 \leq i \leq n, 1\leq j \leq m
+                    / A_{ij} \en K \paratodo 1 \leq i \leq n, 1\leq j \leq m
                   }.
                 $$
 
           \item \textit{Igualdad de matrices:}
 
-                Dos matrices de la misma dimensión A y A' serán iguales:
+                Dos matrices de la misma dimensión $A$ y $A'$ serán iguales:
                 $$
-                  A = A' \sisolosi a_{ij} = a'_{ij} \text{\quad para cada\quad} 1 \leq i \leq n,\, 1\leq j \leq m
+                  A = A' \sisolosi A_{ij} = A'_{ij} \text{\quad para cada\quad} 1 \leq i \leq n,\, 1\leq j \leq m
                 $$
 
           \item \hypertarget{teoria-1:operaciones-matrices}{\textit{Operaciones de matrices:}}
 
                 \textit{Suma \blue{$A + A'$}, producto de un escalar por una matriz \green{$\alpha A$} y producto entre 2 matrices} \magenta{$A \cdot B$}.
                 $$
-                  \begin{array}{l}
-                    \blue{(a + a')_{ij} = a_{ij} + a'_{ij}   \qquad( 1 \leq i \leq m, 1 \leq j \leq n)} \\
-                    \green{(\alpha a)_{ij} = \alpha a_{ij}   \qquad( 1 \leq i \leq m, 1 \leq j \leq n)} \\
-                    \magenta{c_{ij} = \sumatoria{k=1}{m} a_{ik}b_{kj} \qquad (1 \leq i \leq n, 1 \leq j \leq r)}.
+                  \begin{array}{ccc}
+                    \blue{(A + A')_{ij} \igual{def} A_{ij} + A'_{ij}}              & (1 \leq i \leq m, 1 \leq j \leq n)  \\
+                    \green{(\alpha A)_{ij} \igual{def} \alpha A_{ij}}              & (1 \leq i \leq m, 1 \leq j \leq n)  \\
+                    \magenta{C_{ij} \igual{def} \sumatoria{k = 1}{m} A_{ik}B_{kj}} & (1 \leq i \leq n, 1 \leq j \leq r).
                   \end{array}
                 $$
 
@@ -168,8 +168,8 @@ En un conjunto $A \distinto \vacio$
                 $$
                 donde $M_{ij}$ es la matriz de $(n - 1) \times (n-1)$ que resulta de eliminar
                 la fila $i$ y la columna $j$.
-          \item Si $A\en \reales^{ 2 \times 2  }\bigg/
-                  \to \det(A)=
+          \item Si $A\en K^{ 2 \times 2  }\big/
+                  \det(A)=
                   \deter{cc}{
                     a_{11} & a_{12} \\
                     a_{21} & a_{22}
