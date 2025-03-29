@@ -1,3 +1,132 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sean las siguiente matrices de $3 \times 3$:
+  $$
+    A =
+    \matriz{ccc}{
+      1 & 3 & 0 \\
+      0 & 1 & 2 \\
+      1 & 0 & 1
+    }
+    B =
+    \matriz{ccc}{
+      1 & 1 & 1 \\
+      3 & 0 & 1 \\
+      2 & 0 & 2
+    }
+    C =
+    \matriz{ccc}{
+      c_{11} & c_{12} & c_{13} \\
+      c_{21} & c_{22} & c_{23} \\
+      c_{31} & c_{32} & c_{33}
+    }
+  $$
+  Y consideremos el producto $AB = C$ en bloques:
+  $$
+    \matriz{c|c}{
+      A_{11} & A_{12} \\ \hline
+      A_{21} & A_{22}
+    }
+    \matriz{c|c}{
+      B_{11} & B_{12} \\ \hline
+      B_{21} & B_{22}
+    }
+    =
+    \matriz{c|c}{
+      C_{11} & C_{12} \\ \hline
+      C_{21} & C_{22}
+    }
+  $$
+  Para cada una de las particiones en bloques mencionadas a continuación,
+  indicar si es realizable el producto $C = AB$ en bloques. En caso de ser realizable, calcular cada
+  bloque $C_{ij}$ indicando sus dimensiones.
+  \begin{enumerate}[label=(\alph*)]
+    \item
+          $A_{11} = [a_{11}],\,
+            A_{12} = [a_{12} \  a_{13}],\,
+            A_{21} =
+            \bloque{c}{
+              a_{21}\\
+              a_{31}
+            },\,
+            A_{22} =
+            \bloque{cc}{
+              a_{22} & a_{23}\\
+              a_{32} & a_{33}
+            }
+          $
+
+          $B_{11} = [b_{11}],\,
+            B_{12} = [b_{12} \  b_{13}],\,
+            B_{21} =
+            \bloque{c}{
+              b_{21}\\
+              b_{31}
+            },\,
+            B_{22} =
+            \bloque{cc}{
+              b_{22} & b_{23}\\
+              b_{32} & b_{33}
+            }
+          $
+
+    \item
+          $A_{11} = [a_{11} a_{12}],\,
+            A_{12} = [a_{13}],\,
+            A_{21} =
+            \bloque{cc}{
+              a_{21} & a_{22}\\
+              a_{31} & a_{32}
+            },\,
+            A_{22} =
+            \bloque{c}{
+              a_{23}\\
+              a_{33}
+            }
+          $
+
+          $B_{11} = [b_{11}],\,
+            B_{12} = [b_{12}\ b_{13}],\,
+            B_{21} =
+            \bloque{c}{
+              b_{21}\\
+              b_{31}
+            },\,
+            B_{22} =
+            \bloque{cc}{
+              b_{22} & b_{23}\\
+              b_{32} & b_{33}
+            }
+          $
+
+    \item
+          $A_{11} =
+            \bloque{c}{
+              a_{11}\\
+              a_{21}
+            },\,
+            A_{12} =
+            \bloque{cc}{
+              a_{12} & a_{13}\\
+              a_{22} & a_{23}
+            },\,
+            A_{21} = [a_{31}],\,
+            A_{22} = [a_{32} \ a_{33}]
+          $
+
+          $B_{11} = [b_{11}],\,
+            B_{12} = [b_{12}\ b_{13}],\,
+            B_{21} =
+            \bloque{c}{
+              b_{21}\\
+              b_{31}
+            },
+            B_{22} =
+            \bloque{cc}{
+              b_{22} & b_{23}\\
+              b_{32} & b_{33}
+            }
+          $
+  \end{enumerate}
+  ¿Qué otras particiones válidas son posibles?
 \end{enunciado}
+
