@@ -67,29 +67,120 @@ En un conjunto $A \distinto \vacio$
           \item $v, w \en S \entonces v + w \en S$
           \item $\lambda \en K, v \en S \entonces \lambda \cdot v \en S.$
         \end{enumerate}
+
+\item \hypertarget{teoria-1:combinacion-lineal}{\textit{\ul{Combinación lineal:}}}
+
+        Sea $V$ un $K-$espacio vectorial, y sea $G = \set{v_1,\ldots,v_r} \subseteq V$.
+        Una \textit{combinación lineal de $G$} es un elemento $v \en V$ tal que $v = \sumatoria{i=1}{r} \alpha_i \cdot v_i$ con
+        $\alpha_i \en K$ para cada $1 \leq i \leq r$.
+
+  \item\textit{\ul{Independencia lineal:}}
+        Sea $V$ un $K-$espacio vectorial y sea $\set{v_\alpha}_{\alpha \en I}$ una familia de vectores de $V$. Se
+        dice que  $\set{v_{\alpha}}_{\alpha \en I}$ es \textit{linealmente independiente} (l.i.) si
+        $$
+          \sumatoria{\alpha \en I}{} a_{\alpha} \cdot v_{\alpha} = 0 \entonces a_{\alpha} = 0 \paratodo \alpha \en I
+        $$
+
+  \item \textit{Bases y dimensión:}
+        \begin{itemize}
+          \item \textit{Escritura única:}
+                Sea $V$ un $K-$e.v. y $A = \set{v_1,\ldots,v_n}$ un conjunto l.i. Entonces cualquier $w \en \ket{v_1,\ldots, v_n}$ si puede
+                escribirse de una manera única como combineta de $A$.
+
+          \item \textit{Definición base:}
+                Sea $V$ un $K-$e.v. . $A = \set{v_1,\ldots,v_n}$ un conjunto. Se dice que es una \textit{base de $V$} si:
+                \begin{itemize}
+                  \item $A$ genera todo $V$.
+                  \item $\ket{v_1,\ldots, v_n}$ son l.i.
+                \end{itemize}
+
+          \item \textit{Dimensión:}
+                Sea $V$ un $K-$e.v. . $B = \set{v_1,\ldots,v_n}$ una base de $V$. Entonces cualquier otra base $B'$ de $V$ tiene
+                la misma cantidad de elementos. Esta cantidad es \textit{la dimensión de $V$}.
+        \end{itemize}
+
+  \item \textit{Espacio columna:} Si
+        $A =
+          \matriz{c|c|c}{
+            A_1 & \cdots & A_n
+          }
+        $. El espacio columna de $A$ es $col(A) = \ket{A_1, \ldots, A_n}$
+
+  \item \textit{Espacio fila:} Si
+        $A =
+          \matriz{c}{
+            A_1 \\ \hline
+            \vdots \\ \hline
+            A_m
+          }
+        $. El espacio fila de $A$ es $fil(A) = \ket{A_1, \ldots, A_m}$
+
+  \item \textit{Matrices}:
+        \begin{itemize}
+          \item \textit{Definición de matriz:}
+                $$
+                  A \en K^{m \times n} =
+                  \set{
+                    \matriz{ccc}{
+                      a_{11} & \cdots & a_{1n}\\
+                      \vdots & \ddots & \vdots\\
+                      a_{m1} & \cdots & a_{mn}
+                    }
+                    / a_{ij} \en K \paratodo 1 \leq i \leq n, 1\leq j \leq m
+                  }.
+                $$
+
+          \item \textit{Igualdad de matrices:}
+
+                Dos matrices de la misma dimensión A y A' serán iguales:
+                $$
+                  A = A' \sisolosi a_{ij} = a'_{ij} \text{\quad para cada\quad} 1 \leq i \leq n,\, 1\leq j \leq m
+                $$
+
+          \item \hypertarget{teoria-1:operaciones-matrices}{\textit{Operaciones de matrices:}}
+
+                \textit{Suma \blue{$A + A'$}, producto de un escalar por una matriz \green{$\alpha A$} y producto entre 2 matrices} \magenta{$A \cdot B$}.
+                $$
+                  \begin{array}{l}
+                    \blue{(a + a')_{ij} = a_{ij} + a'_{ij}   \qquad( 1 \leq i \leq m, 1 \leq j \leq n)} \\
+                    \green{(\alpha a)_{ij} = \alpha a_{ij}   \qquad( 1 \leq i \leq m, 1 \leq j \leq n)} \\
+                    \magenta{c_{ij} = \sumatoria{k=1}{m} a_{ik}b_{kj} \qquad (1 \leq i \leq n, 1 \leq j \leq r)}.
+                  \end{array}
+                $$
+
+          \item \textit{Inversa de una matriz:}
+                $A \en K^{n \times n}$ es inversible si $\existe B \en K^{n \times n}$.
+        \end{itemize}
 \end{enumerate}
-
-\bigskip
-
-\textit{Repaso determinante:}
-
-\bigskip
 
 \begin{enumerate}[label=\faIcon{gamepad}$_{\arabic*)}$]
   \item \textit{Cálculo de determinantes:}
 
         \begin{enumerate}[label=\tiny\faIcon{poo}]
-          \item Si $A\in \reales^{ 2 \times 2  }\bigg/\longrightarrow \det(A)=\deter{cc}{
+          \item Dada $A = (a_{ij}) \en K^{n \times n}$ matriz cuadrada, definimos el determinante
+                como
+                $$
+                  det(A) =
+                  \llave{cc}{
+                    a_{11} & n = 1\\
+                    \sumatoria{j = 1}{n}(-1)^{i+j}a_{ij} \det(M_{ij}) & n > 1
+                  }
+                $$
+                donde $M_{ij}$ es la matriz de $(n - 1) \times (n-1)$ que resulta de eliminar
+                la fila $i$ y la columna $j$.
+          \item Si $A\en \reales^{ 2 \times 2  }\bigg/
+                  \to \det(A)=
+                  \deter{cc}{
                     a_{11} & a_{12} \\
                     a_{21} & a_{22}
                   } = a_{11}a_{22}\red{-}a_{12}a_{21}  $
 
-          \item Si $A\in \reales^{n \times n} (n\geq2)$, un ejemplo con $n=3$:
+          \item Si $A\en \reales^{n \times n} (n\geq2)$, un ejemplo con $n=3$:
                 $$
                   \det(A)=\deter{rrr}{
                     \red{ a_{11} } & \red {a_{12} } & \red{ a_{13} } \\
-                    a_{21}                                & a_{22}                                & a_{23}                                \\
-                    a_{31}                                & a_{32}                                & a_{33}
+                    a_{21}                                 & a_{22}                                 & a_{23}                                 \\
+                    a_{31}                                 & a_{32}                                 & a_{33}
                   } = \red{a_{11}}\cdot(-1)^{\red{1}+\red{1}} \deter{cc}{
                     a_{22} & a_{23} \\
                     a_{32} & a_{33}
@@ -120,6 +211,7 @@ En un conjunto $A \distinto \vacio$
                     a_{21} & a_{23}
                   }
                 $$
+
         \end{enumerate}
 
   \item \textit{Clasificación de un sistema a partir de su determinante:}
@@ -187,39 +279,6 @@ En un conjunto $A \distinto \vacio$
                 $$
         \end{enumerate}
 
-  \item Matrices:
-        \begin{itemize}
-          \item \textit{Definición de matriz:}
-                $$
-                  A \en K^{m \times n} =
-                  \set{
-                    \matriz{ccc}{
-                      a_{11} & \cdots & a_{1n}\\
-                      \vdots & \ddots & \vdots\\
-                      a_{m1} & \cdots & a_{mn}
-                    }
-                    / a_{ij} \en K \paratodo 1 \leq i \leq n, 1\leq j \leq m
-                  }.
-                $$
-
-          \item \textit{Igualdad de matrices:}
-
-                Dos matrices de la misma dimensión A y A' serán iguales:
-                $$
-                  A = A' \sisolosi a_{ij} = a'_{ij} \text{\quad para cada\quad} 1 \leq i \leq n,\, 1\leq j \leq m
-                $$
-
-          \item \hypertarget{teoria-1:operaciones-matrices}{\textit{Operaciones de matrices:}}
-
-                \textit{Suma \blue{$A + A'$}, producto de un escalar por una matriz \green{$\alpha A$} y producto entre 2 matrices} \magenta{$A \cdot B$}.
-                $$
-                  \begin{array}{c}
-                    \blue{(a + a')_{ij} = a_{ij} + a'_{ij}   (\qquad 1 \leq i \leq m, 1 \leq j \leq n)} \\
-                    \green{(\alpha a)_{ij} = \alpha a_{ij}   (\qquad 1 \leq i \leq m, 1 \leq j \leq n)} \\
-                    \magenta{c_{ij} = \sumatoria{k=1}{m} a_{ik}b_{kj} \qquad 1 \leq i \leq n, 1 \leq j \leq r}.
-                  \end{array}
-                $$
-        \end{itemize}
 \end{enumerate}
 
 \newpage
@@ -239,38 +298,32 @@ $$
   \llave{rcl}{
     0.25 \cdot 10 & = & 2 + 0.5\\
     0.5  \cdot 10 & = & 5 + 0\\
-    0 \cdot 10 & = & 0 + 0\\
-    \cdots & &
+    0 \cdot 10 & = & 0 + 0
   }
   \to
   (0.25)_{10} =
-  2 \cdot 10^{-1} +
+  (2 \cdot 10^{-1} +
   5 \cdot 10^{-2} +
-  0 \cdot 10^{-3} + 0\cdots
+  0 \cdot 10^{-3} + 0)_{10}
   = 0.25
 $$
 
 \textit{Escribir $0.25$ en base $2$}:
-
-Acá va tomando impulso
 $$
   \llave{rcl}{
     0.25 \cdot 2 & = & 0 + 0.5\\
     0.5  \cdot 2 & = & 1 + 0\\
-    0 \cdot 2 & = & 0 + 0\\
-    \cdots & &
+    0 \cdot 2 & = & 0 + 0
   }
   \to
   (0.25)_2 =
-  0 \cdot 2^{-1} +
+  (0 \cdot 2^{-1} +
   1 \cdot 2^{-2} +
-  0 \cdot 2^{-3} + 0\cdots
+  0 \cdot 2^{-3} + 0)_2
   = 0.01
 $$
 
 \textit{Escribir $0.3$ en base $2$}:
-
-Acá va tomando impulso
 $$
   \llave{rcl}{
     0.3 \cdot 2 & = & \magenta{0} + 0.6\\
@@ -282,11 +335,12 @@ $$
     0.2 \cdot 2 & = & \magenta{0} + 0.4\\
     0.4 \cdot 2 & = & \magenta{0} + 0.8\\
     0.8 \cdot 2 & = & \magenta{1} + 0.6\\
-    \cdots & &
+    \vdots & = & \vdots
   }
   \scriptstyle
   \to
   (0.3)_{2} =
+  (
   \magenta{0} \cdot 2^{-1} +
   \magenta{1} \cdot 2^{-2} +
   \magenta{0} \cdot 2^{-3} +
@@ -299,9 +353,11 @@ $$
   \magenta{1} \cdot 2^{-10} +
   \magenta{0} \cdot 2^{-11} +
   \magenta{0} \cdot 2^{-12}
-  \cdots = 0.01\overline{0011}
+  \cdots )_2=
+  0.01\overline{0011}
 $$
-Para escribir al $0.3$ en base 2 voy a necesitar infinitos números en la \textit{mantisa}
+Para escribir al $0.3$ en base 2 voy a necesitar infinitos números en la \textit{mantisa}, la máquina no puede y ahí aparecen
+los errores de \textit{redondeo} o \textit{truncamiento}.
 
 \bigskip
 \textit{Errores:}
