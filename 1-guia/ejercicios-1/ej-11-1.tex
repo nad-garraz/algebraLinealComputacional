@@ -1,3 +1,197 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Extraer una base de $S$ de cada uno de los siguientes sistemas de generadores y hallar
+  la dimensión de $S$. Extender la base de $S$ a una base del espacio vectorial correspondiente.
+  \begin{enumerate}[label=(\alph*)]
+    \item $S = \ket{ (1,1,2); (1,3,5); (1,1,4), (5,1,1)} \subseteq \reales^3, \, K = \reales$
+
+    \item $S = \ket{
+              \matriz{cc}{
+                1 & 1 \\
+                1 & 1
+              },
+              \matriz{cc}{
+                0 & i \\
+                1 & 1
+              },
+              \matriz{cc}{
+                0 & i \\
+                0 & 0
+              },
+              \matriz{cc}{
+                1 & 1 \\
+                0 & 0
+              }
+            } \subseteq \complejos^{2 \times 2}, \, K = \complejos$
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Demasiados vectores en ese sistema de generadores, voy a quedarme solo con los \textit{linealmente independientes},
+        así obteniendo una base del subespacio $S$:
+        $$
+          \matriz{ccc}{
+            1 & 1 & 2 \\
+            1 & 3 & 5 \\
+            1 & 1 & 4\\
+            5 & 1 & 1
+          }
+          \triangulacion{
+            F_2 - F_1 \to F_2\\
+            F_3 - F_1 \to F_3\\
+            F_4 - 5F_1 \to F_4\\
+          }
+          \matriz{ccc}{
+            1 & 1 & 2 \\
+            0 & 2 & 3 \\
+            0 & 0 & 2\\
+            0 & -4 & -9
+          }
+          \triangulacion{
+            F_4 + 2F_2 \to F_4\\
+          }
+          \matriz{ccc}{
+            1 & 1 & 2 \\
+            0 & 2 & 3 \\
+            0 & 0 & 2\\ \rowcolor{red!10}
+            0 & 0 & -3
+          }
+        $$
+        Por lo tanto se tiene que una posible base para $S$:
+        $$
+          \cajaResultado{
+            B_S = \set{(1,1,2); (0,2,3); (0,0,2)}
+          }
+        $$
+        La base genera todo $\reales^3$.
+
+  \item
+        Ataco parecido, pero voy a desarrollar mejor la forma de triangular, porque a veces acá uno puedo
+        entrar en la rosca de como \textit{estirar la matrices} para luego triangular. Planteo una combineta:
+        $$
+          a \cdot
+          \matriz{cc}{
+            1 & 1 \\
+            1 & 1
+          } +
+          b \cdot
+          \matriz{cc}{
+            0 & i \\
+            1 & 1
+          } +
+          c \cdot
+          \matriz{cc}{
+            0 & i \\
+            0 & 0
+          } +
+          d \cdot
+          \matriz{cc}{
+            1 & 1 \\
+            0 & 0
+          }
+          =
+          \matriz{cc}{
+            0 & 0 \\
+            0 & 0
+          }
+          \sii
+          \matriz{cc}{
+            a+d & a+d + ib \\
+            a+b & a+b
+          }
+          =
+          \matriz{cc}{
+            0 & 0 \\
+            0 & 0
+          }
+        $$
+        Paso a sistema de ecuaciones y triangulo:
+        $$
+          \llave{rcl}{
+            a + d & = & 0 \\
+            a + d + ib & = & 0 \\
+            a + b & = & 0 \\
+            a + b & = & 0
+          }
+          \equivalente
+          \matriz{cccc|c}{
+            1 & 0 & 0 & 1 & 0 \\
+            1 & i & 0 & 1 & 0 \\
+            1 & 1 & 0 & 0 & 0 \\
+            1 & 1 & 0 & 0 & 0
+          }
+          \triangulacion{
+            F_2 - F_1 \to F_2\\
+            F_3 - F_1 \to F_3\\
+            F_4 - F_1 \to F_4\\
+          }
+          \matriz{cccc|c}{
+            1 & 0 & 0 & 1 & 0 \\
+            0 & i & 0 & 0 & 0 \\ \rowcolor{red!10}
+            0 & 1 & 0 & 0 & 0 \\\rowcolor{red!10}
+            0 & 1 & 0 & 0 & 0
+          }
+        $$
+        Me quedo entonces con la base para $S$:
+        $$
+          \cajaResultado{
+            B_S = \set{
+              \matriz{cc}{
+                1 & 0 \\
+                0 & 1
+              },
+              \matriz{cc}{
+                0 & i \\
+                0 & 0
+              }
+            }
+          }
+        $$
+        La dimensión de $S = 2$ y $\complejos^{2 \times 2}$ con $K = \complejos$ tiene dimensión 4, así que necesito
+        \blue{2 elementos} \textit{linealmente independientes} para extender la base:
+        $$
+          \cajaResultado{
+            B_S = \set{
+              \matriz{cc}{
+                1 & 0 \\
+                0 & 1
+              },
+              \matriz{cc}{
+                0 & i \\
+                0 & 0
+              },
+              \blue{
+                \matriz{cc}{
+                  0 & 0 \\
+                  1 & 0
+                }
+              },
+              \blue{
+                \matriz{cc}{
+                  1 & 0 \\
+                  0 & 0
+                }
+              }
+            }
+          }
+        $$
+\end{enumerate}
+
+\bigskip
+
+\textit{Nota que podría ser de interés:}
+
+Si estoy laburando en un espacio tipo $\complejos^2$ hay que prestarle \ul{mucha} atención al cuerpo $K$,
+porque mirá las bases de este espacio según el cuerpo:
+$$
+  \begin{array}{ccl}
+    K = \complejos & \to & B_{\complejos^2} = \set{(1,0); (0,1)}               \\
+    K = \reales    & \to & B_{\complejos^2} = \set{(1,0); (0,1); (i,0); (0,i)}
+  \end{array}
+$$
+Onda en uno la dimensión es 2 y en el otro 4 \faIcon{hands-wash}.
+
+\textit{Fin Nota que podría ser de interés.}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
