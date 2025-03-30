@@ -1,3 +1,94 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Calcular el determinante de $A$ en cada uno de los siguientes casos:
+  \begin{enumerate}[label=(\alph*)]
+    \begin{multicols}{2}
+      \item $A =
+        \matriz{cccc}{
+          1 & 0 & 0 & 2 \\
+          0 & -2 & 3 & -1 \\
+          -1 & 0 & 1 & 4 \\
+          0 & 1 & -2 & 0
+        }$
+
+      \item $A =
+        \matriz{ccc}{
+          i & 0 & 2 + i \\
+          -1 & 1-i & 0 \\
+          2 & 0 & -1
+        }$
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Acomodo un poco para ver si hago menos cuentas:
+        $$
+          \matriz{cccc}{
+            1 & 0 & 0 & 2 \\
+            0 & -2 & 3 & -1 \\
+            -1 & 0 & 1 & 4 \\
+            0 & 1 & -2 & 0
+          }
+          \triangulacion{
+            F_3 + F_1 \to F_3\\
+            2F_4 + F_2 \to F_4
+          }
+          \matriz{cccc}{
+            1 & 0 & 0 & 2 \\
+            0 & -2 & 3 & -1 \\
+            0 & 0 & 1 & 6 \\
+            0 & 0 & -1 & -1
+          }
+          \triangulacion{
+            F_4 + F_3 \to F_4
+          }
+          \matriz{cccc}{
+            1 & 0 & 0 & 2 \\
+            0 & -2 & 3 & -1 \\
+            0 & 0 & 1 & 6 \\
+            0 & 0 & 0 & 5
+          }
+        $$
+        Ahora calculo el determinante, multiplicando los elemntos de la diagonal porque es triangular:
+        $$
+          \deter{cccc}{
+            \blue{1} & 0         & 0        & 2        \\
+            0        & \blue{-2} & 3        & -1       \\
+            0        & 0         & \blue{1} & 6        \\
+            0        & 0         & 0        & \blue{5}
+          }
+          = 1 \cdot (-2) \cdot 1 \cdot 5 = \cajaResultado{ -10 }
+        $$
+
+  \item Ataco igual que antes:
+        $$
+          \matriz{ccc}{
+            i & 0 & 2 + i \\
+            -1 & 1-i & 0 \\
+            2 & 0 & -1
+          }
+          \triangulacion{
+            iF_2 + F_1 \to F_2\\
+            iF_3 - 2F_1 \to F_3
+          }
+          \matriz{ccc}{
+            i & 0 & 2 + i \\
+            0 & 1 + i & 2 + i \\
+            0 & 0 & -4 -3i
+          }
+        $$
+        Ahora calculo el determinante, multiplicando los elemntos de la diagonal porque es triangular:
+        $$
+          \deter{ccc}{
+            \blue{i} & 0            & 2 + i         \\
+            0        & \blue{1 + i} & 2 + i         \\
+            0        & 0            & \blue{-4 -3i}
+          }
+          =
+          i \cdot (1 + i) \cdot (-4 -3i) = 7 - i
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
