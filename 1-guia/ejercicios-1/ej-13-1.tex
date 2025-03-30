@@ -48,18 +48,52 @@
           }
           = 0
         $$
-
         Probando particularmente con la base canónica de $K^n$ $x \en K^n$ con $x \en B$, donde
         $$
           B = \set{(1, 0, \dots, 0); (0, 1, \dots, 0); \dots; (0, \dots, 1)}
         $$ muestro así que las columnas de $A$ son siempre nulas.
 
-  \item Usando lo que hice en el anterior:
+        Usando el resultado de recién:
         $$
           Ax = Bx \sisolosi \blue{(A - B)} x = 0 \sisolosi \blue{C}x = 0
         $$
         Dado que $Cx = 0 \paratodo x \en K^n$ se muestra que $A = B$.
 
+  \item Puedo escribir a los elementos de producto de una matriz $A^{m \times n}$ por otra $B^{n \times r}$ como:
+        $$
+          [AB]_{ij} = \sumatoria{\blue{k} = 1}{n} A_{i\blue{k}} B_{\blue{k}j} \paratodo i,j \text{ con } 1 \leq i \leq m;\; 1 \leq j \leq r
+        $$
+        Si fijo $\magenta{j = 1}$
+        $$
+          [AB]_{i\magenta{1}} = \sumatoria{\blue{k} = 1}{n} A_{i\blue{k}} B_{\blue{k}\magenta{1}} \paratodo i \text{ con } 1 \leq i \leq m
+        $$
+        Obtengo así el producto de la $i-$ésima fila por columna \magenta{1} de $B$. Haciendo para todos los valores de $i$ obtengo:
+        $$
+          A B_{\magenta{1}}=
+          \matriz{ccc}{
+            a_{11} & \dots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \dots & a_{mn}
+          }
+          \matriz{c}{
+            b_{i\magenta{1}}\\
+            \vdots\\
+            b_{n\magenta{1}}
+          }
+          =
+          \ub{
+            \matriz{c}{
+              \sumatoria{\blue{k} = 1}{n} A_{\yellow{i}\blue{k}} B_{\blue{k}\magenta{1}}\\
+              \vdots\\
+              \sumatoria{\blue{k} = 1}{n} A_{\yellow{m}\blue{k}} B_{\blue{k}\magenta{1}}
+              \\
+            }}{ \en K^{m \times 1}}
+        $$
+        Hacer eso para $1 \leq j \leq r$ da:
+        $$
+          AB = (AB_1 | \cdots | AB_r)
+        $$
+        Como querías mostrar.
 \end{enumerate}
 
 \begin{aportes}
