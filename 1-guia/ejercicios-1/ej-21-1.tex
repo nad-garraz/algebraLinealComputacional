@@ -1,3 +1,26 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Escribir funciones de \texttt{Python \python} que realicen las siguientes operaciones:
+  \begin{enumerate}[label=(\alph*)]
+    \item Calcular la traza de una matriz.
+
+    \item Calcular la sumatoria de todos los elementos de una matriz.
+
+    \item Determinar si la sumatoria de elementos positivos es mayor que la sumatoria (en módulo)
+          de los elementos negativos de una matriz.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Sea $A \en K^{n \times n}$. Se llama \textit{traza} de la matriz $A$, y se nota $tr(A)$, al
+        escalar $tr(A) = \sumatoria{i=1}{n}A_{ii}$
+
+        Para calcular la suma de los elmentos de la diagonal principal:
+        \copyPaste
+        \codigoPython{ej-21/codigo21-1.py}
+
+  \item Para sumar todos los elmentos 2 formas:
+        \codigoPython{ej-21/codigo21-2.py}
+
+  \item Sumo todo. Igual que en el item anterior. Si es positivo devuelvo \textit{verdadero} sino \textit{falso}.
+        \codigoPython{ej-21/codigo21-3.py}
+\end{enumerate}
