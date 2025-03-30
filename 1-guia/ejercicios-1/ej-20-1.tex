@@ -1,3 +1,57 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sean $A, B, C, D \en K^{n \times n}$ y $M \en K^{2n \times 2n}$ la matriz de bloques
+  $$
+    M =
+    \matriz{cc}{
+      A & B \\
+      C & D \\
+    }.
+  $$
+  Probar que si $A$ es inversible, entonces
+  \begin{enumerate}[label=(\alph*)]
+    \item $M =
+            \matriz{cc}{
+              A & 0 \\
+              C & I
+            }
+            \cdot
+            \matriz{cc}{
+              I & A^{-1} B \\
+              0 & D - CA^{-1} B
+            }.$
+
+    \item $\det(M) = \det(AD - ACA^{-1}B).$ Concluir que si $AC = CA$, $\det(M) = \det(AD - CB)$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item La hipótesis es que $A$ es inversible, es decir que $\existe A^{-1}$ tal que $A \cdot A^{-1} = I$
+        $$
+          \matriz{cc}{
+            A & 0 \\
+            C & I
+          }
+          \cdot
+          \matriz{cc}{
+            I & A^{-1} B \\
+            0 & D - C A^{-1} B
+          }
+          =
+          \matriz{cc}{
+            A \cdot I + 0 & A A^{-1} B + 0 \\
+            C \cdot I + 0 & C A^{-1} B + D - C A^{-1} B
+          }
+          =
+          \matriz{cc}{
+            A & B \\
+            C &  D
+          }.
+        $$
+
+  \item $\det(M) = \det(AD - ACA^{-1}B)
+          \igual{\purple{hip}}[\red{!}]
+          \det(AD - \purple{CA}A^{-1}B)=
+          \det(AD - CB)
+        $
+
+\end{enumerate}
