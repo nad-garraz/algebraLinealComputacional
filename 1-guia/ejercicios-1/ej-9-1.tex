@@ -9,5 +9,57 @@ $$
   \sii
   S \subseteq T \o T \subseteq S
 $$
-\red{CONSULTAR, no me cierra el enunciado}
 
+Para demostrar este ejercicio voy a necesitar demostrar ambas implicaciones
+
+$$ S \subseteq T \lor T \subseteq S \implies S \union T \text{ es subespacio } $$
+\begin{enumerate}
+  \item Caso $S = T \text{subespacio}\implies S \union T \text{ es subespacio }$ 
+    
+        \begin{align}
+          & S = T \implies S \union T \text{ es subespacio }    \\
+          & S = T \implies S \union S \text{ es subespacio }    \\
+          & S = T \implies S \text{ es subespacio }             \\
+          & \text{which is true}
+        \end{align}
+
+    \item Caso $S \subseteq T \land S \nsubseteq T \text{subespacio}\implies S \union T \text{ es subespacio }$ 
+
+    \begin{align}
+      & S \subseteq T \land S \nsubseteq T \implies S \union T \text{ es subespacio }    \\
+      & S \subseteq T \land S \nsubseteq T \implies T \text{ es subespacio }             \\
+      & \text{which is true}
+    \end{align}
+
+    \item Es lo mismo que con el anterior caso
+
+    $ \implies $ Como probamos todos los casos posibles de combinación entre S y T que cumplía los requisitos,
+    probamos que es verdadero la afirmación
+    
+    \\
+
+    Ahora vamos con la vuelta
+
+    $\Longleftarrow $ $S \union T \text{ es subespacio } \implies S \subseteq T \lor T \subseteq S \text{subespacio} $ 
+
+    A probarlo por contrareciproco: \\
+
+    Asumo que $ S \nsubseteq T \land S \nsubseteq T $
+
+    Sea $t_{0}$ un vector tal que $t_{0} \in T \land t_{0} \notin S$
+     y $s_{0}$ un vector tal que $s_{0} \in S \land s_{0} \notin T$
+
+     Ahora, el conjunto $ S \union T $ se define como: $ \{ \forall v \in S \union T | v \in S \lor v \in T \} $ \red {Revisar que es correcto esta forma de escribirlo}
+
+    Sumo $s_{0} + t_{0}$
+
+    Esto, para que sea un subespacio debería estar dentro del mismo. Pero, por definición de $ S \union T $
+    no es posible esto, al ser solo la unión. 
+
+    $ S \union T $ une solo los 2 espacios vectoriales, pero no los relaciona de modo que 
+    no existe ninguna combinación lineal que sea $ s_{0} + t_{0} \in S \union T$ a menos que consideremos que uno está
+    contenido en otro. Entonces llegamos al absurdo, demostrando que si es subespacio vectorial, entonces alguno de los
+    2 subespacios esta contenido dentro de otro
+
+  \end{enumerate}
+}
