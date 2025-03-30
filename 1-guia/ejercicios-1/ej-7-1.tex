@@ -211,7 +211,7 @@
           \ytext
           T =
           \matriz{ccc}{
-            -(t_{22} + t_{33}) & t_{12} & t_{13}\\
+            -(t_{12} + t_{13}) & t_{12} & t_{13}\\
             t_{21} & t_{22} & t_{23}\\
             t_{31} & t_{32} & t_{33}
           }
@@ -281,7 +281,7 @@
         Armo un vector genético de $S$ para meter en ecuaciones de $T$:
         $$
           s_g = a \cdot (i, 1, 3 - i) + b \cdot (4,1 - i, 0)
-          \begin{array}{lrll}
+          \begin{array}{rrll}
             \flecha{reemplazo} & (1 - i)(4b + ia) - 4(a + b) + 3a - ia & = & 0 \\
                                & b - i4b                               & = & 0
           \end{array}
@@ -292,13 +292,9 @@
         $$
         Usando el teorema de la dimensión para suma de subespacios:
         $$
-          \dim(S + T) = \dim(S) + \dim(T) - \dim(S \inter T) = 2 + 2 - 1 = 3\\
+          \dim(S + T) = \dim(S) + \dim(T) - \dim(S \inter T) = 2 + 2 - 1 = 3
         $$
         Los espacios no están en suma directa y $S+T = \complejos^3$.
-
-        \bigskip
-        \red{  {\Large{CONSULTAR:}}
-          ¿Qué onda el cuerpo? $\complejos \otext \reales$. En reales, debería extender, no???}
 \end{enumerate}
 
 \begin{aportes}
