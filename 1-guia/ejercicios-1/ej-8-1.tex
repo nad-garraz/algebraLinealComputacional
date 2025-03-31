@@ -7,37 +7,48 @@
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-  \item  Lo primero que quiero hacer es que los generadores sean \textit{linealmente independientes} y porque me gusta determinantes {\tiny\surprise}:
+  \item
+        Hay una igualdad de subespacios. Para que estos sean iguales tienen que tener la misma dimensión. Dado que el subespacio
+        $$
+          \dim(\ket{(-2, 1, 6), (3, 0, -8)}) = 2,
+        $$
+        quiero que el subespacio de la derecha también tenga dimensión 2, peeero tiene 3 vectores, así
+        que busco $k$ para que:
+        $$
+          \dim(\ket{(1,k,2k), (-1,-1, k^2-2), (1,1,k)}) = 2
+        $$
+        también. Dicho de otra manera, quiero que esos 3 vectores sean \textit{linealmente dependientes}:
         $$
           \begin{array}{rrl}
             \deter{ccc}{
-            1  & k    & 2k                   \\
-            -1 & -1   & k^2 - 2              \\
-            1  & 1    & k                    \\
+            1  & k               & 2k          \\
+            -1 & -1              & k^2 - 2     \\
+            1  & 1               & k           \\
             }
             \triangulacion{
               F_2 + F_3 \to F_3
             }
             \deter{ccc}{
-            1  & k    & 2k                   \\
-            -1 & -1   & k^2 - 2              \\ \rowcolor{Cerulean!10}
-            0  & 0    & k^2 + k - 2
+            1  & k               & 2k          \\
+            -1 & -1              & k^2 - 2     \\ \rowcolor{Cerulean!10}
+            0  & 0               & k^2 + k - 2
             }
-               & =    &
+               & =               &
             (-1)^6 \cdot ( k^2 + k - 2)
             \cdot
             \deter{cc}{
-            1  & k                           \\
+            1  & k                             \\
             -1 & -1
-            }                                \\
-               & =    &
-            (k^2 + k - 2) \cdot (-1 + k) = 0 \\
-               & \sii &
+            }                                  \\
+               & \igual{\red{!}} &
+            (k^2 + k - 2) \cdot (-1 + k) = 0   \\
+               & \sii            &
             k \en \set{-2, 1}
           \end{array}
         $$
-        Así me saco el tema de las $k$ de encima, pero bueh todavía no se termina
-        ¿Cómo quedaría el enunciado con los valores de $k$ hallados?:
+        Ahora sé que la única forma de que la dimensión sea 2 es para los $k$ hallados.
+
+        ¿Cómo queda el enunciado con los valores de $k$ hallados?:
         $$
           \ket{(-2, 1, 6), (3, 0, -8)}
           \igual{\red{?}}
@@ -46,7 +57,7 @@
             \text{ si }&  k = 1 & \to &\ket{(1,1,2), (-1,-1,-1), (1,1,1)} & \igual{\red{!}} & \ket{(1,1,2), (1,1,1)}
           }
         $$
-        Para que los los subespacios sean iguales, por ejemplo podría ver si se intersectan en todos sus elementos. Voy a
+        Para que los los subespacios sean iguales, por ejemplo podría ver \textit{si se intersectan en todos sus elementos}. Voy a
         buscar la expresión por comprensión de $\ket{(-2, 1, 6), (3, 0, -8)}$, es decir la fórmula que deben satisfacer
         los elementos para pertenecer al subespacio:
         $$
@@ -224,7 +235,7 @@
         Entonces, si quiero que $S \inter T = \ket{(0,1,1)}$ necesito:
         $$
           \cajaResultado{
-                  k \not\en \set{-2;\, 0;\, 1} 
+            k \not\en \set{-2;\, 0;\, 1}
           }
         $$
 \end{enumerate}
