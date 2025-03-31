@@ -54,37 +54,38 @@
 
   \item Quiero la matriz que tiene por columnas a las coordenas de los generadores de $B$ en la base $B'$:
         $$
-          \begin{array}{c}
-            C(B,B') =
-            \matriz{ccc}{
+          C(B,B') =
+          \matriz{ccc}{
             a_1           & a_2 & a_3                                                                                   \\
             b_1           & b_2 & b_3                                                                                   \\
             c_1           & c_2 & c_3
-            }
-            \Entonces{donde}
-            \llave{ccc}{
+          }
+          \Entonces{donde}
+          \llave{ccc}{
             (1,1,0)       & =   & a_1 (-1,1,1) + b_1 (2,0,1) + c_1 (1,-1,3)                                             \\
             (0,1,1)       & =   & a_2 (-1,1,1) + b_2 (2,0,1) + c_2 (1,-1,3)                                             \\
             (1,0,1)       & =   & a_3 (-1,1,1) + b_3 (2,0,1) + c_3 (1,-1,3)
-            }                                                                                                           \\
-            \matriz{ccc|c|c|c}{
+          }
+        $$
+        Paso ese sistema feo a forma matricial para resolverlo triangulando:
+        $$
+          \matriz{ccc|c|c|c}{
             -1            & 2   & 1                                         & 1            & 0            & 1           \\
             1             & 0   & -1                                        & 1            & 1            & 0           \\
             1             & 1   & 3                                         & 0            & 1            & 1
-            }
-            \Sii{\magic}
-            \matriz{ccc|c|c|c}{
+          }
+          \Sii{\magic}
+          \matriz{ccc|c|c|c}{
             1             & 0   & 0                                         & \frac{1}{2}  & \frac{7}{8}  & \frac{1}{8} \\
             0             & 1   & 0                                         & 1            & \frac{1}{2}  & \frac{1}{2} \\
             0             & 0   & 1                                         & -\frac{1}{2} & -\frac{1}{8} & \frac{1}{8}
-            }
-            \sii
-            \llave{ccc}{
+          }
+          \sii
+          \llave{ccc}{
             (a_1,b_1,c_1) & =   & (\frac{1}{2} ,1,-\frac{1}{2})                                                         \\
             (a_2,b_2,c_2) & =   & (\frac{7}{8} ,\frac{1}{2},-\frac{1}{8})                                               \\
             (a_3,b_3,c_3) & =   & (\frac{1}{8} ,\frac{1}{2},\frac{1}{8})
-            }
-          \end{array}
+          }
         $$
 
         \copyPaste
