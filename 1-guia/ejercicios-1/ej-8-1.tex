@@ -36,17 +36,24 @@
             k \en \set{-2, 1}
           \end{array}
         $$
-        Así me saco el tema de las $k$ de encima, pero bueh todavía no se termina:
+        Así me saco el tema de las $k$ de encima, pero bueh todavía no se termina
+        ¿Cómo quedaría el enunciado con los valores de $k$ hallados?:
         $$
           \ket{(-2, 1, 6), (3, 0, -8)}
-          \igual{?}
-          \llave{lcl}{
-            \ket{(1,-2,-4), (-1,-1,2), (1,1,-2)  }= \ket{(1,-2,-4), (1,1,-2)} & \text{ si } & k = -2\\
-            \ket{(1,1,2), (-1,-1,-1), (1,1,1) }= \ket{(1,1,2), (1,1,1)} & \text{ si }&  k = 1
+          \igual{\red{?}}
+          \llave{lccccl}{
+            \text{ si } & k = -2 & \to & \ket{(1,-2,-4), (-1,-1,2), (1,1,-2)} & \igual{\red{!}} & \ket{(1,-2,-4), (1,1,-2)}\\
+            \text{ si }&  k = 1 & \to &\ket{(1,1,2), (-1,-1,-1), (1,1,1)} & \igual{\red{!}} & \ket{(1,1,2), (1,1,1)}
           }
         $$
         Para que los los subespacios sean iguales, por ejemplo podría ver si se intersectan en todos sus elementos. Voy a
-        buscar la expresión por comprensión de $\ket{(-2, 1, 6), (3, 0, -8)}$:
+        buscar la expresión por comprensión de $\ket{(-2, 1, 6), (3, 0, -8)}$, es decir la fórmula que deben satisfacer
+        los elementos para pertenecer al subespacio:
+        $$
+          a \cdot (-2,1,6) + b \cdot (3,0,-8) = (x_1, x_2, x_3)
+        $$
+        Ese sistema es literalmente: ¿Cómo combino los elementos para formar algo del suespacio?, es un sistema que debe ser \underline{compatible},
+        porque seguro que \textit{algo} tiene que salir de hacer una combinación lineal:
         $$
           \begin{array}{rcl}
             \matriz{cc|c}{
@@ -95,12 +102,13 @@
             }
           \end{array}
         $$
-        Dado que ese sistema no puede dar un absurdo, porque el subespacio claramente no es $\vacio$ se debe cumplir:
+        Como dije antes, este sistema debe ser \ul{compatible}, no puede dar un absurdo, porque el subespacio claramente no es $\vacio$. Debe cumplir:
         $$
-          \ket{(-2, 1, 6), (3, 0, -8)} =
+          \ket{(-2, 1, 6), (3, 0, -8)}
+          \igual{\red{!}}
           \set{ x \en \reales^3 : 8 x_1 - 2 x_2 + 3x_3 =0 } \llamada1
         $$
-        Encontrar la intersección ahora es fácil:
+        Encontrar la intersección ahora con la ecuación del subespacio es fácil. Se arma un genérico y se mete en la ecuación:
 
         \medskip
 
