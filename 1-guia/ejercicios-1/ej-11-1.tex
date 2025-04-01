@@ -95,7 +95,7 @@
           }
           \sii
           \matriz{cc}{
-            a+d & a+d + ib \\
+            a+d & a+d + ib + ic \\
             a+b & a+b
           }
           =
@@ -106,38 +106,72 @@
         $$
         Paso a sistema de ecuaciones y triangulo:
         $$
-          \llave{rcl}{
-            a + d & = & 0 \\
-            a + d + ib & = & 0 \\
-            a + b & = & 0 \\
-            a + b & = & 0
-          }
-          \equivalente
-          \matriz{cccc|c}{
-            1 & 0 & 0 & 1 & 0 \\
-            1 & i & 0 & 1 & 0 \\
-            1 & 1 & 0 & 0 & 0 \\
-            1 & 1 & 0 & 0 & 0
-          }
-          \triangulacion{
-            F_2 - F_1 \to F_2\\
-            F_3 - F_1 \to F_3\\
-            F_4 - F_1 \to F_4\\
-          }
-          \matriz{cccc|c}{
-            1 & 0 & 0 & 1 & 0 \\
-            0 & i & 0 & 0 & 0 \\ \rowcolor{red!10}
-            0 & 1 & 0 & 0 & 0 \\\rowcolor{red!10}
-            0 & 1 & 0 & 0 & 0
-          }
+          \begin{array}{rcl}
+            \llave{rcl}{
+            a + d           & = & 0           \\
+            a + d + ib + ic & = & 0           \\
+            a + b           & = & 0           \\
+            a + b           & = & 0
+            }
+            \equivalente
+            \matriz{cccc|c}{
+            1               & 0 & 0  & 1  & 0 \\
+            1               & i & i  & 1  & 0 \\
+            1               & 1 & 0  & 0  & 0 \\
+            1               & 1 & 0  & 0  & 0
+            }
+                            &
+            \triangulacion{
+            F_2 - F_1 \to F_2                 \\
+            F_3 - F_1 \to F_3                 \\
+            F_4 - F_1 \to F_4                 \\
+            }               &
+            \matriz{cccc|c}{
+            1               & 0 & 0  & 1  & 0 \\
+            0               & i & i  & 0  & 0 \\
+            0               & 1 & 0  & -1 & 0 \\\rowcolor{red!10}
+            0               & 1 & 0  & -1 & 0
+            }
+            \\
+                            &
+            \triangulacion{
+            iF_3 - F_2 \to F_3                \\
+            }
+                            &
+            \matriz{cccc|c}{
+            1               & 0 & 0  & 1  & 0 \\
+            0               & i & i  & 0  & 0 \\
+            0               & 0 & -i & -i & 0 \\\rowcolor{red!10}
+            0               & 0 & 0  & 0  & 0
+            }                                 \\
+                            &
+            \equivalente
+                            &
+            \llave{rcc}{
+            a               & = & -d          \\
+            b               & = & d           \\
+            c               & = & -d
+            }
+          \end{array}
         $$
+        En el sistema me queda \ul{solo una variable libre}. Necesito 3 matrices para formarla. También
+        veo que me quedaron 3 \textit{filas no nulas} es decir que el \textit{rango fila} es 3, por lo que el \textit{rango columna}
+        también es 3 y las columnas en esa matriz sería como haber puesto a las matrices {\tiny(\textit{estiradas})} y al triangular,
+        eliminar una así opppppteniendo \href{\mindExplosion}{3 matrices l.i.}.
+
+        Agarro ahora 3 matrices \textit{linealmente independientes}:
+
         Me quedo entonces con la base para $S$:
         $$
           \cajaResultado{
             B_S = \set{
               \matriz{cc}{
-                1 & 0 \\
-                0 & 1
+                1 & 1 \\
+                1 & 1
+              },
+              \matriz{cc}{
+                0 & i \\
+                1 & 1
               },
               \matriz{cc}{
                 0 & i \\
@@ -146,14 +180,21 @@
             }
           }
         $$
-        La dimensión de $S = 2$ y $\complejos^{2 \times 2}$ con $K = \complejos$ tiene dimensión 4, así que necesito
-        \blue{2 elementos} \textit{linealmente independientes} para extender la base:
+        La dimensión de $S = 3$ y $\complejos^{2 \times 2}$ con $K = \complejos$ tiene dimensión 4, así que necesito
+        \blue{un elemento} \textit{linealmente independiente} para extender la base:
+
+        Si no se encuentra a ojo, una forma mecánica para encontrar la \blue{matriz} es poner a las matrices de las bases en filas,
+        triangular y ver ahí una que quede \textit{linealmente independiente}.
         $$
           \cajaResultado{
             B_S = \set{
               \matriz{cc}{
-                1 & 0 \\
-                0 & 1
+                1 & 1 \\
+                1 & 1
+              },
+              \matriz{cc}{
+                0 & i \\
+                1 & 1
               },
               \matriz{cc}{
                 0 & i \\
@@ -162,13 +203,7 @@
               \blue{
                 \matriz{cc}{
                   0 & 0 \\
-                  1 & 0
-                }
-              },
-              \blue{
-                \matriz{cc}{
-                  1 & 0 \\
-                  0 & 0
+                  0 & 1
                 }
               }
             }
@@ -194,4 +229,5 @@ Onda en uno la dimensión es 2 y en el otro 4 \faIcon{hands-wash}.
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
+  \item \aporte{\neverGonnaGiveYouUp}{Federico \youtube}
 \end{aportes}
