@@ -3,6 +3,82 @@
   de $V$ si y solo si $S \subseteq T$ o $T \subseteq S$.
 \end{enunciado}
 
+Si bien la tentación de pensar que
+$$
+  \cancel{S \union T = S + T}
+$$ es grande, eso no es en general así. $S+T$ es el subespacio que tiene a todos los elementos de la pinta $s_i + t_j$.
+Mientras que $S \union T$ es un conjunto con los elementos de $S$ y los elementos de $T$, no necesariamente está ahí el elemento $s_i + t_j$.
+
+\medskip
+
+\textit{
+  Intuitivamente lo que este ejercicio sugiere, es que para que $S \union T$ sea un subespacio, $S$ no debería aportarle nada nuevo a $T$ y viceversa,
+  para que al sumar 2 elementos de $S \union T$, eso seguro caiga dentro dentro del mismo conjunto, porque estarías sumando
+  dos elementos de $S$ o dos de $T$. Ponele.
+}
+
+\begin{itemize}
+  \item[(\red{$\Leftarrow$})]
+        Esta sale más directa. Si:
+        $$
+          \begin{array}{c}
+            S \subseteq T \entonces S \union T = T \\
+            \otext                                 \\
+            T \subseteq S \entonces S \union T = S
+          \end{array}
+        $$
+        La explicación es análoga para las dos implicaciones. En el caso $S \subseteq T$,
+        los elementos  de $S$ no van a aportar nueva información al subespacio.
+        Si $T$ es un subespacio por hipótesis de enunciado y $S \union T = T$, listo.
+
+  \item[(\red{$\Rightarrow$})]
+        Vamos por el absurdo. Es decir que voy a probar \blue{$ p \entonces \neg q$} y voy a llegar a una contradicción.
+
+        Supongamos que:
+        $$
+          T \not\subseteq S \text{ y que } S \not\subseteq T
+          \entonces
+          \existe s_1,\, t_1 \text{ tal que }
+          \llamada1
+          \llave{l}{
+            s_1 \en S \ytext s_1 \not\en T\\
+            t_1 \en T \ytext t_1 \not\en S
+          }
+        $$
+
+        \underline{\red{¡}Por hipótesis $S \union T$ es un subespacio\red{!}} Por lo que:
+
+        $$
+          \llave{l}{
+            s_1 \en S  \Entonces{$S \union T$ es}[subespacio] s_1 \en S \union T \\
+            t_1 \en T  \Entonces{$S \union T$ es}[subespacio] t_1 \en S \union T
+          }
+          \entonces s_1 + t_1 \en S \union T,
+        $$
+        El subespacio $S \union T$ tiene elementos que pertenecen a $T$ o elementos que pertenecen a $S$, de forma tal que:
+        $$
+          s_1 + t_1 \taa{\llamada2}{}{\en} S \otext s_1 + t_1 \taa{\llamada3}{}{\en} T
+        $$
+        En el caso $\llamada2$ tengo:
+
+        Dado que \underline{$S$ es un subespacio}, si $s_1 \en S
+          \Entonces{también}
+          -s_1 \en S $:
+        $$
+          s_1 + t_1 + (-s_1) \ua{\en}{\text{def. subespacio}} S \sisolosi s_1 + t_1 + (-s_1) = \red{t_1 \en S}
+        $$
+        Contradiciendo lo que se supuso en $\llamada1$. Llegar a la contradicción de que $s_1 \en T$ es análoga.
+
+\end{itemize}
+
+\bigskip
+
+\separador
+\textit{otra forma:}
+\separador
+
+\bigskip
+
 Hay que probar que:
 $$
   S \union T \text{ es subespacio }
@@ -14,52 +90,54 @@ Para demostrar este ejercicio voy a necesitar demostrar ambas implicaciones
 
 $$ S \subseteq T \lor T \subseteq S \implies S \union T \text{ es subespacio } $$
 \begin{enumerate}
-  \item Caso $S = T \text{subespacio}\implies S \union T \text{ es subespacio }$ 
-    
+  \item Caso $S = T \text{subespacio}\implies S \union T \text{ es subespacio }$
+
         \begin{align}
-          & S = T \implies S \union T \text{ es subespacio }    \\
-          & S = T \implies S \union S \text{ es subespacio }    \\
-          & S = T \implies S \text{ es subespacio }             \\
-          & \text{which is true}
+           & S = T \implies S \union T \text{ es subespacio } \\
+           & S = T \implies S \union S \text{ es subespacio } \\
+           & S = T \implies S \text{ es subespacio }          \\
+           & \text{which is true}
         \end{align}
 
-    \item Caso $S \subseteq T \land S \nsubseteq T \text{subespacio}\implies S \union T \text{ es subespacio }$ 
+  \item Caso $S \subseteq T \land S \nsubseteq T \text{subespacio}\implies S \union T \text{ es subespacio }$
 
-    \begin{align}
-      & S \subseteq T \land S \nsubseteq T \implies S \union T \text{ es subespacio }    \\
-      & S \subseteq T \land S \nsubseteq T \implies T \text{ es subespacio }             \\
-      & \text{which is true}
-    \end{align}
+        \begin{align}
+           & S \subseteq T \land S \nsubseteq T \implies S \union T \text{ es subespacio } \\
+           & S \subseteq T \land S \nsubseteq T \implies T \text{ es subespacio }          \\
+           & \text{which is true}
+        \end{align}
 
-    \item Es lo mismo que con el anterior caso
+  \item Es lo mismo que con el anterior caso
 
-    $ \implies $ Como probamos todos los casos posibles de combinación entre S y T que cumplía los requisitos,
-    probamos que es verdadero la afirmación
-    
-    \\
+        $ \implies $ Como probamos todos los casos posibles de combinación entre S y T que cumplía los requisitos,
+        probamos que es verdadero la afirmación.
 
-    Ahora vamos con la vuelta
+        Ahora vamos con la vuelta
 
-    $\Longleftarrow $ $S \union T \text{ es subespacio } \implies S \subseteq T \lor T \subseteq S \text{subespacio} $ 
+        $\Longleftarrow $ $S \union T \text{ es subespacio } \implies S \subseteq T \lor T \subseteq S \text{subespacio} $
 
-    A probarlo por contrareciproco: \\
+        A probarlo por contrareciproco: \\
 
-    Asumo que $ S \nsubseteq T \land S \nsubseteq T $
+        Asumo que $ S \nsubseteq T \land S \nsubseteq T $
 
-    Sea $t_{0}$ un vector tal que $t_{0} \in T \land t_{0} \notin S$
-     y $s_{0}$ un vector tal que $s_{0} \in S \land s_{0} \notin T$
+        Sea $t_{0}$ un vector tal que $t_{0} \in T \land t_{0} \notin S$
+        y $s_{0}$ un vector tal que $s_{0} \in S \land s_{0} \notin T$
 
-     Ahora, el conjunto $ S \union T $ se define como: $ \{ \forall v \in S \union T | v \in S \lor v \in T \} $ \red {Revisar que es correcto esta forma de escribirlo}
+        Ahora, el conjunto $ S \union T $ se define como: $ \{ \forall v \in S \union T | v \in S \lor v \in T \} $ \red {Revisar que es correcto esta forma de escribirlo}
 
-    Sumo $s_{0} + t_{0}$
+        Sumo $s_{0} + t_{0}$
 
-    Esto, para que sea un subespacio debería estar dentro del mismo. Pero, por definición de $ S \union T $
-    no es posible esto, al ser solo la unión. 
+        Esto, para que sea un subespacio debería estar dentro del mismo. Pero, por definición de $ S \union T $
+        no es posible esto, al ser solo la unión.
 
-    $ S \union T $ une solo los 2 espacios vectoriales, pero no los relaciona de modo que 
-    no existe ninguna combinación lineal que sea $ s_{0} + t_{0} \in S \union T$ a menos que consideremos que uno está
-    contenido en otro. Entonces llegamos al absurdo, demostrando que si es subespacio vectorial, entonces alguno de los
-    2 subespacios esta contenido dentro de otro
+        $ S \union T $ une solo los 2 espacios vectoriales, pero no los relaciona de modo que
+        no existe ninguna combinación lineal que sea $ s_{0} + t_{0} \in S \union T$ a menos que consideremos que uno está
+        contenido en otro. Entonces llegamos al absurdo, demostrando que si es subespacio vectorial, entonces alguno de los
+        2 subespacios esta contenido dentro de otro
+\end{enumerate}
 
-  \end{enumerate}
-}
+\begin{aportes}
+  \item \aporte{https://github.com/fmancilla00}{Fede Mancilla \github}
+  \item \aporte{https://github.com/misProyectosPropios}{Iñaki Frutos \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
