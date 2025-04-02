@@ -30,19 +30,19 @@ Es un \textit{si solo si} así que sale doble implicación:
         Este es un poco más picante, porque no es \textit{obvio} que deba ocurrir ¿O no lo es para mí?:
         Sé que por independencia lineal:
         $$
-          \sumatoria{i = 1}{k} r_i \cdot v_i = 0
+          \sumatoria{i = 1}{k} r_i \cdot v_i \igual{$\llamada1$} 0
           \quad
           \text{ con }
           r_i \en \reales \ytext r_i = 0 \text{ para }  1 \leq i \leq k
         $$
         Quiero probar que:
         $$
-          \sumatoria{i = 1}{k} z_i \cdot v_i = 0 \ \llamada1
+          \sumatoria{i = 1}{k} z_i \cdot v_i = 0 \ \llamada2
           \quad
           \text{ con }
           z_i \en \complejos \ytext z_i = 0 \text{ para }  1 \leq i \leq k
         $$
-        Laburo un poco $\llamada1$:
+        Laburo un poco $\llamada2$:
         $$
           \begin{array}{c}
             \sumatoria{i = 1}{k} z_i \cdot v_i =
@@ -50,12 +50,12 @@ Es un \textit{si solo si} así que sale doble implicación:
             \Sii{\red{!!}}[$z_j = a_j + i b_j$]                                          \\
             \blue{(a_1 + i b_1)} \cdot v_1 + \cdots + \blue{(a_k + i b_k)} \cdot v_k = 0 \\
             \Sii{\red{!!}}[$v_j \en \reales^n$]                                          \\
-            \ub{(a_1 \cdot v_1 + \cdots + a_k \cdot v_k)}{\llamada2} +
+            \ub{(a_1 \cdot v_1 + \cdots + a_k \cdot v_k)}{\llamada3} +
             i
-            \ub{(b_1 \cdot v_1 + \cdots + b_k \cdot v_k)}{\llamada3} = 0
+            \ub{(b_1 \cdot v_1 + \cdots + b_k \cdot v_k)}{\llamada4} = 0
           \end{array}
         $$
-        Las combinetas en $\llamada2$ y $\llamada3$ cumplen nuestra hipótesis, porque los $a_i$ y los $b_i \en \reales$,
+        Las combinetas en $\llamada3$ y $\llamada4$ cumplen nuestra hipótesis de $\llamada1$, porque los $a_i$ y los $b_i \en \reales$,
         es decir que son ambas nulas.
 
         \bigskip
@@ -71,7 +71,7 @@ Es un \textit{si solo si} así que sale doble implicación:
         $$
           i \cdot (i, 1) + 1 \cdot (1,-i) = 0
         $$
-        todo lo contrario. Solo se llega a las expresiones $\llamada2$ y $\llamada3$ gracias a que $v_j \en \reales^n$.
+        todo lo contrario. Solo se llega a las expresiones $\llamada3$ y $\llamada4$ gracias a que $v_j \en \reales^n$.
 
         \textit{Fin de Nota que puede ser de interés:}
 \end{itemize}
