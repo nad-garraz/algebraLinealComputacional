@@ -197,18 +197,18 @@
           \matriz{cc|c}{
             1 & -1 & 0 \\
             \magenta{0} & 2 & 1 \\
-            0 & 2 & 2
+            0 & 4 & 2
           }
           \triangulacion{
-            F_3 - F_2 \to F_3
+            F_3 - 2F_2 \to F_3
           }
           \matriz{cc|c}{
             1 & -1 & 0 \\
             \magenta{0} & 2 & 1 \\ \rowcolor{red!10}
-            0 & 0 & 1
+            0 & 0 & 0
           }
         $$
-        Necesito entonces que $k \taa{\llamada2}{}{\distinto} 0$ para que sea compatible. $k = -2$ y $k = 0$ logran que el $(0,1,1) \not\en T$.
+        Entonces con $k = 0$ también es compatible, así que acá no pasó nada. Con $k = -2 \entonces (0,1,1) \not\en T$.
 
         Corroboro ahora que haya intersección entre $S$ y $T$. Hago un genérico de $T$:
         $$
@@ -229,13 +229,13 @@
           }
         $$
         Si $k = 1$ no tengo condiciones sobre $a \ytext  b$ es decir que la dimensión de la intersección sería todo $T$, eso es algo
-        malo.
+        \ul{malo}, porque la dimensión debe ser 1.
 
-        Cuando es $a = b$ no me importa el valor de $k$,  pero no olvidar $\llamada1$ y $\llamada2$.
+        Cuando es $a = b$ no me importa el valor de $k$,  pero no olvidar $\llamada1$.
         Entonces, si quiero que $S \inter T = \ket{(0,1,1)}$ necesito:
         $$
           \cajaResultado{
-            k \not\en \set{-2;\, 0;\, 1}
+            k \not\en \set{-2;\, 1}
           }
         $$
 \end{enumerate}
