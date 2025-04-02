@@ -52,11 +52,17 @@ Es un \textit{si solo si} así que sale doble implicación:
             \Sii{\red{!!}}[$v_j \en \reales^n$]                                          \\
             \ub{(a_1 \cdot v_1 + \cdots + a_k \cdot v_k)}{\llamada3} +
             i
-            \ub{(b_1 \cdot v_1 + \cdots + b_k \cdot v_k)}{\llamada4} = 0
+            \ub{(b_1 \cdot v_1 + \cdots + b_k \cdot v_k)}{\llamada4} = 0 + i0
           \end{array}
         $$
-        Las combinetas en $\llamada3$ y $\llamada4$ cumplen nuestra hipótesis de $\llamada1$, porque los $a_i$ y los $b_i \en \reales$,
-        es decir que son ambas nulas.
+        Para que esa igualdad se cumpla debe ocurrir que las combinetas en $\llamada3$ y $\llamada4$ sean 0. Para que esas combinaciones
+        sean 0 sí o sí los coeficientes $a_i \ytext b_i$ deben ser todos nulos porque son reales y los $v_i$ son \textit{linealmente independientes}.
+        Y como
+        $$
+          z_i = \ua{a_i}{=0} + i \ua{b_i}{=0}
+          \entonces
+          \sumatoria{i = 1}{k} \ua{z_i}{=0} \cdot v_i = 0 \entonces  \set{1,\ldots,v_k} \text{ son \textit{linealmente independientes} sobre } \complejos.
+        $$
 
         \bigskip
 
