@@ -48,14 +48,57 @@
           }.
         $$
 
-  \item $\det(M) = \det(AD - ACA^{-1}B)
-          \igual{\purple{hip}}[\red{!}]
-          \det(AD - \purple{CA}A^{-1}B)=
-          \det(AD - CB)
-        $
+  \item Quiero ver que
+  \[
+  \det(M) 
+  = \det(A D - A C A^{-1} B)
+  \]
+  por propiedad de determinantes:
+  \[
+  \det(A D - A C A^{-1} B) = \det(A) \det(D - C A^{-1} B)
+  \]
+  
+  
+  Por el apunte de bloques:
+  
+  Si la matriz tiene una estructura de la forma:
+  
+  \[
+  \det \begin{bmatrix} A & B \\ 0 & C \end{bmatrix} = \det(A) \det(C)
+  \]
+  
+  
+  También se cumple que:
+  
+  \[
+  \det \begin{bmatrix} A & 0 \\ C & D \end{bmatrix} = \det(A) \det(D)
+  \]
+  
+  Veamos si puedo armar la expresion que quiero partiendo del determinante de M usando las propiedades. Escribo a M usando la factorizacion del punto a:
+  
+  \[
+  \det(M) = \det \left( \begin{bmatrix} A & 0 \\ C & I \end{bmatrix}
+  \begin{bmatrix} I & A^{-1} B \\ 0 & D - C A^{-1} B \end{bmatrix} \right)
+  \] 
+  
+  Aplicando la propiedad de determinantes:
+  
+  \[
+  = \det \begin{bmatrix} A & 0 \\ C & I \end{bmatrix} \cdot \det \begin{bmatrix} I & A^{-1} B \\ 0 & D - C A^{-1} B \end{bmatrix}
+  \]
+  
+  Usando la propiedad antes mencionada:
+  
+  \[
+  = \det(A I) \cdot \det(I (D - C A^{-1} B))
+  = \det(A) \cdot \det(D - C A^{-1} B)
+  \]
+  
+  Que es lo que queríamos demostrar.
 
 \end{enumerate}
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
+  \item Juan Delia 
 \end{aportes}
