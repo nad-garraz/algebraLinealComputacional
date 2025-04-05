@@ -1,3 +1,186 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que existe una única transformación lineal $f : \reales^2 \to \reales^2$ tal que
+          $f(1,1) = (-5, 3)$ y $f(-1,1) = (5,2)$. Para dicha $f$, determinar $f(5,3)$ y $f(-1,2)$.
+
+    \item ¿Existirá una transformación lineal $f : \reales^2 \to \reales^2$ tal que $f(1,1) = (2,6), f(-1,1) = (2,1)$ y
+          $f(2,7) = (5,3)$?
+
+    \item Sean $f, g: \reales^3 \to \reales^3$ transformaciones lineales tales que
+          $$
+            \begin{array}{l}
+              f(1,0,1) = (1,2,1), f(2,1,0) = (2,1,0), f(-1,0,0) = (1,2,1) \\
+              g(1,1,1) = (1,1,0), g(3,2,0) = (0,0,1), g(2,2,-1) = (3,-1,2)
+            \end{array}
+          $$
+  \end{enumerate}
 \end{enunciado}
+
+De la teoría se tiene que:
+\begin{center}
+  Sea $V$ un $K-$espacio vectorial y $B=\set{v_1,\ldots, v_n}$ base de $V$.
+  Podemos definir en forma única una t.l. de $V$ en $W$ definiendo cada $f(v_i) \en W$
+  con $i=1,\ldots n$.
+\end{center}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Sale casi solo usando propiedades de \textit{transformación lineal:}
+        $$
+          \begin{array}{rlc}
+            \llave{rcl}{
+            f(1,1)  & = & (-5,3)           \\
+            f(-1,1) & = & (5,2)
+            }
+                    &
+            \triangulacion{
+            F_2 + F_1 \to F_2              \\
+            }
+                    &
+            \llave{rcl}{
+            f(1,1)  & = & (-5,3)           \\
+            f(0,2)  & = & (0,5)
+            }                              \\
+                    &
+            \triangulacion{
+              \frac{1}{2} F_2 \to F_2
+            }
+                    &
+            \llave{rcl}{
+            f(1,1)  & = & (-5,3)           \\
+            f(0,1)  & = & (0,\frac{5}{2})
+            }                              \\
+                    &
+            \triangulacion{
+              F_1 - F_2 \to F_1
+            }
+                    &
+            \llave{rcl}{
+            f(1,0)  & = & (-5,\frac{1}{2}) \\
+            f(0,1)  & = & (0,\frac{5}{2})
+            }
+          \end{array}
+        $$
+        Si bien no es necesario, puedo escribir a la \textit{transformación lineal} como:
+        $$
+          f
+          \matriz{c}{
+            x\\
+            y
+          }
+          =
+          \matriz{cc}{
+            -5 & 0\\
+            \frac{1}{2} & \frac{5}{2}
+          }
+          \cdot
+          \matriz{c}{
+            x\\
+            y
+          }
+          =
+          \matriz{c}{
+            -5x\\
+            \frac{1}{2}x + \frac{5}{2}y
+          }
+        $$
+        Y ahora calculo lo más pancho:
+        $$
+          \cajaResultado{
+            f(5,3) =
+            \matriz{c}{
+              -25\\
+              10
+            }
+            \ytext
+            f(-1,2) =
+            \matriz{c}{
+              5\\
+              \frac{9}{2}
+            }
+          }
+        $$
+
+  \item  Se llega a un absurdo con algunas operaciones.
+        $$
+          \llave{rcl}{
+            f(1,1) &=& (2,6)\\
+            f(-1,1) &=& (2,1)\\
+            f(2,7) &=& (5,3)
+          }
+          \triangulacion{
+            F_2 - F_1 \to F_2\\
+            F_3 - 2F_1 \to F_3
+          }
+          \llave{rcl}{
+            f(1,1) &=& (2,6)\\
+            f(0,2) &=& (4,7)\\
+            f(0,5) &=& (1,-9)
+          }
+          \triangulacion{
+            \frac{1}{2}\cdot F_2 \to F_2\\
+            \frac{1}{5}\cdot F_3 \to F_3
+          }
+          \llave{rcl}{
+            f(1,1) &=& (2,6)\\ \rowcolor{red!20}
+            f(0,1) &=& (2,\frac{7}{2})\\\rowcolor{red!20}
+            f(0,1) &=& (\frac{1}{5},\frac{-9}{5})
+          }
+        $$
+
+        Las operaciones de triangulación aplicadas en la triangulación son lineales y se usó todo el tiempo la definición de linealidad.
+
+  \item Ataco igual que al anterior, la idea es poder compararlos con la misma \textit{base del espacio de partida $V$}:
+        $$
+          \llave{rcl}{
+            f(1,0,1) &=& (1,2,1)\\
+            f(2,1,0) &=& (2,1,0)\\
+            f(-1,0,0) &=& (1,2,1)
+          }
+          \flecha{\magic}
+          \llave{rcl}{
+            f(1,0,0) &=& (1,2,1)\\
+            f(0,1,0) &=& (0,-3,-2)\\\rowcolor{Cerulean!10}
+            f(0,0,1) &=& (0,0,0)
+          }
+        $$
+        Ahora con $g$:
+        $$
+          \llave{rcl}{
+            g(1,0,1) &=& (1,2,1)\\
+            g(2,1,0) &=& (2,1,0)\\
+            g(-1,0,0) &=& (1,2,1)
+          }
+          \triangulacion{
+            F_2 - 3 F_1 \to F_1 \\
+            F_3 - 2 F_1 \to F_3
+          }
+          \llave{rcl}{
+            g(1,1,1) &=& (1,1,0)\\
+            g(0,-1,-2) &=& (-3,-3,1)\\ \rowcolor{Cerulean!10}
+            g(0,0,-3) &=& (1,-3,2)
+          }
+        $$
+
+        Podría seguir triangulando y llegar hasta que me queden ambas expresiones en la canónica de $\reales^3$, pero pajilla.
+        Resalté en azul dos filas que me \textit{gritan} que si:
+        $$
+          (0,0,1) \flecha{$f$} (0,0,0)
+          \entonces
+          (0,0,-3) \flecha{$f$}[\red{!}] (0,0,0)
+        $$
+        No obstante:
+        $$
+          (0,0,-3) \cancel{\flecha{$g$}} (0,0,0)
+        $$
+        Así se concluye que :
+        $$
+          \cajaResultado{
+            f \distinto g
+          }
+        $$
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
