@@ -9,7 +9,9 @@
   \item \[f \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} =
   a_{11} a_{22} - a_{12} a_{21}
   \]
-  \item hacer
+  \item \[f \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} =
+  \begin{pmatrix} a_{22} & 0 & a_{12} + a_{21} \\ 0 & a_{11} & a_{22} - a_{11} \end{pmatrix}
+  \]
 
   \end{enumerate}
 \end{enunciado}
@@ -133,7 +135,46 @@ $|x_1 + x_2| \neq |x_1| + |x_2|$, la suma no es lineal.
   \]
   
   %inciso d
-  \item hacer
+  \item Veo que valga la suma:
+
+  Sea $A, B$ matrices cualesquiera:
+  
+  \[
+  A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}, \quad
+  B = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}
+  \]
+  
+  \[
+  f(A + B) = 
+  \begin{pmatrix} (a_{22} + b_{22}) & 0 & (a_{12} + b_{12}) + (a_{21} + b_{21}) \\ 0 & (a_{11} + b_{11}) & (a_{22} + b_{22}) - (a_{11} + b_{11}) \end{pmatrix}
+  \]
+  
+  Ahora miro,
+  
+  \[
+  f(A) + f(B) =
+  \begin{pmatrix} a_{22} & 0 & a_{12} + a_{21} \\ 0 & a_{11} & a_{22} - a_{11} \end{pmatrix} +
+  \begin{pmatrix} b_{22} & 0 & b_{12} + b_{21} \\ 0 & b_{11} & b_{22} - b_{11} \end{pmatrix}
+  \]
+  
+  \[
+  =
+  \begin{pmatrix} a_{22} + b_{22} & 0 & (a_{12} + a_{21}) + (b_{12} + b_{21}) \\ 0 & a_{11} + b_{11} & (a_{22} - a_{11}) + (b_{22} - b_{11}) \end{pmatrix}
+  \]
+  
+  La suma es lineal.
+  
+  Ahora veo el producto:
+  
+  \[
+  f(\alpha A) =
+  f \begin{pmatrix} \alpha a_{11} & \alpha a_{12} \\ \alpha a_{21} & \alpha a_{22} \end{pmatrix}
+  =
+  \begin{pmatrix} \alpha a_{22} & 0 & \alpha (a_{12} + a_{21}) \\ 0 & \alpha a_{11} & \alpha (a_{22} - a_{11}) \end{pmatrix}
+  = \alpha f(A)
+  \]
+  
+  El producto y la suma son lineales, f es transformacion lineal
 
 \end{enumerate}
 
