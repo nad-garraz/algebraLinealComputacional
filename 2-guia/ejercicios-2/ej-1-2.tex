@@ -1,3 +1,182 @@
 \begin{enunciado}{\ejercicio}
-  \hacer
+  Determinar cuáles de las siguientes aplicaciones son lineales.
+  \begin{enumerate}[label=(\alph*)]
+  \item \[f(x_1, x_2, x_3) = (x_2 - 3x_1 + \sqrt{2}x_3, x_1 - \frac{1}{2} x_2)
+    \]
+  \item \[f(x_1, x_2) = (x_1 + x_2, |x_1|)\]
+
+  \item \[f \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} =
+  a_{11} a_{22} - a_{12} a_{21}
+  \]
+  \item \[f \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} =
+  \begin{pmatrix} a_{22} & 0 & a_{12} + a_{21} \\ 0 & a_{11} & a_{22} - a_{11} \end{pmatrix}
+  \]
+
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+  Primero veamos que la suma es lineal. Tomemos dos vectores cualesquiera: 
+  
+  \[
+  v = (x_1, y_1, z_1), \quad w = (x_2, y_2, z_2)
+  \]
+  
+  Entonces,
+  
+  \[
+  f(v + w) = f(x_1 + x_2, y_1 + y_2, z_1 + z_2)
+  \]
+  
+  \[
+  = (y_1 + y_2 - 3(x_1 + x_2) + \sqrt{2} (z_1 + z_2), x_1 + x_2 - \frac{1}{2} (y_1 + y_2))
+  \]
+  
+  Ahora veo:
+  
+  \[
+  f(v) + f(w) = (y_1 - 3x_1 + \sqrt{2} z_1, x_1 - \frac{1}{2} y_1) + (y_2 - 3x_2 + \sqrt{2} z_2, x_2 - \frac{1}{2} y_2)
+  \]
+  
+  \[
+  = (y_1 + y_2 - 3(x_1 + x_2) + \sqrt{2} (z_1 + z_2), x_1 + x_2 - \frac{1}{2} (y_1 + y_2))
+  \]
+  
+  Son iguales, la suma es lineal
+  
+  Veamos que el producto es lineal. Tomemos un escalar $\alpha \in \mathbb{R}$ y un vector $v = (x, y, z)$. Entonces,
+  
+  \[
+  f(\alpha v) = f(\alpha x, \alpha y, \alpha z)
+  \]
+  
+  \[
+  = (\alpha y - 3\alpha x + \sqrt{2} \alpha z, \alpha x - \frac{1}{2} \alpha y)
+  \]
+  
+  \[
+  = \alpha (y - 3x + \sqrt{2}z, x - \frac{1}{2} y) = \alpha f(x, y, z)
+  \]
+  
+  El producto es lineal
+  \[
+  f \text{ es una transformación lineal.}
+  \]
+  %incciso b
+  \newpage
+  \item 
+  Tomemos dos vectores cualesquiera y veamos la suma: 
+
+\[
+v = (x_1, y_1), \quad w = (x_2, y_2)
+\]
+
+Entonces,
+
+\[
+f(v + w) = f(x_1 + x_2, y_1 + y_2)
+\]
+
+\[
+= (x_1 + x_2 + y_1 + y_2, |x_1 + x_2|)
+\]
+
+Ahora veamos:
+
+\[
+f(v) + f(w) = (x_1 + y_1, |x_1|) + (x_2 + y_2, |x_2|)
+\]
+
+\[
+= (x_1 + x_2 + y_1 + y_2, |x_1| + |x_2|)
+\]
+
+$|x_1 + x_2| \neq |x_1| + |x_2|$, la suma no es lineal.
+
+\[
+\Rightarrow f \text{ no es una transformación lineal.}
+\]
+  %inciso c
+  \item Veamos que vale la suma, tomo dos matrices cualesquiera $A$ y $B$:
+
+  \[
+  f(A + B) = f \left( \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} +
+  \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix} \right)
+  \]
+  
+  \[
+  = f \begin{pmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\ a_{21} + b_{21} & a_{22} + b_{22} \end{pmatrix}
+  \]
+  
+  \[
+  = (a_{11} + b_{11})(a_{22} + b_{22}) - (a_{12} + b_{12})(a_{21} + b_{21})
+  \]
+  
+  Ahora vemos:
+  
+  \[
+  f(A) + f(B) = (a_{11} a_{22} - a_{12} a_{21}) + (b_{11} b_{22} - b_{12} b_{21})
+  \]
+  
+  \[
+  = a_{11} a_{22} - a_{12} a_{21} + b_{11} b_{22} - b_{12} b_{21}
+  \]
+  
+  Se ve que:
+  
+  \[
+  (a_{11} + b_{11})(a_{22} + b_{22}) - (a_{12} + b_{12})(a_{21} + b_{21}) \neq a_{11} a_{22} - a_{12} a_{21} + b_{11} b_{22} - b_{12} b_{21}
+  \]
+  
+  La suma no es lineal.\[
+  \Rightarrow f \text{ no es una transformación lineal.}
+  \]
+  
+  %inciso d
+  \item Veo que valga la suma:
+
+  Sea $A, B$ matrices cualesquiera:
+  
+  \[
+  A = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix}, \quad
+  B = \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix}
+  \]
+  
+  \[
+  f(A + B) = 
+  \begin{pmatrix} (a_{22} + b_{22}) & 0 & (a_{12} + b_{12}) + (a_{21} + b_{21}) \\ 0 & (a_{11} + b_{11}) & (a_{22} + b_{22}) - (a_{11} + b_{11}) \end{pmatrix}
+  \]
+  
+  Ahora miro,
+  
+  \[
+  f(A) + f(B) =
+  \begin{pmatrix} a_{22} & 0 & a_{12} + a_{21} \\ 0 & a_{11} & a_{22} - a_{11} \end{pmatrix} +
+  \begin{pmatrix} b_{22} & 0 & b_{12} + b_{21} \\ 0 & b_{11} & b_{22} - b_{11} \end{pmatrix}
+  \]
+  
+  \[
+  =
+  \begin{pmatrix} a_{22} + b_{22} & 0 & (a_{12} + a_{21}) + (b_{12} + b_{21}) \\ 0 & a_{11} + b_{11} & (a_{22} - a_{11}) + (b_{22} - b_{11}) \end{pmatrix}
+  \]
+  
+  La suma es lineal.
+  
+  Ahora veo el producto:
+  
+  \[
+  f(\alpha A) =
+  f \begin{pmatrix} \alpha a_{11} & \alpha a_{12} \\ \alpha a_{21} & \alpha a_{22} \end{pmatrix}
+  =
+  \begin{pmatrix} \alpha a_{22} & 0 & \alpha (a_{12} + a_{21}) \\ 0 & \alpha a_{11} & \alpha (a_{22} - a_{11}) \end{pmatrix}
+  = \alpha f(A)
+  \]
+  
+  El producto y la suma son lineales, f es transformacion lineal
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github} 
+\end{aportes}
