@@ -54,26 +54,62 @@
         generador para la imagen de $f$.
 
         \begin{itemize}
-          \item $f$ se dice \textit{monomorfismo} si es inyectiva.
-          \item $f$ se dice \textit{epimorfismo} si es suryectiva.
-          \item $f$ se dice \textit{isomorfismo} si es \textit{mono} y \textit{epi}.
+          \item $f$ se dice \blue{\textit{monomorfismo}} si es inyectiva. Si $f$ es \ul{\textit{mono}, $\dim(\nucleo(f)) = 0$}
+          \item $f$ se dice \blue{\textit{epimorfismo}} si es suryectiva. Si $f$ es \ul{\textit{epi}, $\dim(\imagen(f)) = \dim(W)$}
+          \item $f$ se dice \blue{\textit{isomorfismo}} si es \textit{mono} y \textit{epi}. Si $f$ es \ul{iso es inversible}.
         \end{itemize}
 
-\item \textit{Norma}
-        Sea $||\cdot|| : K^n \to \reales\geq0  $. Entonces $\norma$ es 
+  \item \textit{Norma}
+        Sea $\normaBullet : K^n \to \reales\geq0  $. Entonces $\normaBullet$ es
         norma si cumpe:
-        \begin{enumerate}[label=\arabic*)] 
-         \item $||x|| \geq 0$ y $||x|| = 0 \sii x = 0, x \en K^n$ 
-         \item $||\alpha x|| = \alpha ||x||$ con $\alpha \en K$ y $x \en K^n$
-         \item $||x + y|| \leq ||x|| + ||y||$ con $x,y \en K$
-         \end{enumerate}
- \item
-         Ejemplos:
-         \begin{itemize}
-                 \item Norma 2:$||x||_2 = \sqrt{\sumatoria{k=0}{n} |x_k|^2 }  $
-                 \item Norma p:$||x||_p = \sqrt{\sumatoria{k=0}{n} |x_k|^p }  $
-                 \item Norma p:$\limite{p}{\infty} ||x||_p = max|x_i|$
-         \end{itemize}
+        \begin{enumerate}[label=\arabic*)]
+          \item $\norma{x} \geq 0$ y $\norma{x} = 0 \sii x = 0, x \en K^n$
+          \item $\norma{\alpha x} = \alpha \norma{x}$ con $\alpha \en K$ y $x \en K^n$
+          \item $\norma{x + y} \leq \norma{x} + \norma{y}$ con $x,y \en K$
+        \end{enumerate}
+  \item
+        Ejemplos:
+        \begin{itemize}
+          \item Norma 2:
+                $\norma{x}_2 = \sqrt{\sumatoria{k=0}{n} |x_k|^2 }
+                  \quad
+                  \flecha{por ejemplo}
+                  \norma{x}_2 = 1 \quad$
+                \begin{tikzpicture}[scale=1, baseline=0]
+                  \draw[gray!30, ultra thin] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
+                  \draw[-stealth] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
+                  \draw[-stealth] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
+
+                  \draw[blue, thick] (0,0) circle (1);
+                \end{tikzpicture}
+
+          \item Norma $p$:
+                $\norma{x}_p = \sqrt{\sumatoria{k=0}{n} |x_k|^p }
+                  \quad
+                  \flecha{por ejemplo}
+                  \norma{x}_p = 1 \quad$
+                \begin{tikzpicture}[scale=1, baseline=0]
+                  \draw[gray!30, ultra thin] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
+                  \draw[-stealth] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
+                  \draw[-stealth] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
+
+                  \draw[red, thick] (0,1) -- (1,0) -- (0,-1) -- (-1,0) -- cycle;
+                \end{tikzpicture}
+
+          \item Norma $\infty$:
+                $\limite{p}{\infty} \norma{x}_p = \max\limits_{1\leq i \leq n} |x_i|
+                  \quad
+                  \flecha{por ejemplo}
+                  \norma{x}_{\infty} = 1 \quad$
+                \begin{tikzpicture}[scale=1, baseline=0]
+                  \draw[gray!30, ultra thin] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
+                  \draw[-stealth] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
+                  \draw[-stealth] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
+
+                  \draw[green!70!black, thick] (-1,-1) -- (-1,1) -- (1,1) -- (1,-1) -- cycle;
+                \end{tikzpicture}
+        \end{itemize}
+
 \end{enumerate}
 
 %===========================================

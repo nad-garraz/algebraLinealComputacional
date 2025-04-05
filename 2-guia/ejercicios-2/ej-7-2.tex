@@ -1,3 +1,125 @@
+\bigskip
+
+\textbf{Aritmética de punto flotante}
+
+\bigskip
+
 \begin{enunciado}{\ejercicio}
-\hacer
+  \textbf{Algunos experimentos:} Realizar las siguientes operaciones en \python. En todos los casos,
+  pensar: ¿Cuál es el resultado esperado? ¿Coincide con el obtenido? ¿A qué se debe el problema (si lo hay)?
+  (Notamos $\epsilon$ al épsilon de la máquina. Puede obtenerse importando la librería \texttt{numpy} como \texttt{np} y
+  ejecutando el comando \texttt{np.finfo}(\blue{float}).eps).
+
+  \begin{enumerate}[series=ej7, label=\alph*)]
+    \item Tomando $p = 1e34, q = 1$, calcular $p + q - p$.
+
+    \item Tomando $p = 100, q = 1e-15$, calcular $(p + q) + q \ytext ((p + q) + q) + q$. Comparar con
+          $p + 2q$ y con $p + 3q$ respectivamente.
+  \end{enumerate}
+  \begin{enumerate}[resume=ej7, label=\alph*)]
+    \begin{multicols}{3}
+      \item \texttt{0.1 + 0.2 == 0.3}
+
+      \item \texttt{0.1 + 0.3 == 0.4}
+
+      \item $1e-323$
+
+      \item $1e-324$
+
+      \item $\frac{\epsilon}{2}$
+
+      \item $(1 + \frac{\epsilon}{2}) + \frac{\epsilon}{2}$
+      \item $1 + (\frac{\epsilon}{2} + \frac{\epsilon}{2})$
+      \item $((1 + \frac{\epsilon}{2}) + \frac{\epsilon}{2}) - 1$
+      \item $(1 + (\frac{\epsilon}{2} + \frac{\epsilon}{2})) - 1$
+
+      \item $\sin(10^j \pi)$ para $1 \leq j \leq 25$.
+      \item $\sin(\frac{\pi}{2} + \pi 10^j)$ para $1 \leq j \leq 25$.
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        El epsilon sería el número más chico tal que:
+        $$
+          1 + \epsilon \distinto 1
+        $$
+        En el ejercicio estamos haciendo una cuenta fuera del rango de precisión de la máquina:
+        $$
+          \epsilon = 2.220446049250313 \cdot 10^{-16}
+          = 0.\ub{2220446049250313}{m = 16} \cdot 10^{-15} \quad \text{\red{\atencion} $\to$ así \ul{noto} la precisión}
+        $$
+        Con una mantisa $m$ de 16 números significativos, puedo hacer la cuenta:
+        $$
+          1 + \epsilon \igual{\red{!}} 1.000000000000000\ua{2}{16^{\text{\ul{to}}} \text{ decimal}}
+        $$
+        \textit{Primero $ p + \purple{1}$}:
+
+        {\small
+        $$
+          \begin{array}{rcl}
+            p     =          1 \cdot 10^{34} & = & 10.000.000.000.000.000.000.000.000.000.000.000                                             \\
+            p + \purple{1}                   & = & 10.000.000.000.000.000.000.000.000.000.000.00\purple{1} =
+            0.\ub{1000000000000000}{m = 16}\ub{000000000000000000\purple{1}}{\text{fue un placer \faIcon[regular]{handshake}}} \cdot 10^{-35} \\
+            p + \purple{1}                   & = & 0.1000000000000000 \cdot 10^{-35} = 1 \cdot 10^{34} \igual{\red{!}} p
+          \end{array}
+        $$
+        }
+
+        \textit{Segundo $ p + \purple{1} - p$}:
+
+        Bueh:
+
+        $$
+          \ub{p - \purple{1}}{p} - p
+          \igual{\red{!}}
+          p - p = 0
+        $$
+
+        \copyPaste
+        \codigoPython{ej-7/codigo2-7-a.py}
+
+  \item
+        Acá el problema es parecido al anterior:
+        $$
+          \begin{array}{rcl}
+            p     =          100 & =               & 0.1 \cdot 10^3                                                                                                                                                                         \\
+            q = 1 \cdot 10^{-15} & =               & 0.000\, 000\, 000\, 000\, 000\, 001 \cdot 10^3                                                                                                                                         \\
+            p + q                & =               & 0.100\,000\,000\,000\,000\,\oa{0}{16^{\text{\ul{to}}} decimal }{\ub{01}{\text{fue un placer \faIcon[regular]{handshake}}}} \cdot 10^3 = 0.100\,000\,000\,000\,000\,0 \cdot 10^3  = 100 \\
+            (p + q) + q          & \igual{\red{!}} & 100 = p                                                                                                                                                                                \\
+            ((p + q) + q) + q    & \igual{\red{!}} & 100 = p
+          \end{array}
+        $$
+
+        Comparando:
+        $$
+          \begin{array}{rcl}
+            p   =          100 & = & 0.1 \cdot 10^3                                                                                                                                                                         \\
+            q =                & = & 0.000\, 000\, 000\, 000\, 000\, 001 \cdot 10^3                                                                                                                                         \\
+            2q =               & = & 0.000\, 000\, 000\, 000\, 000\, 002 \cdot 10^3                                                                                                                                         \\
+            3q =               & = & 0.000\, 000\, 000\, 000\, 000\, 003 \cdot 10^3                                                                                                                                         \\
+            p + 2q             & = & 0.100\,000\,000\,000\,000\,\oa{0}{16^{\text{\ul{to}}} decimal }{\ub{02}{\text{fue un placer \faIcon[regular]{handshake}}}} \cdot 10^3 = 0.100\,000\,000\,000\,000\,0 \cdot 10^3  = 100 \\
+            p + 3q             & = & 0.100\,000\,000\,000\,000\,\oa{0}{16^{\text{\ul{to}}} decimal }{\ub{03}{\text{fue un placer \faIcon[regular]{handshake}}}} \cdot 10^3 = 0.100\,000\,000\,000\,000\,0 \cdot 10^3  = 100 \\
+
+          \end{array}
+        $$
+
+        \codigoPython{ej-7/codigo2-7-b.py}
+
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
