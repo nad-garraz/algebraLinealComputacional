@@ -1,3 +1,70 @@
 \begin{enunciado}{\ejercicio}
-  \hacer
+  Determinar cuáles de las siguientes aplicaciones son lineales.
+  \begin{enumerate}[label=(\alph*)]
+  \item $f: \mathbb{R}^3 \to \mathbb{R}^2$ definida como:   \[
+    f(x_1, x_2, x_3) = (x_2 - 3x_1 + \sqrt{2}x_3, x_1 - \frac{1}{2} x_2)
+    \]
+  \item hacer
+  \item hacer
+  \item hacer
+
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+  Primero veamos que la suma es lineal. Tomemos dos vectores cualesquiera: 
+  
+  \[
+  v = (x_1, y_1, z_1), \quad w = (x_2, y_2, z_2)
+  \]
+  
+  Entonces,
+  
+  \[
+  f(v + w) = f(x_1 + x_2, y_1 + y_2, z_1 + z_2)
+  \]
+  
+  \[
+  = (y_1 + y_2 - 3(x_1 + x_2) + \sqrt{2} (z_1 + z_2), x_1 + x_2 - \frac{1}{2} (y_1 + y_2))
+  \]
+  
+  Ahora veo:
+  
+  \[
+  f(v) + f(w) = (y_1 - 3x_1 + \sqrt{2} z_1, x_1 - \frac{1}{2} y_1) + (y_2 - 3x_2 + \sqrt{2} z_2, x_2 - \frac{1}{2} y_2)
+  \]
+  
+  \[
+  = (y_1 + y_2 - 3(x_1 + x_2) + \sqrt{2} (z_1 + z_2), x_1 + x_2 - \frac{1}{2} (y_1 + y_2))
+  \]
+  
+  Son iguales, la suma es lineal
+  
+  Veamos que el producto es lineal. Tomemos un escalar $\alpha \in \mathbb{R}$ y un vector $v = (x, y, z)$. Entonces,
+  
+  \[
+  f(\alpha v) = f(\alpha x, \alpha y, \alpha z)
+  \]
+  
+  \[
+  = (\alpha y - 3\alpha x + \sqrt{2} \alpha z, \alpha x - \frac{1}{2} \alpha y)
+  \]
+  
+  \[
+  = \alpha (y - 3x + \sqrt{2}z, x - \frac{1}{2} y) = \alpha f(x, y, z)
+  \]
+  
+  El producto es lineal
+  \[
+  f \text{ es una transformación lineal.}
+  \]
+  \item hacer
+  \item hacer
+  \item hacer
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github} 
+\end{aportes}
