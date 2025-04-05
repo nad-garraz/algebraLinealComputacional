@@ -34,7 +34,51 @@
         $$
           [f]_{BB'} [v]_B = [f(v)]_{B'} \quad \paratodo v \en V
         $$
+
+  \item Sea $V$ un $K-$espacio vectorial y $B=\set{v_1,\ldots, v_n}$ base de $V$
+        Podemos definir en forma única una t.l. de $V$ en $W$ definiendo cada $f(v_i) \en W$
+        con $i=1,\ldots n$.
+
+  \item Sea $A \en K^{m \times n}$, define $f: K^n \to K^m$.
+        El $\nucleo(A) = \set{x \en K^n / Ax = 0}$
+
+  \item Sea $A \en K^{m \times n}$, define $f: K^n \to K^m$.
+        La $\imagen(A) = \set{Ax \en K^m \text{ con } x \en K^n} =
+          \ket{c_1(A), \ldots, c_n(A)}$. También $\rango(A) =
+          \dimension(\imagen(A))$
+
+  \item \textit{Propiedades de una transformación lineal:}
+
+        Sea $f: V \to W$ una t.l. y $B = \set{v_1, \ldots, v_n}$ un conjunto
+        de generadores de $V$. Entonces $\set{f(v_1),\ldots, f(v_n) }$ es un conjunto
+        generador para la imagen de $f$.
+
+        \begin{itemize}
+          \item $f$ se dice \textit{monomorfismo} si es inyectiva.
+          \item $f$ se dice \textit{epimorfismo} si es suryectiva.
+          \item $f$ se dice \textit{isomorfismo} si es \textit{mono} y \textit{epi}.
+        \end{itemize}
+
+\item \textit{Norma}
+        Sea $||\cdot|| : K^n \to \reales\geq0  $. Entonces $\norma$ es 
+        norma si cumpe:
+        \begin{enumerate}[label=\arabic*)] 
+         \item $||x|| \geq 0$ y $||x|| = 0 \sii x = 0, x \en K^n$ 
+         \item $||\alpha x|| = \alpha ||x||$ con $\alpha \en K$ y $x \en K^n$
+         \item $||x + y|| \leq ||x|| + ||y||$ con $x,y \en K$
+         \end{enumerate}
+ \item
+         Ejemplos:
+         \begin{itemize}
+                 \item Norma 2:$||x||_2 = \sqrt{\sumatoria{k=0}{n} |x_k|^2 }  $
+                 \item Norma p:$||x||_p = \sqrt{\sumatoria{k=0}{n} |x_k|^p }  $
+                 \item Norma p:$\limite{p}{\infty} ||x||_p = max|x_i|$
+         \end{itemize}
 \end{enumerate}
+
+%===========================================
+%===========================================
+%===========================================
 
 \textit{Aritmética de punto flotante:}
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
