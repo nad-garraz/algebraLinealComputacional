@@ -6,7 +6,9 @@
     \]
   \item \[f(x_1, x_2) = (x_1 + x_2, |x_1|)\]
 
-  \item hacer
+  \item \[f \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} =
+  a_{11} a_{22} - a_{12} a_{21}
+  \]
   \item hacer
 
   \end{enumerate}
@@ -95,7 +97,42 @@ $|x_1 + x_2| \neq |x_1| + |x_2|$, la suma no es lineal.
 \Rightarrow f \text{ no es una transformación lineal.}
 \]
   %inciso c
-  \item hacer
+  \item Veamos que vale la suma, tomo dos matrices cualesquiera $A$ y $B$:
+
+  \[
+  f(A + B) = f \left( \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} +
+  \begin{pmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{pmatrix} \right)
+  \]
+  
+  \[
+  = f \begin{pmatrix} a_{11} + b_{11} & a_{12} + b_{12} \\ a_{21} + b_{21} & a_{22} + b_{22} \end{pmatrix}
+  \]
+  
+  \[
+  = (a_{11} + b_{11})(a_{22} + b_{22}) - (a_{12} + b_{12})(a_{21} + b_{21})
+  \]
+  
+  Ahora vemos:
+  
+  \[
+  f(A) + f(B) = (a_{11} a_{22} - a_{12} a_{21}) + (b_{11} b_{22} - b_{12} b_{21})
+  \]
+  
+  \[
+  = a_{11} a_{22} - a_{12} a_{21} + b_{11} b_{22} - b_{12} b_{21}
+  \]
+  
+  Se ve que:
+  
+  \[
+  (a_{11} + b_{11})(a_{22} + b_{22}) - (a_{12} + b_{12})(a_{21} + b_{21}) \neq a_{11} a_{22} - a_{12} a_{21} + b_{11} b_{22} - b_{12} b_{21}
+  \]
+  
+  La suma no es lineal.\[
+  \Rightarrow f \text{ no es una transformación lineal.}
+  \]
+  
+  %inciso d
   \item hacer
 
 \end{enumerate}
