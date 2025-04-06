@@ -1,71 +1,132 @@
 \begin{enunciado}{\ejercicio}
-    Escribir la matriz de las siguientes transformaciones lineales en base canónica.
-Interpretar geométricamente cada transformación. \newline
-La parte de Interpretar geometricamente \hacer 
-    \begin{enumerate}[label=(\alph*)]
-    \item \( f(x,y) = (x,0) \)
-    \item \( f(x,y) = (x,-y) \)
-    \item \( f(x,y) = \left( \frac{1}{2} (x + y), \frac{1}{2} (x + y) \right) \)
-    \item \( f(x,y) = (x \cos t - y \sin t, x \sin t + y \cos t) \)
-    
-    \end{enumerate}
-  \end{enunciado}
-  
+  Escribir la matriz de las siguientes transformaciones lineales en base canónica.
+  Interpretar geométricamente cada transformación.
   \begin{enumerate}[label=(\alph*)]
-    \item Para la base canónica:
-    \[
-    f(1,0) = (1,0), \quad f(0,1) = (0,0)
-    \]
-    Entonces, la matriz asociada es:
-    \[
-    M =
-    \begin{bmatrix}
-    1 & 0 \\
-    0 & 0
-    \end{bmatrix}
-    \]
-   
-    \item Para la base canónica:
-    \[
-    f(1,0) = (1,0), \quad f(0,1) = (0,-1)
-    \]
-    Entonces, la matriz asociada es:
-    \[
-    M =
-    \begin{bmatrix}
-    1 & 0 \\
-    0 & -1
-    \end{bmatrix}
-    \]
-
-    \item Para la base canónica:
-    \[
-    f(1,0) = \left( \frac{1}{2}, \frac{1}{2} \right), \quad f(0,1) = \left( \frac{1}{2}, \frac{1}{2} \right)
-    \]
-    Entonces, la matriz asociada es:
-    \[
-    M =
-    \begin{bmatrix}
-    \frac{1}{2} & \frac{1}{2} \\
-    \frac{1}{2} & \frac{1}{2}
-    \end{bmatrix}
-    \]
-
-    \item Para la base canónica:
-    \[
-    f(1,0) = (\cos t, \sin t), \quad f(0,1) = (-\sin t, \cos t)
-    \]
-    Entonces, la matriz asociada es:
-    \[
-    M =
-    \begin{bmatrix}
-    \cos t & -\sin t \\
-    \sin t & \cos t
-    \end{bmatrix}
-    \]
-  
+    \item  $f(x,y) = (x,0) $
+    \item  $f(x,y) = (x,-y) $
+    \item  $f(x,y) = (\frac{1}{2} (x + y), \frac{1}{2} (x + y))$
+    \item  $f(x,y) = (x \cos t - y \sin t, x \sin t + y \cos t) )$
   \end{enumerate}
-  
-  \begin{aportes}
-    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github} 
-  \end{aportes}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Para la base canónica:
+        $$
+          f(1,0) = (1,0), \quad f(0,1) = (0,0)
+        $$
+        Entonces, la matriz asociada es:
+        $$
+          M =
+          \begin{bmatrix}
+            1 & 0 \\
+            0 & 0
+          \end{bmatrix}
+        $$
+        \begin{minipage}{0.5\textwidth}
+          Geométricamente estamos proyectando al eje $x_0$.
+        \end{minipage}
+        \begin{minipage}{0.5\textwidth}
+          \begin{tikzpicture}[scale=0.8, every node/.style={font={\tiny}}]
+            \draw[-latex] (-1.5,0) -- (3,0) node[below] {$x_0$};
+            \draw[-latex] (0,-1.5) -- (0,2) node[left] {$x_1$};
+
+            \coordinate (P1) at (2,1.5);
+            \fill[Cerulean] (P1) circle (0.08) node[above right] {$(x_0,x_1)$};
+            \draw[dotted, Cerulean, -latex] (P1) -- ($(P1) -(0,1.5)$) node[midway, left] {$M$};
+
+            \fill[Cerulean] ($(P1) -(0,1.5)$) circle (0.05);
+            \node[below, Cerulean] at ($(P1) -(0,1.5)$) {$(x_0,0)$};
+
+            \coordinate (P2) at (-0.5,-1);
+            \fill[purple] (P2) circle (0.08) node[below left] {$(x_0',x_1')$};
+
+            \draw[dotted, purple, -latex] (P2) -- ($(P2) -(0,-1)$) node[midway, left] {$M$};
+
+            \fill[purple] ($(P2) -(0,-1)$) circle (0.05);
+            \node[above, purple] at ($(P2) -(0,-1)$) {$(x_0',0)$};
+          \end{tikzpicture}
+        \end{minipage}
+
+  \item Para la base canónica:
+        $$
+          f(1,0) = (1,0), \quad f(0,1) = (0,-1)
+        $$
+        Entonces, la matriz asociada es:
+        $$
+          M =
+          \begin{bmatrix}
+            1 & 0  \\
+            0 & -1
+          \end{bmatrix}
+        $$
+        \begin{minipage}{0.65\textwidth}
+          Geométricamente estamos haciendo una reflexión respecto del eje $x_0$.
+        \end{minipage}
+        \begin{minipage}{0.35\textwidth}
+          \begin{tikzpicture}[scale=0.8, every node/.style={font={\tiny}}]
+            \draw[-latex] (-1.5,0) -- (3,0) node[below] {$x_0$};
+            \draw[-latex] (0,-1.5) -- (0,2) node[left] {$x_1$};
+
+            \coordinate (P1) at (2,1.5);
+            \fill[Cerulean] (P1) circle (0.08) node[above right] {$(x_0,x_1)$};
+            \draw[dotted, Cerulean, -latex] (P1) -- (2,-1.5) node[midway, below left] {$M$};
+            \fill[Cerulean] (2,-1.5) circle (0.05) node[below, Cerulean] {$(x_0,-x_1)$};
+
+            \coordinate (P2) at (-0.5,-1);
+            \fill[purple] (P2) circle (0.08) node[below left] {$(x'_0,x'_1)$};
+            \draw[dotted, purple, -latex] (P2) -- (-0.5,1) node[midway,above left] {$M$};
+            \fill[purple] (-0.5, 1) circle (0.05)node[above left, purple] at (-0.5, 1) {$(x'_0,-x'_1)$};
+          \end{tikzpicture}
+        \end{minipage}
+
+  \item Para la base canónica:
+        $$
+          f(1,0) = \left( \frac{1}{2}, \frac{1}{2} \right), \quad f(0,1) = \left( \frac{1}{2}, \frac{1}{2} \right)
+        $$
+        Entonces, la matriz asociada es:
+        $$
+          M =
+          \begin{bmatrix}
+            \frac{1}{2} & \frac{1}{2} \\
+            \frac{1}{2} & \frac{1}{2}
+          \end{bmatrix}
+        $$
+
+        Geométricamente estamos \textit{haciendo, llevando {\tiny (mejores palabras serán bienvenidas)}} todo a la dirección $(1,1)$, ponele.
+        $$
+          f(x_0,x_1) = \purple{\frac{1}{2}(x_0 + x_1)} \cdot (1,1) \approx \purple{\lambda} \cdot (1,1)
+        $$
+
+  \item Para la base canónica:
+        $$
+          f(1,0) = (\cos t, \sin t), \quad f(0,1) = (-\sin t, \cos t)
+        $$
+        Entonces, la matriz asociada es:
+        $$
+          M =
+          \begin{bmatrix}
+            \cos t & -\sin t \\
+            \sin t & \cos t
+          \end{bmatrix}
+        $$
+        \begin{minipage}{0.65\textwidth}
+          Geométricamente estamos rotando en sentido antihorario al eje $\ua{x_2}{z}$.
+        \end{minipage}
+        \begin{minipage}{0.35\textwidth}
+          \begin{tikzpicture}[scale=0.8, every node/.style={font={\tiny}}]
+            \draw[-latex] (-1.5,0) -- (3,0) node[below] {$x_0$};
+            \draw[-latex] (0,-1.5) -- (0,2) node[left] {$x_1$};
+
+            \coordinate (P1) at (1,1);
+            \fill[Cerulean] (P1) circle (0.08) node[above right] {$(x_0,x_1)$};
+                  \draw[dotted, Cerulean, -latex] (P1) arc (45:225:{sqrt(2)}) node[midway, left] {$M_{(t = \pi)}$};
+
+            \fill[Cerulean] (-1,-1) circle (0.05) node[below left, Cerulean] {$M_{(t = \pi)}(x_0,x_1)$};
+          \end{tikzpicture}
+        \end{minipage}
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
