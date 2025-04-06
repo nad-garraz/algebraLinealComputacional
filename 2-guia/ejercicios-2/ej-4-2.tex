@@ -1,3 +1,90 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+    Hallar todos los \( a \in \mathbb{R} \) para los cuales exista una transformación lineal 
+
+    \[
+    f: \mathbb{R}^3 \to \mathbb{R}^3
+    \]
+    
+    que satisfaga:
+    
+    \[
+    f(1,-1,1) = (2, a, -1),
+    \]
+    
+    \[
+    f(1,-1,2) = (a^2, -1, 1),
+    \]
+    
+    \[
+    f(1,-1,-2) = (5, -1, -7).
+    \]
 \end{enunciado}
+
+Si los vectores de la salida son linealmente independientes, la transformación lineal existe para cualquier \( a \). Si alguno de ellos es linealmente dependiente, hay que buscar \( a \) para que no indetermine el sistema.
+
+\[
+\begin{bmatrix}
+1 & -1 & 1 \\
+1 & -1 & 2 \\
+1 & -1 & -2
+\end{bmatrix}
+\longrightarrow
+\begin{bmatrix}
+1 & -1 & 1   \\
+0 & 0 & 1   \\
+0 & 0 & -3 
+\end{bmatrix}
+\]
+
+Como el tercer vector es LD se puede escribir:
+
+\[
+\alpha (1,-1,1) + \beta (1,-1,2) = (1,-1,-2).
+\]
+
+Hallamos \( \alpha \) y \( \beta \) resolviendo:
+
+\[
+\begin{bmatrix}
+1 & 1 \\
+-1 & -1 \\
+1 & 2 
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+-1 \\
+-2
+\end{bmatrix}
+\]
+
+Resolviendo tenemos \( \alpha = 4 \), \( \beta = -3 \).
+
+Entonces:
+
+\[
+    f(1,-1,-2) = f(4(1,-1,1) - 3(1,-1,2)) = \\ 
+    = 4(2,a,-1) - 3(a^2,-1,1) = (8-3a^2,4a+3,-7)
+\]
+
+Solo es T.L si ese vector es igual al (5,-1,-7) Esto da el sistema:
+
+\[
+8 - 3a^2 = 5,
+\]
+
+\[
+4a + 3 = -1.
+\]
+
+Resolviendo:
+
+\[
+4a = -4 \Rightarrow a = -1.
+\]
+
+\[
+8 - 3(-1)^2 = 5 \Rightarrow 8 - 3 = 5, \quad \text{(se cumple).}
+\]
+
+Por lo tanto, la transformación lineal existe si y solo si \( a = -1 \).
