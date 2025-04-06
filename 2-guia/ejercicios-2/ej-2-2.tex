@@ -1,3 +1,71 @@
 \begin{enunciado}{\ejercicio}
-\hacer
-\end{enunciado}
+    Escribir la matriz de las siguientes transformaciones lineales en base canónica.
+Interpretar geométricamente cada transformación. \newline
+La parte de Interpretar geometricamente \hacer 
+    \begin{enumerate}[label=(\alph*)]
+    \item \( f(x,y) = (x,0) \)
+    \item \( f(x,y) = (x,-y) \)
+    \item \( f(x,y) = \left( \frac{1}{2} (x + y), \frac{1}{2} (x + y) \right) \)
+    \item \( f(x,y) = (x \cos t - y \sin t, x \sin t + y \cos t) \)
+    
+    \end{enumerate}
+  \end{enunciado}
+  
+  \begin{enumerate}[label=(\alph*)]
+    \item Para la base canónica:
+    \[
+    f(1,0) = (1,0), \quad f(0,1) = (0,0)
+    \]
+    Entonces, la matriz asociada es:
+    \[
+    M =
+    \begin{bmatrix}
+    1 & 0 \\
+    0 & 0
+    \end{bmatrix}
+    \]
+   
+    \item Para la base canónica:
+    \[
+    f(1,0) = (1,0), \quad f(0,1) = (0,-1)
+    \]
+    Entonces, la matriz asociada es:
+    \[
+    M =
+    \begin{bmatrix}
+    1 & 0 \\
+    0 & -1
+    \end{bmatrix}
+    \]
+
+    \item Para la base canónica:
+    \[
+    f(1,0) = \left( \frac{1}{2}, \frac{1}{2} \right), \quad f(0,1) = \left( \frac{1}{2}, \frac{1}{2} \right)
+    \]
+    Entonces, la matriz asociada es:
+    \[
+    M =
+    \begin{bmatrix}
+    \frac{1}{2} & \frac{1}{2} \\
+    \frac{1}{2} & \frac{1}{2}
+    \end{bmatrix}
+    \]
+
+    \item Para la base canónica:
+    \[
+    f(1,0) = (\cos t, \sin t), \quad f(0,1) = (-\sin t, \cos t)
+    \]
+    Entonces, la matriz asociada es:
+    \[
+    M =
+    \begin{bmatrix}
+    \cos t & -\sin t \\
+    \sin t & \cos t
+    \end{bmatrix}
+    \]
+  
+  \end{enumerate}
+  
+  \begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github} 
+  \end{aportes}
