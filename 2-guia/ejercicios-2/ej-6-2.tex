@@ -1,3 +1,152 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+    Sean \( f: \mathbb{R}^3 \to \mathbb{R}^4 \) definido por:
+    \[
+    f(x_1, x_2, x_3) = (x_1 + x_2, x_1 + x_3, 0, 0)
+    \]
+    y \( g: \mathbb{R}^4 \to \mathbb{R}^2 \) definido por:
+    \[
+    g(x_1, x_2, x_3, x_4) = (x_1 - x_2, 2x_1 - x_2).
+    \]
+    Calcular el núcleo y la imagen de \( f \), de \( g \) y de \( g \circ f \).  
+    
+    Decidir si son monomorfismos, epimorfismos o isomorfismos.
 \end{enunciado}
+
+\subsection*{Cálculo de la imagen de \( f \)}
+
+Aplicamos \( f \) a los vectores canónicos de \( \mathbb{R}^3 \):
+
+\[ f(1,0,0) = (1,1,0,0) \]
+\[ f(0,1,0) = (1,0,0,0) \]
+\[ f(0,0,1) = (0,1,0,0) \]
+
+Por lo tanto, el generador de la imagen de \( f \) es:
+
+\[ \text{Im}(f) = \langle (1,1,0,0), (1,0,0,0), (0,1,0,0) \rangle \]
+Como (1,1,0,0) LD:
+\[ \text{Im}(f) = \langle  (1,0,0,0), (0,1,0,0) \rangle \]
+
+
+La dimensión de la imagen es 2.
+
+\subsection*{Cálculo del núcleo de \( f \)}
+
+Buscamos los coeficientes \( \alpha, \beta, \gamma \) tales que:
+
+\[ \alpha(1,1,0,0) + \beta(1,0,0,0) + \gamma(0,1,0,0) = (0,0,0,0) \]
+
+Esto da el sistema:
+
+\[ \alpha + \beta = 0 \]
+\[ \alpha + \gamma = 0 \]
+
+Resolviendo:
+
+\[ \alpha = -\beta \]
+\[ \alpha = -\gamma \]
+
+Reemplazo en los vectores de salida:
+\[ \alpha(1,0,0) - \alpha(0,1,0) - \alpha(0,0,1) = \alpha(1,-1,-1) \]
+
+
+Por lo tanto, el núcleo de \( f \) es:
+
+\[ \text{Nu}(f) = \langle (1,-1,-1) \rangle \]
+
+
+Entonces podemos concluir:
+\newline
+i) Como \( \text{Im}(f) \neq \mathbb{R}^3 \), no es epimorfismo.
+\newline
+ii)Como \( \text{Nu}(f) \neq \{0\} \), no es monomorfismo.
+
+\subsection*{Cálculo de la imagen de \( g \)}
+
+Aplicamos \( g \) a los vectores canónicos de \( \mathbb{R}^4 \):
+
+\[ g(1,0,0,0) = (1,2) \]
+\[ g(0,1,0,0) = (-1,-1) \]
+\[ g(0,0,1,0) = (0,0) \]
+\[ g(0,0,0,1) = (0,0) \]
+
+Por lo tanto, el generador de la imagen de \( g \) es:
+
+\[ \text{Im}(g) = \langle (1,2), (-1,-1) \rangle \]
+
+Los vectores son LI, asi que la dimension es 2. Implica que Im g es \( \mathbb{R}^2 \).
+
+\subsection*{Cálculo del núcleo de \( g \)}
+
+Buscamos los coeficientes \( \alpha, \beta, \gamma, \delta \) tales que:
+
+\[ \alpha(1,2) + \beta(-1,-1) + \gamma(0,0) + \delta(0,0) = (0,0) \]
+
+Esto nos lleva al sistema de ecuaciones:
+
+\[ \alpha - \beta = 0 \]
+\[ 2\alpha - \beta = 0 \]
+
+Resolviendo:
+
+\[ \alpha = \beta \]
+\[ 2\alpha - \alpha = 0 \Rightarrow \alpha = 0, \beta = 0 \]
+
+Por lo tanto, el núcleo de \( g \) es:
+\[ 0(1,0,0,0) + 0(0,1,0,0) + \gamma(0,0,1,0) + \delta(0,0,0,1) = \gamma(0,0,1,0) + \delta(0,0,0,1) \]
+\[ \text{Nu}(g) = \langle (0,0,1,0), (0,0,0,1) \rangle \]
+
+En conclusion
+
+\begin{itemize}
+  \item Como \( \text{Im}(g) = \mathbb{R}^2 \), es epimorfismo.
+  \item Como \( \text{Nu}(g) \neq \{0\} \), no es monomorfismo.
+  \item No es isomorfismo.
+\end{itemize}
+
+\subsection*{Calculo \( g\circ f \)}
+\[ g(f(x_1,x_2,x_3)) = g(x_1+x_2,x_1+x_3,0,0) =\]
+\[ g(x_1+x_2-x_1-x_3,2x_1+2x_2-x_1-x_3) =   \]
+\[ (x_2-x_3,x_1+2x_2-x_3) = g\circ f (x_1,x_2,x_3) \]
+
+\subsection*{Cálculo de la imagen de \( g\circ f \)}
+
+Usando los canonicos como vectores de salida:
+
+\[ g(1,0,0) = (0,1) \]
+\[ g(0,1,0) = (1,2) \]
+\[ g(0,0,1) = (-1,-1) \]
+
+Por lo tanto, el generador de la imagen de \( g \) es:
+
+\[ \text{Im}(g) = \langle (0,1), (1,2), (-1,-1) \rangle \]
+Es LD (-1,-1):
+\[ \text{Im}(g) = \langle (0,1), (1,2) \rangle \]
+
+
+La dimension es 2. Implica que Im es \( \mathbb{R}^2 \).
+
+\subsection*{Cálculo del núcleo de \( g \circ f \)}
+
+Buscamos los coeficientes \( \alpha, \beta, \gamma, \delta \) tales que:
+
+\[ \alpha(0,1) + \beta(1,2) + \gamma(-1,-1) = 0 \]
+
+Resolviendo obtenemos:
+\[ \beta = \gamma\]
+\[ \alpha = -\beta \]
+
+Por lo tanto, el núcleo de \( g \) es:
+\[ -\beta(1,0,0) + \beta(0,1,0) + \beta(0,0,1) = \beta(-1,1,1) \]
+\[ \text{Nu}(g) = \langle (-1,1,1,) \rangle \]
+
+En conclusion
+
+\begin{itemize}
+  \item Como \( \text{Im}(g) = \mathbb{R}^2 \), es epimorfismo.
+  \item Como \( \text{Nu}(g) \neq \{0\} \), no es monomorfismo.
+  \item No es isomorfismo.
+\end{itemize}
+
+\begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
