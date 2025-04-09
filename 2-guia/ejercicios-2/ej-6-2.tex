@@ -18,57 +18,71 @@
 
 Aplicamos $f$ a los vectores canónicos de $\reales^3$:
 
-$$ f(1,0,0) = (1,1,0,0) $$
-$$ f(0,1,0) = (1,0,0,0) $$
-$$ f(0,0,1) = (0,1,0,0) $$
+$$
+  \llave{rcl}{
+    f(1,0,0)  &=& (1,1,0,0)\\
+    f(0,1,0) &=& (1,0,0,0)\\
+    f(0,0,1) &=& (0,1,0,0)
+  }
+$$
 
 Por lo tanto, el generador de la imagen de $ f $ es:
-
 $$ \imagen(f) = \ket{(1,1,0,0), (1,0,0,0), (0,1,0,0)} $$
 Como (1,1,0,0) LD:
-$$ \imagen(f) = \ket{(1,0,0,0), (0,1,0,0)} $$
-
+$$
+  \imagen(f) = \ket{(1,0,0,0), (0,1,0,0)}
+$$
 La dimensión de la imagen es 2.
+\medskip
+
+\textbf{Cálculo del núcleo de $f$}
+
+Buscamos los coeficientes $ \alpha, \beta, \gamma $ tales que:
+$$
+  \alpha(1,1,0,0) + \beta(1,0,0,0) + \gamma(0,1,0,0) = (0,0,0,0)
+$$
+Esto da el sistema:
+$$
+  \llave{rcl}{
+
+    \alpha + \beta = 0\\
+    \alpha + \gamma = 0
+  }
+  \sii
+  \llave{c}{
+    \alpha = -\beta \\
+    \alpha = -\gamma
+  }
+$$
+Reemplazo en los vectores de salida:
+$$
+  \alpha(1,0,0) - \alpha(0,1,0) - \alpha(0,0,1) = \alpha(1,-1,-1)
+$$
+Por lo tanto, el núcleo de $f$ es:
+$$
+  \nucleo(f) = \ket{(1,-1,-1)}
+$$
+
+Entonces podemos concluir:
+\begin{enumerate}[label=\roman*)]
+  \item Como $ \imagen(f) \neq \reales^3 $, no es epimorfismo.
+  \item Como $ \nucleo(f) \neq \set{0} $, no es monomorfismo.
+\end{enumerate}
 
 \medskip
 
-\textbf{Cálculo del núcleo de $ f $}
-
-Buscamos los coeficientes $ \alpha, \beta, \gamma $ tales que:
-
-$$ \alpha(1,1,0,0) + \beta(1,0,0,0) + \gamma(0,1,0,0) = (0,0,0,0) $$
-
-Esto da el sistema:
-
-$$ \alpha + \beta = 0 $$
-$$ \alpha + \gamma = 0 $$
-
-Resolviendo:
-
-$$ \alpha = -\beta $$
-$$ \alpha = -\gamma $$
-
-Reemplazo en los vectores de salida:
-$$ \alpha(1,0,0) - \alpha(0,1,0) - \alpha(0,0,1) = \alpha(1,-1,-1) $$
-
-Por lo tanto, el núcleo de $ f $ es:
-
-$$ \nucleo(f) = \ket{(1,-1,-1)} $$
-
-Entonces podemos concluir:
-\newline
-i) Como $ \imagen(f) \neq \reales^3 $, no es epimorfismo.
-\newline
-ii)Como $ \nucleo(f) \neq \set{0} $, no es monomorfismo.
-
-\subsection*{Cálculo de la imagen de $ g $}
+\textbf{Cálculo de la imagen de $g$}
 
 Aplicamos $g$ a los vectores canónicos de $\reales^4$:
 
-$$ g(1,0,0,0) = (1,2) $$
-$$ g(0,1,0,0) = (-1,-1) $$
-$$ g(0,0,1,0) = (0,0) $$
-$$ g(0,0,0,1) = (0,0) $$
+$$
+  \llave{rcl}{
+    g(1,0,0,0) &=& (1,2)\\
+    g(0,1,0,0) &=& (-1,-1)\\
+    g(0,0,1,0) &=& (0,0)\\
+    g(0,0,0,1) &=& (0,0)
+  }
+$$
 
 Por lo tanto, el generador de la imagen de $ g $ es:
 
@@ -76,71 +90,90 @@ $$ \imagen(g) = \ket{(1,2), (-1,-1)} $$
 
 Los vectores son LI, asi que la dimension es 2. Implica que Im g es $ \reales^2 $.
 
-\subsection*{Cálculo del núcleo de $ g $}
+\medskip
+
+\textbf{Cálculo del núcleo de $g$}
 
 Buscamos los coeficientes $ \alpha, \beta, \gamma, \delta $ tales que:
-
-$$ \alpha(1,2) + \beta(-1,-1) + \gamma(0,0) + \delta(0,0) = (0,0) $$
-
+$$
+  \alpha(1,2) + \beta(-1,-1) + \gamma(0,0) + \delta(0,0) = (0,0)
+$$
 Esto nos lleva al sistema de ecuaciones:
+$$
+  \llave{rcl}{
+    \alpha - \beta = 0\\
+    2\alpha - \beta = 0
+  }
+  \sii
+  \llave{rcl}{
+    \alpha = \beta = 0
+  }
+$$
 
-$$ \alpha - \beta = 0 $$
-$$ 2\alpha - \beta = 0 $$
+Por lo tanto, el núcleo de $g$ es:
+$$
+  0(1,0,0,0) + 0(0,1,0,0) + \gamma(0,0,1,0) + \delta(0,0,0,1) = \gamma(0,0,1,0) + \delta(0,0,0,1)
+  \entonces
+  \nucleo(g) = \ket{(0,0,1,0), (0,0,0,1)}
+$$
 
-Resolviendo:
-
-$$ \alpha = \beta $$
-$$ 2\alpha - \alpha = 0 \Rightarrow \alpha = 0, \beta = 0 $$
-
-Por lo tanto, el núcleo de $ g $ es:
-$$ 0(1,0,0,0) + 0(0,1,0,0) + \gamma(0,0,1,0) + \delta(0,0,0,1) = \gamma(0,0,1,0) + \delta(0,0,0,1) $$
-$$ \nucleo(g) = \ket{(0,0,1,0), (0,0,0,1)} $$
-
-En conclusion
-
+En conclusión
 \begin{itemize}
   \item Como $ \imagen(g) = \reales^2 $, es epimorfismo.
   \item Como $ \nucleo(g) \neq \set{0} $, no es monomorfismo.
   \item No es isomorfismo.
 \end{itemize}
 
-\subsection*{Calculo $ g\circ f $}
-$$ g(f(x_1,x_2,x_3)) = g(x_1+x_2,x_1+x_3,0,0) =$$
-$$ g(x_1+x_2-x_1-x_3,2x_1+2x_2-x_1-x_3) =   $$
-$$ (x_2-x_3,x_1+2x_2-x_3) = g\circ f (x_1,x_2,x_3) $$
+\textbf{Calculo $ g\circ f $}
+$$
+  \begin{array}{rcl}
+    g(f(x_1,x_2,x_3)) & = & g(x_1+x_2,x_1+x_3,0,0)              \\
+                      & = & (x_1+x_2-x_1-x_3,2x_1+2x_2-x_1-x_3) \\
+                      & = & (x_2-x_3,x_1+2x_2-x_3)              \\
+                      & = & g\circ f (x_1,x_2,x_3)
+  \end{array}
+$$
 
-\subsection*{Cálculo de la imagen de $ g\circ f $}
+\textbf{Cálculo de la imagen de $ g\circ f $}
 
-Usando los canonicos como vectores de salida:
+Usando los canónicos como vectores de salida:
 
-$$ g(1,0,0) = (0,1) $$
-$$ g(0,1,0) = (1,2) $$
-$$ g(0,0,1) = (-1,-1) $$
-
+$$
+  \llave{rcl}{
+    g(1,0,0) &=& (0,1) \\
+    g(0,1,0) &=& (1,2) \\
+    g(0,0,1) &=& (-1,-1)
+  }
+$$
 Por lo tanto, el generador de la imagen de $ g $ es:
-
-$$ \imagen(g) = \ket{(0,1), (1,2), (-1,-1)} $$
-Es LD (-1,-1):
-$$ \imagen(g) = \ket{(0,1), (1,2)} $$
-
+$$
+  \imagen(g) = \ket{(0,1), (1,2), (-1,-1)}
+$$
+Es \textit{linealmente independiente} $(-1,-1)$:
+$$
+  \imagen(g) = \ket{(0,1), (1,2)}
+$$
 La dimension es 2. Implica que Im es $ \reales^2 $.
 
+\medskip
 \textbf{Cálculo del núcleo de $ g \circ f $}
 
 Buscamos los coeficientes $ \alpha, \beta, \gamma, \delta $ tales que:
-
-$$ \alpha(0,1) + \beta(1,2) + \gamma(-1,-1) = 0 $$
-
-Resolviendo obtenemos:
-$$ \beta = \gamma$$
-$$ \alpha = -\beta $$
-
-Por lo tanto, el núcleo de $ g $ es:
-$$ -\beta(1,0,0) + \beta(0,1,0) + \beta(0,0,1) = \beta(-1,1,1) $$
-$$ \nucleo(g) = \ket{ (-1,1,1,) } $$
-
-En conclusion
-
+$$
+  \alpha(0,1) + \beta(1,2) + \gamma(-1,-1) = 0
+  \Entonces{\magic}
+  \llave{rcl}{
+    \beta &=& \gamma\\
+    \alpha &=& -\beta
+  }
+$$
+Por lo tanto, el núcleo de $g$ es:
+$$
+  -\beta(1,0,0) + \beta(0,1,0) + \beta(0,0,1) = \beta(-1,1,1)
+  \entonces
+  \nucleo(g) = \ket{ (-1,1,1,) }
+$$
+En conclusión:
 \begin{itemize}
   \item Como $ \imagen(g) = \reales^2 $, es epimorfismo.
   \item Como $ \nucleo(g) \neq \set{0} $, no es monomorfismo.
@@ -149,4 +182,5 @@ En conclusion
 
 \begin{aportes}
   \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
 \end{aportes}
