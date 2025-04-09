@@ -1,3 +1,90 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Si $x \en \reales^n$, probar que las constantes de equialencia
+  entre las normas $\normaBullet_1$ y $\normaBullet_2$
+  y entre las normas $\normaBullet_2$ y $\normaBullet_\infty$ vienen dadas por:
+  $$
+    \begin{array}{c}
+      \norma{x}_\infty \leq \norma{x}_2 \leq \sqrt{n} \norma{x}_\infty \\
+      \frac{1}{\sqrt{n}}\norma{x}_1 \leq \norma{x}_2 \leq \norma{x}_1
+    \end{array}
+  $$
 \end{enunciado}
+
+\hyperlink{teoria-2:normas}{Acá están las definiciones de las normas que se usan en el ejercicio {\tiny($\ot$ click)}}
+
+Entonces si tengo un $x \en \reales^n$:
+$$
+  x = (x_1, \cdots, x_n)
+  \flecha{calculo}[$\normaBullet_2$]
+  \norma{x}_2 = \sqrt{x_1^2 + \cdots + x_n^2} =
+  |\ua{x_i}{\maximo{1\leq i \leq n} |x_i|}| \cdot
+  \ub{\sqrt{\parentesis{\frac{x_1}{x_i}}^2 + \cdots + \ua{1}{i-\text{ésimo lugar}} + \cdots + \parentesis{\frac{x_n}{x_i}}^2}}{\geq 1}
+  \mayorIgual{\red{!}}
+  |x_i|=
+  \norma{x}_\infty
+$$
+Ahí queda mostrado que:
+$$
+  \cajaResultado{
+    \norma{x}_\infty \leq \norma{x}_2
+  }
+$$
+Parecido:
+$$
+  \norma{x}_2 = \sqrt{x_1^2 + \cdots + x_n^2} \menorIgual{\red{!}}
+  \sqrt{x_i^2 + \cdots + x_i^2} =
+  \sqrt{n \cdot x_i^2} =
+  \sqrt{n} \cdot |x_i| =
+  \sqrt{n} \cdot \norma{x}_\infty
+$$
+Ahí queda mostrado que:
+$$
+  \cajaResultado{
+    \norma{x}_2 \leq \sqrt{n}\cdot \norma{x}_\infty
+  }
+$$
+
+Ahora para la relación entre $\normaBullet_1$ y $\normaBullet_2$:
+
+Recuerdo Desigualdad de \textit{Cauchy Schwartz:}
+
+$$
+  |x^T y| \menorIgual{$\llamada1$} \norma{x}_2 \cdot \norma{y}_2
+$$
+Con $y = (1,\ldots,1) \entonces \norma{y}_2 = \sqrt{n}$ y tomo el módulo de las coordenadas de $x$:
+$$
+  (|x_1|, \ldots, |x_n|) \cdot
+  \matriz{c}{
+    1\\
+    \vdots\\
+    1
+  }
+  \menorIgual{$\llamada1$}
+  \sqrt{n} \cdot \sqrt{|x_1|^2 + \cdots + |x_n|^2}
+  \sii
+  \ub{|x_1| + \cdots + |x_n|}{\norma{x}_1} \leq \sqrt{n} \cdot \ub{\sqrt{|x_1|^2 + \cdots + |x_n|^2}}{\norma{x}_2}
+$$
+De donde pasando para acá y para allá queda que:
+$$
+  \cajaResultado{
+    \frac{1}{\sqrt{n}}\norma{x}_1 \leq \norma{x}_2
+  }
+$$
+La última que queda también usando al desigualdad de \textit{Cauchy Schwartz}:
+$$
+  |x^t \cdot y| \menorIgual{$\llamada2$} \norma{x}_1 \cdot \norma{y}_1
+$$
+Ahora uso $y = x$
+$$
+  |x^t \cdot x| \menorIgual{$\llamada2$} \norma{x}_1 \cdot \norma{x}_1
+  \sii
+  (\norma{x}_2)^2 \leq (\norma{x}_1)^2
+  \sii
+  \cajaResultado{
+    \norma{x}_2 \leq \norma{x}_1
+  }
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
