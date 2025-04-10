@@ -1,3 +1,151 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Para las siguientes matrices
+  $$
+    A =
+    \matriz{ccc}{
+      1 & 2 & 1 \\
+      2 & 3 - \varepsilon & 2 + \varepsilon \\
+      0 & 1 + \varepsilon & \varepsilon
+    }
+    \qquad
+    b =
+    \matriz{c}{
+      0  \\
+      0.1 \\
+      0.1
+    }
+  $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Tomando $\varepsilon = 0.001$, resolver el sistema $Ax = b$ mediante eliminación gaussiana sin
+          intercambio de filas usando aritmética de punto flotante en base 10 con 3 dígitos de mantisa
+          y sistema de redondeo.
+
+    \item Para $\varepsilon = 0.001$, hallar la solución exacta $x$ del sistema y comparar con la solución del ítem anterior
+          ¿Cómo explica la diferencia?
+  \end{enumerate}
 \end{enunciado}
+
+Voy a usar \blue{3 dígitos de mantisa}, es decir \blue{3} números significativos:
+
+\red{\huge Consultar si esto es así:}
+$$
+  \begin{array}{l}
+    3.01 = 0.\blue{301} \cdot 10^1                                                       \\
+    3.001 = 0.\blue{300}\red{1} \cdot 10^1 \flecha{trunca}[redondea] 0.3 \cdot 10^1  = 3 \\
+    3.005 = 0.\blue{300}\red{5} \cdot 10^1 \flecha{trunca}[redondea] 0.301 \cdot 10^1 = 3.01
+  \end{array}
+$$
+
+$$
+  \varepsilon = 0.001 = 0.1 \cdot 10^{-2}
+$$
+
+\begin{enumerate}[label=(\alph*)]
+  \item$$
+          \begin{array}{clll}
+            (A|b)
+            =
+            \matriz{ccc|c}{
+            1 & 2                               & 1                               & 0   \\
+            2 & 3 - \varepsilon                 & 2 + \varepsilon                 & 0.1 \\
+            0 & 1 + \varepsilon                 & \varepsilon                     & 0.1
+            }
+              & \igual{\red{!}}                 &
+            \matriz{ccc|c}{
+            1 & 2                               & 1                               & 0   \\
+            2 & 0.3 \taa{\llamada1}{}\cdot 10^1 & 0.2 \taa{\llamada2}{}\cdot 10^1 & 0.1 \\
+            0 & 0.1 \taa{\llamada3}{}\cdot 10^1 & 0.1 \cdot 10^{-2}               & 0.1
+            }                                                                           \\
+            \triangulacion{
+              F_2 - 2 F_1 \to F_2
+            }
+              &                                 &
+            \matriz{ccc|c}{
+            1 & 2                               & 1                               & 0   \\
+            0 & -1                              & 0                               & 0.1 \\
+            0 & 1                               & 0.001                           & 0.1
+            }                                                                           \\
+            \triangulacion{
+              F_3 +  F_2 \to F_3
+            }
+              & \igual{\red{!}}                 &
+            \matriz{ccc|c}{
+            1 & 2                               & 1                               & 0   \\
+            0 & -1                              & 0                               & 0.1 \\
+            0 & 0                               & 0.001                           & 0.2
+            }                                                                           \\
+          \end{array}
+        $$
+
+        Esas cuentas falopas con \textit{punto flotante}:
+
+        La solución sería:
+        $$
+          \llave{l}{
+            x =  0.2 - 200 = -\blue{199}.8 \igual{$\llamada4$} -200\\
+            y = -0.1\\
+            z = 0.2 \div (0.1 \cdot 10^{-2}) = 200
+          }
+        $$
+
+        $
+          \llave{l}{
+            \llamada1 2.999 \flecha{trunca y}[redondea] 3\\
+            \llamada2 2.001 \flecha{trunca y}[redondea] 2\\
+            \llamada3 1.001 \flecha{trunca y}[redondea] 1\\
+            \llamada4 -199.8 \flecha{trunca y}[redondea] -200
+          }.
+        $
+
+  \item $$
+          \begin{array}{cllll}
+            (A|b)
+            =
+            \matriz{ccc|c}{
+            1 & 2               & 1               & 0   \\
+            2 & 3 - \varepsilon & 2 + \varepsilon & 0.1 \\
+            0 & 1 + \varepsilon & \varepsilon     & 0.1
+            }
+              & \igual{\red{!}} &
+            \matriz{ccc|c}{
+            1 & 2               & 1               & 0   \\
+            2 & 2.999           & 2.001           & 0.1 \\
+            0 & 1.001           & 0.001           & 0.1
+            }                                           \\
+            \triangulacion{
+              F_2 - 2 F_1 \to F_2
+            }
+              &                 &
+            \matriz{ccc|c}{
+            1 & 2               & 1               & 0   \\
+            0 & -1.001          & 0.001           & 0.1 \\
+            0 & 1.001           & 0.001           & 0.1
+            }                                           \\
+            \triangulacion{
+              F_3 +  F_2 \to F_3
+            }
+              &                 &
+            \matriz{ccc|c}{
+            1 & 2               & 1               & 0   \\
+            0 & -1.001          & 0.001           & 0.1 \\
+            0 & 0               & 0.002           & 0.2
+            }                                           \\
+          \end{array}
+        $$
+
+        La solución sería:
+        $$
+          \llave{l}{
+            x = -100\\
+            y = 0\\
+            z = 100
+          }
+        $$
+\end{enumerate}
+
+\copyPaste
+\codigoPython{ej-9/codigo9-1.py}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
