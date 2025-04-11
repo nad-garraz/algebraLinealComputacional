@@ -1,3 +1,62 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Para cada una de las siguientes sucesiones de vectores $\set{\bm{x}_n}_{n\en\naturales}$ en $\reales^2$,
+  determinar si existe $\lim_{n \to \infty} \bm{x}_n$, y en caso afirmativo hallarlo.
+  \begin{enumerate}[label=\alph*)]
+    \begin{multicols}{2}
+      \item $\bm{x}_n = (1 + \frac{1}{n}, 3)$,
+
+      \item $\bm{x}_n = ((-1)^n, e^{-n})$,
+
+      \item $\bm{x}_n =
+        \llave{rl}{
+          (\frac{1}{n}, 0) & \text{si $n$ es par}\\
+          (0,- \frac{1}{n}) & \text{si $n$ es impar}
+        },
+      $
+
+      \item $
+        \bm{x}_n = (\frac{1}{2^n}, 4, \sin(\pi n)).
+      $
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+
+{\huge\red{\atencion CONSULTAR, demasiado simple?}}
+
+\begin{enumerate}[label=\alph*)]
+  \item Calculo de una:
+        $$
+          \cajaResultado{
+            \bm{x}_n = (1 + \frac{1}{n}, 3) \flecha{$n \to \infty$} (1,3)
+          }
+        $$
+
+  \item $\bm{x}_n = ((-1)^n, e^{-n})$, \orange{\underline{\negro{no existe}}} ver ejercicio \ref{ej:12} \ref{ej12-item-c}
+
+  \item $\bm{x}_n =
+          \llave{rl}{
+            (\frac{1}{n}, 0) & \text{si $n$ es par}\\
+            (0,- \frac{1}{n}) & \text{si $n$ es impar}
+          },
+        $
+        $$
+          \cajaResultado{
+            \bm{x}_n \flecha{}[$n \to \infty$] (0,0)
+          }
+        $$
+
+  \item $
+          \bm{x}_n = (\frac{1}{2^n}, 4, \sin(\pi n)).
+        $
+
+        Dado que $\sin(\pi \cdot n) = 0 \quad \paratodo n \en \naturales$
+        $$
+          \cajaResultado{
+            \bm{x}_n \flecha{}[$n \to \infty$] (0,4,0)
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

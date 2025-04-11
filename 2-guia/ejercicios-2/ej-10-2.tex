@@ -1,3 +1,27 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Considerar las matrices:
+  $$
+    A =
+    \matriz{ccc}{
+      1 & n & 5n \\
+      1 & 3n & 3n \\
+      1 & n & 2n
+    }
+    \ytext
+    \matriz{ccc}{
+      \frac{2n}{3} \\
+      \frac{2n}{3} \\
+      \frac{n}{3}
+    },
+  $$
+  con $n \en \naturales$.
+  \begin{enumerate}[label=\alph*)]
+    \item Para $n = 10^4$, resolver el sistema $Ax = b$ por eliminación gaussiana sin intercambio de filas utilizando
+          aritmética de 4 dígitos con redondeo (en base 10).
+
+    \item Verificar que, para todo $n \en \naturales$, la solución exacta del sistema es $x = (0, \frac{1}{9}, \frac{1}{9})$
+          y comparar, para $n = 10^4$, la solución aproximada con la solución exacta.
+  \end{enumerate}
 \end{enunciado}
+
+\hacer

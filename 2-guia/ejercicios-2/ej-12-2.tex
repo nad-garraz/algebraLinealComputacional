@@ -1,3 +1,52 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Para cada una de ls siguientes sucesiones $\set{x_n}_{n \en \naturales}$, determinar si existe
+  $\lim_{n\to \infty}$, y en caso afirmativo hallarlo.
+  \begin{enumerate}[label=\alph*)]
+    \begin{multicols}{2}
+      \item $x_n = \frac{1}{n}$,
+      \item $x_n = \frac{n^2 + 1}{n^2 - 1}$,
+      \item $x_n = (-1)^n$,
+      \item $x_n = (-1)^n e^{-n}$.
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+
+{\huge\red{\atencion CONSULTAR, demasiado simple?}}
+\begin{enumerate}[label=\alph*)]
+  \item $x_n = \frac{1}{n}
+          \entonces
+          \limite{n}{\infty} \frac{1}{n} = 0
+        $
+
+  \item $x_n = \frac{n^2 + 1}{n^2 - 1}
+          \entonces
+          \limite{n}{\infty} \frac{n^2 + 1}{n^2 - 1} = 1
+        $
+
+  \item\label{ej12-item-c} $x_n = (-1)^n$
+
+        Uso subsucesiones, para mostrar que no existe. La idea es que de existir el límite, sin importar como me acerque a $\infty$ todo
+        camino debería llegar al mismo resultado.
+        $$
+          \llave{rcl}{
+            \blue{a_{2n}} = (-1)^{2n} & \flecha{$n\to \infty$} & 1 \\
+            \green{a_{2n-1}} = (-1)^{2n-1} & \flecha{$n\to \infty$} & -1
+          }
+        $$
+        Calculo los límites
+        $$
+          \limite{n}{\infty} x_{\blue{a_{2n}}} = 1
+          \ytext
+          \limite{n}{\infty} x_{\green{a_{2n-1}}} = -1
+        $$
+        Dado que los límites no coiciden el límite no existe.
+
+  \item $x_n = (-1)^n e^{-n}
+          \entonces
+          \limite{n}{\infty} (-1)^n \cdot \ua{\frac{1}{e^n}}{\to 0} = \text{acotado} \cdot 0 = 0 $.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
+

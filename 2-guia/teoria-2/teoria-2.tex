@@ -117,6 +117,21 @@
                 \end{tikzpicture}
         \end{itemize}
 
+  \item Sea $A \en \reales^{n \times n}$ una matriz inversible y sea $\normaBullet$ una norma en
+        $\reales^n$ definimos el número de condición de $A$ como:
+        $$
+          \condicion(A) = \norma{A}\norma{A^{-1}}
+        $$
+        \begin{itemize}
+          \item $\condicion(A) = \condicion(A^{-1})$
+          \item $\condicion(A) \geq 1 \quad \paratodo A \en \reales^{n \times n}$
+        \end{itemize}
+  \item Si $A \en \reales^{n \times n}$ es inversible, $b, \Delta b \en \reales^{n}, Ax = b \ytext A(x + \Delta x) = b + \Delta b$ entonces,
+        $$
+          \frac{\norma{\Delta x}}{\norma{x}} \leq \condicion(A) \cdot \frac{\norma{\Delta b}}{\norma{b}}
+        $$
+        valiendo la igualdad para alguna elección de $b$ y $\Delta b$
+
 \end{enumerate}
 
 %===========================================
