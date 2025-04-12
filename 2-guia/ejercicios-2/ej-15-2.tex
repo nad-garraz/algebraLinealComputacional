@@ -1,3 +1,40 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+    Dada una sucesión de vectores $\set{\bm{x}_n}_{n \en \naturales} \subset \reales^k$  probar
+    $$
+      \norma{\bm{x}_n}_1 \flecha{}[$n \to \infty$] 0
+      \sisolosi
+       (x_n)_i \flecha{}[$n \to \infty$] 0, 1 \leq i \leq k
+    $$
+    donde $(x_n)_i$ es la i-esima coordenada de $x_n$.
+
 \end{enunciado}
+
+\medskip
+
+Tener en cuenta que: $||x_n||_1 \flecha{}[$n \to \infty$] 0$ es $\limite{n}{\infty} \sum_{i=1} ^{n} |x_i| = 0$
+
+\begin{enumerate}[label=(\roman*)]
+\item veo la ida:
+\\
+Como $||x_n||_1 \flecha{}[$n \to \infty$] 0$ y la norma se compone de sumar valores mayores o iguales a cero, se puede 
+implicar que cada elemento con n tendiendo a infinito debe ser 0, es decir $(x_n)_i \flecha{}[$n \to \infty$] 0$ para todo i.
+\\
+Mas formal:
+
+Por el absurdo: asumo que existe un $(x_n)_i$ distinto de cero
+
+por la implicacion se que $\limite{n}{\infty} \sum_{i=1} ^{n} |x_i| = 0$, como solo sumo positivos es absurdo si hay algun $x_i$ tq: $x_i$ no es cero
+\item veo la vuelta:
+\\ 
+Si $(x_n)_i \flecha{}[$n \to \infty$] 0$ para todo i, puedo implicar  que $\norma{\bm{x}_n}_1 \flecha{}[$n \to \infty$] 0$,
+porque es sumar todos esos elementos. Mas formal:
+
+$\limite{n}{\infty} \sum_{i=1} ^{n} |x_i| = 0$ con cada $x_i = 0$ con n tendiendo a infinito:
+
+$\limite{n}{\infty} \sum_{i=1} ^{n} 0 = 0$ vale
+\end{enumerate}
+
+\begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
+  
