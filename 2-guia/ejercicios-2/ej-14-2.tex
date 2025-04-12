@@ -7,4 +7,47 @@
     \norma{\bm{x}_n}_b \flecha{}[$n \to \infty$] 0.
   $$
 \end{enunciado}
-\hacer
+
+\medskip
+
+
+En un espacio vectorial de dimension finita todas las normas son equivalentes, entonces existen c1,c2 tq:
+\begin{equation*}
+  c_1||x_n||_b \leq ||x_n||_a \leq c2||x_n||_b
+\end{equation*}
+
+
+
+\begin{enumerate}[label=(\roman*)]
+  \item Veo la ida
+  Veo la ida, reemplazo en la desigualdad tomada por limite:
+
+  $\limite{n}{\infty} c_1||x_n||_b \leq 0 \leq \limite{n}{\infty}  c2||x_n||_b $
+  
+  sacando las constantes para afuera:
+  
+  $c_1 \limite{n}{\infty} ||x_n||_b \leq 0 \leq  c2 \limite{n}{\infty} ||x_n||_b $
+  
+  como  $c_1, c_2 > 0$ (renombrando $\limite{n}{\infty}$ como x):
+  
+  $c1x \leq 0 \rightarrow x \leq 0 $
+  
+  $c2x \geq 0 \rightarrow x \geq  0 $
+  
+  Por lo tanto, $\limite{n}{\infty} ||x_n||_b = 0$ ,como queriamos ver, vale la ida
+
+  \item Veo la vuelta.
+  Vuelvo a reemplazar tomando limite, pero en ese caso $\limite{n}{\infty} ||x_n||_b = 0$
+
+  $0 \leq \limite{n}{\infty} ||x_n||_a \leq 0$
+
+  Se ve entonces que: $\limite{n}{\infty} ||x_n||_a=0$
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
+
+ 
+
