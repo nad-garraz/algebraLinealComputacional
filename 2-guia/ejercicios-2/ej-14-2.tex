@@ -2,10 +2,60 @@
   Dada una sucesión de vectores $\set{\bm{x}_n}_{n \en \naturales} \subset \reales^k$ y dos normas $\normaBullet_a$ y $\normaBullet_b$ de
   $\reales^k$, usando la equivalencia de normas, probar
   $$
-    \norma{\bm{x}_n}_a \flecha{}[$n \to \infty$] 0
+    \norma{\bm{x}_n}_a \flecha{$n \to \infty$} 0
     \sisolosi
-    \norma{\bm{x}_n}_b \flecha{}[$n \to \infty$] 0.
+    \norma{\bm{x}_n}_b \flecha{$n \to \infty$} 0.
   $$
 \end{enunciado}
 
-\hacer
+\medskip
+
+En un espacio vectorial de dimension finita todas las normas son equivalentes, entonces existen $c_1,c_2 > 0$ tal que:
+$$
+  c_1 \norma{\bm{x}_n}_b
+  \leq
+  \norma{\bm{x}_n}_a
+  \leq
+  c_2 \norma{\bm{x}_n}_b
+$$
+
+\begin{enumerate}
+  \item[$\red{(\Rightarrow)}$]
+        Reemplazo en la desigualdad tomada por límite:
+        $$
+          \limite{n}{\infty} c_1\norma{\bm{x}_n}_b \leq \ua{0}{\text{hipótesis}}
+          \leq
+          \limite{n}{\infty}  c_2\norma{\bm{x}_n}_b
+        $$
+        sacando las constantes para afuera del límite (propiedad del límite):
+        $$
+          c_1 \limite{n}{\infty} \norma{\bm{x}_n}_b \leq 0 \leq  c_2 \limite{n}{\infty} \norma{\bm{x}_n}_b
+        $$
+        como  $c_1, c_2 > 0$:
+        $$
+          c_1 \cdot \limite{n}{\infty} \norma{\bm{x}}_b \leq 0
+          \sii
+          \limite{n}{\infty} \norma{\bm{x}}_b \leq 0
+          \quad \ytext \quad
+          c_2 \cdot \limite{n}{\infty} \norma{\bm{x}}_b \geq 0
+          \sii
+          \limite{n}{\infty} \norma{\bm{x}}_b \geq  0
+        $$
+        Por lo tanto, $\limite{n}{\infty} \norma{\bm{x}_n}_b = 0$ ,como queriamos ver, vale la ida
+
+  \item[$\red{(\Leftarrow)}$]
+        Vuelvo a reemplazar tomando límite, pero en ese caso
+        $$
+          \limite{n}{\infty} \norma{\bm{x}_n}_b = 0
+          \entonces
+          0 \leq \limite{n}{\infty} \norma{\bm{x}_n}_a \leq 0
+          \Sii{propiedad}[\faIcon{hamburger}]
+          \limite{n}{\infty} \norma{\bm{x}_n}_a = 0
+        $$
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
