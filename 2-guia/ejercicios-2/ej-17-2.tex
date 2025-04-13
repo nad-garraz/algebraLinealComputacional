@@ -1,3 +1,55 @@
 \begin{enunciado}{\ejercicio}
-\hacer
-\end{enunciado}
+
+    Probar que para toda matriz \( A \in \mathbb{R}^{n \times n} \)
+    
+    \[||A||_\infty = \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij}|\]
+    
+    Definición de norma infinito: 
+    
+    \[||A||_\infty = \max_{||x||_\infty = 1} ||Ax||_\infty\]
+    
+    Veamos que:
+    
+    \[||Ax||_\infty = \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij} \cdot x_j| \stackrel{\text{Des. triangular}}{\leq} \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij}| \cdot |x_j| \stackrel{\text{Por ser el max }|x_j|}{\leq} \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij}| \cdot ||x||_\infty = \max_{1 \leq i \leq n} ||x||_\infty \sum_{j=1}^{n} |a_{ij}|\]
+    
+    Luego, nos queda que 
+    
+    \[||Ax||_\infty \leq ||x||_\infty \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij}|\]
+    
+    Volvamos a $||A||_\infty$. Reemplazamos $||Ax||_\infty$ por la desigualdad que obtuvimos
+    
+    \[||A||_\infty \leq \max_{||x||_\infty = 1} ||x||_\infty \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij}|\]
+    
+    Como $||x||_\infty = 1$, nos queda que:
+    
+    \[||A||_\infty \leq \max_{1 \leq i \leq n} \sum_{j=1}^{n} |a_{ij}|\]
+    
+    Llamaremos a esta expresión de la derecha $M$.
+    
+    \[||A||_\infty \leq M\]
+    
+    Ahora, busquemos demostrar la igualdad encontrando un $x$ particular.
+    
+    Sea $\tilde{x} = e_{\hat{i}}$ tal que $||Ax||_\infty = M$.
+    
+    Es decir, vemos que se cumple que 
+    
+    \[\hat{i} = \max \{i \in [1, n] : \sum_{j=1}^{n} |a_{ij}|\}\]
+    
+    Es decir, la fila cuya suma de modulos es la mayor.
+    
+    Además, vemos que, por ser $\tilde{x}$ un vector canonico, se cumple que $||x||_\infty = 1$.
+    
+    Luego como sabemos que 
+    
+    \begin{itemize}
+        \item $||A||_\infty \leq M$ para todo $x$ con $||x||_\infty = 1$
+        \item Existe un $\tilde{x}$ tal que $||A\tilde{x}||_\infty = M$
+    \end{itemize}
+    
+    \[ ||A||_\infty = \max_{||x||_\infty = 1} ||Ax||_\infty = M\]
+    
+    Puesto que encontramos un $x$ que cumple la igualdad, y se que todo el resto son menores o iguales.
+    
+    \end{enunciado}
+    
