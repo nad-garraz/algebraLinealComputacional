@@ -1,3 +1,62 @@
 \begin{enunciado}{\ejercicio}
-\hacer
-\end{enunciado}
+    Sea $A \en \reales ^{nxn}$, probar que las constantes de equivalencia entre las normas $||.||_1$ y $||.||_2$
+    y entre las normas $||.||_1$ y $||.||_\infinito$ vienen dadas por:
+    
+    $$
+    \frac{1}{\sqrt{n}} ||A||_\infinito \leq ||A||_2 \leq \sqrt{n} ||A||_\infinito
+    $$
+    $$
+    \frac{1}{\sqrt{n}} ||A||_1 \leq ||A||_2 \leq \sqrt{n} ||A||_1
+    $$
+    
+    \end{enunciado}
+    
+    \begin{enumerate}[label=(\alph*)]
+    \item 
+        Veo los dos lados de la desigualdad
+        \begin{enumerate}[label=(\roman*)]
+            \item 
+            veo la parte izquierda de la desigualdad:
+    
+            $||A||_2 = max \{\frac{||Ax||_2}{||x||_2} \}$
+    
+            Quiero  achicar el numerador y agrandar el denominador para armar una expesion mas chica.\\ 
+            Recordar por ejercicio 11 que:$||x||_2 \geq ||x||_\infinito$ y $\sqrt{n} ||x||_\infinito \geq  ||x||_2$, entonces:
+    
+            $max \{\frac{||Ax||_2}{||x||_2} \} \geq max \{\frac{||Ax||_\infinito}{\sqrt{n} ||x||_\infinito} \} = \frac{1}{\sqrt{n}} ||A||_\infinito$ 
+            \item 
+            veo la parte derecha de la desigualdad:
+            
+            Ahora como quiero ver que $||A||_2$ es mas chico que otra cosa. "agrando" el numerador y "achico" denominador
+            para armar una expresion mas grande.
+            
+            Recordar por ejercicio 11 que:$||x||_2 \leq \sqrt{n} ||x||_\infinito$ y $||x||_\infinito \leq  ||x||_2$, entonces:
+            
+            $||A||_2=max \{\frac{||Ax||_2}{||x||_2} \} \leq max \{\frac{\sqrt{n} ||Ax||_\infinito}{||x||_\infinito} \} = \sqrt{n} ||A||_\infinito$ 
+        \end{enumerate}
+        Queda demostrado.
+    \item 
+        Veo los dos lados de la desigualdad
+        \begin{enumerate}[label=(\roman*)]
+            \item
+            Para ver que es mas grande, tengo que armar una expresion mas chica. Achico el numerador y agrando el denominador.
+            
+            Recordar por ejercicio 11 que $||x||_2 \geq \frac{1}{\sqrt{n}} ||x||_1$ y $||x||_2 \leq  ||x||_1$, entonces:
+    
+            $||A||_2 = max \{\frac{||Ax||_2}{||x||_2} \} \geq  max \{\frac{\frac{1}{\sqrt{n}} ||Ax||_1}{||x||_1} \} =
+            \frac{1}{\sqrt{n}} ||A||_1$
+            \item
+            Para ver que es mas chico, tengo que armar una expresion mas grande. Agrando el numerador y achico el denominador.
+    
+            Recordar por ejercicio 11 que $||x||_ \geq \frac{1}{\sqrt{n}} ||x||_1$ y $||x||_2 \leq  ||x||_1$, entonces:
+    
+            $||A||_2 = max \{\frac{||Ax||_2}{||x||_2} \} \leq  max \{\frac{||Ax||_1}{\frac{1}{\sqrt{n}} ||x||_1} \} =
+            \sqrt{n} ||A||_1$
+    
+            Queda demostrado
+        \end{enumerate}
+    
+    \end{enumerate}
+    
+    
+    
