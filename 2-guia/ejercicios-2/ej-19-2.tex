@@ -1,3 +1,94 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+    Se tiene el sistema $ Ax = b $.
+
+    \begin{itemize}
+        \item[(a)] Sea \( x \) la solución exacta y \( \tilde{x} \) la solución obtenida numéricamente. \
+        Se llama \textbf{residuo} al vector: $r := b - A\tilde{x}$.
+        Si notamos $e = x - \tilde{x}$, mostrar que:
+        $$
+        \frac{1}{cond(A)}  \frac{\|r\|}{\|b\|} \leq \frac{\|e\|}{\|x\|} \leq  cond(A) \frac{\|r\|}{\|b\|}.
+        $$
+
+        \item[(b)] En lugar del dato exacto \( b \), se conoce una aproximación \( \tilde{b} \). 
+        Se tiene que \( \tilde{x} \) satisface: $A\tilde{x} = \tilde{b}.$
+        Probar que:
+        \[
+        \frac{1}{cond(A)}  \frac{||b - \tilde{b}||}{\|b\|} \leq \frac{||x - \tilde{x}||}{\|x\|} \leq cond(A)  \frac{||b - \tilde{b}||}{||b||}.
+        \]
+    
+        ¿Cómo se puede interpretar este resultado?
+    \end{itemize}
 \end{enunciado}
+
+\medskip
+
+Algunas consideraciones antes de empezar:
+\begin{enumerate}[label=(\roman*)]
+\item $b = Ax$
+\item $r = Ax - A\tilde{x} = A(x - \tilde{x})$
+\item $e = A^{-1} r$
+\item cuando uso la propiedad de consistencia pongo una c arriba de la desigualdad,ojo: varias veces achico el denominador para armar algo mas grande
+\end{enumerate}
+
+\begin{enumerate}[label=(\alph*)]
+    \item 
+    Veo primero 
+    $\frac{1}{cond(A)} \frac{\|r\|}{\|b\|} \leq \frac{\|e\|}{\|x\|}$:
+
+    $\frac{1}{cond(A)} \frac{\|r\|}{\|b\|} = 
+    \frac{1}{||A^{-1}|| ||A||} \frac{||A e||}{||A x||} \menorIgual{c}
+    \frac{1}{||A^{-1}|| ||A||} \frac{||A|| ||e||}{||Ax||} =
+    \frac{1}{||A^{-1}|| } \frac{||e||}{||Ax||} \menorIgual{c}
+    \frac{||e||}{||A^{-1} Ax|| } = 
+    \frac{||e||}{||x||}
+    $ 
+
+    ahora veo 
+    $  \frac{\|e\|}{\|x\|} \leq  cond(A)  \frac{\|r\|}{\|b\|}$ :
+
+    $\frac{||e||}{||x||} = 
+     \frac{||A^{-1} r||}{||x||} \menorIgual{c}
+     \frac{||A^{-1}|| ||r||}{||x||} =
+     \frac{||A||}{||A||} \frac{||A^{-1}|| ||r||}{||x||} = 
+     \frac{cond(A) ||r||}{||A|| ||x||} \menorIgual{c}
+     \frac{cond(A) ||r||}{||A x||} =
+     \frac{cond(A) ||r||}{||b||}
+    $
+
+    Queda demostrado
+    \item Es igual que el item anterior 
+    
+    Veo primero: 
+    $\frac{1}{cond(A)}  \frac{||b - \tilde{b}||}{\|b\|} \leq \frac{||x - \tilde{x}||}{\|x\|}$:
+
+    $\frac{1}{cond(A)}  \frac{||b - \tilde{b}||}{\|b\|} =
+     \frac{1}{||A|| ||A^{-1}||} \frac{||Ax - A\tilde{x}||}{||b||} =
+     \frac{1}{||A|| ||A^{-1}||} \frac{||A(x - \tilde{x})||}{||b||} \menorIgual{c}
+     \frac{1}{||A|| ||A^{-1}||} \frac{||A|| ||(x - \tilde{x})||}{||b||} =
+    $
+
+    $
+    \frac{||(x - \tilde{x})||}{||A^{-1}|| ||b||} \menorIgual{c}
+    \frac{||(x - \tilde{x})||}{||A^{-1} b||} = 
+    \frac{||(x - \tilde{x})||}{||x||} 
+    $
+
+    Queda ver $\frac{||x - \tilde{x}||}{||x||} \leq cond(A)  \frac{||b - \tilde{b}||}{||b||}$
+
+    $
+    \frac{||x - \tilde{x}||}{||x||} =
+    \frac{||A^{-1}(b - \tilde{b})||}{||x||} \menorIgual{c}
+    \frac{||A^{-1}|| ||(b - \tilde{b})||}{||x||} = 
+    \frac{||A|| ||A^{-1}|| ||(b - \tilde{b})||}{||A|| ||x||} =
+    \frac{cond(A) ||(b - \tilde{b})||}{||A|| ||x||} \menorIgual{c}
+    \frac{cond(A) ||(b - \tilde{b})||}{||Ax||} =
+    cond(A)  \frac{||b - \tilde{b}||}{||b||}
+    $
+    
+    queda demostrado
+\end{enumerate}
+
+
+\begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
