@@ -49,7 +49,7 @@
         $$
           \hat{i} = \max \set{i \in [1, n] : \sumatoria{j=1}{n}  |a_{ij}|}
         $$
-        Es decir, la fila cuya suma de modulos es la mayor.
+        Es decir, la fila cuya suma de módulos es la mayor.
         Además, vemos que, por ser $\tilde{x}$ un vector canónico, se cumple que $\norma{x}_\infty = 1$.
         Luego como sabemos que:
         \begin{itemize}
@@ -61,5 +61,107 @@
         $$
         Puesto que encontramos un $x$ que cumple la igualdad, y se que todo el resto son menores o iguales.
 
-  \item \hacer
+  \item Quiero probar la fórmula cerrada:
+        $$
+          \norma{A}_1 =
+          \maximo{1 \leq j \leq n} \sumatoria{i=1}{n} |a_{ij}| =
+          \ub{\maximo{} \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots , \sumatoria{i = 1}{n} |a_{in}|}}{\llamada1}
+        $$
+        Usando \textit{normas inducidas o subordinadas} voy a ponerle una cota a $\norma{A}_1$ para cualquier $x \en K^n$ con $\norma{x}_1 = 1$:
+        $$
+          \begin{array}{rcl}
+            \norma{Ax}_1 =
+            {\Bigg\|}
+            \textstyle
+            \matriz{c}{
+            \sumatoria{j = 1}{n} a_{1j}x_j                                            \\
+            \vdots                                                                    \\
+            \sumatoria{j = 1}{n} a_{nj}x_j                                            \\
+            }
+            {\Bigg\|}_1
+             & \igual{def}                           &
+            | \sumatoria{j = 1}{n} a_{1j}x_j |
+            + \cdots +
+            |\sumatoria{j = 1}{n} a_{nj}x_j|                                          \\
+             & \menorIgual{$\oa{}{\text{desigualdad}                                  \\ \text{triangular}}$} &
+               \sumatoria{j = 1}{n} |a_{1j}| \cdot |x_j |
+               + \cdots +
+            \sumatoria{j = 1}{n} |a_{nj}| \cdot |x_j|                                 \\
+             & \igual{\red{!}}                       &
+            \sumatoria{i = 1}{n}
+            \sumatoria{j = 1}{n}
+            |a_{ij}| \cdot |x_j |                                                     \\
+             & \igual{\red{!!}}                      &
+            \sumatoria{j = 1}{n} \sumatoria{i = 1}{n} |a_{ij}| \cdot |x_j|
+            =
+            \sumatoria{j = 1}{n} |x_j| \cdot \sumatoria{i = 1}{n} |a_{ij}|            \\
+             & =                                     &
+            |x_1| \cdot \ub{\sumatoria{i = 1}{n} |a_{i1}|}{\norma{ \columna(A_1)}_1} +
+            \cdots +
+            |x_n| \cdot \ub{\sumatoria{i = 1}{n} |a_{in}|}{\norma{ \columna(A_n)}_1}  \\
+             & \menorIgual{\red{!}}                  &
+            \ub{\sumatoria{j = 1}{n} |x_j|}{\norma{x}_1} \cdot \maximo{1 \leq i \leq n} \set{\norma{ \columna(A_i)}_1} =
+            \norma{x}_1 \cdot \maximo{1 \leq i \leq n} \set{\norma{ \columna(A_i)}_1} \\
+             & \igual{HIP}[$\ua{}{\norma{x}_1 = 1}$] &
+            \maximo{1 \leq i \leq n}\set{\norma{ \columna(A_i)}_1} = \llamada1
+          \end{array}
+        $$
+        Después de ese parto se obtiene que:
+        $$
+          \norma{Ax}_1
+          \menorIgual{$\llamada1$}
+          \maximo{} \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots , \sumatoria{i = 1}{n} |a_{in}|}
+        $$
+        Ahora el razonamiento que sigue es algo así: Dado que la expresión que quedó
+        $$
+          \maximo{} \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots , \sumatoria{i = 1}{n} |a_{in}|}
+        $$
+        \underline{no depende} de $x$, solo son sumas de los elementos por columna de $A$ y como ya sé, la $j-$ésima columna de $A$ la puedo escribir como:
+        $$
+          A \cdot \hat{e}_j =
+          A \cdot
+          \matriz{c}{
+            0\\
+            \vdots\\
+            1\\
+            \vdots\\
+            0
+          }
+          =
+          \matriz{c}{
+            a_{1j} \\
+            \vdots\\
+            a_{nj}
+          }
+          = \columna(A)_j,
+        $$
+        Es así que como ese hermoso $\hat{e}_j$ cumple eso va a haber \underline{algún otro vector genérico} que cumpla que justo nos dé
+        \underline{el máximo del conjunto $\llamada1$}. Para creerme esto último, me gusta pensar que $Ax$ vive en el subespacio
+        $\columna(A) = \ub{\imagen(A)}{\text{pensando a $A$ como una T.L.}}$.
+
+        Entonces si en la columna $\magenta{j}$, tengo un vector \textit{cualquiera} al que
+        llamo $\magenta{\tilde{x}}$ con $\norma{\magenta{\tilde{x}}} = 1$ y ¡Oh sorpresa \surprise!
+        $A \cdot \magenta{\tilde{x}} \en \llamada1$ y justo es el elemento máximo {\LARGE \surprise} de $\llamada1$ por lo tanto el más poronga entre todos los
+        $\norma{y} = 1$:
+        $$
+          \maximo{\norma{y} = 1} \frac{\norma{Ay}}{\norma{y}}
+          \igual{$\oa{}{\text{el}\\ \text{más}\\ \text{groso}\\\magenta{\tilde{x}}}$}
+          \norma{A \magenta{\tilde{x}}}_1 =
+          \maximo{} \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots , \sumatoria{i = 1}{n} |a_{i\magenta{j}}|, \ldots, \sumatoria{i = 1}{n} |a_{in}|} =
+          \sumatoria{i=1}{n} |a_{i\magenta{j}}|
+        $$
+        Y por definición (la otra con $x\distinto 0$)
+        de norma inducida con norma 1:
+        $\norma{A}_1 = \maximo{x \distinto 0} \frac{\norma{Ax}_1}{\norma{x}_1}$, así pudiendo expresar:
+        $$
+          \cajaResultado{
+          \norma{A}_1 =
+          \maximo{} \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots, \sumatoria{i = 1}{n} |a_{in}|}
+          }
+        $$
 \end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/pedrofuentes79}{Pedro F. \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
