@@ -1,3 +1,31 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+Sea $D_n = \frac{1}{10} I_n.$  Verificar que $det(D_n) \rightarrow 0$ si $n \rightarrow \infinito$. ¿$D_n$ esta mal
+condicionada? ¿Es el determinante un buen indicador de cuan cerca esta una matriz de ser
+singular?
 \end{enunciado}
+
+\medskip
+
+$D_n$ es la matriz identidad de $nxn$ multiplicado por $\frac{1}{10}$, por lo tanto es la matriz de $nxn$ 
+que en su diagonal tiene $\frac{1}{10}$. Al ser una matriz diagonal su determinante es el producto de los elementos en su diagonal:
+
+$
+det(D_n) = 
+\productoria{1}{n} \frac{1}{10} = 
+(\frac{1}{10})^{n}=
+\frac{1}{10^n}
+$
+
+para verificar $det(D_n) \rightarrow 0$ si $n \rightarrow \infinito$ tomo limite:
+
+$\limite{n}{\infinito}\frac{1}{10^n} = 0$
+
+La matriz esta bien condicionada, se ve facilmente que:
+
+$||A||_\infinito = \frac{1}{10}$ y $||A^{-1}||_\infinito = 10$ ya que tiene todos 10 en la diagonal (inversa de matriz diagonal).
+
+Entonces: $Cond_\infinito(A) = 1$ por lo que esta perfecamente condicionada.
+
+\begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
