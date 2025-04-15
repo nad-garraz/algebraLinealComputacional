@@ -1,94 +1,102 @@
 \begin{enunciado}{\ejercicio}
-    Se tiene el sistema $ Ax = b $.
+  Se tiene el sistema $Ax = b$.
 
-    \begin{itemize}
-        \item[(a)] Sea \( x \) la solución exacta y \( \tilde{x} \) la solución obtenida numéricamente. \
-        Se llama \textbf{residuo} al vector: $r := b - A\tilde{x}$.
-        Si notamos $e = x - \tilde{x}$, mostrar que:
-        $$
-        \frac{1}{cond(A)}  \frac{\|r\|}{\|b\|} \leq \frac{\|e\|}{\|x\|} \leq  cond(A) \frac{\|r\|}{\|b\|}.
-        $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Sea  $x$ la solución exacta y \( \tilde{x} \) la solución obtenida numéricamente. \
+          Se llama \textbf{residuo} al vector: $r := b - A\tilde{x}$.
+          Si notamos $e = x - \tilde{x}$, mostrar que:
+          $$
+            \frac{1}{\condicion(A)}  \frac{\norma{r}}{\norma{b}} \leq \frac{\norma{e}}{\norma{x}} \leq  \condicion(A) \frac{\norma{r}}{\norma{b}}.
+          $$
 
-        \item[(b)] En lugar del dato exacto \( b \), se conoce una aproximación \( \tilde{b} \). 
-        Se tiene que \( \tilde{x} \) satisface: $A\tilde{x} = \tilde{b}.$
-        Probar que:
-        \[
-        \frac{1}{cond(A)}  \frac{||b - \tilde{b}||}{\|b\|} \leq \frac{||x - \tilde{x}||}{\|x\|} \leq cond(A)  \frac{||b - \tilde{b}||}{||b||}.
-        \]
-    
-        ¿Cómo se puede interpretar este resultado?
-    \end{itemize}
+    \item En lugar del dato exacto \( b \), se conoce una aproximación \( \tilde{b} \).
+          Se tiene que \( \tilde{x} \) satisface: $A\tilde{x} = \tilde{b}.$
+          Probar que:
+          $$
+            \frac{1}{\condicion(A)}  \frac{\norma{b - \tilde{b}}}{\norma{b}}
+            \leq
+            \frac{\norma{x - \tilde{x}}}{\norma{x}}
+            \leq
+            \condicion(A)  \frac{\norma{b - \tilde{b}}}{\norma{b}}.
+          $$
+
+          ¿Cómo se puede interpretar este resultado?
+  \end{enumerate}
 \end{enunciado}
 
 \medskip
 
 Algunas consideraciones antes de empezar:
 \begin{enumerate}[label=(\roman*)]
-\item $b = Ax$
-\item $r = Ax - A\tilde{x} = A(x - \tilde{x})$
-\item $e = A^{-1} r$
-\item cuando uso la propiedad de consistencia pongo una c arriba de la desigualdad,ojo: varias veces achico el denominador para armar algo mas grande
+  \item $b = Ax$
+  \item $r = Ax - A\tilde{x} = A(x - \tilde{x})$
+  \item $e = A^{-1} r$
+  \item Cuando uso la propiedad de consistencia pongo \blue{cons} arriba de la desigualdad.
+        \underline{Ojo}: Varias veces achico el denominador para armar algo más grande!
 \end{enumerate}
 
 \begin{enumerate}[label=(\alph*)]
-    \item 
-    Veo primero 
-    $\frac{1}{cond(A)} \frac{\|r\|}{\|b\|} \leq \frac{\|e\|}{\|x\|}$:
+  \item
+        Veo primero
+        $\frac{1}{\condicion(A)} \frac{\norma{r}}{\norma{b}} \leq \frac{\norma{e}}{\norma{x}}$:
 
-    $\frac{1}{cond(A)} \frac{\|r\|}{\|b\|} = 
-    \frac{1}{||A^{-1}|| ||A||} \frac{||A e||}{||A x||} \menorIgual{c}
-    \frac{1}{||A^{-1}|| ||A||} \frac{||A|| ||e||}{||Ax||} =
-    \frac{1}{||A^{-1}|| } \frac{||e||}{||Ax||} \menorIgual{c}
-    \frac{||e||}{||A^{-1} Ax|| } = 
-    \frac{||e||}{||x||}
-    $ 
+        $\frac{1}{\condicion(A)} \frac{\norma{r}}{\norma{b}} =
+          \frac{1}{\norma{A^{-1}} \norma{A}} \frac{\norma{A e}}{\norma{A x}}
+          \menorIgual{\blue{cons}}
+          \frac{1}{\norma{A^{-1}} \norma{A}} \frac{\norma{A} \norma{e}}{\norma{Ax}} =
+          \frac{1}{\norma{A^{-1}} } \frac{\norma{e}}{\norma{Ax}}
+          \menorIgual{\blue{cons}}
+          \frac{\norma{e}}{\norma{A^{-1} Ax} } =
+          \frac{\norma{e}}{\norma{x}}
+        $
 
-    ahora veo 
-    $  \frac{\|e\|}{\|x\|} \leq  cond(A)  \frac{\|r\|}{\|b\|}$ :
+        ahora veo
+        $  \frac{\norma{e}}{\norma{x}} \leq  \condicion(A)  \frac{\norma{r}}{\norma{b}}$ :
 
-    $\frac{||e||}{||x||} = 
-     \frac{||A^{-1} r||}{||x||} \menorIgual{c}
-     \frac{||A^{-1}|| ||r||}{||x||} =
-     \frac{||A||}{||A||} \frac{||A^{-1}|| ||r||}{||x||} = 
-     \frac{cond(A) ||r||}{||A|| ||x||} \menorIgual{c}
-     \frac{cond(A) ||r||}{||A x||} =
-     \frac{cond(A) ||r||}{||b||}
-    $
+        $\frac{\norma{e}}{\norma{x}} =
+          \frac{\norma{A^{-1} r}}{\norma{x}} \menorIgual{\blue{cons}}
+          \frac{\norma{A^{-1}} \norma{r}}{\norma{x}} =
+          \frac{\norma{A}}{\norma{A}} \frac{\norma{A^{-1}} \norma{r}}{\norma{x}} =
+          \frac{\condicion(A) \norma{r}}{\norma{A} \norma{x}} \menorIgual{\blue{cons}}
+          \frac{\condicion(A) \norma{r}}{\norma{A x}} =
+          \frac{\condicion(A) \norma{r}}{\norma{b}}
+        $
 
-    Queda demostrado
-    \item Es igual que el item anterior 
-    
-    Veo primero: 
-    $\frac{1}{cond(A)}  \frac{||b - \tilde{b}||}{\|b\|} \leq \frac{||x - \tilde{x}||}{\|x\|}$:
+        Queda demostrado
+  \item Es igual que el item anterior
 
-    $\frac{1}{cond(A)}  \frac{||b - \tilde{b}||}{\|b\|} =
-     \frac{1}{||A|| ||A^{-1}||} \frac{||Ax - A\tilde{x}||}{||b||} =
-     \frac{1}{||A|| ||A^{-1}||} \frac{||A(x - \tilde{x})||}{||b||} \menorIgual{c}
-     \frac{1}{||A|| ||A^{-1}||} \frac{||A|| ||(x - \tilde{x})||}{||b||} =
-    $
+        Veo primero:
+        $\frac{1}{\condicion(A)}  \frac{\norma{b - \tilde{b}}}{\norma{b}} \leq \frac{\norma{x - \tilde{x}}}{\norma{x}}$:
 
-    $
-    \frac{||(x - \tilde{x})||}{||A^{-1}|| ||b||} \menorIgual{c}
-    \frac{||(x - \tilde{x})||}{||A^{-1} b||} = 
-    \frac{||(x - \tilde{x})||}{||x||} 
-    $
+        $\frac{1}{\condicion(A)}  \frac{\norma{b - \tilde{b}}}{\norma{b}} =
+          \frac{1}{\norma{A} \norma{A^{-1}}} \frac{\norma{Ax - A\tilde{x}}}{\norma{b}} =
+          \frac{1}{\norma{A} \norma{A^{-1}}} \frac{\norma{A(x - \tilde{x})}}{\norma{b}} \menorIgual{\blue{cons}}
+          \frac{1}{\norma{A} \norma{A^{-1}}} \frac{\norma{A} \norma{(x - \tilde{x})}}{\norma{b}} =
+        $
 
-    Queda ver $\frac{||x - \tilde{x}||}{||x||} \leq cond(A)  \frac{||b - \tilde{b}||}{||b||}$
+        $
+          \frac{\norma{(x - \tilde{x})}}{\norma{A^{-1}} \norma{b}} \menorIgual{\blue{cons}}
+          \frac{\norma{(x - \tilde{x})}}{\norma{A^{-1} b}} =
+          \frac{\norma{(x - \tilde{x})}}{\norma{x}}
+        $
 
-    $
-    \frac{||x - \tilde{x}||}{||x||} =
-    \frac{||A^{-1}(b - \tilde{b})||}{||x||} \menorIgual{c}
-    \frac{||A^{-1}|| ||(b - \tilde{b})||}{||x||} = 
-    \frac{||A|| ||A^{-1}|| ||(b - \tilde{b})||}{||A|| ||x||} =
-    \frac{cond(A) ||(b - \tilde{b})||}{||A|| ||x||} \menorIgual{c}
-    \frac{cond(A) ||(b - \tilde{b})||}{||Ax||} =
-    cond(A)  \frac{||b - \tilde{b}||}{||b||}
-    $
-    
-    queda demostrado
+        Queda ver $\frac{\norma{x - \tilde{x}}}{\norma{x}} \leq \condicion(A)  \frac{\norma{b - \tilde{b}}}{\norma{b}}$
+
+        $
+          \frac{\norma{x - \tilde{x}}}{\norma{x}} =
+          \frac{\norma{A^{-1}(b - \tilde{b})}}{\norma{x}}
+          \menorIgual{\blue{cons}}
+          \frac{\norma{A^{-1}} \norma{(b - \tilde{b})}}{\norma{x}} =
+          \frac{\norma{A} \norma{A^{-1}} \norma{(b - \tilde{b})}}{\norma{A} \norma{x}} =
+          \frac{\condicion(A) \norma{(b - \tilde{b})}}{\norma{A} \norma{x}}
+          \menorIgual{\blue{cons}}
+          \frac{\condicion(A) \norma{(b - \tilde{b})}}{\norma{Ax}} =
+          \condicion(A)  \frac{\norma{b - \tilde{b}}}{\norma{b}}
+        $
+
+        queda demostrado
 \end{enumerate}
 
-
 \begin{aportes}
-    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
 \end{aportes}
