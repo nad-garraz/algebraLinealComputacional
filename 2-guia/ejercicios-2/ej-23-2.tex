@@ -1,3 +1,59 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+Para la matriz
+
+$$
+A =
+\matriz{ccc}{
+  1 & n & 5n \\
+  1 & 3n & 3n \\
+  1 & n & 2n
+}$$
+
+con $n \en \naturales$, probar que existe una constante $c > 0$ tal que $cond_\infinito(A) \geq cn$ para todo $n \en \naturales$,
+y deducir que $cond_\infinito(A) \rightarrow \infinito$ cuando $n \rightarrow \infinito$
 \end{enunciado}
+
+\medskip
+
+Primero voy a calcular el numero de condicion. Para eso tengo que ver la norma de $A$ y $A^{-1}$
+
+Para $A$:
+
+La norma infinito es sumar los elementos de cada fila en modulo y quedarnos con la suma mas grande.
+En este caso se ve a ojo que:
+
+$||A||_\infinito = 1 + 6n$
+
+Para $A^{-1}$:
+
+Aca hay que calcular la inversa de A, no voy a escribir todos los pasos (ninguno de hecho).
+$$
+A^{-1} =
+\matriz{ccc}{
+  \frac{-1}{2} & \frac{-1}{2} & 2 \\ 
+  \frac{-1}{6n} & \frac{1}{2n} & \frac{-1}{3n} \\
+  \frac{1}{3n} & 0 & \frac{-1}{3n}
+}$$
+
+y se ve que $|\frac{-1}{2}| + |\frac{-1}{2}| + |2|$ es la fila que mas suma 
+(el resto tiene elementos con n el denominador con n>0)
+
+$||A^{-1}||_\infinito = 3$
+
+Por lo tanto $cond(A)_\infinito = 3(1+6n) = 3+18n$
+
+El enunciado pide que muestre que existe una $c$ que cumpla $cond(A)_\infinito \geq cn$ para todo n.
+
+Elijo c = 2:
+
+$
+3+18n \geq 2n \sii 3 + 16n \geq 0 \sii n \geq \frac{-3}{16}
+$, Como n es natural vale para todo n
+
+Por ultimo deducir que $cond_\infinito(A) \rightarrow \infinito$ cuando $n \rightarrow \infinito$:
+
+$\limite{n}{\infinito}cond_\infinito(A) = \limite{n}{\infinito} 3+18n = \infinito$
+
+\begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
