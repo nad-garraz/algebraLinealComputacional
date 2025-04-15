@@ -1,3 +1,52 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+Sea
+$$
+A =
+\matriz{ccc}{
+  3 & 0 & 0 \\ 
+  0 & \frac{5}{4} & \frac{3}{4} \\
+  0 & \frac{3}{4} & \frac{5}{4}
+}$$
+\begin{enumerate}[label=(\alph*)]
+    \item Calcular $cond_\infinito(A)$
+    \item
+    Cuan chico debe ser el error relativo en los datos $\frac{||b-\tilde{b}||}{||b||}$, si se desea que el error relativo en 
+    la aproximacion de la solucion $\frac{||x-\tilde{x}||}{||x||}$ sea menor que $10^{-4}$ en ($||.||_\infinito$)
+    \item hacer
+\end{enumerate}
+
 \end{enunciado}
+
+\medskip
+\begin{enumerate}[label=(\alph*)]
+
+\item Para calcular $cond(A)$ calculo la norma de $A$ y $A^{-1}$:
+
+$||A||_\infinito = max\set{3,2,2} = 3$
+
+Calculamos $A^{-1}$:
+$$
+\matriz{ccc}{
+  \frac{1}{3} & 0 & 0 \\ 
+  0 & \frac{5}{4} & \frac{-3}{4} \\
+  0 & \frac{-3}{4} & \frac{5}{4}
+}
+$$
+
+Se ve a ojo que $||A^{-1}||_\infinito = 2 $
+
+Por lo tanto: $cond_\infinito(A) = 3.2 = 6$
+
+\item
+Quiero: $\frac{||x-\tilde{x}||}{||x||} < 10^{-4}$
+
+Por el ejercicio 19 sabemos que $\frac{||x-\tilde{x}||}{||x||} \leq cond(A) \frac{||b-\tilde{b}||}{||b||}$
+
+Entonces quiero que $6 \frac{||b-\tilde{b}||}{||b||} < 10^{4} \entonces \frac{||b-\tilde{b}||}{||b||} < \frac{10^{-4}}{6}$
+
+\item hacer
+\end{enumerate}
+
+\begin{aportes}
+    \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+\end{aportes}
