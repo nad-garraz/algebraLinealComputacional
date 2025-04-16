@@ -1,3 +1,20 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Se quiere estimar la norma 2 de una matriz $A \en \reales^{n \times n}$ como el máximo del valor
+  $ \norma{Ax}_2 / \norma{x}_2 $ entre varios vectores $x \en \reales^3$ no nulos generadosal azar.
+  Hacer un programa quereciba una matriz $A$ y luego
+  \begin{itemize}
+    \item Genere los primeros 100 términos de la siguiente sucesión:
+          $$
+            s_1 = 0, \quad s_{k+1} = \maximo{}\set{s_k, \frac{\norma{Ax_k}_2}{\norma{x}_2}}
+          $$
+          donde los $x_k \en \reales^3$ son vectores no nulos generados al azar en la bola unitaria:
+          $B = \set{x : \norma{x}_2 \leq 1}$.
+
+    \item Grafique la sucesión calculada, junto con el valor exacto de la norma de la matriz.
+  \end{itemize}
+
+  Recordar que tanto la norma 2 puede calcularse con el comando \texttt{np.linalg.norm}. Tener en cuenta
+  que los vectores generados al azar (comando \texttt{np.random.rand}) tienen coordenadas en el intervalor $[0,1]$.
 \end{enunciado}
+
+

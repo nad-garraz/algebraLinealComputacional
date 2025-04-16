@@ -1,0 +1,34 @@
+\begin{enunciado}{\ejercicio}
+  Sea $A =
+    \matriz{cccc}{
+      1 & -1 & 0 & 1 \\
+      0 & 1 & 4 & 0 \\
+      2 & -1 & 0 & -2 \\
+      -3 & 3 & 0 & -1
+    } \en \reales{4 \times 4}$
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Escalonar la matriz $A$ multiplicándola a izquierda por matrices
+          elementales $T^{ij}(a), a \en \reales, 1\leq i, j \leq 4$, con $i \distinto j$.
+
+          \textit{Recordar que $T^{ij}(a) \en K^{n \times n}$ se define como:}
+          $$
+            T^{ij}(a) = I_n + a E^{ij}, \quad 1\leq i,j \leq n,\quad i\distinto j, a \en K,
+          $$
+          siendo $E^{ij}$ las matrices canónicas de $K^{n \times n}$
+
+    \item Hallar la descomposición $LU$ de $A$.
+
+    \item\label{ej:2-item-c} Usando la descomposición del ítem anterior resolver el sistema $Ax = b$,
+          para
+          $b =
+            \matriz{c}{
+              1\\
+              -7\\
+              -5\\
+              1
+            }$.
+  \end{enumerate}
+\end{enunciado}
+
+\hacer

@@ -1,0 +1,21 @@
+\begin{enunciado}{\ejercicio}
+  Escribir funciones de \python que realicen las siguientes tareas:
+  \begin{enumerate}[label=(\alph*)]
+    \item Calcular la descomposición $LU$ de una matriz dada $A$, asumiendo que no es
+          necesario realizar pivoteos.
+
+    \item Resolver un sistema $Ax = b$, utilizando la función del ítem anterior y las
+          del ejercicio \ref{ej:3}. Aplicar esta función para resolver el ítem \ref{ej:2-item-c} del
+          ejercicio \ref{ej:2}.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item El siguiente \textit{snippet} es en gran parte código para generar
+        la matriz y después del cálculo de la triangulación formar las
+        matrices $L$ y $U$.
+
+        \copyPaste
+        \codigoPython{/ej-4/codigo3-4-1.py}
+\end{enumerate}
+
