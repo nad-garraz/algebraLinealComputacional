@@ -5,7 +5,7 @@
       0 & 1 & 4 & 0 \\
       2 & -1 & 0 & -2 \\
       -3 & 3 & 0 & -1
-    } \en \reales{4 \times 4}$
+    } \en \reales^{4 \times 4}$
 
   \begin{enumerate}[label=(\alph*)]
     \item Escalonar la matriz $A$ multiplicándola a izquierda por matrices
@@ -22,7 +22,7 @@
     \item\label{ej:2-item-c} Usando la descomposición del ítem anterior resolver el sistema $Ax = b$,
           para
           $b =
-            \matriz{c}{
+            \matriz{r}{
               1\\
               -7\\
               -5\\
@@ -31,4 +31,311 @@
   \end{enumerate}
 \end{enunciado}
 
-\hacer
+\begin{enumerate}[label=(\alph*)]
+  \item Hacer una operación entre \textit{filas}
+        es multiplicar por esas matrices $T^{ij}$, pero dado que el \textit{me da tremenda pajómetro}
+        explota, escribo las $T^{ij}$ para la primera \textit{columna} de ceros no más.
+        $$
+          % \matriz{cccc}{
+          % 1            & 0            & 0  & 0  \\
+          % 0            & 1            & 0  & 0  \\
+          % -2           & 0            & 1  & 0  \\
+          % 3            & 0            & 0  & 1
+          % }
+          %
+          \begin{array}{rcl}
+            A =
+            \matriz{cccc}{
+            1            & -1           & 0 & 1  \\
+            \magenta{0}  & 1            & 4 & 0  \\
+            \magenta{2}  & -1           & 0 & -2 \\
+            \magenta{-3} & 3            & 0 & -1
+            }
+                         & \equivalente &
+            \ub{
+              \matriz{cccc}{
+            1            & 0            & 0 & 0  \\
+            0            & 1            & 0 & 0  \\
+            -2           & 0            & 1 & 0  \\
+            0            & 0            & 0 & 1
+              }
+            }{T^{31}(-\frac{2}{1}) = I_4 + (-\frac{2}{1}) E^{31}}
+            \cdot
+            \matriz{cccc}{
+            1            & -1           & 0 & 1  \\
+            0            & 1            & 4 & 0  \\
+            \magenta{2}  & -1           & 0 & -2 \\
+            -3           & 3            & 0 & -1
+            }
+            =
+            \matriz{cccc}{
+            1            & -1           & 0 & 1  \\
+            0            & 1            & 4 & 0  \\
+            \magenta{0}  & 1            & 0 & -2 \\
+            -3           & 3            & 0 & -1
+            }
+            \\
+            \\
+                         & \equivalente &
+            \ub{
+              \matriz{cccc}{
+            1            & 0            & 0 & 0  \\
+            0            & 1            & 0 & 0  \\
+            0            & 0            & 1 & 0  \\
+            3            & 0            & 0 & 1
+              }
+            }{T^{41}(\frac{3}{1}) = I_4 + (\frac{3}{1}) E^{41}}
+            \cdot
+            \matriz{cccc}{
+            1            & -1           & 0 & 1  \\
+            0            & 1            & 4 & 0  \\
+            \magenta{0}  & 1            & 0 & -2 \\
+            -3           & 3            & 0 & -1
+            }
+            =
+            \matriz{cccc}{
+            1            & -1           & 0 & 1  \\
+            \magenta{0}  & 1            & 4 & 0  \\
+            \magenta{0}  & 1            & 0 & -2 \\
+            \magenta{0}  & 0            & 0 & 2
+            } \llamada1
+            \\
+            \\
+          \end{array}
+        $$
+        \begin{center}
+          \magic \qquad
+          \parbox{0.8\textwidth}{
+            Ahí entonces están las $T^{ij}$ para hacer ceros en la primera \textit{columna}.
+            Y como la \textit{matemagia} en esta materia parece no tener parangón, cuando
+            multiplicás esas matrices $T^{ij}$ da lo mismo que sumar los elementos fuera
+            de la diagonal componente a componente:
+          }
+          \quad \magic
+        \end{center}
+        $$
+          T^{31} \cdot T^{41}
+          =
+          \matriz{cccc}{
+            1            & 0            & 0 & 0  \\
+            0            & 1            & 0 & 0  \\
+            0            & 0            & 1 & 0  \\
+            3           & 0            & 0 & 1
+          }
+          \cdot
+          \matriz{cccc}{
+            1            & 0            & 0 & 0  \\
+            0            & 1            & 0 & 0  \\
+            -2           & 0            & 1 & 0  \\
+            0            & 0            & 0 & 1
+          }
+          =
+          \matriz{cccc}{
+            1            & 0            & 0  & 0  \\
+            0            & 1            & 0  & 0  \\
+            -2           & 0            & 1  & 0  \\
+            3            & 0            & 0  & 1
+          }
+        $$
+        Es gracias a ese resultado que en el próximo paso podría armar solo una matriz
+        con la info para triangular toda la \textit{segunda columna}.
+        \underline{solo un producto matricial}. Continúo la triangulación de $\llamada1$:
+        $$
+          \begin{array}{rcl}
+            \matriz{cccc}{
+            1           & -1           & 0           & 1  \\
+            \magenta{0} & 1            & 4           & 0  \\
+            \magenta{0} & 1            & 0           & -2 \\
+            \magenta{0} & 0            & 0           & 2
+            }
+                        & \equivalente &
+            \ub{
+              \matriz{cccc}{
+            1           & 0            & 0           & 0  \\
+            \magenta{0} & 1            & 0           & 0  \\
+            \magenta{0} & -1           & 1           & 0  \\
+            \magenta{0} & 0            & 0           & 1
+              }
+            }{T^{32}(-1) = I_4 + (-\frac{1}{1}) E^{32}}
+            \cdot
+            \matriz{cccc}{
+            1           & -1           & 0           & 1  \\
+            \magenta{0} & 1            & 4           & 0  \\
+            \magenta{0} & \magenta{1}  & 0           & -2 \\
+            \magenta{0} & \magenta{0}  & 0           & 2
+            }
+            =
+            \matriz{cccc}{
+            1           & -1           & 0           & 1  \\
+            \magenta{0} & 1            & 4           & 0  \\
+            \magenta{0} & \magenta{0}  & -4          & -2 \\
+            \magenta{0} & \magenta{0}  & \magenta{0} & 2
+            }                                             \\
+          \end{array}
+        $$
+        Por lo tanto para que la matriz $A$ quede triangulada superiormente:
+        $$
+          \ub{
+            \matriz{cccc}{
+              1            & 0            & 0  & 0  \\
+              0            & 1            & 0  & 0  \\
+              0            & -1           & 1  & 0  \\
+              0            & 0            & 0  & 1
+            }
+            \cdot
+            \matriz{cccc}{
+              1            & 0            & 0 & 0  \\
+              0            & 1            & 0 & 0  \\
+              0            & 0            & 1 & 0  \\
+              3           & 0            & 0 & 1
+            }
+            \cdot
+            \matriz{cccc}{
+              1            & 0            & 0 & 0  \\
+              0            & 1            & 0 & 0  \\
+              -2           & 0            & 1 & 0  \\
+              0            & 0            & 0 & 1
+            }
+          }{   T^{32} \cdot T^{41} \cdot T^{31} =
+            \matriz{cccc}{
+              1            & 0            & 0  & 0  \\
+              0            & 1            & 0  & 0  \\
+              -2           & -1            & 1  & 0  \\
+              3            & 0            & 0  & 1
+            }
+          }
+          \cdot
+          \ub{
+            \matriz{cccc}{
+              1            & -1           & 0  & 1  \\
+              0  & 1            & 4  & 0  \\
+              2  & -1           & 0  & -2 \\
+              -3 & 3            & 0  & -1
+            }
+          }{A}
+          =
+          \ub{
+            \matriz{cccc}{
+              1            & -1           & 0  & 1  \\
+              \magenta{0}            & 1            & 4  & 0  \\
+              \magenta{0}            & \magenta{0}  & -4 & -2 \\
+              \magenta{0}            & \magenta{0}  & \magenta{0} & 2
+            }
+          }{U}
+        $$
+        $$
+          T^{32} \cdot T^{41} \cdot T^{31} \cdot A = U
+        $$
+
+  \item La $U$ está una vez triangulada la matriz $A$. Encontrar la $L$ sale con las matrices que multiplicamos para obtener la matriz triangulada:
+        $$
+          L^{-1} \cdot A = U
+          \Entonces{invierto}
+          L \cdot L^{-1} \cdot A = L \cdot U
+          \sii
+          A = L \cdot U
+        $$
+        El producto de las matrices elementales me forma la inversa de $L: L^{-1}$. Por suerte encontrar la inversa de $(L^{-1})^{-1}$ es sencillo:
+        $$
+          L^{-1} =
+          \matriz{cccc}{
+            1            & 0            & 0  & 0  \\
+            0            & 1            & 0  & 0  \\
+            -2           & -1            & 1  & 0  \\
+            3            & 0            & 0  & 1
+          }
+          \entonces
+          L =
+          \matriz{cccc}{
+            1            & 0            & 0  & 0  \\
+            0            & 1            & 0  & 0  \\
+            \red{+}2           & \red{+}1            & 1  & 0  \\
+            \red{-}3            & 0            & 0  & 1
+          }
+        $$
+        Solo hay que cambiarle los signos a los elementos que estás por debajo de la diagonal.
+        $$
+          A = LU
+          \sisolosi
+          \matriz{cccc}{
+            1            & -1           & 0  & 1  \\
+            0  & 1            & 4  & 0  \\
+            2  & -1           & 0  & -2 \\
+            -3 & 3            & 0  & -1
+          }
+          =
+          \matriz{cccc}{
+            1            & 0            & 0  & 0  \\
+            0            & 1            & 0  & 0  \\
+            2           & 1            & 1  & 0  \\
+            -3            & 0            & 0  & 1
+          }
+          \cdot
+          \matriz{cccc}{
+            1            & -1           & 0  & 1  \\
+            0            & 1            & 4  & 0  \\
+            0            & 0  & -4 & -2 \\
+            0            & 0  & 0 & 2
+          }
+        $$
+
+  \item
+        $$
+          A \cdot x = b
+          \Sii{$A = LU$}
+          LU\cdot x = b
+          \sii
+          L\ub{(U \cdot x)}{y} = b
+          \sii
+          \llave{ccl}{
+            L \cdot y = b & \flecha{$\llamada1$} & \text{Arranco por acá.}\\
+            U \cdot x = y& \flecha{$\llamada2$} & \text{Sigo por acá una vez encontrado $y$.}
+          }
+        $$
+        Entonces resuelvo primero $\llamada1$:
+        $$
+          Ly = b
+          \flecha{armo sistema}
+          \matriz{cccc|c}{
+            1            & 0            & 0  & 0 & 1 \\
+            0            & 1            & 0  & 0 & -7 \\
+            2           & 1            & 1  & 0  & -5\\
+            -3            & 0            & 0  & 1& 1
+          }
+          \entonces
+          y
+          \igual{$\llamada3$}
+          \matriz{c}{
+            1 \\
+            -7 \\
+            0\\
+            4
+          }
+        $$
+        Con la $\llamada3$ resuelvo $\llamada2$:
+        $$
+          Ux = y
+          \flecha{armo sistema}[con $\llamada3$]
+          \matriz{cccc|c}{
+            1            & -1           & 0  & 1 &1 \\
+            0            & 1            & 4  & 0 & -7 \\
+            0            & 0            & -4 & -2 & 0             \\
+            0            & 0            & 0  &  2 & 4
+          }
+          \entonces
+          \cajaResultado{
+            x =
+            \matriz{c}{
+              -4 \\
+              -3 \\
+              -1\\
+              2
+            }
+          }
+        $$
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
