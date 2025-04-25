@@ -267,6 +267,17 @@
 \def\updateDos{
   {\today\ @ \currenttime}
 }
+% Párrafo destacado:
+\newcommand{\parrafoDestacado}[2][]{
+  \begin{center}
+    #1\qquad
+    \parbox{0.7\textwidth}{
+            \centering
+      #2
+    }
+    \qquad#1
+  \end{center}
+}
 
 % Contributors
 \newcommand{\aporte}[2]{

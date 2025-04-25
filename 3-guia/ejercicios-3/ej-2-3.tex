@@ -71,7 +71,7 @@
             \matriz{cccc}{
             1            & -1           & 0 & 1  \\
             0            & 1            & 4 & 0  \\
-            \magenta{0}  & 1            & 0 & -2 \\
+            \magenta{0}  & 1            & 0 & -4 \\
             -3           & 3            & 0 & -1
             }
             \\
@@ -96,23 +96,19 @@
             \matriz{cccc}{
             1            & -1           & 0 & 1  \\
             \magenta{0}  & 1            & 4 & 0  \\
-            \magenta{0}  & 1            & 0 & -2 \\
+            \magenta{0}  & 1            & 0 & -4 \\
             \magenta{0}  & 0            & 0 & 2
             } \llamada1
             \\
             \\
           \end{array}
         $$
-        \begin{center}
-          \magic \qquad
-          \parbox{0.8\textwidth}{
-            Ahí entonces están las $T^{ij}$ para hacer ceros en la primera \textit{columna}.
-            Y como la \textit{matemagia} en esta materia parece no tener parangón, cuando
-            multiplicás esas matrices $T^{ij}$ da lo mismo que sumar los elementos fuera
-            de la diagonal componente a componente:
-          }
-          \quad \magic
-        \end{center}
+        \parrafoDestacado[\magic]{
+          Ahí entonces están las $T^{ij}$ para hacer ceros en la primera \textit{columna}.
+          Y como la \textit{matemagia} en esta materia parece no tener parangón, cuando
+          multiplicás esas matrices $T^{ij}$ da lo mismo que sumar los elementos fuera
+          de la diagonal componente a componente:
+        }
         $$
           T^{31} \cdot T^{41}
           =
@@ -145,7 +141,7 @@
             \matriz{cccc}{
             1           & -1           & 0           & 1  \\
             \magenta{0} & 1            & 4           & 0  \\
-            \magenta{0} & 1            & 0           & -2 \\
+            \magenta{0} & 1            & 0           & -4 \\
             \magenta{0} & 0            & 0           & 2
             }
                         & \equivalente &
@@ -168,7 +164,7 @@
             \matriz{cccc}{
             1           & -1           & 0           & 1  \\
             \magenta{0} & 1            & 4           & 0  \\
-            \magenta{0} & \magenta{0}  & -4          & -2 \\
+            \magenta{0} & \magenta{0}  & -4          & -4 \\
             \magenta{0} & \magenta{0}  & \magenta{0} & 2
             }                                             \\
           \end{array}
@@ -218,7 +214,7 @@
             \matriz{cccc}{
               1            & -1           & 0  & 1  \\
               \magenta{0}            & 1            & 4  & 0  \\
-              \magenta{0}            & \magenta{0}  & -4 & -2 \\
+              \magenta{0}            & \magenta{0}  & -4 & -4 \\
               \magenta{0}            & \magenta{0}  & \magenta{0} & 2
             }
           }{U}
@@ -274,7 +270,7 @@
           \matriz{cccc}{
             1            & -1           & 0  & 1  \\
             0            & 1            & 4  & 0  \\
-            0            & 0  & -4 & -2 \\
+            0            & 0  & -4 & -4 \\
             0            & 0  & 0 & 2
           }
         $$
@@ -319,23 +315,27 @@
           \matriz{cccc|c}{
             1            & -1           & 0  & 1 &1 \\
             0            & 1            & 4  & 0 & -7 \\
-            0            & 0            & -4 & -2 & 0             \\
+            0            & 0            & -4 & -4 & 0             \\
             0            & 0            & 0  &  2 & 4
           }
           \entonces
           \cajaResultado{
             x =
             \matriz{c}{
-              -4 \\
-              -3 \\
-              -1\\
+              0 \\
+              1 \\
+              -2\\
               2
             }
           }
         $$
-
 \end{enumerate}
+
+Y porque soy un tipazo {\color{blue!10!white}\tiny(y le pifié 1000 veces a las cuentas)} acá tenés el código para corroborar:
+\copyPaste
+\codigoPython{ej-2/codigo3-2-1.py}
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
+  \item \aporte{\neverGonnaGiveYouUp}{Ale S. \youtube}
 \end{aportes}
