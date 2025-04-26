@@ -16,4 +16,59 @@
   la igualdad se puede concluir que $\condicion(A)$ mide la distancia relativa de $A$ a la matriz
   singular más próxima.
 \end{enunciado}
- \hacer
+
+Si $B$ es singular, significa que \textit{existe} un $x \en \reales^n$ tal que $Bx = 0$ a esto tirale un poco de \magic y sale que:
+$$
+  \begin{array}{rcl}
+    x
+    \igual{\red{!}}
+    \blue{A^{-1}A}x - \blue{A^{-1}}Bx
+    =
+    A^{-1}(A - B)x
+     & \Sii{tomo}[$\normaBullet$]       &
+    \norma{x}
+    =
+    \norma{A^{-1}(A - B)x}                              \\
+     & \Sii{\red{!!}}                   &
+    \norma{x}
+    \leq
+    \norma{A^{-1}} \norma{A - B} \norma{x}              \\
+     & \Sii{$\div \magenta{\norma{A}}$} &
+    \frac{\norma{x}}{\magenta{\norma{A}} \norma{A^{-1}}}
+    \leq
+    \frac{\norma{A - B} \norma{x}}{\magenta{\norma{A}}} \\
+     & \sii                             &
+    \frac{1}{\condicion(A)}
+    \leq
+    \frac{\norma{A - B}}{\norma{A}}
+  \end{array}
+$$
+Ahí quedó que los elementos del conjunto
+$
+  \set{\frac{\norma{A - B}}{\norma{A}} : B \text{ es singular}},
+$
+son mayores o iguales al número $\frac{1}{\condicion(A)}$, pero faltaría ver
+la igualdad así aparece ahí el \textit{ínfimo}.
+
+La igualdad vale debería valer para alguna $\green{B}$ singular, es decir:
+$$
+  \frac{1}{\condicion(A)}
+  =
+  \frac{\norma{A - \green{B}}}{\norma{A}}.
+$$
+
+\red{CONSULTAR EL TEMA DE LA IGUALDAD}
+\hacer
+
+Ahora habría que mostrar que:
+$$
+  \condicion(A)
+  \geq
+  \supremo \set{\frac{\norma{A}}{\norma{A - B}} : B \text{ es singular}}.
+$$
+
+\hacer
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

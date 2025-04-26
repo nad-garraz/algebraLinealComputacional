@@ -1,3 +1,76 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  \begin{enumerate}[label=(\alph*)]
+    \item Estimar la $\condicion_\infinito(A)$ de las siguientes matrices en función de $\varepsilon$ (cuando $\varepsilon \to 0$).
+          \begin{enumerate}[label=\roman*)]
+            \begin{multicols}{2}
+              \item $
+                \matriz{ccc}{
+                  1 & 1 & 1 \\
+                  1 & \varepsilon &\varepsilon^2 \\
+                  1 & 0 & 0 \\
+                },
+              $
+              \item
+              $
+                \matriz{ccc}{
+                  1 & 0 & 1 + \varepsilon \\
+                  2 & 3 & 4 \\
+                  1 - \varepsilon & 0 & 1 \\
+                }
+              $
+            \end{multicols}
+          \end{enumerate}
+
+    \item Concluir que la condición de las matrices $A$ y $B$ del ítem anterior tienden a infinito, cualquiera
+          sea la norma considerada.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        \begin{enumerate}[label=(\roman*)]
+          \item En el ejercicio \ref{ej:21} están las expresiones que sirven para dar una estimación de las normas. El truco
+                está en encontrar una \textit{matriz singular} con la cual podamos hacer que algo \textit{explote} \faIcon{bomb}:
+                $$
+                  \condicion_\infinito(A)
+                  \mayorIgual{$\llamada1$}
+                  \supremo \set{\frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} : B \text{ es singular}}.
+                $$
+                La matriz $B$:
+                $$
+                  B =
+                  \matriz{ccc}{
+                    1 & 1 & 1 \\
+                    1 & 0 & 0 \\
+                    1 & 0 & 0
+                  }
+                $$
+                es singular. La expresión para la cota para norma infinito queda:
+                $$
+                  \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito}
+                  \igual{\red{!}}
+                  \frac{3}{\varepsilon + \varepsilon^2}
+                  \flecha{$\varepsilon \to 0 $} \infinito
+                $$
+                En \red{!} el valor de la $\norma{A}_\infinito = \maximo\set{3,1+ \varepsilon + \varepsilon^2}$ asumo que $\varepsilon < 1$.
+
+                Por lo tanto cuando $\varepsilon \to 0$ el conjunto para la $B$ elegida, no tiene cota superior. Entonces
+                en $\llamada1$ tenemos que:
+                $$
+                  \condicion_\infty(A)
+                  \geq
+                  \infinito
+                  \entonces
+                  \condicion_\infty(A)
+                  \flecha{$\varepsilon \to 0 $} \infinito
+                $$
+
+          \item \hacer
+        \end{enumerate}
+
+  \item \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
