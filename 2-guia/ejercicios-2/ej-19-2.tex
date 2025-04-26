@@ -1,102 +1,190 @@
 \begin{enunciado}{\ejercicio}
-  Se tiene el sistema $Ax = b$.
-
+  Se tiene el sistema $\bm{A}\bm{x} = \bm{b}$.
   \begin{enumerate}[label=(\alph*)]
-    \item Sea  $x$ la solución exacta y \( \tilde{x} \) la solución obtenida numéricamente. \
-          Se llama \textbf{residuo} al vector: $r := b - A\tilde{x}$.
-          Si notamos $e = x - \tilde{x}$, mostrar que:
+    \item Sea  $x$ la solución exacta y $\tilde{x}$ la solución obtenida numéricamente.
+          Se llama \textit{residuo} al vector: $\bm{r} := \bm{b} - \bm{A}\tilde{\bm{x}}$.
+          Si notamos $\bm{e} = \bm{x} - \tilde{\bm{x}}$, mostrar que:
           $$
-            \frac{1}{\condicion(A)}  \frac{\norma{r}}{\norma{b}} \leq \frac{\norma{e}}{\norma{x}} \leq  \condicion(A) \frac{\norma{r}}{\norma{b}}.
+            \frac{1}{\condicion(\bm{A})}  \frac{\norma{\bm{r}}}{\norma{\bm{b}}}
+            \leq
+            \frac{\norma{\bm{e}}}{\norma{\bm{x}}}
+            \leq
+            \condicion(\bm{A}) \frac{\norma{\bm{r}}}{\norma{\bm{b}}}.
           $$
 
-    \item En lugar del dato exacto \( b \), se conoce una aproximación \( \tilde{b} \).
-          Se tiene que \( \tilde{x} \) satisface: $A\tilde{x} = \tilde{b}.$
+    \item En lugar del dato exacto $b$, se conoce una aproximación $\tilde{b}$.
+          Se tiene que $\tilde{x}$ satisface: $A\tilde{x} = \tilde{b}.$
           Probar que:
           $$
-            \frac{1}{\condicion(A)}  \frac{\norma{b - \tilde{b}}}{\norma{b}}
+            \frac{1}{\condicion(\bm{A})}  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}}
             \leq
-            \frac{\norma{x - \tilde{x}}}{\norma{x}}
+            \frac{\norma{\bm{x} - \tilde{\bm{x}}}}{\norma{\bm{x}}}
             \leq
-            \condicion(A)  \frac{\norma{b - \tilde{b}}}{\norma{b}}.
+            \condicion(\bm{A})  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}}.
           $$
-
           ¿Cómo se puede interpretar este resultado?
   \end{enumerate}
 \end{enunciado}
 
 \medskip
 
-Algunas consideraciones antes de empezar:
-\begin{enumerate}[label=(\roman*)]
-  \item $b = Ax$
-  \item $r = Ax - A\tilde{x} = A(x - \tilde{x})$
-  \item $e = A^{-1} r$
-  \item Cuando uso la propiedad de consistencia pongo \blue{cons} arriba de la desigualdad.
-        \underline{Ojo}: Varias veces achico el denominador para armar algo más grande!
-\end{enumerate}
+\parrafoDestacado[\red{\atencion}]{
+  Esto lo quiero mencionar acá, porque se va a usar todo el tiempo en el ejercicio:
+  $$
+    \norma{Ax} \leq \norma{A} \norma{x}
+  $$
+  y mucha gente le dice \textit{Cauchy-Schwartz},
+  pero no es esa desigualdad, esto sale de la definición de \textit{norma matricial}:
+  $$
+    \norma{A} = \maximo{x\distinto 0} \frac{\norma{Ax}}{\norma{x}}
+    \Entonces{\tiny en particular para}[\tiny un $\blue{y}$ cualquiera]
+    \norma{A} =  \maximo{x\distinto 0} \frac{\norma{Ax}}{\norma{x}}
+    \geq
+    \frac{\norma{A\blue{y}}}{\norma{\blue{y}}}
+    \sii
+    \boxed{
+      \norma{A\blue{y}} \leq \norma{A} \norma{\blue{y}}
+    }
+  $$
+}
 
-\begin{enumerate}[label=(\alph*)]
+\begin{enumerate}[label=\alph*)]
   \item
-        Veo primero
-        $\frac{1}{\condicion(A)} \frac{\norma{r}}{\norma{b}} \leq \frac{\norma{e}}{\norma{x}}$:
+        No sé si a vos te gusta tener esas letras por todos lados, pero a mí no, reescribo las desigualdades
+        del enunciado usando las definiciones del enunciado \rollingEyes como:
+        $$
+          \frac{1}{\condicion(\bm{A})} \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}
+          \leq
+          \frac{\norma{\bm{x - \tilde{x}}}}{\norma{\bm{x}}}
+          \leq
+          \condicion(\bm{A}) \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}.
+        $$
+        Listo, menos letras \textit{feas} menos ruido. Primero ataco la desigualdad de la izquierda:
+        $$
+          \frac{1}{\condicion(\bm{A})} \frac{\norma{\bm{b} - \bm{Ax}}}{\norma{\bm{b}}}
+          \leq
+          \frac{\norma{\bm{x - \tilde{x}}}}{\norma{\bm{x}}}
+        $$
 
-        $\frac{1}{\condicion(A)} \frac{\norma{r}}{\norma{b}} =
-          \frac{1}{\norma{A^{-1}} \norma{A}} \frac{\norma{A e}}{\norma{A x}}
-          \menorIgual{\blue{cons}}
-          \frac{1}{\norma{A^{-1}} \norma{A}} \frac{\norma{A} \norma{e}}{\norma{Ax}} =
-          \frac{1}{\norma{A^{-1}} } \frac{\norma{e}}{\norma{Ax}}
-          \menorIgual{\blue{cons}}
-          \frac{\norma{e}}{\norma{A^{-1} Ax} } =
-          \frac{\norma{e}}{\norma{x}}
-        $
+        Sale usando que:
+        $$
+          \bm{Ax} =  \bm{b}
+          \sii
+          \bm{x} =  \bm{A^{-1}b}
+          \sii
+          \norma{\bm{x}} =  \norma{\bm{A^{-1}b}} \leq \norma{\bm{A^{-1}}}  \norma{\bm{b}}
+          \sii
+          \norma{\bm{x}} \menorIgual{$\llamada1$} \norma{\bm{A^{-1}}}  \norma{\bm{b}}
+        $$
 
-        ahora veo
-        $  \frac{\norma{e}}{\norma{x}} \leq  \condicion(A)  \frac{\norma{r}}{\norma{b}}$ :
+        Si compraste eso que quedo en $\llamada1$, listo solo hay que acomodar y reemplazar en la desigualdad y se prueba:
+        {\small
+        $$
+          \frac{1}{\condicion(\bm{A})} \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}
+          \igual{\red{!}}
+          \frac{1}{\norma{\bm{A}} \norma{\bm{A^{-1}}}} \frac{\norma{\bm{Ax} - \bm{A\tilde{x}}}}{\norma{\bm{b}}} =
+          \frac{1}{\norma{\bm{A}} } \frac{\norma{\bm{A}(\bm{x} - \bm{\tilde{x})}}}{\norma{\bm{A^{-1}}}\norma{\bm{b}}}
+          \menorIgual{\red{!}}
+          \frac{1}{\norma{\bm{A}} } \frac{\norma{\bm{A}}\norma{\bm{x} - \bm{\tilde{x}}}}{\norma{\bm{A^{-1}}}\norma{\bm{b}}}=
+          \frac{\norma{\bm{x} - \bm{\tilde{x}}}}{\norma{\bm{A^{-1}}}\norma{\bm{b}}}
+          \menorIgual{$\llamada1$}
+          \frac{\norma{\bm{x} - \bm{\tilde{x}}}}{\norma{\bm{x}}}
+        $$
+        }
+        Listo el pollo, quedó que:
+        $$
+          \cajaResultado{
+            \frac{1}{\condicion(\bm{A})} \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}
+            \leq
+            \frac{\norma{\bm{x} - \bm{\tilde{x}}}}{\norma{\bm{x}}}
+          }
+        $$
+        Probar la otra parte de la desigualdad es casi lo mismo, pero mirá con atención, porque
+        marea el hecho de ir acotar en sentido contrario, pero es lo meeeeeeeeeesmo:
+        $$
+          \begin{array}{rcl}
+            \condicion(\bm{A}) \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}
+            \igual{\red{!}}
+            \norma{\bm{A}} \norma{\bm{A^{-1}}} \frac{\norma{\bm{A}(\bm{x} - \bm{\tilde{x}})}}{\norma{\bm{Ax}}}
+            \geq
+            \norma{\bm{A}} \norma{\bm{A^{-1}}} \frac{\norma{\bm{A}(\bm{x} - \bm{\tilde{x}})}}{\norma{\bm{A}} \norma{\bm{x}}}
+             & =                    &
+            \frac{\norma{\bm{A^{-1}}} \norma{\bm{A}(\bm{x} - \bm{\tilde{x}})}}{ \norma{\bm{x}}} \\
+             & \mayorIgual{\red{!}} &
+            \frac{\norma{\bm{A^{-1}}\bm{A}(\bm{x} - \bm{\tilde{x}})}}{ \norma{\bm{x}}} =
+            \frac{\norma{\bm{x - \tilde{x}}}}{\norma{\bm{x}}}
+          \end{array}
+        $$
+        Así llegando a que:
+        $$
+          \cajaResultado{
+            \frac{\norma{\bm{x - \tilde{x}}}}{\norma{\bm{x}}}
+            \leq
+            \condicion(\bm{A}) \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}.
+          }
+        $$
 
-        $\frac{\norma{e}}{\norma{x}} =
-          \frac{\norma{A^{-1} r}}{\norma{x}} \menorIgual{\blue{cons}}
-          \frac{\norma{A^{-1}} \norma{r}}{\norma{x}} =
-          \frac{\norma{A}}{\norma{A}} \frac{\norma{A^{-1}} \norma{r}}{\norma{x}} =
-          \frac{\condicion(A) \norma{r}}{\norma{A} \norma{x}} \menorIgual{\blue{cons}}
-          \frac{\condicion(A) \norma{r}}{\norma{A x}} =
-          \frac{\condicion(A) \norma{r}}{\norma{b}}
-        $
-
-        Queda demostrado
   \item Es igual que el item anterior
 
+        \begin{enumerate}[label=(\roman*)]
+          \item $\bm{A}\bm{x} = \bm{b} \sii \bm{x} = \bm{A}^{-1}\bm{b}$
+          \item $\bm{A}\tilde{\bm{x}} = \tilde{\bm{b}} \sii \tilde{\bm{x}} = \bm{A}^{-1}\tilde{\bm{b}}$
+        \end{enumerate}
+
         Veo primero:
-        $\frac{1}{\condicion(A)}  \frac{\norma{b - \tilde{b}}}{\norma{b}} \leq \frac{\norma{x - \tilde{x}}}{\norma{x}}$:
+        $$
+          \frac{1}{\condicion(\bm{A})}  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}} \leq \frac{\norma{\bm{x} - \tilde{\bm{x}}}}{\norma{\bm{x}}}
+        $$
 
-        $\frac{1}{\condicion(A)}  \frac{\norma{b - \tilde{b}}}{\norma{b}} =
-          \frac{1}{\norma{A} \norma{A^{-1}}} \frac{\norma{Ax - A\tilde{x}}}{\norma{b}} =
-          \frac{1}{\norma{A} \norma{A^{-1}}} \frac{\norma{A(x - \tilde{x})}}{\norma{b}} \menorIgual{\blue{cons}}
-          \frac{1}{\norma{A} \norma{A^{-1}}} \frac{\norma{A} \norma{(x - \tilde{x})}}{\norma{b}} =
-        $
+        $$
+          \begin{array}{rcl}
+            \frac{1}{\condicion(\bm{A})}  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}} =
+            \frac{1}{\norma{\bm{A}} \norma{\bm{A}^{-1}}} \frac{\norma{\bm{A}(\bm{x} - \tilde{\bm{x}})}}{\norma{\bm{b}}} \menorIgual{\red{!}}
+            \frac{1}{\norma{\bm{A}} \norma{\bm{A}^{-1}}} \frac{\norma{\bm{A}} \norma{(\bm{x} - \tilde{\bm{x}})}}{\norma{\bm{b}}} =
+            \frac{\norma{(\bm{x} - \tilde{\bm{x}})}}{\norma{\bm{A}^{-1}} \norma{\bm{b}}} \menorIgual{\red{!}}
+            \frac{\norma{(\bm{x} - \tilde{\bm{x}})}}{\norma{\bm{A}^{-1} \bm{b}}} =
+            \frac{\norma{(\bm{x} - \tilde{\bm{x}})}}{\norma{\bm{x}}}
+          \end{array}
+        $$
+        Queda así:
+        $$
+          \cajaResultado{
+            \frac{1}{\condicion(\bm{A})}  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}} =
+            \leq
+            \frac{\norma{(\bm{x} - \tilde{\bm{x}})}}{\norma{\bm{x}}}
+          }
+        $$
 
-        $
-          \frac{\norma{(x - \tilde{x})}}{\norma{A^{-1}} \norma{b}} \menorIgual{\blue{cons}}
-          \frac{\norma{(x - \tilde{x})}}{\norma{A^{-1} b}} =
-          \frac{\norma{(x - \tilde{x})}}{\norma{x}}
-        $
+        Por último queda ver que:
+        $$
+          \frac{\norma{\bm{x} - \tilde{\bm{x}}}}{\norma{\bm{x}}} \leq \condicion(\bm{A})  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}}
+        $$
 
-        Queda ver $\frac{\norma{x - \tilde{x}}}{\norma{x}} \leq \condicion(A)  \frac{\norma{b - \tilde{b}}}{\norma{b}}$
-
-        $
-          \frac{\norma{x - \tilde{x}}}{\norma{x}} =
-          \frac{\norma{A^{-1}(b - \tilde{b})}}{\norma{x}}
-          \menorIgual{\blue{cons}}
-          \frac{\norma{A^{-1}} \norma{(b - \tilde{b})}}{\norma{x}} =
-          \frac{\norma{A} \norma{A^{-1}} \norma{(b - \tilde{b})}}{\norma{A} \norma{x}} =
-          \frac{\condicion(A) \norma{(b - \tilde{b})}}{\norma{A} \norma{x}}
-          \menorIgual{\blue{cons}}
-          \frac{\condicion(A) \norma{(b - \tilde{b})}}{\norma{Ax}} =
-          \condicion(A)  \frac{\norma{b - \tilde{b}}}{\norma{b}}
-        $
-
-        queda demostrado
+        $$
+          \begin{array}{c}
+            \frac{\norma{\bm{x} - \tilde{\bm{x}}}}{\norma{\bm{x}}} =
+            \frac{\norma{\bm{A}^{-1}(\bm{b} - \tilde{\bm{b}})}}{\norma{\bm{x}}}
+            \menorIgual{\red{i}}
+            \frac{\norma{\bm{A}^{-1}} \norma{(\bm{b} - \tilde{\bm{b}})}}{\norma{\bm{x}}} =
+            \frac{\norma{\bm{A}} \norma{\bm{A}^{-1}} \norma{(\bm{b} - \tilde{\bm{b}})}}{\norma{\bm{A}} \norma{\bm{x}}} =
+            \frac{\condicion(\bm{A}) \norma{(\bm{b} - \tilde{\bm{b}})}}{\norma{\bm{A}} \norma{\bm{x}}}
+            \menorIgual{\red{i}}
+            \frac{\condicion(\bm{A}) \norma{(\bm{b} - \tilde{\bm{b}})}}{\norma{\bm{A}\bm{x}}} =
+            \condicion(\bm{A})  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}}
+          \end{array}
+        $$
+        Finalmente obteniendo:
+        $$
+          \cajaResultado{
+            \frac{\norma{\bm{x} - \tilde{\bm{x}}}}{\norma{\bm{x}}} =
+            \leq
+            \condicion(\bm{A})  \frac{\norma{\bm{b} - \tilde{\bm{b}}}}{\norma{\bm{b}}}
+          }
+        $$
+        queda demostrado el ejercicio.
 \end{enumerate}
 
 \begin{aportes}
   \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
 \end{aportes}
