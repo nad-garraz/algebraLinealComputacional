@@ -1,8 +1,8 @@
 \begin{enunciado}{\ejercicio}
   Se tiene el sistema $\bm{A}\bm{x} = \bm{b}$.
   \begin{enumerate}[label=(\alph*)]
-    \item Sea  $x$ la solución exacta y $\tilde{x}$ la solución obtenida numéricamente.
-          Se llama \textit{residuo} al vector: $\bm{r} := \bm{b} - \bm{A}\tilde{\bm{x}}$.
+    \item Sea  $\bm{x}$ la solución exacta y $\tilde{\bm{x}}$ la solución obtenida numéricamente.
+          Se llama \textit{residuo} al vector: $\bm{r} \coloneq \bm{b} - \bm{A}\tilde{\bm{x}}$.
           Si notamos $\bm{e} = \bm{x} - \tilde{\bm{x}}$, mostrar que:
           $$
             \frac{1}{\condicion(\bm{A})}  \frac{\norma{\bm{r}}}{\norma{\bm{b}}}
@@ -61,7 +61,7 @@
         $$
         Listo, menos letras \textit{feas} menos ruido. Primero ataco la desigualdad de la izquierda:
         $$
-          \frac{1}{\condicion(\bm{A})} \frac{\norma{\bm{b} - \bm{Ax}}}{\norma{\bm{b}}}
+          \frac{1}{\condicion(\bm{A})} \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}
           \leq
           \frac{\norma{\bm{x - \tilde{x}}}}{\norma{\bm{x}}}
         $$
@@ -123,6 +123,19 @@
             \condicion(\bm{A}) \frac{\norma{\bm{b} - \bm{A\tilde{x}}}}{\norma{\bm{b}}}.
           }
         $$
+
+        \bigskip
+
+        Con respecto a la interpretación:
+
+        Lo que estamos haciendo es calcular \textit{cotas} para el \textit{error relativo} que puede haber
+        al resolver numéricamente $\bm{A}\bm{x} = \bm{b}$, con solución númerica del sistema $\tilde{\bm{x}}$
+        y solución exacta $\bm{x}$,
+        $\frac{\norma{\bm{x} - \tilde{\bm{x}}}}{\norma{\bm{x}}}$.
+
+        Una condición grande, será una matriz, \textit{verga}, porque nos da un intervalo para el error relativo grande.
+        
+        Una condición cercana a 1, será una matriz, \textit{linda}, con un error relativo sin mucho espacio para delirarla.
 
   \item Es igual que el item anterior
 

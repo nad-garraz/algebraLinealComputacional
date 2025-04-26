@@ -1,3 +1,19 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Probar que si $A \en \reales^{n \times n}$ es una matriz inversible y $\normaBullet$ es una norma matricial,
+  la condición de $A$ verifica la desigualdad:
+  $$
+    \frac{1}{\condicion(A)}
+    \leq
+    \infimo \set{\frac{\norma{A - B}}{\norma{A}} : B \text{ es singular}}.
+  $$
+  Deducir que
+  $$
+    \condicion(A)
+    \geq
+    \supremo \set{\frac{\norma{A}}{\norma{A - B}} : B \text{ es singular}}.
+  $$
+  Nota: En ambos casos, vale la igualdad, pero la otra desigualdad es un poco más complicada de probar. De
+  la igualdad se puede concluir que $\condicion(A)$ mide la distancia relativa de $A$ a la matriz
+  singular más próxima.
 \end{enunciado}
+ \hacer

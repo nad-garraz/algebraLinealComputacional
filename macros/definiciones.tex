@@ -84,7 +84,9 @@
 \newcommand{\limite}[2]{\lim\limits_{#1 \to #2}}
 \newcommand{\sumatoria}[2]{\sum\limits_{#1}^{#2}}
 \newcommand{\productoria}[2]{\prod\limits_{#1}^{#2}}
-\newcommand{\maximo}[1]{\max\limits_{#1}}
+\newcommand{\maximo}[1][]{\max\limits_{#1}}
+\newcommand{\infimo}[1][]{\inf\limits_{#1}}
+\newcommand{\supremo}[1][]{\sup\limits_{#1}}
 \newcommand{\kmasuno}[1]{\underbrace{#1}_{k+1\text{-ésimo}}}
 \newcommand{\HI}[1]{\underbrace{#1}_{\text{HI}}}
 
@@ -272,7 +274,7 @@
   \begin{center}
     #1\qquad
     \parbox{0.7\textwidth}{
-            \centering
+      \centering
       #2
     }
     \qquad#1
