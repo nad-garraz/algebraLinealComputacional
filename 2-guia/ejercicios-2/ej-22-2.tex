@@ -1,7 +1,7 @@
 \begin{enunciado}{\ejercicio}
   \begin{enumerate}[label=(\alph*)]
     \item Estimar la $\condicion_\infinito(A)$ de las siguientes matrices en función de $\varepsilon$ (cuando $\varepsilon \to 0$).
-          \begin{enumerate}[label=\roman*)]
+          \begin{enumerate}[label=(\roman*)]
             \begin{multicols}{2}
               \item $
                 \matriz{ccc}{
@@ -61,11 +61,35 @@
                   \geq
                   \infinito
                   \entonces
-                  \condicion_\infty(A)
-                  \flecha{$\varepsilon \to 0 $} \infinito
+                  \limite{\varepsilon}{0} \condicion_\infinito(A) = \infinito
                 $$
 
-          \item \hacer
+          \item Misma estrategia ahora para estimar la $\condicion_\infinito(B)$ con la matriz singular:
+                $$
+                  C =
+                  \matriz{ccc}{
+                    1 & 0 & 1 \\
+                    2 & 3 & 4 \\
+                    1 & 0 & 1
+                  }
+                  \entonces
+                  B - C =
+                  \matriz{ccc}{
+                    0 & 0 & \varepsilon \\
+                    0 & 0 & 0 \\
+                    - \varepsilon & 0 & 0
+                  }
+                $$
+                $$
+                  \condicion_\infinito(B)
+                  \geq
+                  \supremo \set{\frac{\norma{B}_\infinito}{\norma{B - C}_\infinito} : C \text{ es singular}} \geq
+                  \frac{9}{\varepsilon}
+                  \flecha{$\varepsilon \to 0$} \infinito
+                  \entonces
+                  \limite{\varepsilon}{0} \condicion_\infinito(B) = \infinito.
+                $$
+
         \end{enumerate}
 
   \item \hacer
