@@ -12,54 +12,97 @@
   y deducir que $\condicion_\infinito(A) \to \infinito$ cuando $n \to \infinito$
 \end{enunciado}
 
-\medskip
+\bigskip
 
-Primero voy a calcular el numero de condición. Para eso tengo que ver la norma de $A$ y $A^{-1}$
+Como sobra la creatividad en este repo, acá van 2 formas de resolver el ejercicio:
+\begin{enumerate}[label=\red{\angry$_{(\arabic*)}$}]
+  \item Es fácil calcular $A_\infinito$:
+        $$
+          \norma{A}_\infinito = 6n + 1
+        $$
+        Ahora voy a buscar una matriz singular $B$, conveniente para usar:
+        $$
+          \condicion_\infinito(A)
+          \geq
+          \supremo \set{\frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} : B \text{ es singular}}
+        $$
+        por ejemplo:
+        $$
+          B =
+          \matriz{ccc}{
+            0 & n & 5n  \\
+            0 & 3n & 3n \\
+            0 & n & 2n
+          }
+          \entonces
+          A - B =
+          \matriz{ccc}{
+            1 & 0 & 0  \\
+            1 & 0 & 0 \\
+            1 & 0 & 0
+          }
+          \entonces
+          \frac{\norma{A}_{\infinito}}{\norma{A - B}_\infinito} =
+          \frac{6n + 1}{1} = 6n + 1 > \ua{6}{c}n  \quad \paratodo n \en \naturales
+        $$
+        Y ahí quedó esa constante $c$:
+        $$
+          \cajaResultado{
+            c = 6
+          }
+        $$
 
-\textit{Para $A$:}
+        \bigskip
 
-La norma infinito es sumar los elementos de cada fila en módulo y quedarnos con la suma más grande.
-En este caso se ve a ojo que:
-$$
-  \norma{A}_\infinito = 1 + 6n
-$$
+  \item
+          Primero voy a calcular el número de condición. Para eso tengo que ver la norma de $A$ y $A^{-1}$
 
-\textit{Para $A^{-1}$:}
+        \textit{Para $A$:}
 
-Aca hay que calcular la inversa de $A$, $A^{-1}$, no voy a escribir todos los pasos (ninguno de hecho).
-$$
-\everymath{\displaystyle}
-  A^{-1} =
-  \matriz{ccc}{
-    \frac{-1}{2} & \frac{-1}{2} & 2 \\ \\
-    \frac{-1}{6n} & \frac{1}{2n} & \frac{-1}{3n} \\\\
-    \frac{1}{3n} & 0 & \frac{-1}{3n}
-  }
-$$
-y se ve que $|\frac{-1}{2}| + |\frac{-1}{2}| + |2|$ es la fila que más suma
-(el resto tiene elementos con $n$ el denominador con $n > 0$)
-$$
-  \norma{A^{-1}}_\infinito = 3
-$$
-Por lo tanto:
-$$
-  \condicion(A)_\infinito = 3(1 + 6n) = 3 + 18n
-$$
+        La norma infinito es sumar los elementos de cada fila en módulo y quedarnos con la suma más grande.
+        En este caso se ve a ojo que:
+        $$
+          \norma{A}_\infinito = 1 + 6n
+        $$
 
-El enunciado pide que muestre que existe una $c$ que cumpla $\condicion(A)_\infinito \geq cn$ para todo n.
+        \textit{Para $A^{-1}$:}
 
-Elijo $c = 2$:
-$$
-  3 + 18n \geq 2n \sii 3 + 16n \geq 0 \sii n \geq \frac{-3}{16}.
-$$
-Como $n \en \naturales$ vale para todo $n$.
+        Aca hay que calcular la inversa de $A$, $A^{-1}$, no voy a escribir todos los pasos (ninguno de hecho).
+        $$
+          \everymath{\displaystyle}
+          A^{-1} =
+          \matriz{ccc}{
+            \frac{-1}{2} & \frac{-1}{2} & 2 \\ \\
+            \frac{-1}{6n} & \frac{1}{2n} & \frac{-1}{3n} \\\\
+            \frac{1}{3n} & 0 & \frac{-1}{3n}
+          }
+        $$
+        y se ve que $|\frac{-1}{2}| + |\frac{-1}{2}| + |2|$ es la fila que más suma
+        (el resto tiene elementos con $n$ el denominador con $n > 0$)
+        $$
+          \norma{A^{-1}}_\infinito = 3
+        $$
+        Por lo tanto:
+        $$
+          \condicion(A)_\infinito = 3(1 + 6n) = 3 + 18n
+        $$
 
-Por último deducir que $\condicion_\infinito(A) \to \infinito$ cuando $n \to \infinito$:
+        El enunciado pide que muestre que existe una $c$ que cumpla $\condicion(A)_\infinito \geq cn$ para todo n.
 
-$$
-  \limite{n}{\infinito}\condicion_\infinito(A) = \limite{n}{\infinito} 3+18n = \infinito
-$$
+        Elijo $c = 2$:
+        $$
+          3 + 18n \geq 2n \sii 3 + 16n \geq 0 \sii n \geq \frac{-3}{16}.
+        $$
+        Como $n \en \naturales$ vale para todo $n$.
+
+        Por último deducir que $\condicion_\infinito(A) \to \infinito$ cuando $n \to \infinito$:
+
+        $$
+          \limite{n}{\infinito}\condicion_\infinito(A) = \limite{n}{\infinito} 3+18n = \infinito
+        $$
+\end{enumerate}
 
 \begin{aportes}
   \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
 \end{aportes}
