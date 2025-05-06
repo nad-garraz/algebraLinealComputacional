@@ -269,6 +269,15 @@
 \def\updateDos{
   {\today\ @ \currenttime}
 }
+\newcommand{\parrafoAcotado}[2][0.6]{
+  \begin{center}
+    \parbox{#1\textwidth}{
+      \centering
+      #2
+    }
+  \end{center}
+}
+
 % Párrafo destacado:
 \newcommand{\parrafoDestacado}[2][]{
   \begin{center}
