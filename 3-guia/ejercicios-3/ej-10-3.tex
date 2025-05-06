@@ -82,8 +82,21 @@
             \bm{y}^tA\bm{y} = (X\bm{y})^t X\bm{y} = \norma{X\bm{y}}_2^2 > 0 \\
           \end{array}
         $$
-
-        Queda demostrado.
+        Queda demostrado ya que:
+        $$
+          \cajaResultado{
+            \begin{array}{c}
+              A = X^tX
+              \Entonces{transpongo}
+              A^t = (X^tX)^t = X^t X = A
+              \\
+              \ytext
+              \\
+              \bm{y}^tA\bm{y} > 0  \paratodo \bm{y}\distinto  \bm{0} \en \reales^n
+              \Sii{def} \text{A es definida positiva}
+            \end{array}
+          }
+        $$
 \end{itemize}
 
 \begin{aportes}
