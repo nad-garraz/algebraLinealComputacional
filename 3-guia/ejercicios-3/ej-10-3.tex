@@ -1,3 +1,18 @@
+% Grafico matriz
+\def\triangularInferior{
+  \begin{tikzpicture}[baseline=-6, scale = 0.5]
+    \draw[blue, thin, fill=blue!20,yshift = -6, xshift = -8] (-1,1) -- (-1,-0.7) -- (1.7,-0.7) -- cycle;
+    \node at (0,0) {
+      $
+        \matriz{cc}{
+          \quad &  0 \\
+          a_{\green{i}\blue{j}} &
+        }
+      $
+    };
+  \end{tikzpicture}
+}
+
 \begin{enunciado}{\ejercicio}
   Sea $A \en \reales^{n \times n}$ una matriz simétrica.
   Probar que $A$ es definida positiva si y solo si existe un conjunto
@@ -8,13 +23,69 @@
 
 \begin{itemize}
   \item[(\red{$\Longrightarrow$})]
-        Si $A$ es una matriz simétrica y definida positiva:
+        Si $A$ es una matriz simétrica y definida positiva va a admitir la descomposición de Cholesky \hyperlink{teoria-3:cholesky}{(mirá acá)}.
         $$
-          A = A^t
-          \ytext
-                \bm{x}^t A \bm{x} > 0 \quad \paratodo \bm{x} \distinto \bm{0} \en \reales^n
+          A
+          \Sii{$A = A^t$}[$A$ def. pos.]
+          A = \ua{\tilde{L}}{\text{la de LU}} \oa{D}{d_{ij} > 0} \tilde{L}^t
+          \sii
+          A = \tilde{L}\sqrt{D} \sqrt{D} \tilde{L}^t
+          \sii
+          A = L L^t
+          \Sii{$\times$}[$\bm{x} \distinto \bm{0}$]
+          \begin{array}{rcl}
+            0 < \bm{x}^t A \bm{x}  =  \bm{x}^tL L^t \bm{x}
+             & = &
+            (L^t \cdot \bm{x})^t (L^t \bm{x}) \\
+             & = &
+            \bm{y^t} \bm{y}
+          \end{array}
+        $$
+        Ahora esos $\bm{y}$ tienen que ser \textit{linealmente independientes}, más fácil, tengo que encontrar \underline{un solo} conjunto:
+        $$
+          \bm{y} = L^t \bm{x}
+          \Entonces{elijo}
+          \set{x_1,\ldots, x_n} = \set{e_1,\ldots, e_n}
+          \entonces
+          \llave{c}{
+            \bm{y}_1 = L^t e_1 = \columna(L^t)_1\\
+            \vdots \\
+            \bm{y}_n = L^t e_n = \columna(L^t)_n\\
+          }
+        $$
+        La matriz $L$ es triangular inferior \triangularInferior, con unos en la diagonal por lo que sus columnas son mega \textit{linealmente independientes}.
+        Y dado que
+        $$
+          \bm{x}_i^tA\bm{x}_j =
+          \bm{e}_i^tA\bm{e}_j \igual{\red{!}}
+          a_{ij} =
+          \bm{y}_i^t\bm{y}_j
+        $$
+        tenemos que el conjunto que verifica lo pedido:
+        $$
+          \cajaResultado{
+            \set{\columna(L^T)_1, \ldots, \columna(L^T)_n} \subseteq \reales^n
+          }
         $$
 
   \item[(\red{$\Longleftarrow$})]
+        La hipótesis ahora me dice que tengo vectores \textit{linealmente independientes} y además que con esos vectores me formo la matriz $A$.
+        Es decir que $A = X^tX$, con $X$:
+        $$
+          \begin{array}{rcl}
+            X = \bigg(\bm{x}_1 \bigg| \cdots \bigg| \bm{x}_n \bigg)
+            \entonces
+            A = X^t X
+             & \Sii{$\times$}[$\bm{y} \distinto \bm{0}$] &
+            \bm{y}^tA\bm{y} = \bm{y}^tX^t X\bm{y}                           \\
+             & \sii                                      &
+            \bm{y}^tA\bm{y} = (X\bm{y})^t X\bm{y} = \norma{X\bm{y}}_2^2 > 0 \\
+          \end{array}
+        $$
+
+        Queda demostrado.
 \end{itemize}
 
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
