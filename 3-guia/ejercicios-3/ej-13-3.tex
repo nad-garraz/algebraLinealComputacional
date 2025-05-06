@@ -1,3 +1,130 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $B = \set{v_1, \ldots, v_n}$ una base de $K^n \ (K = \reales \otext \complejos)$
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que si $B$ es ortogonal, entonces
+          $$
+            \bm{C}_{EB} =
+            \matriz{ccc}{
+              \dots & \frac{v_1^*}{\norma{v_1}_2^2} & \dots\\
+              \dots & \frac{v_2^*}{\norma{v_2}_2^2} & \dots\\
+              &\vdots& \\
+              \dots & \frac{v_n^*}{\norma{v_n}_2^2} & \dots
+            }
+          $$
+
+    \item Probar que si $B$ es ortonormal, entonces $C_{EB} = C_{BE}^*$.
+
+    \item Concluir que si $B$ es ortonormal, entonces las coordenadas de un vector $v$ en base $B$ son:
+          $$
+            (v)_B = (v_1^* v, v_2^* v,\dots, v_n^* v).
+          $$
+
+    \item Calcular $(v)_B$ siendo $v = (1, -i, 3),\,  B = \set{ (\frac{i}{\sqrt{2}}, \frac{i}{\sqrt{2}}, 0), (-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0), (0,0,i) }$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item\label{ej-13:itema} Si $B$ es una \textit{base ortogonal}, una BOG, entonces sus vectores cumplen que:
+        $$
+          \bm{v}_i \cdot \bm{v}_j =
+          \llave{rcl}{
+            \norma{\bm{v}_i}_2^2 & \text{ si } & i = j\\
+            0 & \text{ si } & i\distinto j
+          }
+        $$
+        Para calcular la matriz de cambio de base $C_{EB}$ hay que calcular \textit{las coordenadas de los vectores canónicos en la base $B$}:
+        Ojo que esa llave son ecuaciones vectoriales, todo lo que está en \textbf{negrita}, \textbf{bold} es vector:
+        $$
+          \llave{rcl}{
+            \bm{e}_1 & = & \blue{c_{11}} \bm{v}_1 +  \blue{c_{12}} \bm{v}_2 + \cdots + \blue{c_{n1}} \bm{v}_n \Sii{$\times\to$}[\red{!}$\bm{v}_1^*$] \ub{v_1^*}{\en K} = \blue{c_{11}} \norma{\bm{v}_1}_2^2 \sii \blue{c_{11}} = \frac{v_1^*}{\norma{\bm{v}_1}_2^2} \\
+            \bm{e}_2 & = & \blue{c_{21}} \bm{v}_1 +  \blue{c_{22}} \bm{v}_2 + \cdots + \blue{c_{2n}} \bm{v}_n \Sii{$\times\to$}[\red{!}$\bm{v}_1^*$] v_1^* = \blue{c_{21}} \norma{\bm{v}_2}_2^2 \sii \blue{c_{21}} = \frac{v_1^*}{\norma{\bm{v}_1}_2^2}\\
+            & \vdots & \\
+            \bm{e}_n & = & \blue{c_{n1}} \bm{v}_1 +  \blue{c_{n2}} \bm{v}_2 + \cdots + \blue{c_{nn}} \bm{v}_n \Sii{$\times\to$}[\red{!}$\bm{v}_1^*$] v_1^* = \blue{c_{n1}} \norma{\bm{v}_n}_2^2 \sii \blue{c_{n1}} = \frac{v_1^*}{\norma{\bm{v}_1}_2^2}
+          }
+        $$
+        Esos coeficientes $\blue{c_{ij}}$ me forman \underline{la primera fila}, $\blue{c_{ij}}$ de la matriz $C_{EB}$:
+        {\small
+        $$
+          (\blue{c_{11}, c_{21}, \ldots, c_{n1}}) =
+          \bigg(\frac{v_1^*}{\norma{\bm{v}_1}_2^2},\frac{v_1^*}{\norma{\bm{v}_1}_2^2}, \cdots, \frac{v_1^*}{\norma{\bm{v}_1}_2^2}\bigg)
+          \igual{\red{!}}
+          \frac{v_1^*}{\norma{\bm{v}_1}_2^2}
+        $$
+        }
+        Cuando quiera calcular \underline{la fila} $j$-ésima:
+        $$
+          (\blue{c_{1j}, c_{2j}, \ldots, c_{nj}}) =
+          \bigg(\frac{v_j^*}{\norma{\bm{v}_j}_2^2},\frac{v_j^*}{\norma{\bm{v}_j}_2^2}, \cdots, \frac{v_j^*}{\norma{\bm{v}_j}_2^2}\bigg)
+          \igual{\red{!}}
+          \frac{v_j^*}{\norma{\bm{v}_j}_2^2}
+        $$
+        Y así me armo la matriz $C_{EB}$ generando fila por fila con este método.
+
+  \item  Ahora $B$ es una BON, así que:
+        $$
+          \bm{v}_i \cdot \bm{v}_j =
+          \llave{rcl}{
+            \norma{\bm{v}_i}_2^2 & \text{ si } & i = j\\
+            0 & \text{ si } & i\distinto j
+          }
+        $$
+        Y con esto la matriz del ítem \ref{ej-13:itema} queda más simple como:
+        $$
+          \bm{C}_{EB} =
+          \matriz{ccc}{
+            \dots & \bm{v}_1^* & \dots\\
+            \dots & \bm{v}_2^* & \dots\\
+            &\vdots& \\
+            \dots & \bm{v}_n^*& \dots
+          }\llamada1
+        $$
+        La matriz de cambio de base $C_{EB}$ toma \textit{vectores en coordenadas de $E$} y da el resultado en \textit{coordenadas de la base $B$}.
+        Construir el cambio de base $C_{BE}$, es inmediato el cálculo de coordenadas haciendo el sistema como en el ítem \ref{ej-13:itema}
+        ¡Quedan los vectores de la base $B$ conjugados como columnas de la matriz!
+        $$
+          \conj{\bm{C}}_{BE} =
+          \bigg(
+          \conj{\bm{v}}_1 \bigg|
+          \conj{\bm{v}}_2 \bigg|
+          \dots \bigg|
+          \conj{\bm{v}}_n
+          \bigg)
+          \quad
+          \Entonces{transpongo}[$\entonces\green{*}$]
+          \quad
+          \cajaResultado{
+          \bm{C}_{BE}^{\green{*}} =
+          \matriz{ccc}{
+            \dots & \bm{v}_1^* & \dots\\
+            \dots & \bm{v}_2^* & \dots\\
+            &\vdots& \\
+            \dots & \bm{v}_n^* & \dots
+          }
+          \igual{$\llamada1$} \bm{C}_{EB}
+          }
+        $$
+
+  \item\label{ej-13:itemc} Sale con el sistemita del ítem \ref{ej-13:itema} nuevamente:
+        $$
+          \bm{v}  =
+          \blue{c_1} \bm{v}_1 +  \blue{c_2} \bm{v}_2 + \cdots + \blue{c_n} \bm{v}_n
+          \Sii{$\times\to$}[\red{!}$\bm{v}_j^*$]
+          \bm{v}_j^* \cdot \bm{v} = \blue{c_j} \ub{\norma{\bm{v}_1}_2^2}{=1}
+          \sii
+          \cajaResultado{
+            \blue{c_j} = \bm{v}_j^* \cdot \bm{v}
+          }
+        $$
+
+  \item Pajilla \meh. $B$ es una BON. Usando el ítem \ref{ej-13:itemc}:
+        $$
+          (\bm{v})_B =
+          (\bm{v} \cdot \bm{v}_1^*, \bm{v} \cdot \bm{v}_2^*, \bm{v} \cdot \bm{v}_3^*)
+          \igual{\red{!}}
+          (0, -\frac{2}{\sqrt{2}}i,3i)
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

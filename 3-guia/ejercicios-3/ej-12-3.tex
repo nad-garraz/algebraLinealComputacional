@@ -1,3 +1,130 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $A \en \reales^{n \times n}$ tal que $\norma{A}_2 < 1$, siendo $\normaBullet_2$ la norma matricial inducida
+  por la norma 2 vectorial.
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que $I - A^t A$ es simétrica definida positiva.
+
+    \item Probar que la matriz
+          $
+            \matriz{cc}{
+              I & A\\
+              A^t &I
+            }
+          $
+          es simétrica definida positiva.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item \textit{Para la simetría:}
+
+        Transpongo y cruzo los dedos para que quede igual:
+        $$
+          (I - A^t A)^{\red{t}}
+          \ua{=}{\text{linealidad en la trasposición}}
+          I^t - (A^tA)^t =
+          I - A^tA
+        $$
+        \parrafoDestacado{
+        {
+        \small
+        Sobre la linealidad de la transposición:
+        $$
+          [A + B]_{ij} = a_{ij} + b_{ij}
+          \Entonces{transpongo}
+          \left[A + B\right]_{ij}^t =
+          [A + B]_{ji} = a_{ji} + b_{ji}
+        $$
+        }
+        }
+        Es simétrica.
+
+        \bigskip
+
+        \textit{Para ver si es definida positiva:}
+
+        Intentamos con la definición de \textit{matriz definida positiva} y vemos que sale:
+        $$
+          \begin{array}{rcl}
+            I - A^t A
+            \Sii{$\times$}[$\bm{x} \distinto \bm{0}$]
+            \blue{\bm{x}^t (I - A^t A) \bm{x}} =
+            \norma{\bm{x}}_2^2 - \bm{x}^tA^t A \bm{x} =
+            \norma{\bm{x}}_2^2 - \bm{x}^tA^t A \bm{x}
+             & =                &
+            \norma{\bm{x}}_2^2 - \norma{A\bm{x}}_2^2                                                \\
+             & \igual{\red{!!}} &
+            \norma{\bm{x}}_2^2( 1 - \frac{\norma{A\bm{x}}_2^2}{\norma{\bm{x}}_2^2}) \quad \llamada1 \\
+          \end{array}
+        $$
+        Y por la definición de la norma inducida:
+        $$
+          \norma{A}_2 = \maximo[\bm{x} \distinto \bm{0}] \frac{\norma{A\bm{x}}_2}{\norma{\bm{x}}_2} \ua{<}{\text{enunciado}} 1 \paratodo \bm{x} \en \reales^n
+        $$
+        queda entonces $\llamada1
+          \ob{\norma{\bm{x}}_2^2}{> 0} \ub{
+            ( 1 - \ob{
+              \frac{\norma{A\bm{x}}_2^2}{\norma{\bm{x}}_2^2}
+            }{<1}
+            )}{ > 0} > 0
+        $:
+        $$
+          \cajaResultado{
+            \blue{\bm{x}^t (I - A^t A) \bm{x}} >0
+          }
+        $$
+
+  \item \textit{Para la simetría:}
+
+        \textit{Para ver si es definida positiva:}
+
+        Me parece que multiplicar por bloque hace que caigamos en el ejercicio anterior:
+        {\small
+        $$
+          \begin{array}{l}
+            (\ub{x_1, \ldots, x_n}{y_n}, \ub{x_{n+1},  \ldots,  x_{2n}}{z_n})
+            \matriz{cc}{
+            I   & A \\
+            A^t & I
+            }
+            \matriz{c}{
+            x_1     \\
+            \vdots  \\
+            x_n     \\
+            x_{n+1} \\
+            \vdots  \\
+              x_{2n}
+            }
+            =       \\
+            =
+            \bigg(
+            (x_1,\ldots, x_n) I,
+            (x_{n+1}, \ldots, x_{2n})A^t,
+            (x_1, \ldots, x_n)A,
+            (x_{n+1}, \ldots, x_{2n}) I
+            \bigg)
+            \matriz{c}{
+            x_1     \\
+            \vdots  \\
+            x_n     \\
+            x_{n+1} \\
+            \vdots  \\
+            x_{2n}  \\
+            }
+            =       \\
+            =\norma{y_n}_2^2 + z^t A^t z + y^t A y + \norma{z}_2^2
+          \end{array}
+        $$
+        }
+        Usando el resultado del ejercicio anterior:
+        $$
+          \blue{\bm{x}^t (I - A^t A) \bm{x}} =
+          \norma{\bm{x}}_2^2 - \bm{x}^t A^t A \bm{x}  =
+          \norma{\bm{x}}_2^2 - \norma{A \bm{x}}_2^2
+        $$
+        \red{\huge{CONSULTAR}}
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
