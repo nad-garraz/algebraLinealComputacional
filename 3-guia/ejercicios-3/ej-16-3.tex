@@ -1,3 +1,116 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  \begin{enumerate}[label=(\alph*)]
+    \item Sea $B = \set{(1,-1,0),(0,1,-1),(0,0,1)}$ base de $\reales^3$ y sea $f: \reales^3 \to \reales^3$ la transformación lineal tal que:
+          $$
+            f(1, -1, 0) = (1,-1,0), \ f(0,1,-1) = (0,1,-1), \ f(0,0,1) = (0,0,0).
+          $$
+          Calcular $[f]_B$ y comprobar que $f$ es un proyector.
+
+    \item Construir un proyector $f : \reales^3 \to \reales^3$ tal que $\nucleo(f) = \ket{(1,1,1)}$ e
+          $\imagen(f) = \set{x \en \reales^3 / x_1 + x_2 - 3x_3 = 0}$. ¿Es $f$ una proyección ortogonal?
+  \end{enumerate}
 \end{enunciado}
+
+\hyperlink{teoria-3:proyector}{Acá te dejo resumencito de proyector, click, click}
+\begin{enumerate}[label=(\alph*)]
+  \item  Para calcular $[f]_B \otext [f]_{BB}$ que me parece más descriptivo:
+        $$
+          [f]_{BE} =
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            -1 & 1 & 0 \\
+            0 & -1 & 0
+          }
+        $$
+        Para calcular $[f]_{BB}$ hay que calcular las coordenadas en base $B$ de los transformados de la base $B$.
+        $$
+          \llave{rclcl}{
+            f(1, -1, 0) & = & (1,-1,0)_B &\igual{\red{!}}& (1,0,0) \\
+            f(0,1,-1) & = & (0,1,-1)_B   &\igual{\red{!}}& (0,1,0) \\
+            f(0,0,1) & = & (0,0,0)_B     &\igual{\red{!}}& (0,0,0)
+          }.
+        $$
+        Salen a ojo esas coordenadas, porque son los {\tiny casi} mismos vectores que la base $B$. Si no lo ves, planteá las combinetas lineales para calcular
+        las coordenadas y vas a llegar a lo mismo.
+        $$
+          [f]_{BB} =
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0
+          }
+        $$
+
+        Si $f$ es un proyector, lo va a ser en cualquier base, voy con la definición: $P \circ P = P$
+        $$
+          [f]_{BB} \circ [f]_{BB} =
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 0
+          }
+          = [f]_{BB}
+        $$
+
+  \item
+        De ese subespacio pedorro saco que:
+        $$
+          \imagen(f) = \set{(-1,1,0), (-3,0,1)}
+        $$
+        Propongo un proyector $P$:
+        $$
+          \llave{l}{
+            P(-1,1,0) = (-1,1,0) \to v\en \imagen(P) \entonces P(v) = v\\
+            P(-3,0,1) = (-3,0,1) \to v\en \imagen(P) \entonces P(v) = v\\
+            P(1,1,1) = (0, 0, 0)
+          }
+        $$
+        Ojo que eso sería algo como $[P]_{BE}$ con $B = \set{(-1,1,0), (-3, 0, 1), (1,1,1)}$ para encontrar el proyector es su forma \textit{más mejor}:
+        \parrafoDestacado[\faIcon{calculator}]{
+          Las cuentas estas que voy a hacer no son necesarias para contestar, pero quiero ver que no me quede simétrico.
+        }
+        $$
+          \llave{rcl}{
+            P(-1,1,0) & = & (-1,1,0)   \\
+            P(3,0,1)  & = & (3,0,1)    \\
+            P(1,1,1)  & = & (0, 0, 0)
+          }
+          \triangulacion{
+            \flecha{\magic}
+          }
+          \llave{rcl}{
+            P(1,0,0) & = & (\frac{4}{5}, -\frac{1}{5}, - \frac{1}{5})   \\
+            P(0,1,0) & = & (-\frac{1}{5},\frac{4}{5},-\frac{1}{5})   \\
+            P(0,0,1)  & = & (-\frac{3}{5}, -\frac{3}{5}, \frac{2}{5})
+          }
+        $$
+        El proyector en base $E$ queda:
+        $$
+          P =
+          \matriz{ccc}{
+            \frac{4}{5} & -\frac{1}{5} & -\frac{3}{5} \\
+            -\frac{1}{5} & \frac{4}{5} & -\frac{3}{5} \\
+            -\frac{1}{5} & -\frac{1}{5} & \frac{2}{5}
+          }
+        $$
+        El proyector $P$ \underline{no} es \textit{un proyector ortogonal}.
+        Por un lado no se cumple que $\nucleo(P) \perp \imagen(P)$, dado que $\ub{(1,1,1)}{\en \nucleo(P)} \cdot \ub{(3,0,1)}{\en \imagen(P)} \distinto 0$.
+        Además la expresión matricial tampoco cumple $P = P^t$.
+\end{enumerate}
+
+\parrafoDestacado[{\small{\red{\atencion consultar}}}]{
+  Se puede encontrar una base en la que el proyector sí va a ser simétrico. En este caso particular:
+  $$
+    [f]_{BB} =
+    \matriz{ccc}{
+      1 & 0 & 0 \\
+      0 & 1 & 0 \\
+      0 & 0 & 0
+    }
+  $$
+  igual que en ele ítem a.
+}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
