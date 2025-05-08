@@ -86,13 +86,22 @@
         $$
           A w = 0
           \quad \ytext \quad
-          (I - A)w \igual{$\llamada1$} w
+          (I - A)w = w
           \entonces
           A \ub{(I - A)w}{w} =
           (A - A^2)w
           \igual{\red{!}}
           (A - A )w = 0.
         $$
+        Podemos decir que $A(I - A)$ es el operador nulo.
+        
+        En general para cualquier elemento $\green{v}$ del \textit{espacio vectorial} $V$: Puedo escribir $v = s + s^\perp$,
+        una combineta única de elementos de $S \ytext S^\perp$, ya que $S \sumaDirecta S^\perp$.
+        $$
+          A(I - A) v = A(I - A)(s + s^\perp) = A(s + s^\perp - As - As^\perp) = As + As^\perp - As - A^2s^\perp \igual{\red{!}} 0
+        $$
+        Los \textit{proyectores ortogonales} cumplen que $\nucleo(P) \perp \imagen(P)$, donde la imagen es el $S$ al que se proyecta y
+        el núcleo es el $S^\perp$.
 
   \item Sí,lo sé, esto no es una implementación en \python.
 
