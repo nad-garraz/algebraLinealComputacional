@@ -1,3 +1,81 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  En cada uno de los siguientes casos construir un proyector $f:\reales^3 \to \reales^3$ que cumpla:
+  \begin{enumerate}[label=(\roman*)]
+    \item $\imagen(f) = \set{(x_1,x_2,x_3) / x_1 + x_2 + x_3 = 0 }$
+    \item $\nucleo(f) = \set{(x_1,x_2,x_3) / x_1 + x_2 + x_3 = 0 }$
+    \item $\nucleo(f) = \set{(x_1,x_2,x_3) / 3x_1 - x_3 = 0 } \text{ e } \imagen(f) = \ket{(1,1,1)}$
+  \end{enumerate}
 \end{enunciado}
+
+\hyperlink{teoria-3:proyector}{Acá un poco de cosas de proyectores, click, click {\tiny\faIcon{mouse}}}
+
+\begin{enumerate}[label=(\roman*)]
+  \item Encuentro un \textit{sistema de generadores} de $\imagen(f) = \ket{(-1,1,0), (-1,0,1)}$, y dado que
+        el subespacio $\nucleo(f) \sumaDirecta \imagen(f)$, por ejemplo $\nucleo(f) = \ket{(1,1,1)}$.
+
+        Con esa data defino el proyector:
+        $$
+          \llave{rcl}{
+            f(-1,1,0) &=& (-1,1,0) \\
+            f(-1,0,1) &=& (-1,0,1) \\
+            f(1,1,1) &=& (0,0,0)
+          }
+        $$
+        Si tomo como base $B = \set{(-1,1,0),(-1,0,1), (1,1,1)}$:
+        $$
+          f_{BE} =
+          \matriz{rcl}{
+            -1 & -1 & 0\\
+            1 & 0 & 0\\
+            0 & 1 & 0
+          }
+        $$
+        Busco $f$, para lo cual multiplico por:
+        $$
+          C_{BE} =
+          \matriz{ccc}{
+            -1 & -1 & 1 \\
+            1 & 0 & 1 \\
+            0 & 1 & 1
+          }
+          \flecha{inversa}
+          C_{EB} =
+          \matriz{rrr}{
+            -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3}  \\
+            -\frac{1}{3} & -\frac{1}{3} & \frac{2}{3}  \\
+            \frac{1}{3} & \frac{1}{3} & \frac{1}{3}
+          }
+        $$
+        Por lo tanto:
+        $$
+          f = f_{EB} \cdot C_{EB} =
+          \matriz{rrr}{
+            \frac{2}{3} & -\frac{1}{3} & -\frac{1}{3} \\
+            -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
+            -\frac{1}{3} & -\frac{1}{3} & \frac{2}{3}
+          }
+        $$
+        No sé si hay que expresar el resultado en base canónica, pero ahí está.
+
+  \item Usando lo mismo de antes:
+        $$
+          \llave{rcl}{
+            f(-1,1,0) &=& (0,0,0) \\
+            f(-1,0,1) &=& (0,0,0) \\
+            f(1,1,1) &=& (1,1,1)
+          }
+        $$
+
+  \item Ahora $\nucleo(f) = \ket{(3,0,1), (0,1,0)}$
+        $$
+          \llave{rcl}{
+            f(3,0,1) &=& (0,0,0) \\
+            f(0,1,0) &=& (0,0,0) \\
+            f(1,1,1) &=& (1,1,1)
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
