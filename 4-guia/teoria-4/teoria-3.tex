@@ -1,0 +1,57 @@
+\begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
+  \item \hypertarget{teoria-3:definida-positiva}{\textit{Matriz definida positiva:}}
+
+        Sea  $A \en \reales^{n \times n}$ definida positiva:
+        $$
+          \paratodo x \distinto 0 \quad x^t A x > 0 \text{ con } x \en \reales^n
+        $$
+        Algunas propiedades de las matrices definidas positivas:
+        \begin{itemize}
+          \item  $A\en \reales^{n \times n} \entonces \existe A^{-1}$.
+          \item  Los elementos diagonales son positivos.
+          \item  Las submatrices principales también son matrices definidas positivas
+        \end{itemize}
+
+  \item \hypertarget{teoría-3:cholesky}{\textit{Descomposición de Cholesky:}}
+
+        La descomposición de Cholesky para una matriz $A$ simétrica y definida positiva:
+        $$
+          A = L L^t
+        $$
+        con $L$ triangular inferior. A partir de la descomposición:
+        $$
+          A = \ob{\tilde{L} U}{\text{la de siempre}}
+          \flecha{\quad\magic\quad}
+          A = \tilde{L}
+          \ob{
+            \ua{D}{\text{matriz diagonal}\\ \text{con los elementos}\\ \text{diagonales de } U} \tilde{L}^t}
+          {}.
+        $$
+        \parrafoDestacado[\atencion]{
+          $A = \tilde{L} D \tilde{L}^t$, es definida positiva si y solo si $D$ lo es. Como $D$ es diagonal, solo es cuestión de ver que $[D]_{ii} > 0$.
+        }
+        Finalmente:
+        $$
+          A = \tilde{L} D \tilde{L}
+          \sii
+          A = \tilde{L} \sqrt{D} \sqrt{D} \tilde{L}^t
+          \sii
+          A = LL^t
+        $$
+
+  \item \hypertarget{teoria-3:proyector}{\textit{Proyectores:}}
+
+        Se llama  \textit{Proyector} a una transformación lineal $P$ que cumple que:
+        \begin{itemize}
+          \item $P(v) = v$
+          \item $P \circ P = P$
+        \end{itemize}
+        Con las propiedades:
+        \begin{enumerate}[label=\poo]
+          \item Si $P: V \to V$ es proyector $\entonces \nucleo(P) = \set{\bm{0}_V}$
+          \item Si $P: V \to V$ es proyector $\entonces v - P(v) \en \nucleo(P) \paratodo v \en V$
+          \item Si $P: V \to V$ es proyector $\entonces \nucleo(P) \sumaDirecta \imagen(P) = V$
+          \item $P$ es un \textit{proyector ortogonal} si $\nucleo(P) \perp \imagen(P)$
+          \item $P$ es un \textit{proyector ortogonal} $\sii P = P^t$
+        \end{enumerate}
+\end{enumerate}

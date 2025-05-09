@@ -20,7 +20,7 @@
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-  \item Quiero ver si la matriz $I_n - M$ es inversible. Para eso puedo buscar a ver si hay algún vector $x_0$ tal que:
+  \item\label{extra-1:itema} Quiero ver si la matriz $I_n - M$ es inversible. Para eso puedo buscar a ver si hay algún vector $x_0$ tal que:
         $$
           (I_n - M)x_0 = 0,
         $$
@@ -37,10 +37,11 @@
         $$
         En particular agarro de ese conjunto el vector $x_0$ que es por hipótesis distinto de 0, sino no tiene gracia. Tengo que:
         $$
-          \norma{M} =
-          \frac{\norma{Mx_0}}{\norma{x_0}} \menor{\red{!}}  1
+          \frac{\norma{Mx_0}}{\norma{x_0}}
+          \menorIgual{\red{!}}
+          \norma{M} < 1
           \sisolosi
-          \norma{Mx_0} \menor{\red{!}} \norma{x_0}
+          \norma{Mx_0} < \norma{x_0}
           \Sii{$\llamada1$}
           \norma{x_0} \menor{\red{!}} \norma{x_0}.
         $$
@@ -51,9 +52,63 @@
             (I_n - M)  \text{ es inversible.}
           }
         $$
-  \item \hacer
+
+  \item
+        \begin{enumerate}[label=\roman*)]
+          \item\label{extra-1:itembi}
+                Juntemos esa info:
+                \begin{itemize}
+                  \item $\norma{A}_\infty = \alpha$ quiere decir que la \textit{\underline{fila} cuya sumatoria sea máxima} vale $\alpha$.
+
+                  \item La transformación $f$ transpone y multiplica por $\gamma$.
+                        $$
+                          [f(A)]_{ij} = \gamma \cdot [A]_{ji}
+                        $$
+                \end{itemize}
+
+                Entonces como $\norma{A}_1$ sería la \textit{\underline{columna} cuya sumatoria sea máxima}:
+                $$
+                  \norma{f(A)}_1 =
+                  \norma{\gamma \cdot A^t}_1 =
+                  |\gamma| \cdot \norma{A^t}_1 \igual{\red{!}}
+                  \gamma \cdot \norma{A}_\infinito \igual{!}
+                  \gamma \cdot \alpha
+                $$
+
+                $$
+                  \cajaResultado{
+                    \norma{f(A)}_1 = \gamma \cdot \alpha
+                  }
+                $$
+
+          \item ¿Hay que hacer lo mismo que en el ítem \ref{extra-1:itema}?
+                $$
+                  (I_n - f(A))x_0 = 0
+                  \sii
+                  f(A)x_0 = x_0.
+                $$
+                Del ítem \ref{extra-1:itembi} sé que $\norma{f(A)}_1 < 1$, entonces:
+                $$
+                  \frac{\norma{f(A)}_1}{\norma{A}_1}
+                  \menorIgual{\red{!}}
+                  \norma{f(A)}_1 =
+                  \gamma \cdot \norma{A^t}_\infinito =
+                  \gamma \cdot \alpha < 1
+                  \Sii{\red{!}}
+                  \norma{f(A)x_0}_1 < \norma{x_0}_1.
+                $$
+                Llegando a la misma conclusión que en el ítem \ref{extra-1:itema}:
+                $$
+                  \cajaResultado{
+                    (I_n - f(A))  \text{ es inversible.}
+                  }
+                $$
+                Al parecer para cualquier matriz que tenga $\norma{A} < 1 \to (I_n - A)$ será inversible.
+
+        \end{enumerate}
+
 \end{enumerate}
 
 \begin{aportes}
-  \item \aporte{https://github.com/nad-garraz}{naD GarRaz \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
 \end{aportes}
