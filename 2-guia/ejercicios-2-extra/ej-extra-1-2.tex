@@ -1,0 +1,59 @@
+\begin{enunciado}{\ejExtra}
+  \begin{enumerate}[label=(\alph*)]
+    \item
+          Sea $M \en \reales^{n \times n}$ una matriz tal que
+          existe una norma (subordinada a una norma vectorial)
+          que cumple que $\norma{M} < 1$. Probar que $I_n - M$ es inversible,
+          siendo $I_n$ la matriz identidad de orden $n$.
+
+    \item
+          Sean $\alpha, \gamma > 0, A \en \reales^{n \times n}$ tal que
+          $\norma{A}_\infinito = \alpha$ y $f : \reales^{n \times n} \to \reales^{n \times n}$
+          una transformación lineal tal que
+          $\paratodo i,j \en \set{1,\ldots, n} : f(E_{ij}) = \gamma E_{ji}$ siendo $E_{ij}$ la matriz canónica de
+          $\reales^{n \times n}$ que tiene un 1 en la coordenada $(i, j)$.
+          \begin{enumerate}[label=\roman*)]
+            \item Calcular $\norma{f(A)}_1$.
+            \item Probar que si $\gamma \alpha < 1$ entonces $I_n - f(A)$ es inversible.
+          \end{enumerate}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Quiero ver si la matriz $I_n - M$ es inversible. Para eso puedo buscar a ver si hay algún vector $x_0$ tal que:
+        $$
+          (I_n - M)x_0 = 0,
+        $$
+        de ocurrir eso, la matriz trendría un $\nucleo(I_n - M) \distinto \set{0}$ o columnas linealmente independientes o como te guste decirle.
+        Laburo un poco la expresión:
+        $$
+          (I_n - M)x_0 = 0
+          \sii
+          Mx_0 \igual{$\llamada1$} x_0.
+        $$
+        Tengo de dato que $\norma{M} < 1$ y la definición de norma subordinada dice algo como:
+        $$
+          \norma{M} = \maximo[x \distinto 0]\set{{\frac{\norma{Mx}}{\norma{x}}}}, \text{ para alguna norma vectorial}.
+        $$
+        En particular agarro de ese conjunto el vector $x_0$ que es por hipótesis distinto de 0, sino no tiene gracia. Tengo que:
+        $$
+          \norma{M} =
+          \frac{\norma{Mx_0}}{\norma{x_0}} \menor{\red{!}}  1
+          \sisolosi
+          \norma{Mx_0} \menor{\red{!}} \norma{x_0}
+          \Sii{$\llamada1$}
+          \norma{x_0} \menor{\red{!}} \norma{x_0}.
+        $$
+        Lo cual terminando resultando en un absurdo. Por lo tanto no puede haber un vector $x_0$ tal que
+        $(I_n - M) x = 0$.
+        $$
+          \cajaResultado{
+            (I_n - M)  \text{ es inversible.}
+          }
+        $$
+  \item \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{https://github.com/nad-garraz}{naD GarRaz \github}
+\end{aportes}
