@@ -59,10 +59,10 @@
         $$
         Propongo un proyector $P$:
         $$
-          \llave{l}{
-            P(-1,1,0) = (-1,1,0) \to v\en \imagen(P) \entonces P(v) = v\\
-            P(-3,0,1) = (-3,0,1) \to v\en \imagen(P) \entonces P(v) = v\\
-            P(1,1,1) = (0, 0, 0)
+          \llave{rcl}{
+            P(-1,1,0)  & = & (-1,1,0) \\
+            P(-3,0,1)  & = & (-3,0,1) \\
+            P(1,1,1)   & = & (0, 0, 0)
           }
         $$
         Ojo que eso sería algo como $[P]_{BE}$ con $B = \set{(-1,1,0), (3, 0, 1), (1,1,1)}$ para encontrar el proyector es su forma \textit{más mejor}:
@@ -98,7 +98,7 @@
         Además la expresión matricial tampoco cumple $P = P^t$.
 \end{enumerate}
 
-\parrafoDestacado[{\small{\red{\atencion consultar}}}]{
+\parrafoDestacado{
   Se puede encontrar una base en la que el proyector sí va a ser simétrico. En este caso particular:
   $$
     [f]_{BB} =
@@ -108,7 +108,8 @@
       0 & 0 & 0
     }
   $$
-  igual que en ele ítem a.
+  igual que en ele ítem (a), \magenta{pero si bien es simétrica la expresión matricial no se puede concluir en
+    esta base que sea un \textit{proyector ortogonal}}
 }
 
 \begin{aportes}

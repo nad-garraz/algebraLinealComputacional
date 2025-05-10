@@ -24,7 +24,8 @@
         $$
           (I_n - M)x_0 = 0,
         $$
-        de ocurrir eso, la matriz trendría un $\nucleo(I_n - M) \distinto \set{0}$ o columnas linealmente independientes o como te guste decirle.
+        de ocurrir eso, la matriz tendría un $\nucleo(I_n - M) \distinto \set{0}$ o columnas \textit{linealmente dependientes} o sería \textit{singular}
+        como \poo te guste decirle.
         Laburo un poco la expresión:
         $$
           (I_n - M)x_0 = 0
@@ -58,20 +59,20 @@
           \item\label{extra-1:itembi}
                 Juntemos esa info:
                 \begin{itemize}
-                  \item $\norma{A}_\infty = \alpha$ quiere decir que la \textit{\underline{fila} cuya sumatoria sea máxima} vale $\alpha$.
+                  \item $\norma{A}_\infty = \alpha$ quiere decir que la \textit{\underline{fila} de $A$ cuya sumatoria sea máxima} vale $\alpha$.
 
                   \item La transformación $f$ transpone y multiplica por $\gamma$.
                         $$
-                          [f(A)]_{ij} = \gamma \cdot [A]_{ji}
+                          [f(A)]_{ij} = \gamma \cdot [A]_{ji} \flecha{ o más lindo } f(A) = \gamma \cdot A^t
                         $$
                 \end{itemize}
 
-                Entonces como $\norma{A}_1$ sería la \textit{\underline{columna} cuya sumatoria sea máxima}:
+                Entonces como $\norma{A}_1$ sería la \textit{\underline{columna} de $A$ cuya sumatoria sea máxima}:
                 $$
                   \norma{f(A)}_1 =
                   \norma{\gamma \cdot A^t}_1 =
-                  |\gamma| \cdot \norma{A^t}_1 \igual{\red{!}}
-                  \gamma \cdot \norma{A}_\infinito \igual{!}
+                  |\gamma| \cdot \norma{A^t}_1 \igual{\red{!!}}
+                  \gamma \cdot \norma{A}_\infinito =
                   \gamma \cdot \alpha
                 $$
 
@@ -85,28 +86,34 @@
                 $$
                   (I_n - f(A))x_0 = 0
                   \sii
-                  f(A)x_0 = x_0.
+                  f(A)x_0 \igual{$\llamada1$} x_0.
                 $$
                 Del ítem \ref{extra-1:itembi} sé que $\norma{f(A)}_1 < 1$, entonces:
                 $$
-                  \frac{\norma{f(A)}_1}{\norma{A}_1}
+                  \frac{\norma{f(A)x_0}_1}{\norma{x_0}_1}
                   \menorIgual{\red{!}}
                   \norma{f(A)}_1 =
                   \gamma \cdot \norma{A^t}_\infinito =
                   \gamma \cdot \alpha < 1
                   \Sii{\red{!}}
                   \norma{f(A)x_0}_1 < \norma{x_0}_1.
+                  \Entonces{$\llamada1$}
+                  \norma{x_0}_1 < \norma{x_0}_1.
                 $$
-                Llegando a la misma conclusión que en el ítem \ref{extra-1:itema}:
+                Llegando a un absurdo. Por ende a la misma conclusión de que no hay
+                tal $x_0$, que vaya al 0, igualito al ítem \ref{extra-1:itema}:
                 $$
                   \cajaResultado{
                     (I_n - f(A))  \text{ es inversible.}
                   }
                 $$
-                Al parecer para cualquier matriz que tenga $\norma{A} < 1 \to (I_n - A)$ será inversible.
 
+                \bigskip
+
+                \parrafoDestacado{Creo que la dificultad de este ejercicio está en como \textit{uno se espanta}, primero demostrando el caso general
+                  para que luego le pregunten lo mismo en un caso particular, así haciendo que uno dude hasta de su nombre.
+                }
         \end{enumerate}
-
 \end{enumerate}
 
 \begin{aportes}
