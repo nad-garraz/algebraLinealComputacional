@@ -71,37 +71,43 @@
         Y con esto la matriz del ítem \ref{ej-13:itema} queda más simple como:
         $$
           \bm{C}_{EB} =
-          \matriz{ccc}{
-            \dots & \bm{v}_1^* & \dots\\
-            \dots & \bm{v}_2^* & \dots\\
-            &\vdots& \\
-            \dots & \bm{v}_n^*& \dots
+          \matriz{c}{
+            \hline
+            \quad \bm{v}_1^*  \quad \\ \hline
+            \quad \bm{v}_2^*  \quad \\ \hline
+            \vdots \\\hline
+            \quad \bm{v}_n^*  \quad \\\hline
           }\llamada1
         $$
         La matriz de cambio de base $C_{EB}$ toma \textit{vectores en coordenadas de $E$} y da el resultado en \textit{coordenadas de la base $B$}.
         Construir el cambio de base $C_{BE}$, es inmediato el cálculo de coordenadas haciendo el sistema como en el ítem \ref{ej-13:itema}
         ¡Quedan los vectores de la base $B$ conjugados como columnas de la matriz!
         $$
-          \conj{\bm{C}}_{BE} =
+          \bm{C}_{BE} =
           \bigg(
-          \conj{\bm{v}}_1 \bigg|
-          \conj{\bm{v}}_2 \bigg|
+          \bm{v}_1 \bigg|
+          \bm{v}_2 \bigg|
           \dots \bigg|
-          \conj{\bm{v}}_n
+          \bm{v}_n
           \bigg)
           \quad
-          \Entonces{transpongo}[$\entonces\green{*}$]
+          \Entonces{transpongo y conjugo}[$\entonces\green{*}$]
           \quad
           \cajaResultado{
           \bm{C}_{BE}^{\green{*}} =
-          \matriz{ccc}{
-            \dots & \bm{v}_1^* & \dots\\
-            \dots & \bm{v}_2^* & \dots\\
-            &\vdots& \\
-            \dots & \bm{v}_n^* & \dots
+          \matriz{c}{
+            \hline
+            \quad \bm{v}_1^*  \quad \\ \hline
+            \quad \bm{v}_2^*  \quad \\ \hline
+            \vdots \\\hline
+            \quad \bm{v}_n^*  \quad \\\hline
           }
           \igual{$\llamada1$} \bm{C}_{EB}
           }
+        $$
+        Eso funciona así porque:
+        $$
+          C_{BE}^* C_{EB} = I
         $$
 
   \item\label{ej-13:itemc} Sale con el sistemita del ítem \ref{ej-13:itema} nuevamente:
