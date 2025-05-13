@@ -41,17 +41,52 @@
         $$
         la cual manda todo lo que le des a algo de $S$ y a algo de $T$ a la vez.
 
-  \item
+  \item Para armar un \textit{proyector ortogonal}, $p_S$, hay que asegurarse que:
         $$
+          \nucleo(p_S) \inter \imagen(p_S) = 0
+          \quad \text{con} \quad
+          S = \ket{(2,-1,0,1), (5,-1,1,0)}
+        $$
+
+        $$
+          \llamada1
           \llave{lcl}{
-            p(2,-1,0,1) & = & (2,-1,0,1) \\
-            p(-1,-1,0,1) & = & (-1,-1,0,1) \\
-            p(0,1,1,1) & = & (0,0,0,0) \\
-            p(1,3,-2,1) & = & (0,0,0,0)
+            p_S(2,-1,0,1) & = & (2,-1,0,1) \\
+            p_S(5,-1,1,0) & = & (5,-1,1,0) \\
+            p_S(0,1,1,1) & = & (0,0,0,0) \\
+            p_S(1,3,-2,1) & = & (0,0,0,0)
           }
         $$
-        
+        Para encontrar la expresión funcional del proyector se puede hacer la combinación lineal
+        de los elementos de la base de partida igualada a un genérico de $\reales^4$ es decir:
         $$
-          p(S\inter T) = S\inter T
+          (x_1, x_2, x_3, x_4) \igual{$\llamada2$}
+          \blue{a} \cdot (2,-1,0,1) +
+          \blue{b} \cdot (5,-1,1,0) +
+          \blue{c} \cdot (0,1,1,1) +
+          \blue{d} \cdot (1,3,-2,1)
         $$
+        Resolver eso es resolver el sistema:
+        $$
+          \matriz{cccc|c}{
+            2 & 5 & 0 & 1 & x_1 \\
+            -1 & -1 & 1 & 3 & x_2 \\
+            0 & 1 & 1 & -2 & x_3 \\
+            1 & 0 & 1 & 1 & x_4
+          }
+        $$
+        y luego transformando $\llamada2$.
+
+        No sé si la idea es escribir la forma funcional o sencillamente definir el proyector $p_s$ como en
+        $\llamada1$. Las cuentas son largas cuando se triangula ese sistema y no tengo ganas de hacerlo \grimace. Sea como sea.
+        Se puede calcular fácil que:
+        $$
+          p_S\ub{(2,-1,0,1)}{S\inter T} = \ub{(2,-1,0,1)}{S\inter T}
+        $$
+        porque está en la definción y además es lo que tiene que hacer el proyector que proyecta a $S$.
+        El elemento $S \inter T \en S$ así que el $p_S$ lo manda a sí mismo.
 \end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
