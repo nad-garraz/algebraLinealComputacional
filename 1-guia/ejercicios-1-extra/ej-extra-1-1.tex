@@ -1,7 +1,162 @@
 \begin{enunciado}{\ejExtra}
-\hacer
+  \begin{enumerate}[label=\alph*)]
+    \item Considerar el subespacio $S$ de $\reales^4$ dado por
+          $$
+            \llave{rcl}{
+              4x_1 - x_2 + 2x_3  & = & 0\\
+              -6x_1 + x_2 - 2x_3 & = & 0
+            }
+          $$
+          Hallar un sistema de generadores para $S$.
+
+    \item Probar que existe una única transformación lineal $T: \reales^4 \to \reales^4$ tal que
+          $$
+            \llave{rcl}{
+              T(1,-1,1,-1) & = & (1, -7, 1, 9)\\
+              T(4,0,-2,4)  & = & (0, 8, -1, -6)\\
+              T(1,1,-4,4)  & = & (1, 0, -1, 0)\\
+              T(-4,2,9,-4) & = & (-2, 1, 3, 3)
+            }
+          $$
+          Calcular $T(1,1, -4,5)$ y brindar una base de $\imagen(T)$.
+
+    \item Determinar $S \inter \imagen(T)$.
+  \end{enumerate}
 \end{enunciado}
 
-%\begin{aportes}
-%  \item \aporte{https://github.com/nad-garraz}{Nad Garraz \github}
-%\end{aportes}
+\begin{enumerate}[label=\alph*)]
+  \item Busco cosas de la pinta:
+        $$
+          (x_1, x_2, x_3, x_4)
+          \flecha{resolviendo el}[sistema]
+          \llave{l}{
+            x_1 = 0\\
+            x_2 = 2x_3\\
+            x_3 = x_3\\
+            x_4 = x_4
+          }
+        $$
+        Un posible sistema de generadores del subespacio $S$:
+        $$
+          S = \ket{(0,2,1,0), (0,0,0,1)}
+        $$
+
+  \item Para probar esa unicidad tengo que ver que los elementos que estoy transformando
+        sean \textit{linealmente independientes}:
+        $$
+          (0,0,0,0) = \blue{a} \cdot (1,-1,1,-1) + \blue{b} \cdot  (4,0,-2,4) + \blue{c} \cdot   (1,1,-4,4) + \blue{d} \cdot (-4,2,9,-4) \llamada1
+        $$
+        Los coeficientes $\blue{a}, \blue{b}, \blue{c} \ytext \blue{d}$ deben valer 0 si los vectores son \textit{linealmente independientes}.
+
+        \parrafoDestacado[\tiny\red{\atencion}]{
+          También podría poner todos los vectores uno abajo del otro y triangular de una, pero pintó hacerlo así.
+        }
+        Pero también me piden en el ejercicio que haga cosas con la \textit{transformación lineal}.
+        Voy a tener que transformar el $(1,1,-4,5)$ así que también tengo que calcular cómo es la combineta:
+        $$
+          (1,1,-4,5) = \blue{a} \cdot (1,-1,1,-1) + \blue{b} \cdot  (4,0,-2,4) + \blue{c} \cdot   (1,1,-4,4) + \blue{d} \cdot (-4,2,9,-4) \llamada2
+        $$
+        Entonces tengo que resolver $\llamada1$ y $\llamada2$, i.e. esto:
+        $$
+          \matriz{cccc|c|c}{
+            1 & 4 & 1 & -4  & 0 & 1 \\
+            -1 & 0 & 1 & 2  & 0 & 1 \\
+            1 & -2 & -4 & 9 & 0 & -4 \\
+            -1 & 4 & 4 & -4 & 0 & 5
+          }
+          \Sii{triangular}[\magic]
+          \matriz{cccc|c|c}{
+            1 & 4 & 1 & -4  & 0 & 1 \\
+            0 & 2 & 1 & -1  & 0 & 1 \\
+            0 & 0 & -1 & 5  & 0 & -1 \\
+            0 & 0 & 0 & 7  & 0 & -2
+          }
+          \entonces
+          \llave{rcl}{
+            \blue{a} & = & 0 \\
+            \blue{b} & = & 0 \\
+            \blue{c} & = & 0 \\
+            \blue{d} & = & 0
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
+
+% $$
+%   \matriz{cccc}{
+%     1 & 4 & 1 & -4 \\
+%     -1 & 0 & 1 & 2 \\
+%     1 & -2 & -4 & 9 \\
+%     -1 & 4 & 1 & -4
+%   }
+%   \matriz{l}{
+%     \blue{a}\\
+%     \blue{b}\\
+%     \blue{c}\\
+%     \blue{d}
+%   }
+%   =
+%   \matriz{l}{
+%     0\\
+%     0\\
+%     0\\
+%     0
+%   }
+% $$
+% Resuelvo la matriz ampliada al cero:
+% $$
+%   \matriz{cccc|c}{
+%     1 & 4 & 1 & -4  & 0 \\
+%     -1 & 0 & 1 & 2  & 0 \\
+%     1 & -2 & -4 & 9 & 0 \\
+%     -1 & 4 & 1 & -4 & 0
+%   }
+%   \Sii{triangular}[\magic]
+%   \matriz{cccc|c}{
+%     1 & 0 & 0 & 0  & 0 \\
+%     0 & 1 & 0 & 0  & 0 \\
+%     0 & 0 & 1 & 0  & 0 \\
+%     0 & 0 & 0 & 1  & 0
+%   }
+%   \entonces
+%   \llave{rcl}{
+%     \blue{a} & = & 0 \\
+%     \blue{b} & = & 0 \\
+%     \blue{c} & = & 0 \\
+%     \blue{d} & = & 0
+%   }
+% $$
+%   \llave{rcl}{
+%     T(1,-1,1,-1) & = & (1, -7, 1, 9)\\
+%     T(4,0,-2,4)  & = & (0, 8, -1, -6)\\
+%     T(1,1,-4,4)  & = & (1, 0, -1, 0)\\
+%     T(-4,2,9,-4) & = & (-2, 1, 3, 3)
+%   }
+%   \flecha{matricialmente}[esto es]
+%   [T]_{BE}
+%   \matriz{cccc}{
+%     1 & 0 & 1 & -2 \\
+%     0 & 8 & -1 & -6 \\
+%     1 & 0 & -1 & 0 \\
+%     -2 & 1 & 3 & 3
+%   }
+% $$
+% Quiero $[T]_{EE}$:
+% $$
+%   [T]_{EE} = [T]_{BE} \cdot [C]_{EB},
+% $$
+% donde $[C]_{EB}$ es la inversa de $[C]_{BE}$, pero bueno, alguna cuenta hay que hacer. $[C]_{BE}$ tiene como columnas a los vectores de la
+% base $B$, que en este caso son lo vectores que se usaron para transformar:
+% $$
+%   C_{BE} =
+%   \matriz{cccc}{
+%     1 & 4 & 1 & -4  \\
+%     -1 & 0 & 1 & 2  \\
+%     1 & -2 & -4 & 9 \\
+%     -1 & 4 & 1 & -4
+%   }
+% $$
+% $$

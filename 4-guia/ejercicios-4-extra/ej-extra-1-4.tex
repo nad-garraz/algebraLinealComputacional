@@ -1,3 +1,130 @@
 \begin{enunciado}{\ejExtra}
-\hacer
+  Sea $A =
+    \matriz{ccc}{
+      r & s & t \\
+      -12 & 6 & 16 \\
+      0 & 0 & 2
+    } \en \reales^{3 \times 3}
+  $ una matriz tal que $v = (1,2,0)$, $w = (2, 6, 0)$ y $u = (-2, -2, -1)$ son autovectores de $A$.
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que $A$ es diagonalizable.
+    \item Calcular los autovalores de $A$ y determinar $r, s \ytext t$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Es diagonalizable porque estamos en $reales^{3 \times 3}$ y hay una base de dimensión 3 de autovectores:
+        $$
+          B = \set{(1,2,0), (2,6,0), (-2,-2,-1)},
+        $$
+        son autovectores de $A$.
+
+  \item Los \textit{autovectores}, son vectores que cumplen la \textit{ecuación característica}:
+        $$
+          A \cdot v_\lambda = \lambda \cdot v_\lambda
+        $$
+        Es solo cuestión de pedirle a los autovectores del enunciado que cumplan esa ecuación y despejar.
+        $$
+          A \cdot
+          \matriz{c}{
+            1\\
+            2\\
+            0
+          }
+          =
+          \lambda \cdot
+          \matriz{c}{
+            1\\
+            2\\
+            0
+          }
+          \flecha{de las cuentas}[sale que]
+          \llave{rcc}{
+            r & \igual{$\llamada1$} & -2s\\
+            \lambda & = & 0
+          }
+        $$
+        Siguiente autovector:
+        $$
+          A \cdot
+          \matriz{c}{
+            2\\
+            6\\
+            0
+          }
+          =
+          \lambda \cdot
+          \matriz{c}{
+            2\\
+            6\\
+            0
+          }
+          \flecha{de las cuentas}[sale que]
+          \llave{rcl}{
+            s & = & 1 \entonces r \igual{$\llamada1$} -2\\
+            \lambda & = & 2
+          }
+        $$
+        Siguiente y último autovector
+        $$
+          A \cdot
+          \matriz{c}{
+            -2\\
+            -2\\
+            -1
+          }
+          =
+          \lambda \cdot
+          \matriz{c}{
+            -2\\
+            -2\\
+            -1
+          }
+          \flecha{de las cuentas}[sale que]
+          \llave{rcc}{
+            t & = & 6\\
+            \lambda & = & 2
+          }
+        $$
+
+        Listo hay subespacios para justificar aún más la diagonabilidad de la matriz:
+        $$
+          E_{\lambda = 0} = \ket{1,2,0}
+          \quad \ytext \quad
+          E_{\lambda = 2} = \ket{(-2,-2,-1),(2,6,0)}
+        $$
+        La multiplicidad geométrica es igual a la multiplicidad aritmética:
+        $$
+          \multiGeo_A(\lambda = 2) = \multiAri_A(\lambda = 2) = 2
+          \quad \ytext \quad
+          \multiGeo_A(\lambda = 0) = \multiAri_A(\lambda = 0) = 1
+        $$
+        La matriz en forma diagonal:
+        $$
+          \matriz{ccc}{
+            -2 & 1 & 6 \\
+            -12 & 6 & 16 \\
+            0 & 0 & 2
+          }
+          =
+          \matriz{ccc}{
+            1 & -2 & 2 \\
+            2 & -2 & 6 \\
+            0 & -1 & 0
+          }
+          \matriz{ccc}{
+            0 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & 2
+          }
+          \matriz{ccc}{
+            1 & -2 & 2 \\
+            2 & -2 & 6 \\
+            0 & -1 & 0
+          }^{-1}
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

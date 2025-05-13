@@ -1,3 +1,305 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Considerar la sucesión de Fibonacci, dada por la recursión:
+  $$
+    \llave{l}{
+      F_0 = 0,\\
+      F_1 = 1,\\
+      F_{n+1} = F_n + F_{n-1}
+    }
+  $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Hallar una matriz $A$ tal que
+          $
+            \matriz{c}{
+              F_n\\
+              F_{n+1}
+            }
+            = A
+            \matriz{c}{
+              F_{n-1}\\
+              F_n
+            }$.
+          Mostrar que
+          $\matriz{c}{
+              F_n\\
+              F_{n+1}
+            }
+            = A^n
+            \matriz{c}{
+              F_0\\
+              F_1
+            }
+          $
+
+    \item Diagonalizar $A$.
+
+    \item Dar una fórmula cerrada para $F_n$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        Quiero una matriz $A \en \reales^{2 \times 2}$ tal que:
+        $$
+          \matriz{c}{
+            F_n\\
+            F_{n+1}
+          }
+          =
+          A
+          \matriz{c}{
+            F_{n-1}\\
+            F_n
+          }
+          \sii
+          \matriz{c}{
+            F_n\\
+            F_{n+1}
+          }
+          =
+          \matriz{cc}{
+            a & b\\
+            c & d
+          }
+          \matriz{c}{
+            F_{n-1}\\
+            F_n
+          }
+          \sii
+          \llave{l}{
+            aF_{n+1} + b F_n = F_n \\
+            cF_{n-1} + d F_n = F_{n+1} \igual{\red{!}} F_n + F_{n-1}
+          }
+        $$
+        Resolviendo ese sistemita:
+        $$
+          A =
+          \matriz{cc}{
+            0 & 1\\
+            1 & 1
+          }
+        $$
+        Para mostrar lo que sigue, inducción. Quiero mostrar la siguiente proposición:
+        $$
+          p(n) : A^n
+          \matriz{c}{
+            F_0\\
+            F_1
+          } =\matriz{c}{
+            F_n\\
+            F_{n+1}
+          }
+          \quad
+          \text{con}
+          \quad
+          A =
+          \matriz{cc}{
+            0 & 1\\
+            1 & 1
+          }
+        $$
+        \textit{Caso base:}
+        $$
+          p(\blue{1}) : A^{\blue{1}}
+          \matriz{c}{
+            F_0\\
+            F_1
+          } =
+          \matriz{cc}{
+            0 & 1\\
+            1 & 1
+          }
+          \matriz{c}{
+            F_0\\
+            F_1
+          } =
+          \matriz{c}{
+            0 + F_1\\
+            F_0 + F_1
+          }
+          \igual{def}
+          \matriz{c}{
+            F_1\\
+            F_2
+          }
+        $$
+        Es así que la proposición $p(\blue{1})$ resultó verdadera.
+
+        \textit{Paso inductivo:}
+
+        Asumo que para algún $\blue{k} \en \naturales$ la proposición:
+        $$
+          p(\blue{k}) :
+          \ub{
+            A^{\blue{k}}
+            \matriz{c}{
+              F_0\\
+              F_1
+            } =
+            \matriz{c}{
+              F_{\blue{k}}\\
+              F_{\blue{k}+1}
+            }
+          }{\text{\purple{hipótesis inductiva}}}
+        $$
+        es verdadera. Entonces quiero ver ahora que la proposición:
+        $$
+          p(\blue{k+1}) : A^{\blue{k+1}}
+          \matriz{c}{
+            F_0\\
+            F_1
+          } =
+          \matriz{c}{
+            F_{\blue{k+1}}\\
+            F_{\blue{k+1}+1}
+          }
+          =
+          \matriz{c}{
+            F_{\blue{k+1}}\\
+            F_{\blue{k+2}}
+          }
+        $$
+        también lo sea.
+        $$
+          A^{\blue{k+1}}
+          \matriz{c}{
+            F_0\\
+            F_1
+          }
+          =
+          A
+          \cdot
+          A^{\blue{k}}
+          \matriz{c}{
+            F_0\\
+            F_1
+          }
+          \igual{\purple{HI}}
+          A
+          \cdot
+          \matriz{c}{
+            F_{\blue{k}}\\
+            F_{\blue{k}+1}
+          }
+          =
+          \matriz{c}{
+            F_{\blue{k+1}}\\
+            F_{\blue{k}} + F_{\blue{k}+1}
+          }
+          \igual{def}
+          \matriz{c}{
+            F_{\blue{k+1}}\\
+            F_{\blue{k+2}}
+          }
+        $$
+        Tuqui, también resulta ser verdadera.
+
+        Es así que $p(1), p(k) \ytext p(k+1)$ resultaron verdaderas y por el principio de inducción
+        la proposición $p(n)$ también lo será $\paratodo n \en \naturales$.
+
+  \item \textit{Ecuación característica a polinomio característico:}
+        $$
+          A =
+          \matriz{cc}{
+            0 & 1\\
+            1 & 1
+          }
+          \flecha{ecuación}[característica]
+          (A - \lambda I)v_\lambda = 0
+          \flecha{polinomio}[característico]
+          \deter{ccc}{
+            -\lambda & 1           \\
+            1        & 1 - \lambda
+          }
+          = \lambda^2 - \lambda - 1 = 0
+          \sii
+          \llave{l}{
+            \lambda_1 = \frac{1 + \sqrt{5}}{2} = \varphi\\
+            \lambda_2 = \frac{1 - \sqrt{5}}{2} = -\frac{1}{\varphi}
+          }
+        $$
+        Esa notación se complementa con:
+        $$
+          \llave{l}{
+            \frac{1}{\varphi} = \varphi - 1
+          }
+        $$
+        Diagonalizar esta matriz tiene un montón de \textit{droga}:
+        $$
+          \matriz{cc}{
+            0 & 1\\
+            1 & 1
+          }
+          \matriz{c}{
+            1 \\
+            \varphi
+          }
+          \igual{\red{!}}
+          \varphi
+          \matriz{c}{
+            1 \\
+            \varphi
+          }
+          \quad
+          \ytext
+          \quad
+          \matriz{cc}{
+            0 & 1\\
+            1 & 1
+          }
+          \matriz{c}{
+            1 \\
+            -\frac{1}{\varphi}
+          }
+          \igual{\red{!}}
+          -\frac{1}{\varphi}
+          \matriz{c}{
+            1 \\
+            -\frac{1}{\varphi}
+          }
+        $$
+        \parrafoDestacado{
+          No sé si están bien las cuentas, pero, a veces es mejor ni preguntar. \textit{Beware} \red{\atencion}.
+        }
+
+        $$
+          A =
+          \matriz{cc}{
+            1  & 1\\
+            \varphi & -\frac{1}{\varphi}
+          }
+          \matriz{cc}{
+            \varphi & 0 \\
+            0 & -\frac{1}{\varphi}
+          }
+          \matriz{cc}{
+            \frac{1}{1+\varphi^2}  & \frac{\varphi}{1+\varphi^2}\\
+            \frac{\varphi^2}{1+\varphi^2} & -\frac{\varphi}{1+\varphi^2}
+          }
+        $$
+
+    \item \red{Viene por acá esto? CONSULTAR}
+        $$
+          F_{\red{n}} =
+          \matriz{cc}{
+            1  & 1\\
+            \varphi & -\frac{1}{\varphi}
+          }
+          \matriz{cc}{
+            \varphi^{\red{n}} & 0 \\
+            0 & (-\frac{1}{\varphi})^{\red{n}}
+          }
+          \matriz{cc}{
+            \frac{1}{1+\varphi^2}  & \frac{\varphi}{1+\varphi^2}\\
+            \frac{\varphi^2}{1+\varphi^2} & -\frac{\varphi}{1+\varphi^2}
+          }
+          \matriz{c}{
+            F_0\\
+            F_1
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

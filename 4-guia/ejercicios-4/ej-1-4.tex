@@ -1,3 +1,151 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Calcular el polinomio característico, los autovalores y los autovectores de la matriz $A$ en cada uno de los siguientes
+  casos (analizar por separado los casos $K = \reales$ y  $K = \complejos$):
+  \begin{enumerate}[label=(\alph*)]
+    \begin{multicols}{3}
+      \item $A =
+        \matriz{cc}{
+          0 & a \\
+          -a & 0
+        }$
+
+      \item $A =
+        \matriz{ccc}{
+          0 & 2 & 1 \\
+          -2 & 0 & 2 \\
+          -1 & -2 & 0
+        }$
+
+      \item $A =
+        \matriz{ccc}{
+          3 & 1 & 0 \\
+          -4 & -1 & 0 \\
+          4 & -8 & -2
+        }$
+
+      \item $A =
+        \matriz{ccc}{
+          a & 1 & 1 \\
+          1 & a & 1 \\
+          1 & 1 & a
+        }$
+
+      \item $A =
+        \matriz{cccc}{
+          0 & 1 & 0 & 1 \\
+          1 & 0 & 1 & 0 \\
+          0 & 1 & 0 & 1 \\
+          1 & 0 & 1 & 0
+        }$
+
+      \item $A =
+        \matriz{cccc}{
+          0 & 0 & 0 & 0 \\
+          1 & 0 & 0 & 0 \\
+          0 & 1 & 0 & 0 \\
+          0 & 0 & 0 & 1
+        }$
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item \textit{Ecuación característica, a polinomio característico:}
+        $$
+          (A - \lambda I)v_\lambda = 0
+          \sii
+          \deter{cc}{
+            -\lambda & a        \\
+            -a       & -\lambda
+          } = 0
+          \sii
+          (\lambda^2 + a^2) = 0
+          \sii
+          \llave{lcl}{
+            \lambda = -ia  &\quad\text{con}\quad &  v_{\lambda = -ia} = (1,-i)\\
+            \lambda = ia  &\quad\text{con}\quad & v_{\lambda = ia} = (1,i)
+          }
+        $$
+        Quedaría algo así diagonalizada:
+        $$
+          A =
+          \ub{
+            \matriz{cc}{
+              1 & 1 \\
+              -i & i
+            }
+          }{C}
+          \ub{
+            \matriz{cc}{
+              -ia & 0 \\
+              0 & ia
+            }
+          }{D}
+          \ub{
+            \matriz{cc}{
+              \frac{1}{2} & \frac{i}{2} \\
+              \frac{1}{2} & -\frac{i}{2}
+            }
+          }{C^{-1}}
+        $$
+
+  \item  \hacer
+  \item  \hacer
+
+  \item \textit{Ecuación característica, a polinomio característico:}
+        $$
+          (A - \lambda I)v_\lambda = 0
+          \sii
+          \deter{ccc}{
+            a -\lambda & 1          & 1          \\
+            1          & a -\lambda & 1          \\
+            1          & 1          & a -\lambda \\
+          } = 0
+          \sii
+          (a-\lambda)^3 - 3 (a - \lambda) + 2  = 0 \llamada1
+        $$
+        Que lindo ejercicio \red{\angry}.
+
+        Si hago $x = (a-\lambda)$ entonces $\llamada1$:
+        $$
+          x^3 - 3 x + 2 = (x - 1)^2(x + 2) = 0
+          \Sii{\red{!}}
+          \big((a - \lambda) - 1\big)^2\big((a-\lambda) + 2) = 0
+        $$
+        Por lo tanto:
+        $$
+          \sii
+          \llave{lcl}{
+            \lambda_1 = a - 1  &\quad\text{con}\quad &  E_{\lambda = a - 1} = \ket{(-1,1,0), (-1, 0, 1}\\
+            \lambda_2 = a + 2  &\quad\text{con}\quad & E_{\lambda = a + 2} = \ket{(1,1,1)}
+          }
+        $$
+        Quedaría algo así diagonalizada:
+        $$
+          A =
+          \ub{
+            \matriz{ccc}{
+              -1 & -1 & 1 \\
+              1 & 0 & 1 \\
+              0 & 1 & 1
+            }
+          }{C}
+          \ub{
+            \matriz{ccc}{
+              a - 1 & 0 & 0 \\
+              0 & a - 1 & 0 \\
+              0 & 0 & a + 2
+            }
+          }{D}
+          \ub{
+            \matriz{ccc}{
+              -\frac{1}{3} & \frac{2}{3} & -\frac{1}{3} \\
+              -\frac{1}{3} & -\frac{1}{3} & \frac{2}{3} \\
+              \frac{1}{3} & \frac{1}{3} & \frac{1}{3}
+            }
+          }{C^{-1}}
+        $$
+
+  \item  \hacer
+  \item  \hacer
+\end{enumerate}
