@@ -1,0 +1,71 @@
+\begin{enunciado}{\ejExtra}
+  Sean $\alpha > 0$ y $A(\alpha) \en \reales^{4 \times 4}$ un conjunto de matrices que dependen de $\alpha$, dadas por:
+  $$
+    A(\alpha) =
+    \matriz{cccc}{
+      1 & 2 & 0 & 1 \\
+      \alpha & \alpha^2 + 2\alpha & \alpha & 2 \alpha \\
+      1 & 2 & \alpha^2 - 1 & 1 \\
+      1 & 2 & 0 & 2 \\
+    }
+  $$
+
+  \begin{enumerate}[label=\alph*)]
+    \item Encontrar los valores de $\alpha$ para los cuales $A(\alpha)$ no es inversible.
+    \item Probar que $\condicion_\infinito(A(\alpha)) \flecha{}[$\alpha \to 1$] +\infinito$.
+    \item ¿Qué puede decir de $\limite{\alpha}{1} \condicion_2(A(\alpha))$
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        $$
+          A(\alpha) =
+          \deter{cccc}{
+            1      & 2                  & 0            & 1        \\
+            \alpha & \alpha^2 + 2\alpha & \alpha       & 2 \alpha \\
+            1      & 2                  & \alpha^2 - 1 & 1        \\
+            1      & 2                  & 0            & 2        \\
+          }
+          =
+          (\alpha - 2)^2 \cdot (\alpha - 1) \cdot (\alpha + 1)
+          \igual{\red{!}}
+          0
+          \sii
+          \alpha \en \set{-1, 1, 2}
+        $$
+
+  \item
+        $$
+          \condicion(A)
+          \geq
+          \supremo \set{\frac{\norma{A}}{\norma{A - B}} : B \text{ es singular}}.
+        $$
+        Elijo una matriz singular $B$:
+        $$
+          B =
+          \matriz{cccc}{\rowcolor{red!5}
+            1      & 2                  & 0            & 1        \\
+            \alpha & \alpha^2 + 2\alpha & \alpha       & 2 \alpha \\\rowcolor{red!5}
+            1      & 2                  & 0 & 1        \\
+            1      & 2                  & 0            & 2
+          }
+        $$
+        Por lo tanto queda:
+        $$
+          A - B =
+          \matriz{cccc}{\rowcolor{red!5}
+            0      & 0                  & 0            & 0        \\
+            0      & 0                  & 0            & 0        \\
+            0      & 0                  & \alpha^2 - 1            & 0        \\
+            0      & 0                  & 0            & 0
+          }
+        $$
+
+        $$
+          \limite{\alpha}{1} \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} =
+          \limite{\alpha}{1} \bigg|\frac{6\alpha + \alpha^2}{\alpha^2 - 1}\bigg| = +\infinito
+        $$
+
+  \item  \hacer
+\end{enumerate}
