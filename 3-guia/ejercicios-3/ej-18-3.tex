@@ -14,3 +14,50 @@ $$
   \ytext
   \nucleo(P) = \set{(-1, 0, 1)}
 $$
+Por lo tanto mi candidato a \textit{proyector ortogonal}:
+$$
+  \llave{l}{
+    P(1,0,1) = (1,0,1)\\
+    P(0,1,0) = (0,1,0)\\
+    P(-1,0,1) = (0,0,0)
+  }
+$$
+Voy a buscar la expresión funcional del proyector:
+$$
+  (x_1, x_2, x_3)
+  \igual{$\llamada1$}
+  \blue{a} \cdot (1,0,1) +
+  \blue{b} \cdot (0,1,0) +
+  \blue{c} \cdot (-1,0,1)
+  \flecha{resolver en}[forma matricial]
+  \matriz{ccc|c}{
+    1 & 0 & -1 & x_1 \\
+    0 & 1 & 0 & x_2 \\
+    1 & 0 & 1 & x_3
+  }
+$$
+Eso queda:
+$$
+  \llave{l}{
+    \blue{a} = \frac{1}{2}x_1 + \frac{1}{2}x_3 \\
+    \blue{b} =  x_2 \\
+    \blue{c} = \frac{1}{2}x_1 - \frac{1}{2}x_3
+  }
+  \flecha{reemplazando en $\llamada1$}[y transformando]
+  P(x_1, x_2, x_3) =
+  \left(\frac{1}{2} x_1 + \frac{1}{2}x_3, x_2,\frac{1}{2} x_1 + \frac{1}{2}x_3\right)
+$$
+Transformo los canónicos para hallar $P$ en forma matricial:
+$$
+  [P]_{EE} =
+  \matriz{ccc}{
+    \frac{1}{2} & 0 &\frac{1}{2} \\
+    0 & 1 & 0 \\
+    \frac{1}{2} & 0 &\frac{1}{2}
+  }
+$$
+Quedó hermosamente simétrico, porque es un \textit{proyector ortgonal} expresado en una \textit{base ortonormal}.
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
