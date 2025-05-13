@@ -46,12 +46,15 @@
           \item $P(v) = v$
           \item $P \circ P = P$
         \end{itemize}
-        Con las propiedades:
+        Si $P: V \to V$ es proyector, están las siguientes propiedades:
         \begin{enumerate}[label=\poo]
-          \item Si $P: V \to V$ es proyector $\entonces \nucleo(P) = \set{\bm{0}_V}$
-          \item Si $P: V \to V$ es proyector $\entonces v - P(v) \en \nucleo(P) \paratodo v \en V$
-          \item Si $P: V \to V$ es proyector $\entonces \nucleo(P) \sumaDirecta \imagen(P) = V$
-          \item $P$ es un \textit{proyector ortogonal} si $\nucleo(P) \perp \imagen(P)$
-          \item $P$ es un \textit{proyector ortogonal} $\sii P = P^t$
+          \item $v - P(v) \en \nucleo(P) \paratodo v \en V$
+          \item  $ \nucleo(P) \sumaDirecta \imagen(P) = V$
+                lo mismo que decir que
+                $\nucleo(P) \inter \imagen(P) = \set{\bm{0}}$
+          \item $P$ un \textit{\blue{proyector ortogonal}}
+                $\sii \nucleo(P) \perp \imagen(P)$
+          \item $P$ es un \textit{\blue{proyector ortogonal}} expresado en una base \textit{\magenta{ortonormal}}
+                $\entonces P = P^t \quad (P = P^* \en \complejos)$
         \end{enumerate}
 \end{enumerate}
