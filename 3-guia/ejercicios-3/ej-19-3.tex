@@ -9,8 +9,117 @@
 
     \item\label{ej-19:itemd} $\norma{Qx}_2 = \norma{x}_2$ para todo $x \en \reales^n$.
   \end{enumerate}
-  Iterpretar \ref{ej-19:itemd} geométricamente.
+  Interpretar \ref{ej-19:itemd} geométricamente.
 
-    \textit{Sugerencia:} Para demostrar la implicación
-    (\ref{ej-19:itemd} $\entonces$ \ref{ej-19:itemb}) usar que $x^ty = \frac{1}{4}(\norma{x + y}_2^2 - \norma{x - y}_2^2)$.
+  \textit{Sugerencia:} Para demostrar la implicación
+  (\ref{ej-19:itemd} $\entonces$ \ref{ej-19:itemb}) usar que $x^ty = \frac{1}{4}(\norma{x + y}_2^2 - \norma{x - y}_2^2)$.
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item  Quiero probar que:
+        $$
+          \text{Si}\quad \ub{Q^{-1} = Q^t}{\text{hipótesis}}
+          \entonces
+          \ub{\text{las columnas de $Q$ forman un conjunto ortonormal}}{\text{tesis}}
+        $$
+        $$
+          Q^{-1} \cdot Q = I
+          \Sii{HIP}
+          Q^t \cdot Q = I
+          \Sii{zoom}
+          \ub{
+            \matriz{c}{
+              \quad \bm{q}_1^t \quad \\ \hline
+              \vdots \\ \hline
+              \bm{q}_n^t \\
+            }
+            \matriz{c|c|c}{
+              & & \\
+              \bm{q}_1  & \dots  & \bm{q}_n   \\
+              & &
+            }
+          }{
+            \matriz{cccc}{
+              \bm{q}_1^t\bm{q}_1 & \bm{q}_1^t \bm{q}_2 & \dots & \bm{q}_1^t \bm{q}_n\\
+              \vdots & \vdots  & \ddots & \vdots\\
+              \bm{q}_n^t\bm{q}_1 & \bm{q}_n^t \bm{q}_2 & \dots & \bm{q}_n^t \bm{q}_n
+            }
+          }
+          =
+          \matriz{ccc}{
+            1 & \cdots & 0 \\
+            \vdots & \ddots & \vdots \\
+            0 & \cdots & 1
+          }
+        $$
+        Estaría quedando que:
+        $$
+          Q^t Q =
+          \llave{rcl}{
+            1 & \text{si} & i = j\\
+            0 & \text{si} & i \distinto j
+          }
+          \entonces
+          \columna(Q) = \set{\bm{q}_1, \bm{q}_2, \cdots, \bm{q}_n} \text{ es un conjunto ortonormal}
+        $$
+
+  \item Quiero probar que:
+        $$
+          \text{Si}\quad \ub{\columna(Q) \text{ es un conjunto ortonormal}}{\text{hipótesis}}
+          \entonces
+          \ub{\fila(Q) \text{ es un conjunto ortonormal}}{\text{tesis}}
+        $$
+        Antes vi que si la columnas de $Q$ forman un conjunto ortonormal, entonces $Q^tQ = I$.
+        $$
+          I = Q^t \cdot Q
+          \Sii{\red{!}}
+          I = Q \cdot Q^t=
+          \matriz{c|c|c}{
+            & & \\
+            \bm{q}_1  & \dots  & \bm{q}_n   \\
+            & &
+          }
+          \matriz{c}{
+            \quad \bm{q}_1^t \quad \\ \hline
+            \vdots \\ \hline
+            \bm{q}_n^t
+          }
+          =
+          \ub{
+            \matriz{c}{
+              \fila_1(Q) \cdot Q^t\\ \hline
+              \vdots  \\ \hline
+              \fila_n(Q) \cdot Q^t
+            }
+            =
+            \matriz{ccc}{
+              1 & \cdots & 0 \\ \hline
+              \vdots & \ddots & \vdots \\\hline
+              0 & \cdots & 1
+            }
+          }{\llamada1}
+        $$
+        En $\llamada1$ está de un lado el producto de las filas de $Q$ con la matriz \underline{$Q^t$ que tiene como columnas a las filas de $Q$}. Por lo tanto,
+        para la primera fila, \textit{el producto con todas las filas de $Q$} da $\bm{e}_1^t$, en general voy a tener:
+        $$
+          \fila_i(Q) \cdot \fila_j(Q)^t
+          =
+          \llave{rcl}{
+            1 & \text{si} & i = j\\
+            0 & \text{si} & i \distinto j
+          }
+        $$
+
+  \item Quiero probar que:
+        $$
+          \ub{\text{Si} \fila(Q) \text{ es un conjunto ortonormal}}{\text{hipótesis}}
+          \entonces
+          \ub{
+            \norma{Qx}_2 = \norma{x}_2 \paratodo x \en \reales^n.
+          }{\text{tesis}}
+        $$
+        \hacer
+
+  \item \hacer
+
+\end{enumerate}
