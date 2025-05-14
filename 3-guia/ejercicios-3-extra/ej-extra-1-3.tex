@@ -1,5 +1,53 @@
 \begin{enunciado}{\ejExtra}
+  Sea $c \en \reales, c \distinto 0$ y las siguientes matrices
+  $$
+    \matriz{ccc}{
+      0 & c & c \\
+      c & c & 0 \\
+      c & 0 & 0
+    }
+    \ytext
+    \matriz{ccc}{
+      1 & 1 & 3 \\
+      0 & 0 & 0 \\
+      1 & 1 & 0
+    }
+  $$
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que no existen matrices $L$ triangular inferior con unos en la diagonal y $U$
+          triangular superior tales que $C = LU$.
 
+    \item Hallar $P, L, U \en \reales^{3 \times 3}$ tales que $PP = I_3$ y $PC = LU$ con $L$ triangular inferior con unos
+          en la diagonal y $U$ trianfular superior.
+
+    \item ¿Cuántas factorizaciones $LU$ ($L$ con unos en la diagonal) existen para la matriz $CB$?
+          Si no existe ninguna, demostrarlo; si existe solo una, hallarla; si existe más de una, decir cuántas y mostrar dos distintas.
+
+    \item Probar que $\condicion_1(C+B) \to \infinito$ para $c \to -3$.
+  \end{enumerate}
 \end{enunciado}
 
+\begin{enumerate}[label=\alph*)]
+  \item planteo existencia de algo genérico y llego a contradicción.
+  \item row swap y luego voy a encontrar:
+        $$
+          P_{13} C = LU
+          \quad \text{con}
+          L  =
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            1 & 1 & 0 \\
+            1 & 0 & 1
+          }
+        $$
+  \item \hacer
+  \item Matriz singular a usar:
+      $$
+          \matriz{ccc}{
+            1 & c+1 & 0 \\
+            c & c & 0 \\
+            c+1 & 1 & 0
+          }
+        $$
+\end{enumerate}
 

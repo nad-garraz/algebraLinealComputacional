@@ -12,15 +12,20 @@
 
           Justificar la buena definición.
 
-    \item Determinar $p_S = : \reales^4 \to \reales^4$ la proyección ortogonal sobre $S$ y calcular $p_S(S \inter T)$.
+    \item Determinar $p_S : \reales^4 \to \reales^4$ la proyección ortogonal sobre $S$ y calcular $p_S(S \inter T)$.
   \end{enumerate}
 \end{enunciado}
 
 \begin{enumerate}[label=\alph*)]
-  \item Calculo intersección entre $S$ y $T$. Meto un genérico de $T$ en las ecuacione de $S$ y así obtengo:
+  \item Calculo intersección entre $S$ y $T$ y sistema de generadores de $S$. Para la intersección meto un genérico de $T$ en las ecuacione de $S$ y así obtengo:
         $$
           S \inter T = \ket{(2,-1,0,1)}
         $$
+        El sistema de generadores es resolver las ecuaciones que deben cumplir los elementos del subespacio:
+        $$
+          S =\ket{(5. -1, 1, 0), (2,-1,0,1)}
+        $$
+        \underline{Que haya aparecido la intersección es casualidad}.
 
         Ahora quiero formar una transformación lineal que cumpla lo del enunciado, donde voy a usar de \textit{comodín}
         a esa intersección:
@@ -74,6 +79,13 @@
             0 & 1 & 1 & -2 & x_3 \\
             1 & 0 & 1 & 1 & x_4
           }
+          \flecha{\magic}
+          \matriz{cccc|l}{
+            2 & 5 & 0 & 1 & x_1 \\
+            0 & \frac{3}{2} & 1 & \frac{7}{2} & \frac{1}{2}x_1 + x_2 \\
+            0 & 0 & \frac{1}{3} & -\frac{13}{3} & x_3 - \frac{1}{3}x_1 - \frac{2}{3}x_2 \\
+            0 & 0 & 0 & \frac{88}{3} & x_4 - 8x_3 + 3x_1 + 7x_2
+          }
         $$
         y luego transformando $\llamada2$.
 
@@ -83,7 +95,7 @@
         $$
           p_S\ub{(2,-1,0,1)}{S\inter T} = \ub{(2,-1,0,1)}{S\inter T}
         $$
-        porque está en la definción y además es lo que tiene que hacer el proyector que proyecta a $S$.
+        porque está en la definición y además es lo que tiene que hacer el proyector que proyecta a $S$.
         El elemento $S \inter T \en S$ así que el $p_S$ lo manda a sí mismo.
 \end{enumerate}
 

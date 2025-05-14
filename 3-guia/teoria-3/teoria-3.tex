@@ -57,4 +57,165 @@
           \item $P$ es un \textit{\blue{proyector ortogonal}} expresado en una base \textit{\magenta{ortonormal}}
                 $\entonces P = P^t \quad (P = P^* \en \complejos)$
         \end{enumerate}
+
+  \item \textit{Gram-Schimidt:}
+        \begin{enumerate}[label={\tiny\faIcon{pray}$_{\arabic*)}$}]
+          \item Proceso para construir una base que generá el mismo espacio, pero con elementos perpediculares entre sí.
+                $$
+                  \ub{\set{v_1, \ldots, v_r}}{\text{Base inicial}}
+                  \flecha{Gram-Schmidt}
+                  \ub{\set{\purple{u_1}, \ldots, \purple{u_r}}}{\text{Base final}}
+                  \quad \text{con } u_i \cdot u_j = 0 \paratodo i \distinto j
+                $$
+
+          \item La mecánica es cuentosa pero razonable:
+                \begin{enumerate}[label=\arabic*)]
+                  \item Agarro el \underline{primer vector de la base inicial} $v_1$ como primer vector de la base final:
+                        $$
+                          \{\ua{\purple{u_1}}{= v_1}\}
+                        $$
+
+                  \item Agarro el \underline{segundo vector de la base inicial} $v_2$ y calculo el segundo vector de la base final:
+                        $$
+                          \purple{u_2} = v_2 - \frac{\purple{u_1^*} \cdot v_2}{\norma{\purple{u_1}}^2}\purple{u_1}
+                          \flecha{actualizo la}[base final]
+                          \set{\purple{u_1}, \purple{u_2}}
+                        $$
+
+                  \item Y voy así hasta usar todos los vectores el \underline{segundo vector de la base inicial} $v_2$ y calculo el segundo vector de la base final:
+                        $$
+                          \purple{u_3} = v_3
+                          - \frac{\purple{u_1^*} \cdot v_3}{\norma{\purple{u_1}}^2}\purple{u_1}
+                          - \frac{\purple{u_2^*} \cdot v_3}{\norma{\purple{u_2}}^2}\purple{u_2}
+                          \flecha{actualizo la}[base final]
+                          \set{\purple{u_1}, \purple{u_2}, \purple{u_3}}
+                        $$
+
+                  \item En general cuando agarre el \underline{$i-$ésimo vector de la base inicial} y calcule el $i-$ésimo vector de la base final:
+                        $$
+                          \purple{u_i} = v_i
+                          - \sumatoria{k = 1}{i-1} \frac{\purple{u_k^*} \cdot v_i}{\norma{\purple{u_k}}^2}\purple{u_k}
+                          \flecha{actualizo la}[base final]
+                          \set{\purple{u_1}, \ldots, \purple{u_i}}
+                        $$
+
+                  \item Así hasta haber usado todos los vectores de la base inicial, para obtener la base con los vectores ortogonalizados:
+                        $$
+                          \set{\purple{u_1}, \ldots, \purple{u_r}}
+                        $$
+                        es una base ortogonal, para los amigos una BOG, si quiero que sea una \textit{base ortonormal}, BON:
+                        $$
+                          \set{\purple{\frac{u_1}{\norma{u_1}}}, \ldots, \purple{\frac{u_r}{\norma{u_r}}}}
+                        $$
+                \end{enumerate}
+        \end{enumerate}
+
+  \item \textit{Matriz Ortogonal:}
+        \parrafoDestacado[{{ \huge \angry} }]{
+          Una matriz \red{ortogonal} tiene sus columnas \underline{\red{\Large ortonormales}}.
+        }
+
+  \item \textit{Factorización $QR$:}\quad  $A = Q R$
+
+        La factorización $QR$ no tiene un pedo que ver las $LU$, Chole y amigos. $QR$ es un fantasma
+        \blue{\Large\faIcon{ghost}} que sale de \textit{Gram-Schmidt}.
+        $$
+          \ub{\set{v_1, \ldots, v_r}}{\text{Columnas de }A}
+          \flecha{Gram-Schmidt}[más normalizar]
+          \ub{\set{\purple{\frac{u_1}{\norma{u_1}}}, \ldots, \purple{\frac{u_r}{\norma{u_r}}}}}{\text{Columnas de }Q}
+          \quad \text{con } u_i \cdot u_j = 0 \paratodo i \distinto j
+        $$
+        \begin{enumerate}[label=$\bm{\perp}\arabic*)$]
+          \item $Q$ es una \textit{Matriz Ortogonal} que va a tener en sus columnas el resultado de \red{ortonormalizar} las columnas de $A$.
+
+          \item $R$ es una \textit{Matriz triangular superior} con las normas de las columnas de $Q$ en la diagonal
+
+          \item Mini derivación:
+                $$
+                  \ob{
+                    \purple{u_i} = v_i
+                    - \sumatoria{k = 1}{i-1} \frac{\purple{u_k^*} \cdot v_i}{\norma{\purple{u_k}}_2^2}\purple{u_k}
+                  }{\text{Gram-Schmidt, duro y puro}}
+                  \flecha{despejo el $v_i$}[y acomodo]
+                  \ob{
+                    \ua{v_i}{
+                      \text{col}$-i$\\\text{de} A
+                    } =
+                    \purple{u_i} + \sumatoria{k = 1}{i-1} \frac{\purple{u_k^*} \cdot v_i}{\norma{\purple{u_k}}} \frac{\purple{u_k}}{\norma{\purple{u_k}}}
+                  }{\llamada1}
+                $$
+                Eso ahora lo uso para armar $A = QR$:
+                $$
+                  \ub{
+                    \matriz{c|c|c}{
+                      &  & \\
+                      v_1 & v_2 & v_3\\
+                      &  & \\
+                    }
+                  }{A}
+                  =
+                  \ub{
+                    \matriz{c|c|c}{
+                      &  & \\
+                      \frac{\purple{u_1}}{\norma{\purple{u_1}}} &\frac{\purple{u_2}}{\norma{\purple{u_2}}} &\frac{\purple{u_3}}{\norma{\purple{u_3}}} \\
+                      &  & \\
+                    }
+                  }{Q}
+                  \cdot
+                  \ub{
+                    \matriz{c|c|c}{
+                      \norma{\purple{u_1}} & \frac{\purple{u_1^*} \cdot v_2}{\norma{\purple{u_2}}} & \frac{\purple{u_1^*} \cdot v_3}{\norma{\purple{u_1}}} \\
+                      0 & \norma{\purple{u_2}} & \frac{\purple{u_2^*} \cdot v_3}{\norma{\purple{u_2}}}\\
+                      0 & 0 &\norma{\purple{u_3}}
+                    }
+                  }{R}
+                $$
+                Ya sé que hice el ejemplo matricial en $\reales^3$, pero con el poder de tu imaginación fijate que la columna $j-$ésima para una matriz
+                imaginaria de $n\times n$ sería algo así:
+                $$
+                  \columna(A)_j =
+                  v_j
+                  \igual{$\llamada1$}
+                  \sumatoria{k = 1}{j-1} \frac{\purple{u_k^*} \cdot v_j}{\norma{\purple{u_k}}} \frac{\purple{u_k}}{\norma{\purple{u_k}}}
+                  +  \purple{u_j}
+                $$
+
+          \item No sé si ayuda a la notación o no, pero quiero cambiar la notación así:
+                $$
+                  \set{\purple{\frac{u_1}{\norma{u_1}}}, \ldots, \purple{\frac{u_r}{\norma{u_r}}}}
+                  \flecha{le pongo la gorra}
+                  \set{\green{\hat{u}_1}, \ldots, \green{\hat{u}_r}}
+                  \text{ donde los }
+                  \green{\hat{u}_i} \cdot \green{\hat{u}_j} \ua{=}{i\distinto j} 0 \ytext \norma{\green{\hat{u}}_i} = 1 \paratodo i
+                $$
+                Dejando así la expresión de la descomposión:
+                $$
+                  \ub{
+                    \matriz{c|c|c}{
+                      &  & \\
+                      v_1 & v_2 & v_3\\
+                      &  & \\
+                    }
+                  }{A}
+                  =
+                  \ub{
+                    \matriz{c|c|c}{
+                      &  & \\
+                      \green{\hat{u}_1} & \green{\hat{u}_2} &\green{\hat{u}_3} \\
+                      &  & \\
+                    }
+                  }{Q \text{ con cols \red{ortonormales}} }
+                  \cdot
+                  \ub{
+                    \matriz{c|c|c}{
+                      \norma{\green{u_1}} & \green{\hat{u}_1^*} \cdot v_2 & \green{\hat{u}_1^*} \cdot v_3 \\
+                      0 & \norma{\green{u_2}} & \green{\hat{u}_2^*} \cdot v_3 \\
+                      0 & 0 &\norma{\green{u_3}}
+                    }
+                  }{R \text{ triangular superior}}
+                $$
+        \end{enumerate}
+
+  \item \textit{Matriz de HouseHolder:}
+        \hacer
 \end{enumerate}
