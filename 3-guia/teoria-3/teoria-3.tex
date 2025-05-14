@@ -1,4 +1,12 @@
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
+  \item \textit{Descomposición $LU$:} \quad $A = LU$
+
+        \hacer
+
+  \item \textit{Descomposición $LU$ con swap de filas:} \quad $PA = LU$
+
+        \hacer
+
   \item \hypertarget{teoria-3:definida-positiva}{\textit{Matriz definida positiva:}}
 
         Sea  $A \en \reales^{n \times n}$ definida positiva:
@@ -58,7 +66,7 @@
                 $\entonces P = P^t \quad (P = P^* \en \complejos)$
         \end{enumerate}
 
-  \item \textit{Gram-Schimidt:}
+  \item \textit{Gram-Schmidt:}
         \begin{enumerate}[label={\tiny\faIcon{pray}$_{\arabic*)}$}]
           \item Proceso para construir una base que generá el mismo espacio, pero con elementos perpediculares entre sí.
                 $$
@@ -114,8 +122,11 @@
         \parrafoDestacado[{{ \huge \angry} }]{
           Una matriz \red{ortogonal} tiene sus columnas \underline{\red{\Large ortonormales}}.
         }
+        \begin{itemize}
+          \item Si $A$ es una \textit{matriz ortogonal} entonces $A^{-1} = A^*$.
+        \end{itemize}
 
-  \item \textit{Factorización $QR$:}\quad  $A = Q R$
+  \item\hypertarget{teoria-3:qr}{ \textit{Factorización $QR$:}\quad  $A = Q R$}
 
         La factorización $QR$ no tiene un pedo que ver las $LU$, Chole y amigos. $QR$ es un fantasma
         \blue{\Large\faIcon{ghost}} que sale de \textit{Gram-Schmidt}.
@@ -126,9 +137,9 @@
           \quad \text{con } u_i \cdot u_j = 0 \paratodo i \distinto j
         $$
         \begin{enumerate}[label=$\bm{\perp}\arabic*)$]
-          \item $Q$ es una \textit{Matriz Ortogonal} que va a tener en sus columnas el resultado de \red{ortonormalizar} las columnas de $A$.
+          \item $Q$ es una \textit{matriz ortogonal} que va a tener en sus columnas el resultado de \red{ortonormalizar} las columnas de $A$.
 
-          \item $R$ es una \textit{Matriz triangular superior} con las normas de las columnas de $Q$ en la diagonal
+          \item $R$ es una \textit{matriz triangular superior} con las normas de las columnas de $Q$ en la diagonal
 
           \item Mini derivación:
                 $$
@@ -208,9 +219,9 @@
                   \cdot
                   \ub{
                     \matriz{c|c|c}{
-                      \norma{\green{u_1}} & \green{\hat{u}_1^*} \cdot v_2 & \green{\hat{u}_1^*} \cdot v_3 \\
-                      0 & \norma{\green{u_2}} & \green{\hat{u}_2^*} \cdot v_3 \\
-                      0 & 0 &\norma{\green{u_3}}
+                      \norma{\purple{u_1}} & \green{\hat{u}_1^*} \cdot v_2 & \green{\hat{u}_1^*} \cdot v_3 \\
+                      0 & \norma{\purple{u_2}} & \green{\hat{u}_2^*} \cdot v_3 \\
+                      0 & 0 &\norma{\purple{u_3}}
                     }
                   }{R \text{ triangular superior}}
                 $$

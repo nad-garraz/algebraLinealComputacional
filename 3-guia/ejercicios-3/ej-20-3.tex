@@ -24,3 +24,164 @@
     }
   \end{center}
 \end{enunciado}
+
+\hyperlink{teoria-3:qr}{Acá un poco de lore $A = QR$  \click}
+
+\begin{enumerate}[label=\alph*)]
+  \item La matriz no es cuadrada \surprise. A la descomposición $QR$ le chupa un huevo. ¡Gram-Schimdteo a $\columna(A)$!
+        $$
+          \begin{array}{rcl}
+            \columna(A) =
+            \set{
+              \matriz{c}{
+            0                                       \\
+            0                                       \\
+                -5
+              }
+              ,
+              \matriz{c}{
+            -4                                      \\
+            0                                       \\
+                -2
+              }
+            }
+             & \quad\flecha{\magic}\quad          &
+            \columna(A)_{\text{BOG}} =
+            \set{
+              \matriz{c}{
+            0                                       \\
+            0                                       \\
+                -5
+              }
+              ,
+              \matriz{c}{
+            -4                                      \\
+            0                                       \\
+                0
+              }
+            }                                       \\
+             & \quad\flecha{normalizo}\quad       &
+            \columna(A)_{\text{BO\red{N}}} =
+            \set{
+              \matriz{c}{
+            0                                       \\
+            0                                       \\
+                \frac{-5}{\norma{(0,0,-5)}}
+              }
+              ,
+              \matriz{c}{
+            \frac{-4}{\norma{(0,0,-4)}}             \\
+            0                                       \\
+                0
+              }
+            }                                       \\
+             & \quad\flecha{cocinado}[queda]\quad &
+            \columna(A)_{\text{BO\red{N}}} =
+            \set{
+              \matriz{c}{
+            0                                       \\
+            0                                       \\
+                -1
+              }
+              ,
+              \matriz{c}{
+            -1                                      \\
+            0                                       \\
+                0
+              }
+            }                                       \\
+          \end{array}
+        $$
+        Listo, ahora expreso a $A$ como:
+        $$
+          A =
+          \ub{
+            \matriz{cc}{
+              0 & -1  \\
+              0 & 0  \\
+              -1 & 0
+            }
+          }{Q}
+          \cdot
+          \ub{
+            \matriz{cc}{
+              5 & -2  \\
+              0 & 4    \\
+            }
+          }{R}
+        $$
+        Fijate que:
+        $$
+          A = QR
+          \flecha{$\times Q^*$}[M.A.M.]
+          Q^*A = \ub{Q^*Q}{I \en \reales^{2 \times 2}} R =
+          \oa{R}{\text{triangular}\\\text{superior}}
+          \sii
+          Q^* A = R
+        $$
+        La $Q^*$ te triangula la $A$.
+
+  \item Cuando te ponen una matriz de $2 \times 2$, sabés que las cuentas van a ser un cosa horrible:
+        $$
+          \begin{array}{rcl}
+            \columna(A) =
+            \set{
+              \matriz{c}{
+            3                                 \\
+                4
+              }
+              ,
+              \matriz{c}{
+            2                                 \\
+                5
+              }
+            }
+             & \quad\flecha{\magic}\quad    &
+            \columna(A)_{\text{BOG}} =
+            \set{
+              \matriz{c}{
+            3                                 \\
+                4
+              }
+              ,
+              \matriz{c}{
+            -\frac{28}{25} \vspace{1pt}       \\
+                \frac{21}{25}
+              }
+            }                                 \\
+             & \quad\flecha{normalizo}\quad &
+            \columna(A)_{\text{BO\red{N}}} =
+            \set{
+              \matriz{c}{
+            \frac{3}{5} \vspace{1pt}          \\
+                \frac{4}{5}
+              }
+              ,
+              \matriz{c}{
+            -\frac{4}{5} \vspace{1pt}         \\
+                \frac{3}{5}
+              }
+            }\text{\rosa{¡\surprise quedó hermosa!}}
+          \end{array}
+        $$
+        Listo expreso a $A$ como:
+        $$
+          A =
+          \ub{
+            \matriz{cc}{
+              \frac{3}{5} & -\frac{4}{5} \vspace{1pt}          \\
+              \frac{4}{5} & \frac{3}{5}
+            }
+          }{Q}
+          \ub{
+            \matriz{cc}{
+              5 & \frac{26}{5} \vspace{1pt}          \\
+              0 & \frac{7}{5}
+            }
+          }{R}
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
