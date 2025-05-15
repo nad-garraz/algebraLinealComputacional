@@ -1,11 +1,4 @@
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
-  \item \textit{Descomposición $LU$:} \quad $A = LU$
-
-        \hacer
-
-  \item \textit{Descomposición $LU$ con swap de filas:} \quad $PA = LU$
-
-        \hacer
 
   \item \hypertarget{teoria-3:definida-positiva}{\textit{Matriz definida positiva:}}
 
@@ -15,10 +8,62 @@
         $$
         Algunas propiedades de las matrices definidas positivas:
         \begin{itemize}
-          \item  $A\en \reales^{n \times n} \entonces \existe A^{-1}$.
-          \item  Los elementos diagonales son positivos.
+          \item  $A\en \reales^{n \times n}  \textit{ simétrica definida positiva} \entonces A \text{es inversible}$
+          \item  Los elementos diagonales de una matriz \textit{simétrica definida positiva} son positivos
           \item  Las submatrices principales también son matrices definidas positivas
         \end{itemize}
+        $$
+          \begin{tikzpicture}[
+              rect/.style={draw, thick, minimum width=0.8cm, minimum height=0.8cm},
+              submatriz/.style={draw, thick, color=#1, rounded corners=2pt},
+              submatriz/.default=red,
+            ]
+
+            \matrix (A) [
+              matrix of nodes,
+              nodes={draw = black!10!white,
+                  rect,
+                  anchor=center,
+                  font=\small},
+              column sep=-5\pgflinewidth, row sep=-10\pgflinewidth] {
+              $a_{11}$ & $a_{12}$ & $a_{13}$ & $a_{14}$ \\
+              $a_{21}$ & $a_{22}$ & $a_{23}$ & $a_{24}$ \\
+              $a_{31}$ & $a_{32}$ & $a_{33}$ & $a_{34}$ \\
+              $a_{41}$ & $a_{42}$ & $a_{43}$ & $a_{44}$ \\
+            };
+            \node[submatriz=blue, fit=(A-1-1)] {};
+            \node[submatriz=green!70!black, fit=(A-1-1)(A-1-2)(A-2-1)(A-2-2)] {};
+            \node[submatriz=orange, fit=(A-1-1)(A-1-2)(A-1-3)(A-2-1)(A-2-2)(A-2-3)(A-3-1)(A-3-2)(A-3-3)] {};
+            \node[submatriz=violet, fit=(A-1-1)(A-1-2)(A-1-3)(A-1-4)(A-2-1)(A-2-2)(A-2-3)(A-2-4)(A-3-1)(A-3-2)(A-3-3)(A-3-4)(A-4-1)(A-4-2)(A-4-3)(A-4-4)] {};
+
+            \node[right=0.3cm of A, align=left] {
+              \begin{tabular}{ll}
+                \textcolor{blue}{$\blacksquare$}           & submatriz 1×1 \\
+                \textcolor{green!70!black}{$\blacksquare$} & submatriz 2×2 \\
+                \textcolor{orange}{$\blacksquare$}         & submatriz 3×3 \\
+                \textcolor{violet}{$\blacksquare$}         & A 4×4         \\
+              \end{tabular}
+            };
+          \end{tikzpicture}
+        $$
+
+  \item \textit{Descomposición $LU$:} \quad $A = LU$
+        \begin{enumerate}[label={\tiny\faIcon{pray}$_{\arabic*)}$}]
+          \item Sea $A \en K^{n \times n}$, \red{$A$ inversible}, entonces:
+                $$
+                  A \text{ tiene descomposición } LU \sii
+                  \ub{A(1:k,1:k)}{\text{submatrices}\\ \text{principales}}
+                  \textit{ es inversible } \paratodo k \en [1,n]
+                $$
+          \item Sea $A \en K^{n \times n}$, \red{$A$ inversible}, entonces:
+                $$
+                  A \text{ tiene descomposición } LU
+                  \entonces
+                  \text{ esa factorización es única }
+                $$
+        \end{enumerate}
+
+  \item \textit{Descomposición $LU$ con swap de filas:} \quad $PA = LU$
 
   \item \hypertarget{teoría-3:cholesky}{\textit{Descomposición de Cholesky:}}
 
@@ -124,6 +169,7 @@
         }
         \begin{itemize}
           \item Si $A$ es una \textit{matriz ortogonal} entonces $A^{-1} = A^*$.
+          \item Si $A$ y $B$ son \textit{matrices ortogonales} entonces $AB$ es una \textit{matriz ortogonal}.
         \end{itemize}
 
   \item\hypertarget{teoria-3:qr}{ \textit{Factorización $QR$:}\quad  $A = Q R$}
