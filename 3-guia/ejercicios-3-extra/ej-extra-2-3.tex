@@ -62,7 +62,7 @@
         $$
           BON_{S_2^\perp} =
           \set{
-            \left(-\frac{4}{\sqrt{42}}, \frac{1}{\sqrt{42}}, \frac{2}{\sqrt{42}}\right)
+            \left(-\frac{4}{\sqrt{42}}, \frac{5}{\sqrt{42}}, \frac{1}{\sqrt{42}}\right)
           }
         $$
         $$
@@ -91,19 +91,21 @@
             \ub{
               \orange{(-2, 6, 4)}
               \cdot
-              \big(-\frac{4}{\sqrt{42}}, \frac{1}{\sqrt{42}}, \frac{2}{\sqrt{42}}\big)
-            }{\frac{22}{\sqrt{42}}}
+              \big(-\frac{4}{\sqrt{42}}, \frac{5}{\sqrt{42}}, \frac{1}{\sqrt{42}}\big)
+            }{\frac{42}{\sqrt{42}} = \sqrt{42}}
             \Big)
             \Big(
-            \big(-\frac{4}{\sqrt{42}}, \frac{1}{\sqrt{42}}, \frac{2}{\sqrt{42}}\big)
+            \big(-\frac{4}{\sqrt{42}}, \frac{5}{\sqrt{42}}, \frac{1}{\sqrt{42}}\big)
             \Big)
           }
           =
-          \norma{(\frac{44}{21}, \frac{11}{21}, \frac{22}{21})}
+          |\sqrt{42}|
+          \ub{\norma{(-\frac{4}{\sqrt{42}}, \frac{5}{\sqrt{42}}, \frac{1}{\sqrt{42}})}}{ = 1}
+          = \sqrt{42}
         $$
         Por lo tanto la distancia buscada:
         $$
-          d((-2,6,4), S_2) = \frac{11}{\sqrt{21}}
+          d((-2,6,4), S_2) = \sqrt{42}
         $$
         Oka, decía usando $\blue{P_{S_2}}$, pero, pero...{\color{black!10!white}{ me chupa un huevo.}}
 
@@ -114,6 +116,21 @@
         eso sería la proyección azul del gráfico, entonces para calcular la longitud del vector negro:
         $$
           \norma{\orange{v} -  \blue{(v_1 \cdot v) \cdot v_1 + (v_2 \cdot v) \cdot v_2 }} = d(\orange{(-2,6,4), \green{S_2}})
+        $$
+
+        Si querés armar el proyector sobre el subespacio $S$ con matrices, \hyperlink{teoria-3:proyector}{mirá acá como funciona esto \click}:
+        $$
+          P_s =
+          Q Q^t =
+          \matriz{cc}{
+            -\frac{1}{\sqrt{3}}  & \frac{2}{\sqrt{14}} \\
+            -\frac{1}{\sqrt{3}}  & \frac{1}{\sqrt{14}} \\
+            \frac{1}{\sqrt{3}}  & \frac{3}{\sqrt{14}}
+          }
+          \matriz{ccc}{
+            -\frac{1}{\sqrt{3}}  & -\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} \\
+            \frac{2}{\sqrt{14}} & \frac{1}{\sqrt{14}} & \frac{3}{\sqrt{14}}
+          }
         $$
 \end{enumerate}
 
