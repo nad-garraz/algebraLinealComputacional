@@ -109,6 +109,137 @@
                 $\sii \nucleo(P) \perp \imagen(P)$
           \item $P$ es un \textit{\blue{proyector ortogonal}} expresado en una base \textit{\magenta{ortonormal}}
                 $\entonces P = P^t \quad (P = P^* \en \complejos)$
+
+          \item \textit{Proyector ortogonal sobre un subespacio $S \subset V$, con $\dim(S) = r$ y $\dim(V) = n$}:
+                $$
+                  \ua{B_S}{\text{BOG}} = \ob{\set{s_1,\ldots,s_r}}{s_i\accion s_j = 0\\ \paratodo i \distinto j}
+                  \quad
+                  \Entonces{proyecto $\blue{v}$}[en $S$]
+                  \quad
+                  P_S (\blue{v}) =
+                  \ub{
+                    \frac{s_1^t \accion \blue{v}}{\norma{s_1}^2} \cdot s_1 +
+                    \cdots +
+                    \frac{s_r^t \accion \blue{v}}{\norma{s_r}^2} \cdot s_r
+                  }
+                  {
+                    \text{es una suma de múltiplos}\\ \text{de los generadores de } S \text{\red{\atencion}}
+                  }
+                $$
+                Si tenés una BON de $S$ mirá como podés hacer esto más \textit{mecánico}:
+                $$
+                  \ua{B_S}{\text{BON}} = \ob{\set{s_1,\ldots,s_r}}{s_i\accion s_j = 0\\ \norma{s_i} = 1\\ \paratodo i \distinto j}
+                  \Entonces{me armo el proyector}[al $S$ con matrices]
+                $$
+                $$
+                  P_S =
+                  \ub{
+                    \matriz{c|c|c}{
+                      &  &  \\
+                      s_1 & \cdots & s_r \\
+                      &  &
+                    }
+                  }{Q}
+                  \ub{
+                    \matriz{ccc}{
+                      \quad  & s_1^t &\quad  \\ \hline
+                      \quad  & \vdots &\quad \\ \hline
+                      \quad  & s_r^t &\quad
+                    }
+                  }{Q^*}
+                $$
+                \textit{Now behold and be amazed maderfoca!}:
+                $$
+                  P_S(\blue{v}) =
+                  \ub{
+                    \matriz{c|c|c}{
+                      &  &  \\
+                      s_1 & \cdots & s_r \\
+                      &  &
+                    }
+                  }{ \en K^{n \times r}}
+                  \ub{
+                    \matriz{ccc}{
+                      \quad  & s_1^t &\quad  \\ \hline
+                      \quad  & \vdots &\quad \\ \hline
+                      \quad  & s_r^t &\quad
+                    }
+                  }{ \en K^{r \times n}}
+                  \ub{
+                    \blue{
+                      \matriz{c}{
+                        v_1\\
+                        \vdots\\
+                        v_n
+                      }
+                    }
+                  }{ \en K^{n \times 1}}
+                  \igual{\red{!}}
+                  \matriz{c|c|c}{
+                    &  &  \\
+                    s_1 & \cdots & s_r \\
+                    &  &
+                  }
+                  \ub{
+                    \matriz{c}{
+                      s_1^t \accion \blue{v}\\ \hline
+                      \vdots\\ \hline
+                      s_r^t \accion \blue{v}
+                    }
+                  }{ \en K^{r \times 1}}
+                  \igual{\red{!}}
+                $$
+                Para hacerlo explicitamente escribo las cordenadas de un vector de $S$ como
+                $s_i = (s_{i_1}, \ldots, s_{i_n} )$
+                $$
+                  \igual{\red{!}}
+                  \ub{
+                    \matriz{c}{
+                      (s_1^t \accion \blue{v}) \cdot s_{1_1} + \dots + (s_r^t \accion \blue{v}) s_{r_1} \\ \hline
+                      \vdots \qquad \vdots\\ \hline
+                      (s_1^t \accion \blue{v}) \cdot s_{1_i} + \dots + (s_r^t \accion \blue{v}) s_{r_i}\\ \hline
+                      \vdots \qquad \vdots\\ \hline
+                      (s_1^t \accion \blue{v}) \cdot s_{1_n} + \dots + (s_r^t \accion \blue{v}) s_{r_n}
+                    }
+                  }{
+                    \en K^{n \times 1}
+                  }
+                  \igual{\red{!!}}
+                  \ob{
+                    \ub{
+                      s_1^t \accion \blue{v}
+                    }{
+                      \en K
+                    }
+                    \matriz{c}{
+                      s_{1_1}\\
+                      \vdots\\
+                      s_{1_n}
+                    }
+                    +
+                    \cdots
+                    +
+                    \ub{
+                      s_r^t \accion \blue{v}
+                    }{
+                      \en K
+                    }
+                    \matriz{c}{
+                      s_{r_1}\\
+                      \vdots\\
+                      s_{r_n}
+                    }
+                  }{
+                    \text{es una suma de múltiplos}\\\text{de los generadores de } S \text{ \red{\atencion}}
+                  }
+                  =
+                $$
+                $$
+                  = (s_1^t \accion \blue{v}) \cdot s_1 + \cdots +  (s_r^t \accion \blue{v}) \cdot s_r =
+                  P_S(\blue{v})
+                $$
+                Donde en \red{!!} es acomodar ese vector gordo que está a la izquierda como una suma de vectores flacos multiplicados
+                por un escalar. Y listo queda la proyección igual que antes solo que con una base \red{ortonormal}.
         \end{enumerate}
 
   \item \textit{Gram-Schmidt:}
@@ -163,7 +294,7 @@
                 \end{enumerate}
         \end{enumerate}
 
-    \item \hypertarget{teoria-3:matrizOrtogonal}\textit{Matriz Ortogonal:}
+  \item \hypertarget{teoria-3:matrizOrtogonal}\textit{Matriz Ortogonal}:
         \parrafoDestacado[{{ \huge \angry} }]{
           Una matriz \red{ortogonal} tiene sus columnas \underline{\red{\Large ortonormales}}.
         }
@@ -221,7 +352,7 @@
                   \cdot
                   \ub{
                     \matriz{c|c|c}{
-                      \norma{\purple{u_1}} & \frac{\purple{u_1^*} \cdot v_2}{\norma{\purple{u_2}}} & \frac{\purple{u_1^*} \cdot v_3}{\norma{\purple{u_1}}} \\
+                      \norma{\purple{u_1}} & \frac{\purple{u_1^*} \cdot v_2}{\norma{\purple{u_1}}} & \frac{\purple{u_1^*} \cdot v_3}{\norma{\purple{u_1}}} \\
                       0 & \norma{\purple{u_2}} & \frac{\purple{u_2^*} \cdot v_3}{\norma{\purple{u_2}}}\\
                       0 & 0 &\norma{\purple{u_3}}
                     }

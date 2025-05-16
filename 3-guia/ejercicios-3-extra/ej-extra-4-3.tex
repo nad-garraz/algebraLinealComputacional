@@ -1,0 +1,132 @@
+\begin{enunciado}{\ejExtra}
+  Para cada $a \en \reales$ sea la matriz
+  $A(a) =
+    \matriz{cccc}{
+      1 & -1 & 0 & 1 \\
+      0 & 2 & -1 & 3 \\
+      -1 & 1 & 2 & -4 \\
+      1 & 1 & 1 & a
+    }.
+  $
+
+  \begin{enumerate}[label=\alph*)]
+    \item Hallar la descomposición $LU$ de $A(a)$ para cada $a \en \reales$.
+    \item Calcular $\condicion_\infinito(A(a))$ cuando $a \to 1$.
+    \item Explicar las razones por las cuales
+          $M(a) =
+            \matriz{cccc}{
+              0 & 2 & -1 & 3 \\
+              -1 & 1 & 2 & -4 \\
+              1 & -1 & 0 & 1 \\
+              1 & 1 & 1 & a
+            }
+          $
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item\label{ej-extra-4:itema} Triángulo y después le cambio los signos para encontrar la $L$.
+        $$
+          A =
+          \ub{
+            \matriz{cccc}{
+              1 & 0 & 0 & 0 \\
+              0 & 1 & 0 & 0 \\
+              -1 & 0 & 1 & 0 \\
+              1 & 1 & 1 & 1
+            }
+          }{
+            L
+          }
+          \ub{
+            \matriz{cccc}{
+              1 & -1 & 0 & 1 \\
+              0 & 2 & -1 & 3 \\
+              0 & 0 & 2 & -3 \\
+              0 & 0 & 0 & a-1
+            }
+          }{
+            U
+          }
+        $$
+
+  \item Cómo calcular la condición cuando $a \to 1$. En esta clase de ejercicio hay que usar la cota para la condición:
+        $$
+          \condicion(A)
+          \geq
+          \supremo \set{\frac{\norma{A}}{\norma{A - B}} : B \text{ es singular}}.
+        $$
+        Una $B$ singular:
+        $$
+          B =
+          \matriz{cccc}{
+            1 & -1 & 0 & 1 \\
+            0 & 2 & -1 & 3 \\
+            -1 & 1 & 2 & -4 \\
+            1 & 1 & 1 & \red{1}
+          }
+        $$
+        La elección de esa $B$ sale con ayuda de la $U$ del ítem \ref{ej-extra-4:itema}, donde si $a = 1$ me queda una fila de \red{ceros}.
+
+        $$
+          \limite{a}{1} \condicion_\infinito(A(a))
+          \geq
+          \limite{a}{1} \frac{\norma{A(a)}_\infinito}{\norma{A(a) - B}_\infinito} =
+          \limite{a}{1} \frac{8}{|a - \red{1}|} = +\infinito
+        $$
+        Por lo tanto:
+        $$
+          \cajaResultado{
+            \limite{a}{1} \condicion_\infinito(A(a)) = +\infinito
+          }
+        $$
+
+  \item No voy a poder encontrar una descomposición que cumpla con las condiciones que tienen que cumplir
+        tanto la matriz $L$ como la $M$:
+        $$
+          A =  L \cdot U
+          \entonces
+          [A]_{11} = 0 = [L]_{11} [U]_{11} \sii [U]_{11} = 0
+        $$
+        dado que $L$ tienen unos en su diagonal. Luego:
+        $$
+          [A]_{21} = -1 = [L]_{21} \ub{[U]_{11}}{ = \red{0}} \faIcon{skull} = 0 \quad \text{absurdo}.
+        $$
+
+        Puedo permutar filas para hacer que $M(a) \to A(a)$:
+        $$
+          P_1 =
+          \matriz{cccc}{
+            0 & 1 & 0 & 0 \\
+            1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+          }
+          \ytext
+          P_2 =
+          \matriz{cccc}{
+            1 & 0 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 1
+          }
+        $$
+        Por lo tanto:
+        $$
+          P M(a) = P_2 P_1 M(a) = A(a)
+          \quad
+          \text{ con }
+          \quad
+          P =
+          \matriz{cccc}{
+            0 & 0 & 1 & 0 \\
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 0 & 1
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

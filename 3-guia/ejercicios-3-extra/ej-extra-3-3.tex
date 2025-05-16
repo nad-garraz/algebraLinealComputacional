@@ -1,0 +1,163 @@
+\begin{enunciado}{\ejExtra}
+  Sea $A\en \reales^{n \times n}$ una matriz inversible con $A^t A = L L^t$ la factorización de
+  Cholesky de la matriz $A^t A$. Si llamamos $L^{-t} = (L^{t})^{-1}$.
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que $AL^{-t}$ es una matriz ortogonal.
+    \item Calcular la factorización $QR$ de $A$ en función de $A$ y $L$.
+    \item Sea
+          $$
+            B=
+            \matriz{ccc}{
+              2 & 0 & 0 \\
+              0 & 1 & 0 \\
+              0 & \sqrt{3} & 1
+            }
+            \matriz{ccc}{
+              2 & 0 & 0 \\
+              0 & 1 & \sqrt{3} \\
+              0 & 0 & 1
+            }
+            =L L^t
+          $$
+          la factorización de Cholesky de la matriz $B$. Sin calcular $B$ explícitamente, calcular
+          la factorización $QR$ de $L$ y usarla para hallar la factorización $QR$ de B.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item\label{extra-3:itema} Una matriz $A$  es ortogonal si su $\columna(A)$ es un conjunto \textit{ortonormal}.
+        Más propiedades de estas matrices \hyperlink{teoria-3:matrizOrtogonal}{acá \click.}
+        Una \textit{matriz ortogonal} tiene por inversa a sí misma transpuesta y conjugada. A ver si pasa eso
+        $$
+          \begin{array}{rcl}
+            AL^{-t} \cdot (AL^{-t})^t \igual{def}[\red{?}] I
+             & \Sii{$\times \to $}[$A^t$] &
+            A^t AL^{-t} \cdot (AL^{-t})^t = A^t          \\
+             & \sii                       &
+            L L^t (L^t)^{-1} \cdot (AL^{-t})^t = A^t     \\
+             & \Sii{\red{!}}              &
+            L \cdot (AL^{-t})^t = A^t                    \\
+             & \sii                       &
+            L \cdot (L^{-t})^t A^t = A^t                 \\
+             & \Sii{$\times \ot$}[$A$]    &
+            L \cdot (L^{-t})^t A^tA = A^tA               \\
+             & \sii                       &
+            L \cdot (L^{-t})^t LL^t  = A^tA              \\
+             & \sii                       &
+            L \cdot (\magenta{L^t L^{-t}})^t L^t  = A^tA \\
+             & \sii                       &
+            L  L^t  \igual{def}[$\red{\checkmark}$] A^tA
+          \end{array}
+        $$
+
+  \item En el ítem \ref{extra-3:itema} se mostró que $A(L^t)^{-1}$ es una \textit{matriz ortogonal}, al igual que
+        lo debe ser $Q$. $R$ tiene que ser una matriz diagonal superior como lo es $L^t$ que sale de la
+        descomposición de Cholesky. El resto es historia:
+        $$
+          A = \blue{Q}\green{R} = \blue{A(L^t)^{-1}} \cdot \green{L^t} =
+          \blue{A} \cdot (\ub{\green{(L^t)^{-1}} \cdot \blue{L^t}}{I})^{-1} = A
+        $$
+        La descomposición $A = QR$:
+        $$
+          \cajaResultado{
+            A =  \ub{A L^{-t}}{Q} \ub{L^t}{R}
+          }
+        $$
+
+  \item Calculo primero la descomposición $QR$ de $L$:
+        $$
+          L =
+          \matriz{ccc}{
+            2 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & \sqrt{3} & 1
+          }
+        $$
+        Calculo una BOG y luego la BON del espacio columna de $L$ con \textit{Gram Schmidt}:
+        $$
+          BOG = \big\{\textstyle
+          \ub{(2,0,0)}{\normaBullet = 2},
+          \ub{\left(0, 1, \sqrt{3}\right)}{\normaBullet = 2},
+          \ub{\left(0,-\frac{\sqrt{3}}{4}, \frac{1}{4}\right)}{\normaBullet = \frac{1}{2}}
+          \big\}
+          \ytext
+          BON = \set{\textstyle
+            (1,0,0),
+            \left(0, \frac{1}{2}, \frac{\sqrt{3}}{2}\right),
+            \left(0,-\frac{\sqrt{3}}{2}, \frac{1}{2}\right)
+          }
+        $$
+        La matriz $Q$ tiene como columnas a los elementos de la \textit{base ortonormal}, mientras que $R$ \hyperlink{teoria-3:qr}{tiene en la diagonal
+          las normas de los elementos de la \textit{base ortogonal} y por \underline{sobre} la diagonal
+          la longitud de las proyecciones en cada vector de la base, ver acá \click}
+        sobre la diagonal la longitud de la proyección en cada unos de los vectores de  en cada columna respectivamente.
+        $$
+          Q =
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            0 & \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+            0 & \frac{\sqrt{3}}{2} & \frac{1}{2}
+          }
+          \quad
+          \ytext
+          \quad
+          R =
+          \matriz{ccc}{
+            2 & 0 & 0 \\
+            0 & 2 & \frac{\sqrt{3}}{2} \\
+            0 & 0 & \frac{1}{2}
+          }
+        $$
+        $$
+          LL^t =
+          \ub{
+            \matriz{ccc}{
+              1 & 0 & 0 \\
+              0 & \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+              0 & \frac{\sqrt{3}}{2} & \frac{1}{2}
+            }
+            \matriz{ccc}{
+              2 & 0 & 0 \\
+              0 & 2 & \frac{\sqrt{3}}{2} \\
+              0 & 0 & \frac{1}{2}
+            }
+          }{
+            L
+          }
+          \ub{
+            \matriz{ccc}{
+              2 & 0 & 0 \\
+              0 & 1 & \sqrt{3} \\
+              0 & 0 & 1
+            }
+          }{
+            L^t
+          }
+          =
+          \ub{
+            \matriz{ccc}{
+              1 & 0 & 0 \\
+              0 & \frac{1}{2} & -\frac{\sqrt{3}}{2} \\
+              0 & \frac{\sqrt{3}}{2} & \frac{1}{2}
+            }
+          }{
+            Q_B
+          }
+          \ub{
+            \matriz{ccc}{
+              4 & 0 & 0 \\
+              0 & 2 & 0 \\
+              0 & 0 & \frac{1}{2}
+            }
+          }{
+            R_B
+          }
+          = B
+        $$
+        Este último resultado está diciendo que las columnas de $B$ son colineales con los vectores de la \textit{base ortonormal},
+        hecho que se desprende de que $R$ haya quedado diagonal.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
