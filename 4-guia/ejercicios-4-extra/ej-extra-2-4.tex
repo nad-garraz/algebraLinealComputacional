@@ -1,0 +1,55 @@
+\begin{enunciado}{\ejExtra}
+  \begin{enumerate}[label=\alph*)]
+    \item
+          Sea $A \en \reales^{n \times n}$. Probar que si $A$ es inversible y diagonalizable, entonces $A^{-1}$
+          y $A^k - kI_n$ son diagonalizables para cualquier $k \en \naturales$.
+    \item
+          Sea $J =
+            \matriz{ccc}{
+              2 & 0 & 0 \\
+              1 & 3 & -1 \\
+              -1 & -1 & 3
+            } \en \reales^{3 \times 3}
+          $.
+          \begin{enumerate}[label=\roman*)]
+            \item Probar que $J$ es una matriz diagonalizable.
+            \item Calcular $J^5 - 5I_3$.
+          \end{enumerate}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item  Truquito destacable: $I_n = PP^{1}$ para luego sacar factor común al calcular $A^k - kI_n$
+        Por otro lado, la inversibilidad de una matriz diagonalizable asegura que los autovalores son distintos de cero:
+        $$
+          |A| = |P D P^{-1}| = |P| |D| |P^{-1}| \igual{\red{!}} |D| = \productoria{i=1}{n} \lambda_i
+        $$
+        Las matrices inversibles tienen $\det(A) \distinto 0$.
+
+  \item
+        \begin{enumerate}[label=\roman*)]
+          \item Se calculan los autovectores y autovalores:
+                $$
+                  E_{\lambda = 2} = \set{(1,0,1), (-1,1,0)}
+                  \ytext
+                  E_{\lambda = 4} = \set{(0,1,1)}
+                  \entonces
+                  P =
+                  \matriz{ccc}{
+                    1 & -1 & 0 \\
+                    0 & 1 & 1 \\
+                    1 & 0 & 1
+                  }
+                  D =
+                  \matriz{ccc}{
+                    2 & 0 & 0 \\
+                    0 & 2 & 0 \\
+                    0 & 0 & 4
+                  }
+                $$
+                Te debo la inversa por \textit{pajilla}.
+
+          \item
+                Sale combinando lo que se usó hasta ahora.
+        \end{enumerate}
+\end{enumerate}

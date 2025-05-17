@@ -1,0 +1,54 @@
+\begin{enunciado}{\ejExtra}
+  Sea $f : \reales^4 \to \reales^4$
+  la proyección ortogonal sobre
+  $$
+    S = \ket{(1,1,1,1), (1,2,1,0)}
+  $$
+  y sean
+  $$
+    T =\set{x \en \reales^4 : x_1 - x_2 + x_3 = 0, -x_2 + x_4 = 0}
+    \ytext W = \ket{(2,0,-2,0), (-2,1,0,1), (2,1,-4,1)}.
+  $$
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Decidir si existe alguna transformación lineal $g$ que cumpla simultáneamente:
+        $$
+          g(W) = \ket{(2,0,1,1), (0,-1,2,2)}
+          \quad
+          g(v) = f(v) \quad \paratodo v \en T
+        $$
+        En caso afirmativo, exhibir un ejemplo. En caso negativo, explicar por qué.
+
+  \item
+        Sea $h: \reales^4 \to \reales^3$ dada por:
+        $$
+          h(x_1, x_2, x_3, x_4) = (2x_1 + 4x_2 + 2x_3, -2x_1 + 4x_2 + 2x_3, 4x_4)
+        $$
+        halle una base de $\imagen(h \circ f)$ y decidir si $h \circ f$ es epimorfismo ¿Puede ser monomorfismo?
+\end{enumerate}
+
+\begin{enumerate}[label=\alph*)]
+  \item La papa está en el subespacio al que está yendo a para $g(W)$. Hay una contradicción entre esa
+        condición y que $g(v) = f(v)$.
+
+        No existe una \textit{transformación lineal que cumpla lo pedido}
+
+  \item
+        No te dan las dimensiones. $\dimension(\nucleo(f)) = 2\llamada1$ dado
+        que es un \textit{proyector ortogonal}.
+        Por lo tanto $h$ va a recibir como mucho a $S$, con $\dimension(S) = 2$.
+        \parrafoDestacado{
+          No hay forma de que $(h \circ f)(x)$ genere más de 2 vectores
+          \textit{linealmente independientes} de $\reales^3$.
+        }
+        $$
+          \cajaResultado{
+            \text{La función \underline{no} es un epimorfismo. Tampoco será mono, por $\llamada1$.}
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

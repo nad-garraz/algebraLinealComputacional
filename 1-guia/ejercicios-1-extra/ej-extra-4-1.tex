@@ -1,0 +1,77 @@
+\begin{enunciado}{\ejExtra}
+  Sean $a$, $b \en \reales$,
+  $$
+    S = \set{(x_1,x_2,x_3,x_4) \en \reales^4 : x_1 + ax_2 + bx_3 + ax_4 = 0}
+  $$
+  y
+  $$
+    T = \set{(x_1,x_2,x_3,x_4) \en \reales^4 :
+      -2x_1 + 3x_3 + x_4 = 0,\ 
+      x_2 - x_3 + 4x_4 = 0}
+  $$
+  subespacios de $\reales^4$.
+  \begin{enumerate}[label=\alph*)]
+    \item Hallar todos los valores de $a, b \en \reales$ para los que $\dimension(S \inter T) = 1$.
+    \item Para el caso en que $a = -1$ y $b = 1$. Hallar $f: \reales^4 \to \reales^4$ una transformación lineal
+          tal que $\nucleo(f) = S \inter T$ e $\imagen(f) = S$.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Para encontrar la intersección entre dos subespacios dados con ecuaciones, puedo resover todas las ecuaciones en simultáneo:
+        $$
+          \llamada1
+          \llave{rcl}{
+            x_1 + ax_2 + bx_3 + ax_4 & = & 0\\
+            -2x_1 + 3x_3 + x_4 & = & 0\\
+            x_2 - x_3 + 4x_4 & = & 0
+          }
+        $$
+        Ahora el sistema en forma matricial y triangulo.
+        La idea es que me queden \red{3 ecuaciones} \textit{linealmente independientes}, de esa
+        manera quedará \underline{solo una variables libre}, por lo tanto la solución al sistema tendrá dimensión 1:
+        $$
+          \llamada1
+          \equivalente
+          \begin{array}{rcl}
+            \matriz{cccc|c}{
+            1  & a                                              & b           & a      & 0 \\
+            -2 & 0                                              & 3           & 1      & 0 \\
+            0  & 1                                              & -1          & 4      & 0
+            }
+               & \flecha{$F_2 + 2F_1 \to F_2$}                  &
+            \matriz{cccc|c}{
+            1  & a                                              & b           & a      & 0 \\
+            0  & 2a                                             & 3 + 2b      & 1 + 2a & 0 \\
+            0  & 1                                              & -1          & 4      & 0
+            }                                                                              \\
+               & \flecha{$2aF_3 - F_2 \to F_3$}[$a\distinto 0$] &
+            \matriz{cccc|c}{
+            1  & a                                              & b           & a      & 0 \\
+            0  & 2a                                             & 3 + 2b      & 1 + 2a & 0 \\
+            0  & 0                                              & -2a - 3 -2b & 6a - 1 & 0
+            }
+          \end{array}
+        $$
+        Por un lado se puede ver a ojo que cuando $a = 0$ quedan 3 ecuaciones \textit{linealmente independientes} así que no jode.
+        Ahora quiero ver para cuales valores de $a \ytext b$ se borra la última fila:
+        $$
+          \llave{rcl}{
+            -2a - 3 - 2b & = & 0 \Sii{$a = \frac{1}{6}$} b = -\frac{5}{3}\\
+            6a - 1 & = & 0 \sii a = \frac{1}{6}
+          }
+        $$
+        Por lo tanto la intersección va a tener dimensión 1, $\dimension(S \inter T) = 1$ cuando:
+        $$
+          \cajaResultado{
+            \llave{l}{
+              a = \frac{1}{6} \\
+              b = - \frac{5}{3}
+            }
+          }
+        $$
+
+\end{enumerate}
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
