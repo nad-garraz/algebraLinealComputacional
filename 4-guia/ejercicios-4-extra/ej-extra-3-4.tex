@@ -1,5 +1,5 @@
 \begin{enunciado}{\ejExtra}
-	Dadaslas matrices $A, B \en \complejos^{n \times n}$ y un vector $v \en \complejos^n$, para cada una de las siguientes afirmaciones, determinar
+	Dadas las matrices $A, B \en \complejos^{n \times n}$ y un vector $v \en \complejos^n$, para cada una de las siguientes afirmaciones, determinar
 	su validez. En caso de ser falsas, dar un contraejemplo, y en caso de ser verdaderas demostrarlas:
 	\begin{enumerate}[label=(\alph*)]
 		\item Si $v$ es un autovector de $A$, y $A$ es inversible, entonces $v$ es un autovector de $A^{-1}$.
@@ -12,13 +12,19 @@
 	\end{enumerate}
 \end{enunciado}
 
+\parrafoDestacado[\atencion]{
+	Ejercicio de demostraciones. Dependiendo las horas que dormiste la noche anterior esto puede salir
+	enseguida o en horas. La matriz que uso en los contraejemplos
+	suele ser un \textit{caballito de batalla} para estos problemas, guardátela.
+}
+
 \begin{enumerate}[label=(\alph*)]
 	\item Si $v$ es un autovector y además $\existe A^{-1}$ entonces:
 	      $$
 		      Av = \lambda v
-		      \sii
+		      \Sii{\red{!}}
 		      A^{-1}Av = \lambda A^{-1}v
-		      \sii
+		      \Sii{\red{!}}
 		      A^{-1}v = \frac{1}{\lambda} v
 	      $$
 	      Por lo tanto:
@@ -102,8 +108,8 @@
 		      \Sii{$ \to \times \blue{A^{-1}}$}[$ \ot \times \blue{A}$]
 		      \blue{A^{-1}}AB\blue{A} = \blue{A^{-1}}C D C^{-1} \blue{A}
 		      \sii
-		      B\blue{A} = \blue{A^{-1}}C  D (\blue{A}^{-1}C)^{-1}
-		      \Sii{$P = \blue{A}^{-1} C$}
+		      B\blue{A} = \blue{A^{-1}}C  D (\blue{A^{-1}}C)^{-1}
+		      \Sii{$P = \blue{A^{-1}} C$}
 		      B\blue{A} = P D P^{-1}
 	      $$
 	      La expresión de $BA$ resultó diagonalizable. La demostración con $B$ diagonal es análoga.
