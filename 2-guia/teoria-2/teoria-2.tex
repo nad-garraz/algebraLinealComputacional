@@ -39,13 +39,17 @@
         Podemos definir en forma única una t.l. de $V$ en $W$ definiendo cada $f(v_i) \en W$
         con $i=1,\ldots n$.
 
-  \item Sea $A \en K^{m \times n}$, define $f: K^n \to K^m$.
-        El $\nucleo(A) = \set{x \en K^n / Ax = 0}$
+  \item Sea $A \en K^{m \times n}$, define $f: K^n \to K^m$:
+        \parrafoDestacado{
+          El $\nucleo(A) = \set{x \en K^n / Ax = 0}$
+        }
 
-  \item Sea $A \en K^{m \times n}$, define $f: K^n \to K^m$.
-        La $\imagen(A) = \set{Ax \en K^m \text{ con } x \en K^n} =
-          \ket{c_1(A), \ldots, c_n(A)}$. También $\rango(A) =
-          \dimension(\imagen(A))$
+  \item Sea $A \en K^{m \times n}$, define $f: K^n \to K^m$:
+        \parrafoDestacado{
+          La $\imagen(A) = \set{Ax \en K^m \text{ con } x \en K^n} =
+            \ket{c_1(A), \ldots, c_n(A)}$. También $\rango(A) =
+            \dimension(\imagen(A))$
+        }
 
   \item \textit{Propiedades de una transformación lineal:}
 
@@ -120,7 +124,9 @@
   \item Sea $A \en \reales^{n \times n}$ una matriz inversible y sea $\normaBullet$ una norma en
         $\reales^n$ definimos el número de condición de $A$ como:
         $$
-          \condicion(A) = \norma{A}\norma{A^{-1}}
+          \cajaResultado{
+            \condicion(A) = \norma{A}\norma{A^{-1}}
+          }
         $$
         \begin{itemize}
           \item $\condicion(A) = \condicion(A^{-1})$
@@ -141,12 +147,32 @@
           \maximo[0 \distinto x\en K^m] \frac{ \norma{Ax}}{\norma{x}} =
           \maximo[x \en K^n, \norma{x}_m = 1] \norma{Ax}.
         $$
+
+        Se desprenden los siguiente resultados útiles para los ejercicios de \textit{condicionamiento de matrices:}
+        \begin{enumerate}[label=\purple{\faIcon{gamepad}$_{\arabic*)}$}]
+          \item
+                $$
+                  \norma{Ax} \leq \norma{A} \norma{x} \paratodo x\en \reales^n
+                $$
+          \item
+                $$
+                  \norma{AB} \leq \norma{A} \norma{B} \paratodo A \en \reales^{n \times n}, \paratodo B \en \reales^{n \times n}
+                $$
+          \item
+                $$
+                  \cajaResultado{
+                  \norma{A}_\infinito = \maximo[1\leq \red{i} \leq n]\sumatoria{j=1}{n}|a_{\red{i}j}|
+                  \ytext
+                  \norma{A}_1 = \maximo[1\leq \red{j} \leq n]\sumatoria{i=1}{n}|a_{i\red{j}}|
+                  }
+                $$
+        \end{enumerate}
 \end{enumerate}
 
 %===========================================
 %===========================================
 %===========================================
-
+\newpage
 \textit{Aritmética de punto flotante:}
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
   \item
