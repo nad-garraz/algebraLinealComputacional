@@ -74,7 +74,31 @@ Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
 
     Ta rahh, $a_{ii}$ es autovalor de A
 
+    \item Sup. $\lambda$ es autovalor de A.
+
+    Demostracion por induccion:
+        
+    CB (k = 1): \\  
+        $Av = \lambda v$ (es por definicion)
+
+    PI: \\
+
+    \underline{HI}: $\lambda^{k}$ autovalor de $A^{k}$ con v el mismo autovalor de $Av = \lambda v$ o lo mismo $A^{k}v = \lambda^{k}v$
+
+    Veamos
+
+    $$A^{k + 1}v = A * A^{k}v \overset{\text{HI}}{=} A \lambda^{k}v = \lambda^{k} Av = \lambda^{k} \lambda^{k} \lambda v = \lambda^{k + 1} v  $$
+
+    Fin
+
+    \item Sea $\lambda$ autovalor de $A$ con su autovector correspondiente $v$ . Sea $\mu$ un numero
+
+    Tenemos que: $\Rightarrow Av = \lambda v$ por definicion
     
+    Veamos
+    
+    $(A + \mu I)v = Av + \mu I v \overset{\text{def}}{=} \lambda v + \mu Iv = \lambda v + \mu v = (\lambda + \mu) v $
+
 
     
 \end{itemize}
