@@ -1,20 +1,41 @@
 \begin{enunciado}{\ejercicio}
-Sea $A \in \mathbb{K}^{nxn}$. Probar que $A$ y $A^{t}$ tienen los mismos autovalores. Dar un ejemplo en el
- que los autovectores sean distintos.
+  Sea $A \en K^{n \times n}$. Probar que $A$ y $A^t$ tienen los mismos autovalores. Dar un ejemplo en el
+  que los autovectores sean distintos.
 \end{enunciado}
 
 Demostracion:
 
-Por propiedades del $det$ sabemos que: $det(A) = det(A^{t})$
+Por propiedades del determinante sabemos que:
+$$
+  \det(A) = \det(A^t)
+$$
+Sabemos que los autovalores $\lambda$ son los que tienen la siguiente propiedad:
+$$
+  \det(A - \lambda I) = 0
+$$
 
-Sabemos que los autovalores $\lambda$ son los que tienen la siguietne propiedad:
-    $$det(A - \lambda I) = 0 $$
+Usando la propiedad del determinante, tenemos que:
+$$
+  \det(A - \lambda I) = \det((A - \lambda I)^t)
+$$
 
+Y, como sabemos que $\lambda$ es un autovalor de $A$
+$$
+  0 =
+  \ub{
+    \det(A - \lambda I)
+  }{\chi_A(\lambda)} =
+  \ub{
+    \det((A - \lambda I)^t)
+  }{\chi_{A^t}(\lambda)}
+  \sii
+  \chi_A(\lambda) = \chi_{A^t}(\lambda) = 0
+$$
 
-Usando la propiedad del determinante, tenemos que $det(A - \lambda I) = det((A - \lambda I)^{t})$
+Probando así que tienen los mismos autovalores, dado que los \textit{polinomios característicos de ambas expresiones} son iguales
 
-Y, como sabemos que $\lambda$ es un autovalor de A, $0 = det(A - \lambda I) = det((A - \lambda I)^{t})$
+\red{Hay un ejemplo donde lo sean? No acabo de mostrar que eso no sucede \grimace  { \huge consultar}}
 
-Probando así que tienen los mismos autovalores
-
-Falta ejemplo{\hacer}
+\begin{aportes}
+  \item \aporte{https://github.com/misProyectosPropios}{Iñaki Frutos \github}
+\end{aportes}
