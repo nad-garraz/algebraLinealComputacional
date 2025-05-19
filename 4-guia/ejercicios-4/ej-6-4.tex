@@ -9,7 +9,7 @@ Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
 \end{enunciado}
 
 \begin{itemize}
-    \item 
+    \item [(a)]
     Sea $A$ triangular
 
     Voy a usar un lema: \textit{Si A triangular, entonces su determinante es la multiplicacion de su diagonal}.
@@ -74,7 +74,7 @@ Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
 
     Ta rahh, $a_{ii}$ es autovalor de A
 
-    \item Sup. $\lambda$ es autovalor de A.
+    \item[(b)] Sup. $\lambda$ es autovalor de A.
 
     Demostracion por induccion:
         
@@ -91,7 +91,7 @@ Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
 
     Fin
 
-    \item Sea $\lambda$ autovalor de $A$ con su autovector correspondiente $v$ . Sea $\mu$ un numero
+    \item[(c)] Sea $\lambda$ autovalor de $A$ con su autovector correspondiente $v$ . Sea $\mu$ un numero
 
     Tenemos que: $\Rightarrow Av = \lambda v$ por definicion
     
@@ -100,5 +100,35 @@ Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
     $(A + \mu I)v = Av + \mu I v \overset{\text{def}}{=} \lambda v + \mu Iv = \lambda v + \mu v = (\lambda + \mu) v $
 
 
+    \item [(d)]
+    Sea $p$ un polinomio, $\lambda$ un autovalor con $v$ autovector asociado de $A$
+
+    Demostracion por induccion en el grado del polinomio:
+
+    \underline{CB} (grado 1):
+        $p = a_{1} x + a_{0} x^{0} $
+
+    Por la demostracion anterior, sabemos que es verdadero.
+
+    PI:
+
+    \underline{HI}: {$\forall p / gr(p) = k \land p(A) v = p(\lambda) v$} 
+
+    Ahora quiero ver para $p$ con grado k + 1
+
+    Veamos
+
+    $p = \sum_{i = 0}^{k + 1} \alpha_{i} * x^{i} \Rightarrow \alpha_{k+1} x^{k+1} + \sum_{i = 0}^{k} \alpha_{i} * x^{i} $ \\
     
+    Evaluo en $p$ a $A$
+
+    $p(A) = \alpha_{k+1} A^{k+1} + \sum_{i = 0}^{k} \alpha_{i} * A^{i}$
+
+    Y veo si v es un autovector de p(A) utilizado $p(\lambda)$
+
+    Por HI, la 2da parte de la suma es verdadera, veamos la otra parte
+
+    $p(A) v= \alpha_{k+1} A^{k+1}v \overset{\text{Demo 6b) y aAv = a $\lambda$ v}}{=} \alpha_{k+1} \lambda^{k} v$, que es lo mismo que evaluarlo en p a $\lambda$
+
+    Entonces, como ambas partes del polinomio son disjuntos y al juntarlas formo a p con grado k + 1, probé que es verdadero esta afirmación
 \end{itemize}
