@@ -1,3 +1,134 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
+\begin{itemize}
+    \item[(a)] Si $A$ es triangular, sus autovalores son los elementos de la diagonal.
+    \item[(b)] $\lambda^k$ es autovalor de $A^k$, con el mismo autovector.
+    \item[(c)] $\lambda + \mu$ es autovalor de $A + \mu I$, con el mismo autovector.
+    \item[(d)] Si $p$ es un polinomio, $p(\lambda)$ es autovalor de $p(A)$.
+\end{itemize}
 \end{enunciado}
+
+\begin{itemize}
+    \item [(a)]
+    Sea $A$ triangular
+
+    Voy a usar un lema: \textit{Si A triangular, entonces su determinante es la multiplicacion de su diagonal}.
+
+    A demostrarlo!!
+
+    Caso base: \\
+        Matriz 2x2: (la 1x1 es trivial, no es divertido)
+        $
+        \begin{bmatrix}
+            a & c12 \\
+            c21 & b  \\
+            \end{bmatrix}
+            $
+        con c12 = 0 (o excluyente) c21 = 0
+
+        Supongamos que c12 = 0, entonces $det(M) = a * b - 0 * c21 \Rightarrow a*b$ cumpliendo asi el caso base
+        El otro caso es analogo
+    
+    \underline{Paso inductivo}:
+
+        \underline{HI}: $\forall M \in \mathbb{K}^{nxn}: det(M) = \prod_{i=1}^{n}m_{ii}$
+
+        Sup $P(n) \rightarrow P(n-1)$
+
+        Voy a hacerlo en el caso de que sea triangular, en el otro caso queda de la misma forma
+
+        \[
+        A = \begin{bmatrix}
+            a_{11} & 0 & \cdots & 0 \\
+            a_{21} & a_{22} & \cdots & 0  \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{(n+1)1} & a_{(n+1)2} & \cdots & a_{(n+1)(n+1)}
+        \end{bmatrix}
+            \]
+
+        Calculo el determinate. Lo voy a hacer desde la ultima columna. 
+
+        $$ det(A) = 0 + 0 + \cdots + 0 + a_{(n+1)(n+1)} * det(A[:n][:n]) $$
+        Por HI, $det(A[:n][:n]) = \prod_{i=1}^{n} a_{ii}$
+
+        $\Rightarrow det(A) = a_{(n+1)(n+1)} * \prod_{i=1}^{n}a_{ii}$ \\
+        $\Rightarrow det(A) = \prod_{i=1}^{n + 1}a_{ii}$
+
+        Que es lo que se queria probar del lema
+        PD: el caso dodnde es triangular inferior es lo mismo, solo se hace usando la fila y no la columna
+
+    Ahora volviendo con la demostracion del ejercicio.
+   
+
+    \[
+        (A - \lambda I) = \begin{bmatrix}
+            a_{11} - \lambda & 0 & \cdots & 0 \\
+            a_{21} & a_{22} - \lambda & \cdots & 0  \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{nn} - \lambda
+        \end{bmatrix}
+            \]
+
+    Por lema, el $det(A - \lambda I) = \prod_{i=1}^{n}a_{ii}$ 
+    $\Rightarrow \prod_{i=1}^{n}(a_{ii} - \lambda) $
+
+    Ta rahh, $a_{ii}$ es autovalor de A
+
+    \item[(b)] Sup. $\lambda$ es autovalor de A.
+
+    Demostracion por induccion:
+        
+    CB (k = 1): \\  
+        $Av = \lambda v$ (es por definicion)
+
+    PI: \\
+
+    \underline{HI}: $\lambda^{k}$ autovalor de $A^{k}$ con v el mismo autovalor de $Av = \lambda v$ o lo mismo $A^{k}v = \lambda^{k}v$
+
+    Veamos
+
+    $$A^{k + 1}v = A * A^{k}v \overset{\text{HI}}{=} A \lambda^{k}v = \lambda^{k} Av = \lambda^{k} \lambda^{k} \lambda v = \lambda^{k + 1} v  $$
+
+    Fin
+
+    \item[(c)] Sea $\lambda$ autovalor de $A$ con su autovector correspondiente $v$ . Sea $\mu$ un numero
+
+    Tenemos que: $\Rightarrow Av = \lambda v$ por definicion
+    
+    Veamos
+    
+    $(A + \mu I)v = Av + \mu I v \overset{\text{def}}{=} \lambda v + \mu Iv = \lambda v + \mu v = (\lambda + \mu) v $
+
+
+    \item [(d)]
+    Sea $p$ un polinomio, $\lambda$ un autovalor con $v$ autovector asociado de $A$
+
+    Demostracion por induccion en el grado del polinomio:
+
+    \underline{CB} (grado 1):
+        $p = a_{1} x + a_{0} x^{0} $
+
+    Por la demostracion anterior, sabemos que es verdadero.
+
+    PI:
+
+    \underline{HI}: {$\forall p / gr(p) = k \land p(A) v = p(\lambda) v$} 
+
+    Ahora quiero ver para $p$ con grado k + 1
+
+    Veamos
+
+    $p = \sum_{i = 0}^{k + 1} \alpha_{i} * x^{i} \Rightarrow \alpha_{k+1} x^{k+1} + \sum_{i = 0}^{k} \alpha_{i} * x^{i} $ \\
+    
+    Evaluo en $p$ a $A$
+
+    $p(A) = \alpha_{k+1} A^{k+1} + \sum_{i = 0}^{k} \alpha_{i} * A^{i}$
+
+    Y veo si v es un autovector de p(A) utilizado $p(\lambda)$
+
+    Por HI, la 2da parte de la suma es verdadera, veamos la otra parte
+
+    $p(A) v= \alpha_{k+1} A^{k+1}v \overset{\text{Demo 6b) y aAv = a $\lambda$ v}}{=} \alpha_{k+1} \lambda^{k} v$, que es lo mismo que evaluarlo en p a $\lambda$
+
+    Entonces, como ambas partes del polinomio son disjuntos y al juntarlas formo a p con grado k + 1, probé que es verdadero esta afirmación
+\end{itemize}
