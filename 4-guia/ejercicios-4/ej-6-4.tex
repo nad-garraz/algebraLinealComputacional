@@ -1,134 +1,200 @@
 \begin{enunciado}{\ejercicio}
-Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
-\begin{itemize}
-    \item[(a)] Si $A$ es triangular, sus autovalores son los elementos de la diagonal.
-    \item[(b)] $\lambda^k$ es autovalor de $A^k$, con el mismo autovector.
-    \item[(c)] $\lambda + \mu$ es autovalor de $A + \mu I$, con el mismo autovector.
-    \item[(d)] Si $p$ es un polinomio, $p(\lambda)$ es autovalor de $p(A)$.
-\end{itemize}
+  Sea $A \in \complejos^{n \times n}$ y $\lambda$ un autovalor de $A$. Probar que:
+  \begin{enumerate}[label=(\alph*)]
+    \item Si $A$ es triangular, sus autovalores son los elementos de la diagonal.
+    \item $\lambda^k$ es autovalor de $A^k$, con el mismo autovector.
+    \item $\lambda + \mu$ es autovalor de $A + \mu I$, con el mismo autovector.
+    \item Si $p$ es un polinomio, $p(\lambda)$ es autovalor de $p(A)$.
+  \end{enumerate}
 \end{enunciado}
 
-\begin{itemize}
-    \item [(a)]
-    Sea $A$ triangular
+\begin{enumerate}[label=(\alph*)]
+  \item
+        Sea $A$ triangular
 
-    Voy a usar un lema: \textit{Si A triangular, entonces su determinante es la multiplicacion de su diagonal}.
+        Voy a usar el lema:
+        \parrafoDestacado{
+          \textit{Si A triangular, entonces su determinante es la multiplicacion de su diagonal}.
+        }
 
-    A demostrarlo!!
+        A demostrarlo!!
 
-    Caso base: \\
-        Matriz 2x2: (la 1x1 es trivial, no es divertido)
+        \textit{Caso base:}
+
+        Matriz $2 \times2$: (la $1 \times 1$ es trivial, no es divertido)
         $
-        \begin{bmatrix}
-            a & c12 \\
-            c21 & b  \\
-            \end{bmatrix}
-            $
-        con c12 = 0 (o excluyente) c21 = 0
+          \matriz{cc}{
+            a      & c_{12} \\
+            c_{21} & b      \\
+          }
+        $
+        con $c_{12} = 0$ (o excluyente) $c_{21} = 0$
 
-        Supongamos que c12 = 0, entonces $det(M) = a * b - 0 * c21 \Rightarrow a*b$ cumpliendo asi el caso base
-        El otro caso es analogo
-    
-    \underline{Paso inductivo}:
+        Supongamos que $c_{12} = 0$, entonces $\det(M) = a \cdot b - 0 \cdot c_{21} \entonces a \cdot b$ cumpliendo así el caso base.
+        El otro caso es análogo.
 
-        \underline{HI}: $\forall M \in \mathbb{K}^{nxn}: det(M) = \prod_{i=1}^{n}m_{ii}$
+        \textit{Paso inductivo}:
 
-        Sup $P(n) \rightarrow P(n-1)$
+        Asumo que
+        $$
+          p(\blue{h}) : \paratodo M \en K^{\blue{h} \times \blue{h}}: \ub{\det(M) = \productoria{i=1}{\blue{h}} m_{ii}}{\text{\purple{hipótesis inductiva}}}
+        $$
+        es verdadera para algún $\blue{h} \en \naturales$, entonces quiero probar que:
+        $$
+          p(\blue{h+1}) :
+          \paratodo M \en K^{(\blue{h+1}) \times (\blue{h+1})}: \ub{\det(M) = \productoria{i=1}{\blue{h+1}} m_{ii}}{\text{\purple{hipótesis inductiva}}}
+        $$
+        también sea verdadera.
 
-        Voy a hacerlo en el caso de que sea triangular, en el otro caso queda de la misma forma
+        Voy a hacerlo en el caso en que sea triangular inferior, en el otro caso queda de la misma forma.
+        $$
+          A =
+          \matriz{ccccc}{
+            a_{11}     & 0          & \cdots & 0     & \green{0}              \\
+            a_{21}     & a_{22}     & \cdots & 0     & \green{0}              \\
+            \vdots     & \vdots     & \ddots & \vdots& \green{\vdots}         \\
+            a_{\blue{h}1} & a_{\blue{h}2} & \cdots & a_{\blue{hh}} & \green{0} \\
+            a_{(\blue{h+1})1} & a_{(\blue{h+1})2} & \cdots & a_{(\blue{h+1})(\blue{h})} & \green{a_{(\blue{h+1})(\blue{h+1})}}
 
-        \[
-        A = \begin{bmatrix}
-            a_{11} & 0 & \cdots & 0 \\
-            a_{21} & a_{22} & \cdots & 0  \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{(n+1)1} & a_{(n+1)2} & \cdots & a_{(n+1)(n+1)}
-        \end{bmatrix}
-            \]
+          }
+        $$
+        Calculo el determinate. Lo voy a hacer desde la \green{última columna}.
+        $$
+          \det(A) = \green{0} + \green{0} + \green{\cdots} + \green{0} + \green{a_{(n+1)(n+1)}}
+          \cdot
+          \deter{cccc}{
+            a_{11}                      & 0                           & \cdots & 0                          \\
+            a_{21}                      & a_{22}                      & \cdots & 0                          \\
+            \vdots                      & \vdots                      & \ddots & \vdots                     \\
+            a_{\blue{h}1} & a_{\blue{h}2} & \cdots & a_{\blue{hh}}
+          }
+          \igual{\purple{HI}}
+          a_{(\blue{h+1})(\blue{h+1})} \productoria{i = 1}{\blue{h}} a_{ii} =
+          \productoria{i=1}{\blue{h+1}} a_{ii}
+        $$
+        El lema queda probado. El caso donde es triangular superior es lo mismo, solo se hace usando la fila y no la columna.
 
-        Calculo el determinate. Lo voy a hacer desde la ultima columna. 
+        Ahora volviendo con la demostración del ejercicio.
+        $$
+          (A - \lambda I) =
+          \matriz{cccc}{
+            a_{11} - \lambda & 0                & \cdots & 0                \\
+            a_{21}           & a_{22} - \lambda & \cdots & 0                \\
+            \vdots           & \vdots           & \ddots & \vdots           \\
+            a_{n1}           & a_{n2}           & \cdots & a_{nn} - \lambda
+          }
+        $$
+        Por lema y recordando que $A$ es triangular por lo que la resta de $A$ con una matriz diagonal seguirá siéndolo:
+        $$
+          \det(A - \lambda I) = \productoria{i=1}{n}(a_{ii} - \lambda)
+        $$
 
-        $$ det(A) = 0 + 0 + \cdots + 0 + a_{(n+1)(n+1)} * det(A[:n][:n]) $$
-        Por HI, $det(A[:n][:n]) = \prod_{i=1}^{n} a_{ii}$
+        \textit{¡Ta rahh!}, los $a_{ii}$ son autovalores de $A$ $\paratodo i \leq n$.
 
-        $\Rightarrow det(A) = a_{(n+1)(n+1)} * \prod_{i=1}^{n}a_{ii}$ \\
-        $\Rightarrow det(A) = \prod_{i=1}^{n + 1}a_{ii}$
+  \item\label{ej-6:itemb} Supongo que $\lambda$ es autovalor de $A$.
 
-        Que es lo que se queria probar del lema
-        PD: el caso dodnde es triangular inferior es lo mismo, solo se hace usando la fila y no la columna
+        Demostracion por inducción:
 
-    Ahora volviendo con la demostracion del ejercicio.
-   
+        \textit{Caso base:}
+        $$
+          p(\blue{1}) : A^{\blue{1}}v = \lambda^{\blue{1}} v
+        $$
+        Es verdadera por simple definción de autovalor.
 
-    \[
-        (A - \lambda I) = \begin{bmatrix}
-            a_{11} - \lambda & 0 & \cdots & 0 \\
-            a_{21} & a_{22} - \lambda & \cdots & 0  \\
-            \vdots & \vdots & \ddots & \vdots \\
-            a_{n1} & a_{n2} & \cdots & a_{nn} - \lambda
-        \end{bmatrix}
-            \]
+        \textit{Paso inductivo:}
+        Asumo como verdadera la proposición:
+        $$
+          p(\blue{k}) : A^{\blue{k}}v = \lambda^{\blue{k}}v \text{ con el autovector de }  Av = \lambda v
+        $$
+        para algún $k \en \naturales$, entonces quiero probar que:
+        $$
+          p(\blue{k+1}) : A^{\blue{k + 1}}v = A^{\blue{k+1}}v
+        $$
+        también lo sea.
+        $$
+          A^{\blue{k + 1}}v = A \cdot A^{\blue{k}}v
+          \igual{\purple{HI}}
+          A \cdot \lambda^{\blue{k}} v
+          \igual{\red{!}}
+          \lambda^{\blue{k+1}} v
+        $$
 
-    Por lema, el $det(A - \lambda I) = \prod_{i=1}^{n}a_{ii}$ 
-    $\Rightarrow \prod_{i=1}^{n}(a_{ii} - \lambda) $
+        Fin
 
-    Ta rahh, $a_{ii}$ es autovalor de A
+  \item\label{ej-6:itemc}
+        Sea $\lambda$ autovalor de $A$ con su autovector correspondiente $v$ . Sea $\mu$ un número.
 
-    \item[(b)] Sup. $\lambda$ es autovalor de A.
+        Tenemos que por definición:
+        $$
+          Av = \lambda v
+        $$
+        Veamos
+        $$
+          (A + \mu I)v = Av + \mu I v
+          \igual{def}
+          \lambda v + \mu Iv = \lambda v + \mu v = (\lambda + \mu) v
+        $$
+        Fin.
 
-    Demostracion por induccion:
-        
-    CB (k = 1): \\  
-        $Av = \lambda v$ (es por definicion)
+  \item
+        Sea $p$ un polinomio, $\lambda$ un autovalor con $v$ autovector asociado de $A$
 
-    PI: \\
+        Demostración por inducción en el grado del polinomio $p_n$. Quiero probar que:
+        $$
+          \red{p}(n) : p(\lambda) \text{ es autovalor de } p(A)
+        $$
 
-    \underline{HI}: $\lambda^{k}$ autovalor de $A^{k}$ con v el mismo autovalor de $Av = \lambda v$ o lo mismo $A^{k}v = \lambda^{k}v$
+        \textit{Caso base:}
+        $$
+          \red{p}(\gr(p) = 1) : p_1(\lambda) \quad \text{ es autovalor de } \quad p_1(A) = a_1 A + a_0 \ua{A^0}{I_n}
+        $$
+        Y de lo que vio en el ítem \ref{ej-6:itemc}:
+        $$
+          p_1(A)\orange{v} = a_1A\orange{v} + a_0I_n \orange{v}
+          \sii
+          \ub{(a_1A + a_0I_n)}{p(A)} \orange{v} = \ub{(a_1\lambda + a_0)}{p(\lambda)}\orange{v}
+        $$
+        Por lo cual la proposición $\red{p}(\gr(p) = 1)$ resultó verdadera.
 
-    Veamos
+        \textit{Paso inductivo:}
 
-    $$A^{k + 1}v = A * A^{k}v \overset{\text{HI}}{=} A \lambda^{k}v = \lambda^{k} Av = \lambda^{k} \lambda^{k} \lambda v = \lambda^{k + 1} v  $$
+        Asumo como verdadera la proposición:
+        $$
+          \red{p}(\gr(p) = \blue{k}) :
+          \ub{
+            p_{\blue{k}}(\lambda)
+            \quad \text{ es autovalor de } \quad
+            p_{\blue{k}}(A) = \sumatoria{i = 0}{\blue{k}} a_i A^i
+          }{\text{\purple{hipótesis inductiva}}}
+        $$
+        para algún $\blue{k} en \naturales$. Entonces quiero probar que
+        $$
+          \red{p}(\gr(p) = \blue{k+1}) : p_{\blue{k+1}}(\lambda)
+          \quad \text{ es autovalor de } \quad
+          p_{\blue{k}}(A) = \sumatoria{i = 0}{\blue{k+1}} a_i A^i
+        $$
+        Veamos un polinomio de grado $k+1$:
+        $$
+          p_{\blue{k+1}}(X) =
+          \sumatoria{i = 0}{\blue{k + 1}} a_{i} \cdot X^i =
+          a_{\blue{k+1}}X^{\blue{k+1}} + \sumatoria{i = 0}{\blue{k}} a_{i} \cdot X^i
+        $$
+        Evalúo en $A$ y multiplico por $v$ autovector de $A$:
+        $$
+          p_{\blue{k+1}}(A)v = a_{\blue{k+1}} A^{\blue{k+1}}v + \sumatoria{i = 0}{\blue{k}} a_i \cdot A^i v
+          \igual{\purple{HI}}[\ref{ej-6:itemb}]
+          a_{\blue{k+1}} \lambda^{\blue{k+1}}v + \sumatoria{i = 0}{\blue{k}} a_i \cdot \lambda^i v
+          =
+          \ub{\sumatoria{i = 0}{\blue{k+1}} a_i \cdot \lambda^i}{p(\blue{k+1})(\lambda)} v
+        $$
+        Concluyendo así que
+        $$
+          p_{\blue{k+1}}(A)v \igual{\red{!!}} p_{\blue{k+1}}(\lambda)v
+        $$
 
-    Fin
+        Entonces, probé que es verdadera la proposición.
+\end{enumerate}
 
-    \item[(c)] Sea $\lambda$ autovalor de $A$ con su autovector correspondiente $v$ . Sea $\mu$ un numero
-
-    Tenemos que: $\Rightarrow Av = \lambda v$ por definicion
-    
-    Veamos
-    
-    $(A + \mu I)v = Av + \mu I v \overset{\text{def}}{=} \lambda v + \mu Iv = \lambda v + \mu v = (\lambda + \mu) v $
-
-
-    \item [(d)]
-    Sea $p$ un polinomio, $\lambda$ un autovalor con $v$ autovector asociado de $A$
-
-    Demostracion por induccion en el grado del polinomio:
-
-    \underline{CB} (grado 1):
-        $p = a_{1} x + a_{0} x^{0} $
-
-    Por la demostracion anterior, sabemos que es verdadero.
-
-    PI:
-
-    \underline{HI}: {$\forall p / gr(p) = k \land p(A) v = p(\lambda) v$} 
-
-    Ahora quiero ver para $p$ con grado k + 1
-
-    Veamos
-
-    $p = \sum_{i = 0}^{k + 1} \alpha_{i} * x^{i} \Rightarrow \alpha_{k+1} x^{k+1} + \sum_{i = 0}^{k} \alpha_{i} * x^{i} $ \\
-    
-    Evaluo en $p$ a $A$
-
-    $p(A) = \alpha_{k+1} A^{k+1} + \sum_{i = 0}^{k} \alpha_{i} * A^{i}$
-
-    Y veo si v es un autovector de p(A) utilizado $p(\lambda)$
-
-    Por HI, la 2da parte de la suma es verdadera, veamos la otra parte
-
-    $p(A) v= \alpha_{k+1} A^{k+1}v \overset{\text{Demo 6b) y aAv = a $\lambda$ v}}{=} \alpha_{k+1} \lambda^{k} v$, que es lo mismo que evaluarlo en p a $\lambda$
-
-    Entonces, como ambas partes del polinomio son disjuntos y al juntarlas formo a p con grado k + 1, probé que es verdadero esta afirmación
-\end{itemize}
+\begin{aportes}
+  \item \aporte{https://github.com/misProyectosPropios}{Iñaki Frutos \github}
+\end{aportes}
