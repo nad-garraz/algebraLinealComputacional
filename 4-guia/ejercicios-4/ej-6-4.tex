@@ -1,3 +1,80 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+Sea $A \in \mathbb{C}^{nxn}$ y $\lambda$ un autovalor de $A$. Probar que:
+\begin{itemize}
+    \item[(a)] Si $A$ es triangular, sus autovalores son los elementos de la diagonal.
+    \item[(b)] $\lambda^k$ es autovalor de $A^k$, con el mismo autovector.
+    \item[(c)] $\lambda + \mu$ es autovalor de $A + \mu I$, con el mismo autovector.
+    \item[(d)] Si $p$ es un polinomio, $p(\lambda)$ es autovalor de $p(A)$.
+\end{itemize}
 \end{enunciado}
+
+\begin{itemize}
+    \item 
+    Sea $A$ triangular
+
+    Voy a usar un lema: \textit{Si A triangular, entonces su determinante es la multiplicacion de su diagonal}.
+
+    A demostrarlo!!
+
+    Caso base: \\
+        Matriz 2x2: (la 1x1 es trivial, no es divertido)
+        $
+        \begin{bmatrix}
+            a & c12 \\
+            c21 & b  \\
+            \end{bmatrix}
+            $
+        con c12 = 0 (o excluyente) c21 = 0
+
+        Supongamos que c12 = 0, entonces $det(M) = a * b - 0 * c21 \Rightarrow a*b$ cumpliendo asi el caso base
+        El otro caso es analogo
+    
+    \underline{Paso inductivo}:
+
+        \underline{HI}: $\forall M \in \mathbb{K}^{nxn}: det(M) = \prod_{i=1}^{n}m_{ii}$
+
+        Sup $P(n) \rightarrow P(n-1)$
+
+        Voy a hacerlo en el caso de que sea triangular, en el otro caso queda de la misma forma
+
+        \[
+        A = \begin{bmatrix}
+            a_{11} & 0 & \cdots & 0 \\
+            a_{21} & a_{22} & \cdots & 0  \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{(n+1)1} & a_{(n+1)2} & \cdots & a_{(n+1)(n+1)}
+        \end{bmatrix}
+            \]
+
+        Calculo el determinate. Lo voy a hacer desde la ultima columna. 
+
+        $$ det(A) = 0 + 0 + \cdots + 0 + a_{(n+1)(n+1)} * det(A[:n][:n]) $$
+        Por HI, $det(A[:n][:n]) = \prod_{i=1}^{n} a_{ii}$
+
+        $\Rightarrow det(A) = a_{(n+1)(n+1)} * \prod_{i=1}^{n}a_{ii}$ \\
+        $\Rightarrow det(A) = \prod_{i=1}^{n + 1}a_{ii}$
+
+        Que es lo que se queria probar del lema
+        PD: el caso dodnde es triangular inferior es lo mismo, solo se hace usando la fila y no la columna
+
+    Ahora volviendo con la demostracion del ejercicio.
+   
+
+    \[
+        (A - \lambda I) = \begin{bmatrix}
+            a_{11} - \lambda & 0 & \cdots & 0 \\
+            a_{21} & a_{22} - \lambda & \cdots & 0  \\
+            \vdots & \vdots & \ddots & \vdots \\
+            a_{n1} & a_{n2} & \cdots & a_{nn} - \lambda
+        \end{bmatrix}
+            \]
+
+    Por lema, el $det(A - \lambda I) = \prod_{i=1}^{n}a_{ii}$ 
+    $\Rightarrow \prod_{i=1}^{n}(a_{ii} - \lambda) $
+
+    Ta rahh, $a_{ii}$ es autovalor de A
+
+    
+
+    
+\end{itemize}
