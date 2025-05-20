@@ -1,3 +1,97 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  \begin{enumerate}[label=(\alph*)]
+    \item Sea $A \en \reales^{3 \times 3}$ diagonalizable con $\traza(A) = -4$. Calcular los autovalores de
+          $A$ sabiendo que los autovalores de $A^2 + 2A$ son $-1,\,3$ y $8$.
+
+    \item Sea $A \en \reales^{4 \times 4}$ tal que $\det(A) = 6;\ 1 $ y $-2$ son autovalores de $A$ y $-4$ es
+          autovalor de la matriz $A - 3I$. Hallar los restantes autovalores de $A$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        Truquini de escribir la cosita y sacar factor común las cositas de los costaditos:
+        $$
+          A = C D C^{-1}
+          \entonces
+          \llave{l}{
+            A^2 = C D^2 C^{-1} \\
+            2A = C 2D C^{-1}
+          }
+          \entonces
+          A^2 + 2A = C D^2 C^{-1} + C 2D C^{-1}
+          \igual{\red{!}}
+          C
+          \ub{
+            (D^2 + 2D)
+          }{
+            \lambda'_i = \magenta{\lambda_i}^2 + 2\magenta{\lambda_i}
+          }
+          C^{-1}
+        $$
+        Donde $\lambda'_i$ son los autovalores de $A^2 + 2A$ mientras que los $\magenta{\lambda_i}$ los autovalores de $A$. Por enunciado:
+        $$
+          \llave{rcl}{
+            -1 & = &  \magenta{\lambda_1}^2 + 2\magenta{\lambda_1} \sii \magenta{\lambda_1} = -1\\
+            3  & = &  \magenta{\lambda_2}^2 + 2\magenta{\lambda_2} \sii \magenta{\lambda_2} \en \set{-3, 1} \\
+            8  & = &  \magenta{\lambda_3}^2 + 2\magenta{\lambda_3} \sii \magenta{\lambda_3} \en \set{-4, 2}
+          }
+        $$
+        Tenemos un millón de \textit{posibles autovalores} para $A$, busquemos la combineta que haga que $\traza(A) = -4$:
+        $$
+          \cajaResultado{
+            \llave{rcc}{
+              \magenta{\lambda_1} & = & -1\\
+              \magenta{\lambda_2} & = & 1\\
+              \magenta{\lambda_3} & = & -4
+            }
+          }
+        $$
+
+  \item Sabemos que determinante de una matriz es igual al producto de sus autovalores:
+        $$
+          \det(A) = \productoria{i = 1}{n} \lambda_i
+        $$
+        En este caso:
+        $$
+          \det(A) = 6 =
+          \ua{\lambda_1}{1} \cdot
+          \ua{\lambda_2}{-2} \cdot
+          \lambda_3 \cdot
+          \lambda_4
+          \sii
+          \lambda_3 \cdot
+          \lambda_4
+          = -3
+        $$
+        Luego tenemos por la \textit{definición} de lo que es un autovector:
+        $$
+          (A - 3I)v = -4v \sii Av = -v
+        $$
+        Es decir que encontré otro autovalor:
+        $$
+          \lambda_3 = -1
+          \entonces
+          \ua{\lambda_3}{-1} \cdot
+          \lambda_4
+          = -3
+          \sii
+          \lambda_4
+          = 3
+        $$
+        Los autovalores de $A$:
+        $$
+          \cajaResultado{
+            \llave{rcc}{
+              \lambda_1 & = & 1 \\
+              \lambda_2 & = & -2 \\
+              \lambda_3 & = & -1 \\
+              \lambda_4 & = & 3
+            }
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
