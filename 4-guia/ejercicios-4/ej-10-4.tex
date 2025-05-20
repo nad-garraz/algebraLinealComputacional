@@ -8,7 +8,61 @@
       -9 & 6 & 0
     }
   $$
-    Probar que $f$ es un proyector y hallar una base $B$ tal que $[f]_{BB}$ sea diagonal.
+  Probar que $f$ es un proyector y hallar una base $B$ tal que $[f]_{BB}$ sea diagonal.
 \end{enunciado}
 
-\hacer
+Por inspección, sino calculalos, ese proyector tiene:
+$$
+  \imagen(P) = \set{(1,2,3)}
+  \ ,\quad
+  \nucleo(P) = \set{(2,3,0), (0,0,1)}
+  \ytext
+  \nucleo(P) \inter \imagen(P) = \set{0}
+$$
+Se ve que $\underline{Pv = v} \paratodo v \en \imagen(P)$, y ya esa ecuación que escribí te dice que:
+$$
+  E_{\lambda = 1} = \set{v} = \set{(1,2,3)} = \imagen(P)
+$$
+Similar sucede con los elementos del núcleo:
+$$
+  E_{\lambda = 0} = \set{(2,3,0), (0,0,1)} = \nucleo(P)
+$$
+En forma diagonal para \underline{una} base $B = \set{(1,2,3),(2,3,0), (0,0,1)}$:
+$$
+  P = C D C^{-1} =
+  \matriz{ccc}{
+    1 & 2 & 0                                        \\
+    2 & 3 & 0                                        \\
+    3 & 0 & 1
+  }
+  \matriz{ccc}{
+    1  & 0  & 0 \\
+    0  & 0  & 0 \\
+    0  & 0  & 0
+  }
+  \matriz{ccc}{
+    1 & 2 & 0                                        \\
+    2 & 3 & 0                                        \\
+    3 & 0 & 1
+  }^{-1}
+  =
+  \matriz{ccc}{
+    1 & 2 & 0                                        \\
+    2 & 3 & 0                                        \\
+    3 & 0 & 1
+  }
+  \matriz{ccc}{
+    1  & 0  & 0 \\
+    0  & 0  & 0 \\
+    0  & 0  & 0
+  }
+  \matriz{ccc}{
+    -3 & 2 & 0                                        \\
+    2 & -1 & 0                                        \\
+    9 & -6 & 1
+  }
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

@@ -1,3 +1,221 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Recordando que la solución de la ecuación diferencial
+  $$
+    x'(t) = ax(t), \quad a \en \reales
+  $$
+  con condición inicial $x(0) c _0$ es $x(t)  c_0e^{at}$, resolver el siguiente sistema de ecuaciones diferenciales
+  $$
+    \llave{rcl}{
+      x'(t) & = & 6 x(t) + 2 y(t) \\
+      y'(t) & = & 2 x(t) + 3 y(t)
+    }
+  $$
+  con condiciones iniciales $x(0) = 3$, $y(0)= -1$.
+
+  \parbox{0.9\textwidth}{
+    Sugerencia:
+    Hallar una matriz $C$ tal que
+    $C^{-1}
+      \matriz{cc}{
+        6 & 2\\
+        2 & 3
+      }
+      C
+    $
+    sea diagonal y hacer el cambio de variables
+    $
+      \matriz{c}{
+        u(t)\\
+        v(t)
+      }
+      =
+      C^{-1} \cdot
+      \matriz{c}{
+        x(t)\\
+        y(t)
+      }
+    $.
+  }
 \end{enunciado}
+
+Enunciado aterrador, pero es un ejercicio para desacoplar las ecuaciones, cosa que no se mezclen la $x$ con las $y$.
+Lo primer es escribir la matriz de coeficientes en forma diagonal:
+$$
+  \llave{rcl}{
+    x'(t) & = & 6 x(t) + 2 y(t) \\
+    y'(t) & = & 2 x(t) + 3 y(t)
+  }
+  \Entonces{forma}[matricial]
+  \matriz{c}{
+    x'(t)\\
+    y'(t)
+  }
+  =
+  \ub{
+    \matriz{cc}{
+      6 & 2\\
+      2 & 3
+    }
+  }{A}
+  \matriz{c}{
+    x(t)\\
+    y(t)
+  }
+$$
+Diagonalizo la matriz:
+$$
+  \deter{cc}{
+    6-\lambda & 2         \\
+    2         & 3-\lambda
+  }
+  = \lambda^2 - 9\lambda + 14 = 0 \sii \lambda \en \set{7,2}
+  \entonces
+  \matriz{cc}{
+    6 & 2\\
+    2 & 3
+  }
+  =
+  \matriz{cc}{
+    2 & 1  \\
+    1 & -2
+  }
+  \matriz{cc}{
+    7 & 0  \\
+    0 & 2
+  }
+  \matriz{cc}{
+    \frac{2}{5} & \frac{1}{5}  \\
+    \frac{1}{5} & -\frac{2}{5}
+  }
+$$
+El cambio de variables planteado:
+$$
+  \matriz{c}{
+    u(t)\\
+    v(t)
+  }
+  \igual{$\llamada1$}
+  C^{-1} \cdot
+  \matriz{c}{
+    x(t)\\
+    y(t)
+  }
+  \sii
+  C\matriz{c}{
+    u(t)\\
+    v(t)
+  }
+  =
+  \matriz{c}{
+    x(t)\\
+    y(t)
+  }
+$$
+Multiplico la ecuación diferencial a izquierda por $C^{-1}$:
+$$
+  \ub{
+    C^{-1}
+    \matriz{c}{
+      x'(t)\\
+      y'(t)
+    }
+  }{
+    \matriz{c}{
+      u'(t)\\
+      v'(t)
+    }
+  }
+  =
+  C^{-1}
+  \matriz{cc}{
+    6 & 2\\
+    2 & 3
+  }
+  \ub{
+    \matriz{c}{
+      x(t)\\
+      y(t)
+    }
+  }{
+    C
+    \matriz{c}{
+      u(t)\\
+      v(t)
+    }
+  }
+  \sii
+  \matriz{c}{
+    u'(t)\\
+    v'(t)
+  }
+  =
+  \ub{
+    C^{-1}A C
+  }{
+    \matriz{cc}{
+      7 & 0  \\
+      0 & 2
+    }
+  }
+  \matriz{c}{
+    u(t)\\
+    v(t)
+  }
+$$
+Por lo tanto es cuestión de resolver:
+$$
+  \matriz{c}{
+    u'(t)\\
+    v'(t)
+  }
+  =
+  \matriz{cc}{
+    7 & 0  \\
+    0 & 2
+  }
+  \matriz{c}{
+    u(t)\\
+    v(t)
+  }
+  \sii
+  \llave{rcl}{
+    u'(t) & = & 7 u(t) \sii u(t) = c_0 e^{7t} \flecha{condiciones}[iniciales $\llamada1$] u(0) = 1 = c_0 e^{7\cdot 0} \sii c_0 = 1\\
+    v'(t) & = & 2 v(t) \sii v(t) = c_1 e^{2t} \flecha{condiciones}[iniciales $\llamada1$] v(0) = 1 = c_1 e^{2\cdot 0} \sii c_1 = 1\\
+  }
+$$
+Ahora hay que volver a las variables originales:
+$$
+  \matriz{c}{
+    x(t)\\
+    y(t)
+  }
+  =
+  C
+  \matriz{c}{
+    e^{7t}\\
+    e^{2t}
+  }
+  =
+  \matriz{c}{
+    2 e^{7t} +  e^{2t}\\
+    e^{7t} -2  e^{2t}\\
+  }
+$$
+
+$$
+  \cajaResultado{
+    \matriz{c}{
+      x(t)\\
+      y(t)
+    }
+    =
+    \matriz{c}{
+      2 e^{7t} +  e^{2t}\\
+      e^{7t} -2  e^{2t}
+    }
+  }
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
