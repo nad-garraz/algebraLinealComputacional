@@ -34,8 +34,32 @@ $$
 
 Probando así que tienen los mismos autovalores, dado que los \textit{polinomios característicos de ambas expresiones} son iguales
 
-\red{Hay un ejemplo donde lo sean? No acabo de mostrar que eso no sucede \grimace  { \huge consultar}}
+Si tengo la siguiente matriz:
+$$
+  \ub{
+    A =
+    \matriz{cc}{
+      0 & 1 \\
+      0 & 0
+    }
+  }{
+    E_{\lambda_1 = \lambda_2 = 0} = \set{(1,0)}
+  }
+  \Entonces{transponiendo}
+  \ub{
+    A^t =
+    \matriz{cc}{
+      0 & 0 \\
+      1 & 0
+    }
+  }{
+    E_{\lambda_1 = \lambda_2 = 0} = \set{(0,1)}
+  }
+$$
+Esas matrices \underline{no son diagonalizables}. Ambas tienen los mismos autovalores $\lambda_1 = \lambda_2 = 0$,
+pero \underline{no generan una base de autovectores} para poder diagonalizar la matriz.
 
 \begin{aportes}
   \item \aporte{https://github.com/misProyectosPropios}{Iñaki Frutos \github}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
 \end{aportes}
