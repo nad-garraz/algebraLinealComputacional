@@ -1,3 +1,70 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Una transformación lineal $f: K^n \to K^n$ se llama \textit{proyector} si verifica $f(f(x)) = f(x)$ para todo $x \en K^n$.
+  Probar que los únicos autovalores de un proyector son 1 y 0.
 \end{enunciado}
+
+Dejame escribir al proyector como $P$ en vez de $f$, porque me da \textit{cosita} sino.
+Tenemos un proyector y por definición:
+$$
+  P \circ P = P
+$$
+Si el proyector tiene forma diagonal:
+$$
+  \begin{array}{c}
+    P = C D C^{-1}
+    \sii
+    P = C
+    \matriz{ccc}{
+    \lambda_1               & \dots  & 0                                        \\
+    0                       & \ddots & 0                                        \\
+    0                       & \dots  & \lambda_n
+    }
+    C^{-1}                                                                      \\
+    \\
+    P \circ P = C D C^{-1} C D C^{-1} = C D^2 C^{-1} =
+    \ub{
+      C
+      \matriz{ccc}{
+    \lambda_1^2             & \dots  & 0                                        \\
+    0                       & \ddots & 0                                        \\
+    0                       & \dots  & \lambda_n^2
+      }
+      C^{-1}
+    }{
+      P \circ P
+    }
+    =
+    \ub{
+      C
+      \matriz{ccc}{
+    \lambda_1               & \dots  & 0                                        \\
+    0                       & \ddots & 0                                        \\
+    0                       & \dots  & \lambda_n
+      }
+      C^{-1}
+    }{P}                                                                        \\
+    \\
+    \sii
+    \matriz{ccc}{
+    \lambda_1^2             & \dots  & 0                                        \\
+    0                       & \ddots & 0                                        \\
+    0                       & \dots  & \lambda_n^2
+    }
+    =
+    \matriz{ccc}{
+    \lambda_1               & \dots  & 0                                        \\
+    0                       & \ddots & 0                                        \\
+    0                       & \dots  & \lambda_n
+    }
+    \sii
+    \llave{ccc}{
+    \lambda_1^2 = \lambda_1 & \sii   & \cajaResultado{ \lambda_1 \en \set{0,1}} \\
+    \vdots                  & \vdots & \vdots                                   \\
+    \lambda_n^2 = \lambda_n & \sii   & \cajaResultado{ \lambda_n \en \set{0,1}}
+    }
+  \end{array}
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
