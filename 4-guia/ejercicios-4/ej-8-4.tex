@@ -1,3 +1,35 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $A \en \reales^{n \times n}$. Probar:
+  \begin{enumerate}[label=(\alph*)]
+    \item Si los autovalores de $A$ son todos reales, sus autovectores pueden tomarse con coordenadas reales.
+
+    \item Si $A$ es simétrica, entonces sus autovalores son reales.
+
+    \item Si $A$ es simétrica y definida positiva (negativa), entonces todos sus autovalores son positivos (negativos)
+
+    \item Si $A$ es simétrica y $\lambda_1$ y $\lambda_2$ son autovalores distintos, entonces sus correspondientes autovectores
+          son ortogonales entre sí.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item \hacer
+
+  \item $A$ es simétrica:
+        $$
+          A v = \lambda v
+          \Sii{transpongo}[M.A.M]
+          v^t A^t = v^t A = \lambda v^t
+          \Sii{$\ot \times v$}
+          v^t A v = \lambda v^t v
+          \sii
+          v^t v = \lambda v^t v
+          \sii
+          \norma{v}_2^2 = \lambda \norma{v}_2^2
+        $$
+
+  \item \hacer
+
+  \item \hacer
+\end{enumerate}
+
