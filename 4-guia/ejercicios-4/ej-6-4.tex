@@ -12,41 +12,50 @@
   \item
         Sea $A$ triangular
 
-        Voy a usar el lema:
         \parrafoDestacado{
-          \textit{Si A triangular, entonces su determinante es la multiplicacion de su diagonal}.
+          \magenta{Arranca el lema}
+        }
+        Voy a usar y demostrar el lema:
+        \parrafoDestacado{
+          \textit{Si $A$ es una matriz triangular, entonces su determinante es la multiplicación de sus elementos diagonales}.
         }
 
-        A demostrarlo!!
+        ¡¡A demostrarlo!!
 
         \textit{Caso base:}
+        \parrafoDestacado{
+          $p(\blue{2})$ : una matriz $M \en K^{\blue{2} \times \blue{2}}$ triangular, entonces su determinante es la multiplicación de sus elementos
+          diagonales
+        }
 
-        Matriz $2 \times2$: (la $1 \times 1$ es trivial, no es divertido)
+        Sea $M \en K^{2 \times 2}$ triangular inferior {\tiny(la $1 \times 1$ es trivial, no es divertido)}, el caso triangular superior
+        es análogo:
         $
+          M =
           \matriz{cc}{
-            a      & c_{12} \\
-            c_{21} & b      \\
-          }
+            a      & 0 \\
+            c_{21} & b
+          },
         $
-        con $c_{12} = 0$ (o excluyente) $c_{21} = 0$
+        entonces $\det(M) = a \cdot b - 0 \cdot c_{21} = a \cdot b$ cumpliendo así el caso base.
 
-        Supongamos que $c_{12} = 0$, entonces $\det(M) = a \cdot b - 0 \cdot c_{21} \entonces a \cdot b$ cumpliendo así el caso base.
-        El otro caso es análogo.
+        \bigskip
 
         \textit{Paso inductivo}:
 
         Asumo que
         $$
-          p(\blue{h}) : \paratodo M \en K^{\blue{h} \times \blue{h}}: \ub{\det(M) = \productoria{i=1}{\blue{h}} m_{ii}}{\text{\purple{hipótesis inductiva}}}
+          p(\blue{h}) : \text{M triangular inferior,} \paratodo M \en K^{\blue{h} \times \blue{h}} \text{ se tiene que }
+          \ub{\det(M) = \productoria{i=1}{\blue{h}} m_{ii}}{\text{\purple{hipótesis inductiva}}},
         $$
         es verdadera para algún $\blue{h} \en \naturales$, entonces quiero probar que:
         $$
-          p(\blue{h+1}) :
-          \paratodo M \en K^{(\blue{h+1}) \times (\blue{h+1})}: \ub{\det(M) = \productoria{i=1}{\blue{h+1}} m_{ii}}{\text{\purple{hipótesis inductiva}}}
+          p(\blue{h+1}) : \text{M triangular inferior,}
+          \paratodo M \en K^{(\blue{h+1}) \times (\blue{h+1})} \text{ se tiene que } \ub{\det(M) = \productoria{i=1}{\blue{h+1}} m_{ii}}{\text{\purple{hipótesis inductiva}}}
         $$
         también sea verdadera.
 
-        Voy a hacerlo en el caso en que sea triangular inferior, en el otro caso queda de la misma forma.
+        Nuevamente voy a hacerlo en el caso en que sea triangular inferior, el caso superior es enteramente análogo.
         $$
           A =
           \matriz{ccccc}{
@@ -58,9 +67,9 @@
 
           }
         $$
-        Calculo el determinate. Lo voy a hacer desde la \green{última columna}.
+        Calculo el determinate. Lo voy a hacer desarrollando por la \green{última columna}:
         $$
-          \det(A) = \green{0} + \green{0} + \green{\cdots} + \green{0} + \green{a_{(n+1)(n+1)}}
+          \det(A) = \green{0} + \green{0} + \green{\cdots} + \green{0} + \green{a_{(\blue{h+1})(\blue{h+1})}}
           \cdot
           \deter{cccc}{
             a_{11}                      & 0                           & \cdots & 0                          \\
@@ -69,10 +78,13 @@
             a_{\blue{h}1} & a_{\blue{h}2} & \cdots & a_{\blue{hh}}
           }
           \igual{\purple{HI}}
-          a_{(\blue{h+1})(\blue{h+1})} \productoria{i = 1}{\blue{h}} a_{ii} =
+          a_{(\blue{h+1})(\blue{h+1})}  \cdot \productoria{i = 1}{\blue{h}} a_{ii} =
           \productoria{i=1}{\blue{h+1}} a_{ii}
         $$
-        El lema queda probado. El caso donde es triangular superior es lo mismo, solo se hace usando la fila y no la columna.
+        El lema queda probado. La demo de cuando es triangular superior que la haga Dios, o vos, pero no yo.
+        \parrafoDestacado{
+          \magenta{Terminó el lema}
+        }
 
         Ahora volviendo con la demostración del ejercicio.
         $$
