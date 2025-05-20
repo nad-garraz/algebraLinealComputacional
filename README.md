@@ -26,6 +26,8 @@ Los pdfs que querés están en:
 
 - [Guía 1](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/1-guia/1-sol.pdf)
 - [Guía 2](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/2-guia/2-sol.pdf)
+- [Guía 3](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/3-guia/3-sol.pdf)
+- [Guía 4](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/4-guia/4-sol.pdf)
 
 ## Apunte Único ALC. Primere cuatri 2025:
 
