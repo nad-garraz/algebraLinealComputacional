@@ -1,3 +1,98 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $S=\ket{(1,-1,2,1), (3,1,0,-1), (1,1,-1,-1))} \subseteq \reales^4$.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Determinar si $(2,1,3,5) \en S$.
+    \item Determinar si $\set{x \en \reales^4 / x_1 - x_2 - x_3 = 0} \subseteq S$.
+    \item Determinar si $S \subseteq \set{x \en \reales^4 / x_1 - x_2 - x_3 = 0}$.
+  \end{enumerate}
 \end{enunciado}
+
+Antes de arrancar, siempre conviene verificar que los elementos de $S$ sean \textit{linealmente independientes}. Cuando nos dan un subespacio
+expresado en sus generadores, conviene eliminar la información que sobra. Una forma de hacer esto es poner a los \textit{generadores} de $S$
+como filas de una matriz y triangular. Al triangular lo que se está haciendo son operaciones lineales para ver si estos coinciden:
+$$
+  \matriz{cccc}{
+    1 & -1 & 2 & 1\\
+    3 & 1  & 0 & -1\\
+    1 & 1  & -1  &-1
+  }
+  \triangulacion{
+    F_2 - 3F_1 \to F_2\\
+    F_3 - F_1 \to F_3\\
+  }
+  \matriz{cccc}{
+    1 & -1 & 2 & 1\\ \rowcolor{blue!10!white}
+    0 & 4  & -6 & -4\\\rowcolor{blue!10!white}
+    0 & 2  & -3  &-4
+  }
+$$
+Sobra un elemento. Puedo eliminar cualquiera de los 3 siempre y cuando los restantes sean \textit{linealmente independientes}.
+Reescribo al subespacio como:
+$$
+  S = \set{(1,-1,2,1), (1,1,-1,-1)}
+$$
+Lo cual es una base de $S$.
+
+\begin{enumerate}[label=(\alph*)]
+  \item Para ver si $(2,1,3,5) \en S$ hay que realizar una combinación lineal de los elementos del subespacio $S$ igualada al vector en cuestión.
+        $$
+          (2,1,3,4) =
+          a \cdot (1,-1,2,1) +
+          b \cdot (1,1,-1,-1)
+          \Sii{\red{!}}
+          \matriz{cc|c}{
+            1 & 1 & 2 \\
+            -1 & 1 & 1 \\
+            2 & -1 & 3 \\
+            1 & -1 & 5
+          }
+          \equivalente
+          \matriz{cc|c}{
+            1 & 1 & 2 \\
+            0 & 2 & 3 \\ \rowcolor{red!20!white}
+            0 & 0 & 7 \\
+            0 & 0 & 0
+          }
+        $$
+        Eso es un absurdo, dado que $a \cdot 0  + b \cdot 0 \distinto 7 \paratodo a, b \en \reales$ {\tiny \rollingEyes}.
+        Es así que:
+        $$
+          \cajaResultado{
+            (2,1,3,4) \not\en S
+          }
+        $$
+
+  \item Primero bautizo a ese subespacio como $T$:
+        $$
+          T = \set{x \en \reales^4 / x_1 - x_2 - x_3 = 0}.
+        $$
+        A mí me gusta atacar estos problemas primero viendo las \textit{dimensiones} de cada subespacio. Si $T$ es un subespacio
+        que vive en $\reales^4$, y además está dado por comprensión con \underline{una sola ecuación}, entonces $\dim(T) = 3$ y como
+        $\dim(S) = 2$ sé que:
+        $$
+          \cajaResultado{
+            T \not\subseteq S
+          }
+        $$
+        Si no lo ves directamente, siempre podés calcular los generadores de $T$ a partir de la ecuación, y vas a obtener algo así:
+        $$
+          T = \ket{(1, 0, 1, 0), (1,1,0,0), (0,0,0,1)}
+        $$
+
+  \item
+        Este está medio regalado también, porque hay uno de los generadores de $S$ que no cumple la ecuación de $T$, así que ya puedo
+        concluir que:
+        $$
+          \cajaResultado{
+            S \not\subseteq T
+          }
+        $$
+        Si no te parece que sea tan evidente, el procedimiento es armar una \textit{combinación lineal} de los elementos de $S$ y meter eso
+        en la ecuación de $T$. Ese es el método para buscar $S \inter T$. Si esa intersección te da que $\dim(S \inter T) = 2$ entonces
+        todo $S$ debería estar en $T$. Pero bueh, hacé las cuentas y te va a dar que $\dim(S \inter T) = 1$.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
