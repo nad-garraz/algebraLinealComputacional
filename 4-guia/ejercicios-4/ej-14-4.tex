@@ -1,3 +1,80 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  En el instante inicial 20 ratones se encuentran en el compartimiento $I$.
+  Las puertas que separan los compartimientos permanecen cerradas salvo durante
+  \tikzset{
+    puerta/.pic = {
+        \fill[scale=0.7] (0,0) circle (2pt);
+        \draw[scale=0.7] (0,0) -- (0,\tunelWidth);
+      }
+  }
+  \newcommand{\drawmaze}[2]{%
+    \tikz[scale=0.7,every node/.style={font={\small}}]{
+      \def\compwidth{2}
+      \def\compheight{2}
+      \pgfmathsetmacro{\paredAbiertaH}{0.375*\compheight}
+      \def\paredAbiertaW{0.375*\compwidth}
+      \def\tunelLength{1}
+      \pgfmathsetmacro{\tunelWidth}{-\compheight + 2*\paredAbiertaH}
+
+      \draw (0,0)
+      -- ++(0,\compheight)
+      -- ++(\compwidth,0)
+      -- ++(0,-\paredAbiertaH)
+      -- ++(\tunelLength,0)
+      pic[#1, midway, yshift=#2] {puerta=I}
+      -- ++(0,\paredAbiertaH)
+      -- ++(\compwidth,0)
+      -- ++(0,-\paredAbiertaH)
+      -- ++(\tunelLength,0)
+      pic[#1, midway, yshift=#2] {puerta=II}
+      -- ++(0,\paredAbiertaH)
+      -- ++(\compwidth,0)
+      -- ++(0,-\compheight)
+      -- ++(-\compwidth,0)
+      -- ++(0,\paredAbiertaH)
+      -- ++(-\tunelLength,0)
+      -- ++(0,-\paredAbiertaH)
+      -- ++(-\paredAbiertaW,0)
+      -- ++(0,-\tunelLength)
+      -- ++(\paredAbiertaW,0)
+      -- ++(0,-\compheight)
+      -- ++(-\compwidth,0)
+      -- ++(0,\compheight)
+      -- ++(\paredAbiertaW,0)
+      -- ++(0,\tunelLength)
+      pic[#1, midway, rotate=90, yshift=#2] {puerta=III}
+      -- ++(-\paredAbiertaW,0)
+      -- ++(0,\paredAbiertaH)
+      -- ++(-\tunelLength,0)
+      -- ++(0,-\paredAbiertaH)
+      -- ++(-\compwidth,0);
+
+      % Labels
+      \node (III) at ({\compwidth * 0.5},{\compheight * 0.5}){III};
+      \node (I) at ($(III) + ({\compwidth + \tunelLength},0)$) {I};
+      \node (II) at ($(I) + ({\compwidth + \tunelLength},0)$) {II};
+      \node (IV) at ($(I) + (0,{-\compheight - \tunelLength})$) {IV};
+    }%
+  }
+
+  \begin{center}
+    \begin{multicols}{2}
+      \drawmaze{red}{0}
+      \\
+      \drawmaze{green}{10pt}
+    \end{multicols}
+  \end{center}
+
+  un breve lapso cada hora, donde los ratones pueden pasar a un compartimiento adyacente o permanecer
+  en el mismo. Se supone que nada distingue un compartimiento de otro, es decir que es igualmente probable
+  que un ratón pase a cualquier de los adyacentes o se quede en el compartimiento en el que está. Se
+  realizan observaciones cada hora y se registra el número de ratones en cada compartimiento.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Determinar la matriz de transición del proceso $P$.
+    \item Determinar cuántos ratones habrá en cada celda al cabo de 4 horas.
+    \item Decidir si existe o no un estado de equilibrio.
+    \item Decidir si existe $P^\infinito$ y en tal caso calcularla. ¿Qué aspecto tiene? ¿Por qué?
+  \end{enumerate}
 \end{enunciado}
+\hacer
