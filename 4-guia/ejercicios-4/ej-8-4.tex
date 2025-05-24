@@ -14,21 +14,31 @@
 
 \begin{enumerate}[label=(\alph*)]
   \item
-
         $$
-          v^*Av = v^* \lambda v =
-          \lambda v^* v =
-          \lambda\norma{v}_2^2  \en \reales
+          A v_i = \lambda_i v_i
           \ytext
-          \conj{v^*Av}=
-          \conj{v^*}A\conj{v} = v^t \lambda \conj{v} =
-          \lambda v^t\conj{v} = \lambda \norma{v}_2^2  \en \reales
+          \conj{A v_i} = \conj{\lambda_i v_i}
+          \Sii{\red{!}}
+          A \conj{v}_i = \lambda_i \conj{v}_i
         $$
-        Donde se puede ver que el conjugar a los autovectores da lo mismo que no conjugarlos, es decir que puedo tomarlos como $v \en \reales^n$.
+        Ahora la papa está en usar que $(\text{\poo} + \conj{\text{\poo}}) \en \reales$:
+        $$
+          \begin{array}{rcl}
+            Av_i + A \conj{v}_i = \lambda_i v_i + \lambda_i \conj{v}_i
+             & \sii &
+            A(v_i + \conj{v}_i) = \lambda_i (v_i + \conj{v}_i)                                      \\
+             & \sii &
+            A(\ub{2\re(v_i)}{=w_i \en \reales^n}) = \lambda_i (\ub{2\re(v_i)}{= w_i \en \reales^n}) \\
+             & \sii &
+            Aw_i = \lambda_i w_i
+          \end{array}
+        $$
+        Queda por lo tanto que si $A \en \reales^{n \times n}$ con un autovector $\lambda \en \reales$
+        entonces su autovector asociado tendrá coordenadas reales.
 
   \item $A$ es simétrica:
         $$
-          v^* A v      =  \lambda v^*v \igual{$\llamada1$} \lambda \norma{v}_2^2 \en \reales
+          v^* A v = \lambda v^*v \igual{$\llamada1$} \lambda \norma{v}_2^2 \en \reales
         $$
         Ahora la idea es conjugar esa expresión y ver que da lo mismo:
         $$
@@ -36,17 +46,17 @@
           \Entonces{fuaa el loco vivía las implicaciones al 1000\%}
           [$
               \begin{array}{rcl}
-                (v^* A v)^*  =  v^* (Av^*)^* = v^* A^* v & \igual{\red{!}} & v^* A v \llamada1                               \\
-                                                         & =               & (v^* \lambda v)^* = \lambda^* (\norma{v}_2^2)^* \\
-                                                         & =               & (v^* \lambda v)^* = \lambda^* \norma{v}_2^2
+                (v^* A v)^*  =  v^* (Av^*)^* = v^* A^* v & \igual{\red{!}} & v^* A v \llamada1                                  \\
+                                                         & =               & (v^* \lambda v)^* = \conj{\lambda (\norma{v}_2^2)} \\
+                                                         & =               & (v^* \lambda v)^* = \conj{\lambda} \norma{v}_2^2
               \end{array}
             $]
-          v^* A v \igual{$\llamada2$} \lambda^* \norma{v}_2^2
+          v^* A v \igual{$\llamada2$} \conj{\lambda} \norma{v}_2^2
         $$
         De ahí sale que $\llamada1$ y $\llamada2$ tienen que ser iguales, si bien en la expresión de $\llamada2$ el autovalor está conjugado. Por lo tanto
         para que se cumpla la igualdad tengo que tener:
         $$
-          \lambda = \lambda^*
+          \lambda = \conj{\lambda}
           \sisolosi
           \lambda \en \reales
         $$

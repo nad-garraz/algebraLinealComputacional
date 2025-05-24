@@ -1,3 +1,13 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Una matriz $P = (p_{ij})_{1\leq i, j \leq n}$ se dice estocástica (o de Markov) si sus elementos
+  son todos no negativos y sus columnas suman uno. Los elementos $p_{ij}$ representan la proporción
+  de individuos que pasan del estado $j$ al estado $i$ en cada iteración (también pueden interpretarse)
+  como la probabilidad de pasar $j$ a $i$).
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que si $\lambda$ es autovalor de $P$, entonces $|\lambda| \leq 1$.
+    \item Sea $\bm{1}$ el vector con todas sus coordenadas iguales a 1. Mostrar que $\bm{1}^t P = \bm{1}$.
+          De hecho: $P$ es estocástica si y solo si sus elementos son no negativos y $\bm{1}^t P = \bm{1}$
+    \item Probar que toda matriz estocástica tiene a 1 por autovalor.
+  \end{enumerate}
 \end{enunciado}
