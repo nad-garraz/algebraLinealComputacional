@@ -12,4 +12,133 @@
   \end{enumerate}
 \end{enunciado}
 
-\hacer
+\begin{enumerate}[label=(\alph*)]
+  \item
+        La matriz $P$ es estocástica, sus columnas suman 1. Si $\lambda$ es autovalor de $P$:
+        $$
+          \begin{array}{rcl}
+            P\bm{v} = \lambda \bm{v}
+             & \sii                                            &
+            \fila_{\magenta{i}}(P) \cdot \bm{v} = (\lambda \bm{v})_{\magenta{i}}                        \\
+             & \sii                                            &
+            \sumatoria{\blue{j} = 1}{n} p_{\magenta{i}\blue{j}} v_{\blue{j}} =  \lambda v_{\magenta{i}} \\
+             & \sii                                            &
+            \big|
+            \sumatoria{\blue{j} = 1}{n} p_{\magenta{i}\blue{j}} v_{\blue{j}}
+            \big|
+            =  |\lambda| |v_{\magenta{i}}|                                                              \\
+             & \Sii{sumo todas las}[coordenadas $\magenta{i}$] &
+            \sumatoria{\magenta{i} = 1}{n} \sumatoria{\blue{j} = 1}{n} |p_{\magenta{i}\blue{j}} v_{\blue{j}}|
+            = |\lambda|  \cdot \sumatoria{\magenta{i} = 1}{n} |v_{\magenta{i}}|                         \\
+             & \Sii{desigualdad}[triangular]                   &
+            \sumatoria{\magenta{i} = 1}{n} \sumatoria{\blue{j} = 1}{n} |p_{\magenta{i}\blue{j}}| |v_{\blue{j}}|
+            \geq
+            \sumatoria{\magenta{i} = 1}{n} \sumatoria{\blue{j} = 1}{n} |p_{\magenta{i}\blue{j}} v_{\blue{j}}|
+            = |\lambda|  \cdot \sumatoria{\magenta{i} = 1}{n} |v_{\magenta{i}}|                         \\
+             & \sii                                            &
+            \sumatoria{\magenta{i} = 1}{n} \sumatoria{\blue{j} = 1}{n} |p_{\magenta{i}\blue{j}}| |v_{\blue{j}}|
+            \geq
+            |\lambda|  \cdot \sumatoria{\magenta{i} = 1}{n} |v_{\magenta{i}}|                           \\
+             & \Sii{\red{!}}                                   &
+            \Big(\sumatoria{\blue{j} = 1}{n} |v_{\blue{j}}|\Big) \Big(\sumatoria{\magenta{i} = 1}{n} |p_{\magenta{i}\blue{j}}|\Big)
+            \geq
+            |\lambda|  \cdot \sumatoria{\magenta{i} = 1}{n} |v_{\magenta{i}}|                           \\
+             & \Sii{\red{!!}}                                  &
+            \norma{\bm{v}}_1 \geq |\lambda|  \cdot  \norma{\bm{v}}_1                                    \\
+             & \sii                                            &
+            \cajaResultado{
+              1 \geq |\lambda|
+            }
+          \end{array}
+        $$
+
+  \item
+        {\small
+        $$
+          \bm{1}^t
+          P =
+          \matriz{c|c|c}{
+            &&\\
+            \bm{1}^t \cdot \columna_{\blue{1}}(P) & \cdots & \bm{1}^t \cdot  \columna_{\blue{n}}(P) \\
+            &&
+          }
+          =
+          \matriz{ccc}{
+            &&\\
+            \sumatoria{\magenta{i} = 1}{n} (\columna_{\blue{1}}(P))_{\magenta{i}}
+            & \cdots &
+            \sumatoria{\magenta{i} = 1}{n} (\columna_{\blue{n}}(P))_{\magenta{i}} \\
+            &&
+          }
+          =
+          \matriz{ccc}{
+            1 & \cdots & 1\\
+          } = \bm{1}^t
+        $$
+        }
+        Dado que $P$ es estocástica y sus columnas suman 1.
+
+  \item
+        La matriz $P$ es estocástica:
+        $$
+          P =
+          \matriz{c|c|c}{
+            &&\\
+            \columna_{\blue{1}}(P) & \cdots & \columna_{\blue{n}}(P) \\
+            &&
+          }
+          \qquad
+          \text{con}
+          \qquad
+          \sumatoria{\magenta{i} = 1}{n} (\columna_{\blue{j}}(P))_{\magenta{i}} = 1 \quad \paratodo \blue{j} \en [1,n]
+        $$
+        Ahora si calculo la matriz traspuesta de $P$ el producto por un vector $v$ queda como el producto escalar de las columnas
+        de $P$ por el vector:
+        $$
+          \begin{array}{c}
+            P^t =
+            \matriz{ccc}{
+            \quad & (\columna_{\blue{1}}(P))^t & \quad                                          \\ \hline
+            \quad & \vdots                     & \quad                                          \\ \hline
+            \quad & (\columna_{\blue{n}}(P))^t & \quad
+            }
+            \flecha{en}[particular]                                                             \\
+            P^t \cdot
+            \matriz{c}{
+            \lambda                                                                             \\
+            \vdots                                                                              \\
+              \lambda
+            }
+            \igual{\red{!!}}
+            \matriz{c}{
+            \lambda \cdot \sumatoria{\magenta{i} = 1}{n} (\columna_{\blue{1}}(P))_{\magenta{i}} \\
+            \vdots                                                                              \\
+              \lambda \cdot \sumatoria{\magenta{i} = 1}{n} (\columna_{\blue{n}}(P))_{\magenta{i}}
+            }
+            =
+            \matriz{c}{
+            \lambda                                                                             \\
+            \vdots                                                                              \\
+              \lambda
+            }
+            \entonces P^tv = v \sii 1 \text{ es autovalor de } P^t
+          \end{array}
+        $$
+        Y dado que si:
+        $$
+          A = CDC^{-1}
+          \flecha{trasponer}
+          A^t = (CDC^{-1})^t
+          =
+          (C^{-1})^tD^tC^t
+          \igual{\red{!}}
+          (C^{-1})^tDC^t
+          \Sii{\red{!}}[$M = (C^{-1})^t$]
+          A^t = M D M^{-1}
+        $$
+        los autovalores son comunes a $P$ y $P^t$, se obtiene que si $P^t$ tiene autovalor 1, entonces también lo tiene $P$.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
