@@ -1,5 +1,5 @@
 \begin{enunciado}{\ejercicio}
-  En el instante inicial 20 ratones se encuentran en el compartimiento $I$.
+  En el instante inicial 20 ratones se encuentran en el compartimiento I.
   Las puertas que separan los compartimientos permanecen cerradas salvo durante
   \tikzset{
     puerta/.pic = {
@@ -77,4 +77,98 @@
     \item Decidir si existe $P^\infinito$ y en tal caso calcularla. ¿Qué aspecto tiene? ¿Por qué?
   \end{enumerate}
 \end{enunciado}
-\hacer
+
+\begin{enumerate}[label=(\alph*)]
+  \item Pensando que no hay ninguna preferencia por ir a un u otro compartimiento adyacente y dado que
+        la matriz resultante tiene que ser de \textit{Markov}:
+        $$
+          P =
+          \matriz{cccc}{
+            \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4}\\
+            \frac{1}{4} & \frac{3}{4} & 0 & 0 \\
+            \frac{1}{4} & 0 & \frac{3}{4} & 0 \\
+            \frac{1}{4} & 0 & 0 & \frac{3}{4} \\
+          }
+        $$
+
+  \item Comenzando el experimento tengo 20 ratones en el compartimiento I:
+        $$
+          \matriz{c}{
+            \text{I}\\
+            \text{II}\\
+            \text{III}\\
+            \text{IV}
+          }^{(0)} =
+          v^{(0)} =
+          \matriz{c}{
+            20\\
+            0\\
+            0\\
+            0
+          }
+        $$
+        Luego para conseguir el estado siguiente, $v^{(1)}$, multiplico por la matriz $P$:
+        $$
+          v^{(1)}=
+          P v^{(0)} =
+          P \matriz{c}{
+            20\\
+            0\\
+            0\\
+            0
+          }
+          =
+          \matriz{c}{
+            5\\
+            5\\
+            5\\
+            5
+          }
+        $$
+        Siguiendo para conseguir el estado siguiente, $v^{(2)}$, multiplico por la matriz $P$ nuevamente:
+        $$
+          v^{(2)}=
+          P v^{(1)} =
+          P \matriz{c}{
+            5\\
+            5\\
+            5\\
+            5
+          }
+          =
+          \matriz{c}{
+            5\\
+            5\\
+            5\\
+            5
+          }
+        $$
+        No creo que cambie nada. Hay la misma cantidad de ratones en cada compartimiento y la probabilidad de que se muevan a otro es igual.
+        \underline{Esto parece ser un equilibrio estable.}
+
+  \item Hay un equilibrio. Calcular los \textit{autovalores} y \textit{autovectores} debería arrojar entre otras cosas que:
+        $$
+          E_{(\lambda = 1)} =
+          \matriz{c}{
+            1\\
+            1\\
+            1\\
+            1
+          }
+          \flecha{normalizado}[\textit{vector de probabilidad}]
+          \matriz{c}{
+            \frac{1}{4}\\
+            \frac{1}{4}\\
+            \frac{1}{4}\\
+            \frac{1}{4}
+          }
+        $$
+        Calculo los autovalores y autovectores:
+        \codigoPython{ej-14/codigo4-14-1.py}
+
+  \item \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

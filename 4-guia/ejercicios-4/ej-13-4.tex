@@ -7,4 +7,128 @@
   \end{enumerate}
 \end{enunciado}
 
-\hacer
+\begin{enumerate}[label=(\alph*)]
+  \item  Los elementos de cada columna de una matriz estocástica suman 1. La idea es probar que al multiplicar dos matrices estocásticas
+        se sigue cumpliendo esa propiedad:
+        $$
+          PQ
+          =
+          \matriz{c|c|c}{
+            &&\\
+            P\columna_{\magenta{1}}(Q) & \cdots & P \columna_{\magenta{n}}(Q) \\
+            &&\\
+          }
+        $$
+        En particular para el elemento $[PQ]_{\green{k}\magenta{i}}$, el elemento de la fila $\green{k}-$ésima y columna $\magenta{i}-$ésima:
+        $$
+          \begin{array}{rcl}
+            \left[
+              P\columna_{\magenta{i}}(Q)
+              \right]_{\green{k}}
+            = \sumatoria{\blue{j} = 1}{n} p_{\green{k}\blue{j}} q_{\blue{j}\magenta{i}}
+             & \Sii{sumando en}[toda la columna $\magenta{i}$] &
+            \sumatoria{\green{k}=1}{n}
+            \left[
+              P\columna_{\magenta{i}}(Q)
+              \right]_{\green{k}}=
+            \sumatoria{\green{k}=1}{n} \sumatoria{\blue{j} = 1}{n} p_{\green{k}\blue{j}} q_{\blue{j}\magenta{i}} \\
+             & \Sii{\red{!}}                                   &
+            \sumatoria{\green{k}=1}{n}
+            \left[
+              P\columna_{\magenta{i}}(Q)
+              \right]_{\green{k}}=
+            \sumatoria{\blue{j} = 1}{n} q_{\blue{j}\magenta{i}} \cdot
+            \Big(
+            \sumatoria{\green{k}=1}{n} p_{\green{k}\blue{j}}
+            \Big)
+            =
+            \sumatoria{\blue{j} = 1}{n} q_{\blue{j}\magenta{i}} = 1
+            \\
+          \end{array}
+        $$
+        Se uso repetidas veces que las columnas de este tipo de matrices suman 1. Es así que el producto de dos
+        matrices de \textit{Markov} sigue siéndo una matriz de \textit{Markov}.
+
+  \item Quiero probar la proposición:
+        $$
+          p(n) : \text{Si $A$ es una matriz de \textit{Markov} } \entonces  A^n  \text{ también es una matriz de \textit{Markov}}
+        $$
+
+        \textit{Caso base}:
+        $$
+          p(\blue{2}) : \text{Si $A$ es una matriz de \textit{Markov} } \entonces  A^{\blue{2}}  \text{ también es una matriz de \textit{Markov}}
+        $$
+        Lo cual es verdadero por el ejercicio anterior, donde se vio que si $A$ y $B$ son estocásticas, entonces $A\cdot B$ también lo es.
+
+        \textit{Paso inductivo}
+
+        Asumo para un $\blue{k} \en \naturales_{>=2}$ que:
+        $$
+          p(\blue{k}) :
+          \ub{
+            \text{Si $A$ es una matriz de \textit{Markov} } \entonces  A^{\blue{k}}  \text{ también es una matriz de \textit{Markov}}
+          }{
+            \text{\purple{hipótesis inductiva}}
+          }
+        $$
+        es verdadera, entonces ahora quiero probar que:
+        $$
+          p(\blue{k + 1}) : \text{Si $A$ es una matriz de \textit{Markov} } \entonces  A^{\blue{k+1}}  \text{ también es una matriz de \textit{Markov}}
+        $$
+        también sea verdadera.
+
+        Es inmediato:
+        $$
+          A^{\blue{k+1}} = \ub{A}{\text{es de}\\\textit{Markov}} \cdot \ob{A^{\blue{k}}}{\text{es de}\\\textit{Markov}}
+          \Entonces{el producto también}[es de \textit{Markov}] p(\blue{k+1}) \text{ es verdadera.}
+        $$
+
+        Por principio de inducción y dado que $p(2), \, p(\blue{k}) \ytext p(\blue{k+1})$ son verdaderas, también lo es $p(n) \ \paratodo n \en \naturales_{\geq 2}$
+
+  \item Es lo mismo que el anterior. Quizás acá se amerita mencionar la siguiente definición:
+
+        \parrafoDestacado{
+          \textit{Vector de probabilidad $\bm{v}$}:
+
+          $\bm{v}$ es un vector de probabilidad si cumple que:
+
+          $v_i \geq 0$ y $\sumatoria{i = 1}{n} v_i = 1$
+        }
+        Con esa definción se pueden demostrar todos estos ejercicios probando que una matriz de \textit{Markov}
+        \ul{mantiene las proporciones}. Las columnas de una matriz de \textit{Markov} son vectores de probabilidad.
+        Esto quiere decir que para un vector $\bm{w}$ y una matriz de \textit{Markov} $A$:
+        $$
+          w = \matriz{c}{
+            w_i\\
+            \vdots\\
+            w_n
+          }
+          \ytext
+          A
+          \matriz{c}{
+            w_i\\
+            \vdots\\
+            w_n
+          }
+          =
+          \matriz{c}{
+            y_i\\
+            \vdots\\
+            y_n
+          }
+          \Entonces{se conserva la}[\textit{'normalización'}]
+          \sumatoria{i = 1}{n} w_i = \sumatoria{i = 1}{n} y_i
+        $$
+
+        \begin{enumerate}[label=(\alph*)] 
+         \item \hacer 
+         \item \hacer 
+         \item \hacer 
+         \item \hacer 
+         \end{enumerate}
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
