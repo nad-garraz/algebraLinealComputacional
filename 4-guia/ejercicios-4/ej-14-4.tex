@@ -84,10 +84,10 @@
         $$
           P =
           \matriz{cccc}{
-            \frac{1}{4} & \frac{1}{4} & \frac{1}{4} & \frac{1}{4}\\
-            \frac{1}{4} & \frac{3}{4} & 0 & 0 \\
-            \frac{1}{4} & 0 & \frac{3}{4} & 0 \\
-            \frac{1}{4} & 0 & 0 & \frac{3}{4} \\
+            \frac{1}{4} & \frac{1}{2} & \frac{1}{2} & \frac{1}{2}\\
+            \frac{1}{4} & \frac{1}{2} & 0 & 0 \\
+            \frac{1}{4} & 0 & \frac{1}{2} & 0 \\
+            \frac{1}{4} & 0 & 0 & \frac{1}{2} \\
           }
         $$
 
@@ -137,32 +137,69 @@
           }
           =
           \matriz{c}{
-            5\\
-            5\\
-            5\\
-            5
+            \frac{35}{4}\\
+            \frac{15}{4}\\
+            \frac{15}{4}\\
+            \frac{15}{4}
           }
         $$
-        No creo que cambie nada. Hay la misma cantidad de ratones en cada compartimiento y la probabilidad de que se muevan a otro es igual.
-        \underline{Esto parece ser un equilibrio estable.}
+        Siguiendo para conseguir el estado siguiente, $v^{(3)}$, multiplico por la matriz $P$ nuevamente:
+        $$
+          v^{(3)}=
+          P v^{(2)} =
+          P
+          \matriz{c}{
+            \frac{35}{4}\\
+            \frac{15}{4}\\
+            \frac{15}{4}\\
+            \frac{15}{4}
+          }
+          =
+          \matriz{c}{
+            \frac{125}{16}\\
+            \frac{65}{16}\\
+            \frac{65}{16}\\
+            \frac{65}{16}
+          }
+          =
+          \matriz{c}{
+            7.8125\\
+            4.0625\\
+            4.0625\\
+            4.0625
+          }
+        $$
+        Siguiendo para conseguir el estado siguiente, $v^{(4)}$, multiplico por la matriz $P$ nuevamente:
+        $$
+          v^{(4)}=
+          P v^{(3)} =
+          P
+          \matriz{c}{
+            \frac{125}{16}\\
+            \frac{65}{16}\\
+            \frac{65}{16}\\
+            \frac{65}{16}
+          }
+          =
+          \matriz{c}{
+            \frac{514}{64}\\
+            \frac{255}{64}\\
+            \frac{255}{64}\\
+            \frac{255}{64}
+          }
+          =
+          \matriz{c}{
+            8.046875\\
+            3.984375\\
+            3.984375\\
+            3.984375
+          }
+        $$
+        \codigoPython{ej-14/codigo4-14-2.py}
 
-  \item Hay un equilibrio. Calcular los \textit{autovalores} y \textit{autovectores} debería arrojar entre otras cosas que:
-        $$
-          E_{(\lambda = 1)} =
-          \matriz{c}{
-            1\\
-            1\\
-            1\\
-            1
-          }
-          \flecha{normalizado}[\textit{vector de probabilidad}]
-          \matriz{c}{
-            \frac{1}{4}\\
-            \frac{1}{4}\\
-            \frac{1}{4}\\
-            \frac{1}{4}
-          }
-        $$
+  \item
+        Hay un equilibrio, parece ser que la sucesión converge al estado $v^{\text{eq}} = (8,4,4,4)^t$
+
         Calculo los autovalores y autovectores:
         \codigoPython{ej-14/codigo4-14-1.py}
 
