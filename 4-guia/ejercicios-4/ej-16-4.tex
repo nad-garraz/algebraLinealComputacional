@@ -1,3 +1,52 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  El movimiento anual entre 4 ciudades está refido por el siguiente diagrama de transición:
+  $$
+    \begin{tikzpicture}[
+      node distance=3cm,
+      estado/.style={circle, draw, fill=violet!20!white, minimum size=1cm, inner sep=0pt},
+      proba/.style={-{Latex[length=2mm]}, thin},
+      every node/.style={font={\Large}}
+      ]
+      \node[estado] (1) {$\bm{1}$};
+      \node[estado, right of=1] (2) {$\bm{2}$};
+      \node[estado, below of=1] (3) {$\bm{3}$};
+      \node[estado, below of=2] (4) {$\bm{4}$};
+
+      \draw[proba] (3) to node[left] {$a$} (1);
+      \draw[proba, bend left=20] (2) to node[below] {$\frac{1}{2}$} (1.east);
+      \draw[proba, bend left=20] (1) to node[above] {$\frac{1}{2}$} (2.west);
+      \draw[proba]  (4.north) to node[left] {$d$}(2.south);
+      \draw[proba]  (2.south west) to node[left, below] {$\frac{1}{2}$}(3.north east);
+
+      \draw[proba, bend left=20] (3) to node[above] {$c$} (4.west);
+      \draw[proba, bend left=20] (4) to node[below] {$e$} (3.east);
+
+      \draw[proba] (1) to [out=180, in=90, looseness=5]  node[left] {$\frac{1}{2}$} (1.north);
+      \draw[proba] (3) to [out=270, in=180, looseness=5]  node[left] {$b$} (3.west);
+    \end{tikzpicture}
+  $$
+  Se sabe que $\bm{v} =
+    \matriz{c}{
+      0\\
+      0\\
+      \frac{1}{2}\\
+      \frac{1}{2}
+    }$
+  es un estado de equilibrio.
+  \begin{enumerate}[label=(\alph*)]
+    \item Hallar la matriz de transición $P$.
+
+    \item Determinar la distribución de población después de 10 años, si la distribución inicial es de $\bm{v}_0 = (\frac{1}{2}, 0, \frac{1}{2}, 0)^t$.
+
+    \item ¿Existe un estado límite cualquiera sea el estado inicial? ¿Existe $P^{\infinito}$?
+
+    \item ¿Existe estado límite para $\bm{v_0} = (0,0,\frac{1}{3}, \frac{2}{3})^t$?
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+\end{enumerate}

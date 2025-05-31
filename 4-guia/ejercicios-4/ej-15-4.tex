@@ -1,3 +1,100 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Un sujeto en evidente estado de ebriedad oscila entre su casa y el bar, separados
+  por $n$ pasos. En cada instante de tiempo da un paso hacia adelante (acercándose a su casa),
+  con probabilidad $p$ o hacia atrás (acercándose nuevamente al bar), con probabilidad $1 - p$.
+  Si llega a alguno de los dos extremos, se queda allí y no vuelve a moverse.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Sin hacer ninguna cuenta, mostrar que el proceso admite al menos dos estados límite
+          linealmente independientes entre sí. Implementar un programa que reciba como \texttt{input} la
+          distancia entre la casa y el bar ($n$) y la probabilidad $p$ y devuelva la matriz de transición
+          del proceso. Verificar que el resultado sea correcto corriéndolo para $n = 5$ y $p = 0.5$.
+
+    \item Para $n = 20$, tomar $p = 0.5$ y $\bm{v}^0$ el vector que corresponde a ubicar al sujeto
+          en cualquiera de los puntos intermedios del trayecto con igual probabilidad. Realizar una
+          simulación del proceso hasta que se estabilice ¿Cuál es el estado límite? ¿Cómo se interpreta?
+
+    \item Repetir la simulaciones con $p = 0.8$. ¿Qué se observa?
+
+    \item Explicar los resultados de todas las simulaciones a partir del análisis de los autovalores y autovectores de la matriz.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Después de que no se me ocurriera como hacer esto, quizás porque, no hay ninguna razón para eso,
+        lo que quedó es:
+        \begin{itemize}
+          \item Sin dibujar un grafo esto no se te debería ocurrir ni a palos:
+                $$
+                  \begin{tikzpicture}[
+                    node distance=2cm,
+                    estado/.style={circle, draw, minimum size=1cm, inner sep=0pt},
+                    proba/.style={-{Latex[length=2mm]}, thin}
+                    ]
+                    \node[estado, Cerulean] (0) {B};
+                    \node[estado, right of=0] (1) {1};
+                    \node[estado, right of=1] (2) {2};
+                    \node[estado, dashed, gray, right of=2, node distance=2cm] (dots) {$\cdots$};
+                    \node[estado, right of=dots, node distance=2cm] (n-1) {$n-1$};
+                    \node[estado, right of=n-1, node distance=2cm, Cerulean] (n) {$C$};
+
+                    \draw[proba, bend left=20] (1) to node[above] {$p$} (2);
+                    \draw[proba, bend left=20] (2) to node[above] {$p$} (dots.north west);
+                    \draw[proba, bend left=20] (dots.north east) to node[above] {$p$} (n-1);
+                    \draw[proba, bend left=20] (n-1) to node[above] {$p$} (n);
+
+                    \draw[proba, bend left=20] (1) to node[below] {$1-p$} (0);
+                    \draw[proba, bend left=20] (2) to node[below] {$1-p$} (1);
+                    \draw[proba, bend left=20] (dots.south west) to node[below] {$1-p$} (2);
+                    \draw[proba, bend left=20] (n-1) to node[below] {$1-p$} (dots.south east);
+
+                    \draw[proba] (0) to [out=180, in=90, looseness=5]  node[left] {$1$} (0.north);
+                    \draw[proba] (n) to [out=0, in=-90, looseness=5]  node[right] {$1$} (n.south);
+                  \end{tikzpicture}
+                $$
+          \item Hay 2 estados de equilibrio. Voy a tener un $\lambda = 1$ de multiplicidad 2.
+                Esos estados son cuando el loco está en \blue{C} o \blue{B}.
+
+          \item Cada nodo es una posible ubicación del tipo, y como de un paso a otro siempre se mueve, en la matriz hay ceros
+                en los elementos $a_{ij}$, excepto en los límites.
+
+          \item Con esta data, ponele que tenés 3 pasos para ir desde el \blue{Bar} hasta tu \blue{Casa}, i.e. $n = 3$:
+                $$
+                  A =
+                  \matriz{c|cccc}{
+                    \text{\yellow{\faIcon{beer}}} & \blue{B} & 1 & 2 & \blue{C} \\ \hline
+                    \blue{B}    & 1 & 1 - p & 0 & 0 \\
+                    1    & 0 & 0 & 1-p & 0 \\
+                    2    & 0 & p & 0 & 0 \\
+                    \blue{C}    & 0 & 0 & p & 1
+                  }
+                $$
+
+          \item Ahora vas y le pedís a algún LLM y le pedís un programita al que le das $n$, $p$ y te devuelva esa \textit{matriz de Markov}
+                o también si te interesa hacerlo a mano, tenés mi \blue{bendición}.
+        \end{itemize}
+        \hacer
+
+  \item Si $p = 0.5$ el tipo se tomó el \textit{trago de Schrödinger}, es decir que está borracho y sobrio a la vez, hasta que le hacen el test
+        de alcoholemia y el resultado tiene que ser o que bien está en pedo o no, o algo así, no sé, ni que fuera físico ni bartender.
+        \hacer
+
+  \item Acá el chabón le aflojó a la sidra, se tomó una coquita y arrancó para casa que está la mujer esperando que hoy le toca cocinar, así que
+        se despide de la gente arranca y bueh, llega antes, probabilísticamente antes.
+        \hacer
+
+  \item Mirando la matriz tengo unos autovectores:
+        $$
+          E_{\lambda = 1} =
+          \ket{
+            (1,0,\ldots,0), (0,\ldots, 0,1)
+          }
+        $$
+        y los otros te los debo.
+        \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+  \item \aporte{https://github.com/misProyectosPropios}{Iñaki Frutos \github}
+\end{aportes}

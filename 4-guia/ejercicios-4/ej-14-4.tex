@@ -195,15 +195,167 @@
             3.984375
           }
         $$
-        \codigoPython{ej-14/codigo4-14-2.py}
+        Se esperan entonce 8 ratones en el compratimiento I y 4 en los compartimientos II, III, IV.
+          {\small
+            \codigoPython{ej-14/codigo4-14-2.py}
+          }
 
   \item
         Hay un equilibrio, parece ser que la sucesión converge al estado $v^{\text{eq}} = (8,4,4,4)^t$
 
         Calculo los autovalores y autovectores:
         \codigoPython{ej-14/codigo4-14-1.py}
+        Dado que tengo un solo autovalor igual a 1, me agarro de eso para decir que va a haber un equilibrio estable
+        hacia el autovector asociado:
+        $$
+          E_{\lambda = 1} =
+          \ket{
+            \matriz{c}{
+              2\\
+              1\\
+              1\\
+              1
+            }
+          }
+        $$
 
-  \item \hacer
+  \item Tengo 4 autovectores que forman una base de $\reales^4$, por lo tanto la $P$ es diagonalizable:
+        $$
+          P = C D C^{-1}
+          \sii
+          P^{\red{n}} = C D^{\red{n}} C^{-1} =
+          C
+          \matriz{cccc}{
+            1^{\red{n}} & 0 & 0 & 0 \\
+            0 & (-\frac{1}{4})^{\red{n}} & 0 & 0 \\
+            0 & 0 & (\frac{1}{2})^{\red{n}} & 0 \\
+            0 & 0 & 0 & (\frac{1}{2})^{\red{n}}
+          }
+          C^{-1}
+          \flecha{$n\to \infinito$}
+          C
+          \matriz{cccc}{
+            1 \\
+            0 \\
+            0 \\
+            0
+          }
+          C^{-1}
+        $$
+        Entonces:
+        $$
+          \begin{array}{rcl}
+            \limite{\red{n}}{\infinito} P^{\red{n}}
+                               & =                  &
+            \ub{
+              \matriz{cccc}{
+            2                  & 0                  & 0                  & 0                  \\
+            1                  & 0                  & 0                  & 0                  \\
+            1                  & 0                  & 0                  & 0                  \\
+            1                  & 0                  & 0                  & 0
+              }
+            }{
+              C D^{\red{n}}
+            }
+            \ub{
+              \matriz{cccc}{
+            a                  & b                  & c                  & d                  \\
+            *                  & *                  & *                  & *                  \\
+            *                  & *                  & *                  & *                  \\
+            *                  & *                  & *                  & *                  \\
+              }
+            }{
+              C^{-1}
+            }                                                                                 \\
+                               & =                  &
+            \matriz{c|c|c|c}{
+              C D^{\red{n}} \
+              \matriz{c}{
+            a                                                                                 \\
+            *                                                                                 \\
+            *                                                                                 \\
+                *
+              }
+                               &
+              C D^{\red{n}}
+              \matriz{c}{
+            b                                                                                 \\
+            *                                                                                 \\
+            *                                                                                 \\
+                *
+              }
+                               &
+              C D^{\red{n}}
+              \matriz{c}{
+            c                                                                                 \\
+            *                                                                                 \\
+            *                                                                                 \\
+                *
+              }
+                               &
+              C D^{\red{n}}
+              \matriz{c}{
+            d                                                                                 \\
+            *                                                                                 \\
+            *                                                                                 \\
+                *
+              }
+            }                                                                                 \\
+                               & =                  &
+            \matriz{c|c|c|c}{
+              a\matriz{c}{
+            2                                                                                 \\
+            1                                                                                 \\
+            1                                                                                 \\
+                1
+              }
+                               &
+              b\matriz{c}{
+            2                                                                                 \\
+            1                                                                                 \\
+            1                                                                                 \\
+                1
+              }
+                               &
+              c\matriz{c}{
+            2                                                                                 \\
+            1                                                                                 \\
+            1                                                                                 \\
+                1
+              }
+                               &
+              d\matriz{c}{
+            2                                                                                 \\
+            1                                                                                 \\
+            1                                                                                 \\
+                1
+              }
+            }                                                                                 \\
+                               & \igual{\red{!!!}}  &
+            \matriz{cccc}{
+            \frac{2}{\sqrt{7}} & \frac{2}{\sqrt{7}} & \frac{2}{\sqrt{7}} & \frac{2}{\sqrt{7}} \\
+            \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} \\
+            \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} \\
+            \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}} & \frac{1}{\sqrt{7}}
+            }                                                                                 \\
+                               & \igual{\red{!}}    &
+            \frac{1}{\sqrt{7}}
+            \matriz{cccc}{
+            2                  & 2                  & 2                  & 2                  \\
+            1                  & 1                  & 1                  & 1                  \\
+            1                  & 1                  & 1                  & 1                  \\
+            1                  & 1                  & 1                  & 1
+            }
+          \end{array}
+        $$
+        En el \red{!!!} encuentro que $a = b = c = d = \frac{1}{\sqrt{7}}$ porque $P^{\red{\infinito}}$ debe ser una matriz de Markov, por
+        lo tanto sus columnas deben sumar 1.
+
+        La matriz tiene como todas sus columnas al autovector de autovalor $\lambda = 1$. Multiplicar una matriz $A$ por un vector
+        $\bm{v}$ es equivalente a escribir al vector como una combinación lineal de las columnas de la matriz. En este caso
+        todas las columanas son el vector normalizado $(\frac{2}{\sqrt{7}},\frac{1}{\sqrt{7}},\frac{1}{\sqrt{7}},\frac{1}{\sqrt{7}})^t$,
+        por lo que \underline{sin importar el estado}, es decir el vector $\bm{v}$ que uses, en una multiplicación ya
+        se va al equilibrio.
 \end{enumerate}
 
 \begin{aportes}
