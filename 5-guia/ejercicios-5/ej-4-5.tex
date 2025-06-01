@@ -1,3 +1,29 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Dada $A \en K^{n \times n}$ hermitiana y $S \subset K^n$ un subespacio invariante por $A$, es decir
+  $Av \en S$ para todo $v \en S$. Probar que $S^\perp$ es invariante por $A$.
 \end{enunciado}
+
+Si tomo un $v \en S$ y un $w \en S^\perp$:
+$$
+  \ua{w^*}{\en S^\perp} \cdot \oa{v}{\en S} = 0
+$$
+Ahora que sé que $S$ es un subespacio invariante por $A$:
+$$
+  Av = \lambda v
+  \Sii{$\times A^*$}
+  A^*A v \igual{\red{!}}
+  A^2 \lambda Av = \lambda^2 v \igual{$\llamada1$} \blue{k} v \en S
+$$
+Con esos ingredientes:
+$$
+  (Aw)^* \cdot \oa{Av}{\en S} =
+  w^* A^* \cdot Av
+  \igual{$\llamada1$}
+  \blue{k} (w^* \cdot v) = 0
+$$
+
+Por lo tanto $Aw \en S^\perp \paratodo w \en S^\perp$.
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
