@@ -1,3 +1,26 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Probar que si $A \en K^{n \times n}$ es hermitiana, entonces los elementos de la diagonal $a_{ii} \en \reales$.
 \end{enunciado}
+
+Si $A$ es hermitiana, entonces:
+$$
+  A \cdot A^* = A^* \cdot A
+$$
+Para probar que los elementos diagonales pertenecen a $\reales$ se puede usar la definición:
+$$
+  A \cdot A^* \en K^{n \times n}
+$$
+la matriz transpuesta y conjugada va a tener la misma diagonal:
+$$
+  a_{\blue{i}\magenta{i}}
+  \flecha{trasponer y}[conjugar]
+  \conj{(a_{\blue{i}\magenta{i}})^t} =
+  \conj{a_{\magenta{i}\blue{i}}}
+  \igual{\red{!}}[]
+  a_{\magenta{i}\blue{i}}
+$$
+Por lo tanto si $a_{ii}$ es igual a su conjugado debe ser un número real.
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

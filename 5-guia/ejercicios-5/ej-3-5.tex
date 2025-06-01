@@ -1,3 +1,33 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Dada $A \en K^{n \times n}$ hermitiana, probar que existen matrices $B$, $C \en \reales^{n \times n}$ con $B$ simétrica y
+  C antisimétrica ($C^t = -C$) tales que $A = B + iC$.
 \end{enunciado}
+
+A apartir de una matriz \textit{hermitiana} me puedo construir las matrices $B$ y $C$ como:
+$$
+  B = \frac{A + A^*}{2}
+  \ytext
+  C = \frac{A - A^*}{2},
+$$
+Donde las matrices $B$ y $C \en \reales$ y además son simétrica y antisimétrica respectivamente.
+
+Ahora quiero ver la cuenta:
+$$
+  \begin{array}{rcl}
+    B + iC
+    =
+    \frac{A + A^*}{2} + i \frac{A - A^*}{2}
+    =
+    \frac{A + A^*}{2} + i \frac{A - A^*}{2}
+     & =               &
+    \frac{A + iA}{2} +  \frac{A^* -i A^*}{2} \\
+     & \igual{\red{!}} &
+    \frac{A + iA}{2} +  \frac{A -i A}{2}     \\
+     & \igual{\red{!}} &
+    A
+  \end{array}
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
