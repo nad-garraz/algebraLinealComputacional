@@ -1,0 +1,33 @@
+\begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
+  \item \textit{Procesos de Markov:}
+
+        Sucesión de vectores $\bm{v}_k$ con $k \en \naturales_0$
+        $$
+          \set{\bm{v}_0, \bm{v}_1, \ldots}
+          \quad
+          \text{con}
+          \quad
+          \bm{v}_{k+1} = M \bm{v}_k.
+        $$
+        $M$ es una matriz de \textit{Markov} si es una matriz estocástica \underline{por columnas}, es decir:
+        \begin{itemize}
+          \item Todas los elementos $m_{ij}$ de la matriz $M$ son \underline{no negativos}.
+
+          \item Cada columna de $M$ suma 1:
+                $$
+                  \left[\sumatoria{i = 1}{n} m_{i\blue{j}}\right]_{\blue{j}} = 1
+                  \quad
+                  \paratodo \blue{j} \en \naturales_{\leq n}
+                $$
+
+          \item $M$ tiene por lo menos un autovalor $\lambda = 1$.
+
+          \item Los autovalores de $M$ cumplen que $|\lambda| \leq 1$.
+        \end{itemize}
+
+  \item \textit{Vector estocástico o de probabilidad:}
+
+        Sea un $\bm{v} = (v_1, \ldots, v_n)$ cumple que sus coordenadas son \underline{no negativas} y suman 1.
+        Las coordenada $j-$ésima corresponde \ul{la probabilidad de estar en el estado $j-$ésimo o la proporción
+          de la población que se encuentra en ese estado}.
+\end{enumerate}

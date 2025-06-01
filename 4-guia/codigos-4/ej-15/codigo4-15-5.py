@@ -39,7 +39,7 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
             v = P @ v  # Estado siguiente
             estados_a_plotear[i] = v
 
-    pasos_vector = np.arange(0.0, 22.0, 1)  # data para el eje x
+    pasos_vector = np.arange(0.0, 22.0, 1) # data para el eje x
     muestras = 5
 
     # Plotear
@@ -47,7 +47,7 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
     fig = plt.figure()
     ax1, ax2 = fig.subplots(1, 2, sharex=True)
 
-    iteraciones = 10
+    iteraciones = 20
     for i in range(muestras + 1):
         ax1.scatter(
             pasos_vector,
@@ -56,15 +56,11 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
             alpha=0.7,
         )
         # Genero data para poder hacer el gráfico en TiKz
-        np.savetxt(
-            f"./dataFiles/test{i}-item-c.data",
-            np.transpose(
-                [pasos_vector, estados_a_plotear[iteraciones // muestras * i]]
-            ),
-            fmt="%.10e",
-            header="Output para la simulación de ejercicio de Markov borracho",
-            comments="# Data pasos vs probabilidad",
-        )
+        np.savetxt(f"./dataFiles/test{i}-item-d2.data",
+                   np.transpose([pasos_vector,estados_a_plotear[iteraciones // muestras * i]]),
+                   fmt='%.10e',
+                   header='Output para la simulación de ejercicio de Markov borracho',
+                   comments="# Data pasos vs probabilidad")
 
     ax1.legend(loc="upper center")
     ax1.set_yscale("log")
@@ -80,15 +76,11 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
             alpha=0.7,
         )
         # Genero data para poder hacer el gráfico en TiKz
-        np.savetxt(
-            f"./dataFiles/test{i}-item-c-final.data",
-            np.transpose(
-                [pasos_vector, estados_a_plotear[iteraciones // muestras * i]]
-            ),
-            fmt="%.10e",
-            header="Output para la simulación de ejercicio de Markov borracho",
-            comments="# Data pasos vs probabilidad",
-        )
+        np.savetxt(f"./dataFiles/test{i}-item-d2-final.data",
+                   np.transpose([pasos_vector,estados_a_plotear[iteraciones // muestras * i]]),
+                   fmt='%.10e',
+                   header='Output para la simulación de ejercicio de Markov borracho',
+                   comments="# Data pasos vs probabilidad")
     ax2.legend(loc="upper center")
     ax2.set_yscale("log")
     ax2.grid(True, alpha=0.3)
@@ -97,4 +89,4 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
     plt.show()
 
 
-generar_plot_evolucion(20, 0.5, 1001)
+generar_plot_evolucion(20, 0.8, 1001)

@@ -58,8 +58,15 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
             label=f"estado {iteraciones//muestras * i}",
             alpha=0.7,
         )
+        # Genero data para poder hacer el gráfico en TiKz
+        np.savetxt(f"./dataFiles/test{i}-item-b.data",
+                   np.transpose([pasos_vector,estados_a_plotear[iteraciones // muestras * i]]),
+                   fmt='%.10e',
+                   header='Output para la simulación de ejercicio de Markov borracho',
+                   comments="# Data pasos vs probabilidad")
     ax1.legend(loc="upper center")
     ax1.grid(True, alpha=0.3)
+    ax1.set_yscale("log")
     ax1.set_title(f"Estados del beodo que dio {iteraciones} pasos")
     
     iteraciones = 1000
@@ -70,7 +77,14 @@ def generar_plot_evolucion(pasos_entre_bar_casa, p, iteraciones):
             label=f"estado {iteraciones//muestras * i}",
             alpha=0.7,
         )
+        # Genero data para poder hacer el gráfico en TiKz
+        np.savetxt(f"./dataFiles/test{i}-item-b-final.data",
+                   np.transpose([pasos_vector,estados_a_plotear[iteraciones // muestras * i]]),
+                   fmt='%.10e',
+                   header='Output para la simulación de ejercicio de Markov borracho',
+                   comments="# Data pasos vs probabilidad")
     ax2.legend(loc="upper center")
+    ax2.set_yscale("log")
     ax2.grid(True, alpha=0.3)
     ax2.set_title(f"Estados del beodo que dio {iteraciones} pasos")
 

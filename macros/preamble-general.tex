@@ -20,6 +20,8 @@
 \usepackage{enumitem} % Cambiar labels y más flexibilidad para el enumerate
 \usepackage{multicol}
 \usepackage{tikz} % para graficar
+\usepackage{pgfplots} % scatter plots y más
+\pgfplotsset{compat=1.5} % scatter plots y más
 \usepackage{cancel} % cancelar fórmulas
 \usepackage{titlesec} % para editar titulos y hacer secciones con formato a medida
 \usepackage{ulem}
@@ -32,6 +34,10 @@
 
 \usepackage{listings} % Escribir código
 \usepackage{framed} % para hacer recuadros y sombrear el codigo
+
+\usepackage{tcolorbox}
+\tcbuselibrary{listings,breakable}
+
 \renewcommand{\ttdefault}{pcr}
 \lstset{
 emph={row_echelon},
@@ -75,6 +81,7 @@ literate=%
 \urlstyle{same}
 
 \setlength{\parindent}{0pt} % Para que no haya indentación en las nuevas líneas.
+
 
 %% Info SOCIAL
 \def\dirRepo{https://github.com/nad-garraz/algebraLinealComputacional}

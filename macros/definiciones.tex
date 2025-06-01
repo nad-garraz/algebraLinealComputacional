@@ -1,11 +1,54 @@
 % ======================
 % =========CODIGO=======
 % ======================
+%
+
+\definecolor{pythonbg}{RGB}{171, 178, 191}        % Dark background
+\definecolor{pythonfg}{RGB}{40, 44, 52}     % Light gray text
 
 \newcommand{\codigoPython}[1]{
-  \begin{snugshade} % el color está definido en shadecolor  
-    \lstinputlisting[language=python]{./codigos-\guia/#1}
-  \end{snugshade}
+  \begin{tcolorbox}[
+      breakable,
+      colback=pythonbg,
+      colframe=pythonbg,
+      rounded corners,
+      boxrule=0pt,
+      left=2pt,
+      right=2pt,
+      top=1pt,
+      bottom=1pt,
+      width=0.85\textwidth
+    ]
+    \lstinputlisting[
+      language=python,
+      basicstyle=\color{pythonfg}\ttfamily\footnotesize,
+      backgroundcolor=\color{pythonbg},
+      frame=jigsaw,
+      numbers=none,
+      numberstyle=\tiny\color{gray},
+      breaklines=true,
+      showstringspaces=false
+    ]{./codigos-\guia/#1}
+  \end{tcolorbox}
+}
+
+% \newcommand{\codigoPython}[1]{
+%   \begin{snugshade} % el color está definido en shadecolor  
+%     \lstinputlisting[language=python]{./codigos-\guia/#1}
+%   \end{snugshade}
+% }
+
+% pgfplots
+\pgfplotsset{every axis legend/.style={
+      cells = {anchor=center},
+      rounded corners = 3pt,
+      draw=black,
+      fill=white,
+      shape=rectangle,
+    },
+    every axis/.style={
+    rounded corners = 2pt
+}
 }
 
 % Definiciones y nuevos comandos:def

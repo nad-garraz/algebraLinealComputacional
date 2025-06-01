@@ -14,6 +14,9 @@
           en cualquiera de los puntos intermedios del trayecto con igual probabilidad. Realizar una
           simulación del proceso hasta que se estabilice ¿Cuál es el estado límite? ¿Cómo se interpreta?
 
+    \item Repetir la simulación tomando como vector inicial $\bm{v}^0 = \bm{e}_2$ (el segundo canónico).
+          Interpretar el resultado.
+
     \item Repetir la simulaciones con $p = 0.8$. ¿Qué se observa?
 
     \item Explicar los resultados de todas las simulaciones a partir del análisis de los autovalores y autovectores de la matriz.
@@ -36,29 +39,34 @@
                     \node[estado, right of=1] (2) {2};
                     \node[estado, dashed, gray, right of=2, node distance=2cm] (dots) {$\cdots$};
                     \node[estado, right of=dots, node distance=2cm] (n-1) {$n-1$};
-                    \node[estado, right of=n-1, node distance=2cm, Cerulean] (n) {$C$};
+                    \node[estado, right of=n-1, node distance=2cm] (n) {$n$};
+                    \node[estado, right of=n, node distance=2cm, Cerulean] (C) {$C$};
 
                     \draw[proba, bend left=20] (1) to node[above] {$p$} (2);
                     \draw[proba, bend left=20] (2) to node[above] {$p$} (dots.north west);
                     \draw[proba, bend left=20] (dots.north east) to node[above] {$p$} (n-1);
                     \draw[proba, bend left=20] (n-1) to node[above] {$p$} (n);
+                    \draw[proba, bend left=20] (n) to node[above] {$p$} (C);
 
                     \draw[proba, bend left=20] (1) to node[below] {$1-p$} (0);
                     \draw[proba, bend left=20] (2) to node[below] {$1-p$} (1);
                     \draw[proba, bend left=20] (dots.south west) to node[below] {$1-p$} (2);
                     \draw[proba, bend left=20] (n-1) to node[below] {$1-p$} (dots.south east);
+                    \draw[proba, bend left=20] (n) to node[below] {$1-p$} (n-1.south east);
 
                     \draw[proba] (0) to [out=180, in=90, looseness=5]  node[left] {$1$} (0.north);
-                    \draw[proba] (n) to [out=0, in=-90, looseness=5]  node[right] {$1$} (n.south);
+                    \draw[proba] (C) to [out=0, in=-90, looseness=5]  node[right] {$1$} (C.south);
                   \end{tikzpicture}
                 $$
           \item Hay 2 estados de equilibrio. Voy a tener un $\lambda = 1$ de multiplicidad 2.
-                Esos estados son cuando el loco está en \blue{C} o \blue{B}.
+                Esos estados son cuando el loco está en \blue{C} o \blue{B}. Fijate que tienen una flecha saliendo con
+                valor 1. Es decir que ese el único valor distinto de 0 que va a haber en la columna, para que sea
+                una \textit{matriz estocástica}.
 
           \item Cada nodo es una posible ubicación del tipo, y como de un paso a otro siempre se mueve, en la matriz hay ceros
                 en los elementos $a_{ij}$, excepto en los límites.
 
-          \item Con esta data, ponele que tenés 3 pasos para ir desde el \blue{Bar} hasta tu \blue{Casa}, i.e. $n = 3$:
+          \item Con esta data, ponele que tenés 2 pasos para ir desde el \blue{Bar} hasta tu \blue{Casa}, i.e. $n = 2$:
                 $$
                   A =
                   \matriz{c|cccc}{
@@ -72,16 +80,364 @@
 
           \item Ahora vas y le pedís a algún LLM y le pedís un programita al que le das $n$, $p$ y te devuelva esa \textit{matriz de Markov}
                 o también si te interesa hacerlo a mano, tenés mi \blue{bendición}.
+
+                A mí me saió esto:
         \end{itemize}
-        \hacer
+        \codigoPython{ej-15/codigo4-15-1.py}
 
   \item Si $p = 0.5$ el tipo se tomó el \textit{trago de Schrödinger}, es decir que está borracho y sobrio a la vez, hasta que le hacen el test
         de alcoholemia y el resultado tiene que ser o que bien está en pedo o no, o algo así, no sé, ni que fuera físico ni bartender.
-        \hacer
+
+        Lo que si sabemos es que el tipo va a estar acá:
+        {\small
+        $$
+          \bm{v}^0 = \left(0,
+          \foreach \x in {1,...,20} {
+            \frac{1}{20},
+          }
+          0
+          \right)^t
+          \
+          \text{con}
+          \
+          \norma{\bm{v}^0}_1 = 1
+        $$
+        }
+        Es decir con igual probabilidad en alguno de los pasos entre el \blue{bar} y la \blue{casa}
+        y seguro que no está ni en el \blue{bar} ni en la \blue{casa}.
+        \codigoPython{ej-15/codigo4-15-2.py}
+
+        El código te va a mostrar 2 gráficos, uno para 10 y otro para 1000 iteraciones. El estado evoluciona hacia el:
+        {\small
+        $$
+          \bm{v}^\infinito = (
+          \frac{1}{2},
+          \foreach \x in {1,...,20} {
+              0,
+            }
+          \frac{1}{2}
+          ),
+        $$
+        }
+        $$
+          \begin{array}{cc}
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  xlabel={Pasos},
+                  ylabel={Probalidad},
+                  title={Primeras iteraciones de \textit{Probabilidad vs Pasos} del borracho},
+                  grid=major,
+                  line width= 0,
+                  % width=0.5\linewidth,
+                  % height=8cm,
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      at = {(1,-0.15)},
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(2)}$,
+                      $\text{estado } v^{(4)}$,
+                      $\text{estado } v^{(6)}$,
+                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(10)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot+ table {./ejercicios-4/dataFiles/item-b-plot/test\x-item-b.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+             &
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  ymax = 1,
+                  xlabel={Pasos},
+                  ylabel={Probalidad},
+                  title={Evolución \textit{Probabilidad vs Pasos} del borracho. 1000 iteraciones.},
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(200)}$,
+                      $\text{estado } v^{(400)}$,
+                      $\text{estado } v^{(600)}$,
+                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(1000)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                  grid=major
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot table {./ejercicios-4/dataFiles/item-b-plot/test\x-item-b-final.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+          \end{array}
+        $$
+        \magenta{¡Atención a la escala logarítmica del eje \text{y}}, que parece que no se cumple que los estados suman 1, pero suman.
+
+        Algo que podría ser esperable. Mientras tanto el tipo va a pasar más tiempo en el medio del camino que en otro lugar. Cuando se
+        aleja del centro del camino la probabilidad aumenta para que vuelva al centro. Eso se ve en los gráficos, porque
+        para un estado en particular, siempre el siguiente paso tiene más probabilidad de ir hacia el centro
+        para.
+
+        Después de $1000$ pasos el tipo tiene igual probabilidad, $p \approx 0.5$ de estar en el \blue{bar} que en su \blue{casa}.
+
+  \item Ahora la simulación arranca en:
+        {\small
+        $$
+          \bm{v}^0 = \left(0,1,
+          \foreach \x in {1,...,19} {
+            0,
+          }
+          0
+          \right)^t
+          \
+          \text{con}
+          \
+          \norma{\bm{v}^0}_1 = 1
+        $$
+        }
+        Haciendo los mismo cálculos de antes el resultado que sale de la simulación
+        $$
+          \begin{array}{cc}
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  ymax = 10,
+                  xlabel={Pasos},
+                  ylabel={Probalidad},
+                  title={Primeras iteraciones de \textit{Probabilidad vs Pasos} del borracho},
+                  grid=major,
+                  % width=0.5\linewidth,
+                  % height=8cm,
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(2)}$,
+                      $\text{estado } v^{(4)}$,
+                      $\text{estado } v^{(6)}$,
+                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(10)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot table {./ejercicios-4/dataFiles/item-c-plot/test\x-item-c.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+             &
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  ymax = 1,
+                  xlabel={Pasos},
+                  title={Evolución \textit{Probabilidad vs Pasos} del borracho. 1000 iteraciones.},
+                  % width=0.5\linewidth,
+                  % height=10cm,
+                  smooth,
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(200)}$,
+                      $\text{estado } v^{(400)}$,
+                      $\text{estado } v^{(600)}$,
+                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(1000)}$,
+                    },
+                  grid=major,
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot table {./ejercicios-4/dataFiles/item-c-plot/test\x-item-c-final.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+          \end{array}
+        $$
+        \magenta{¡Atención a la escala logarítmica del eje \text{y}}, que parece que no se cumple que los estados suman 1, pero suman.
+
+        En los gráficos puede verse que en las primeras iteraciones la probabilidad de quedarse
+        en el \blue{bar} crece mucho más que la probabilidad de acercarse a la \blue{casa}. De hecho,
+        después de dar 1000 pasos, 500 veces más pasos de lo necesario, la probabilidad de que el tipo llegue a su \blue{casa}
+        es de $\approx 0.05$, durísimo.
 
   \item Acá el chabón le aflojó a la sidra, se tomó una coquita y arrancó para casa que está la mujer esperando que hoy le toca cocinar, así que
         se despide de la gente arranca y bueh, llega antes, probabilísticamente antes.
-        \hacer
+
+        En estas circunstancias, la probabilidad de que el tipo esté caminando 200 pasos para llegar a la \blue{casa} es bajísima $p \approx 10^{-10}$
+        $$
+          \begin{array}{cc}
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  xlabel={Pasos},
+                  ylabel={Probalidad},
+                  title={Primeras iteraciones de \textit{Probabilidad vs Pasos} del borracho},
+                  grid=major,
+                  line width= 0,
+                  % width=0.5\linewidth,
+                  % height=8cm,
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      at = {(1,-0.15)},
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(2)}$,
+                      $\text{estado } v^{(4)}$,
+                      $\text{estado } v^{(6)}$,
+                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(10)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot+ table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+             &
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  ymax = 1,
+                  xlabel={Pasos},
+                  title={Evolución \textit{Probabilidad vs Pasos} del borracho. 1000 iteraciones.},
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(200)}$,
+                      $\text{estado } v^{(400)}$,
+                      $\text{estado } v^{(600)}$,
+                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(1000)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                  grid=major
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d-final.data};
+                  }
+              \end{axis}
+            \end{tikzpicture} \\
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  xlabel={Pasos},
+                  ylabel={Probalidad},
+                  title={Primeras iteraciones de \textit{Probabilidad vs Pasos} del borracho},
+                  grid=major,
+                  line width= 0,
+                  % width=0.5\linewidth,
+                  % height=8cm,
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      at = {(1,-0.15)},
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(4)}$,
+                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(12)}$,
+                      $\text{estado } v^{(16)}$,
+                      $\text{estado } v^{(20)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot+ table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d2.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+             &
+            \begin{tikzpicture}[every node/.style = {font=\tiny}]
+              \begin{axis}[
+                  ymode = log,
+                  ymax = 1,
+                  xlabel={Pasos},
+                  title={Evolución \textit{Probabilidad vs Pasos} del borracho. 1000 iteraciones.},
+                  legend style={
+                      cells={anchor=center},
+                      font =\tiny,
+                      anchor=center,
+                      at = {(0.5,-0.25)},
+                      legend columns=3
+                    },
+                  legend entries =
+                    {
+                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(200)}$,
+                      $\text{estado } v^{(400)}$,
+                      $\text{estado } v^{(600)}$,
+                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(1000)}$,
+                    },
+                  cycle list name=color list,
+                  every axis plot/.append style={only marks, mark size=2pt},
+                  grid=major
+                ]
+                \foreach \x in {0,...,5}{
+                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d2-final.data};
+                  }
+              \end{axis}
+            \end{tikzpicture}
+          \end{array}
+        $$
 
   \item Mirando la matriz tengo unos autovectores:
         $$
