@@ -128,7 +128,6 @@
                   ylabel={Probalidad},
                   title={Primeras iteraciones de \textit{Probabilidad vs Pasos} del borracho},
                   grid=major,
-                  line width= 0,
                   % width=0.5\linewidth,
                   % height=8cm,
                   legend style={
@@ -137,22 +136,21 @@
                       at = {(1,-0.15)},
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
                       $\text{estado } v^{(0)}$,
-                      $\text{estado } v^{(2)}$,
-                      $\text{estado } v^{(4)}$,
-                      $\text{estado } v^{(6)}$,
-                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(1)}$,
                       $\text{estado } v^{(10)}$,
+                      $\text{estado } v^{(15)}$,
+                      $\text{estado } v^{(21)}$
                     },
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot+ table {./ejercicios-4/dataFiles/item-b-plot/test\x-item-b.data};
+                \foreach \x in {0,...,3}{
+                    \addplot+ table {./ejercicios-4/dataFiles/item-b-plot/\x-step-item-b.data};
                   }
               \end{axis}
             \end{tikzpicture}
@@ -169,23 +167,21 @@
                       font =\tiny,
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
-                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(100)}$,
                       $\text{estado } v^{(200)}$,
-                      $\text{estado } v^{(400)}$,
-                      $\text{estado } v^{(600)}$,
-                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(500)}$,
                       $\text{estado } v^{(1000)}$,
                     },
                   cycle list name=color list,
-                  every axis plot/.append style={only marks, mark size=2pt},
+                  every axis plot/.append style={only marks, mark size=1.5pt},
                   grid=major
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot table {./ejercicios-4/dataFiles/item-b-plot/test\x-item-b-final.data};
+                \foreach \x in {0,...,3}{
+                    \addplot table {./ejercicios-4/dataFiles/item-b-plot/\x-step-item-b-final.data};
                   }
               \end{axis}
             \end{tikzpicture}
@@ -233,22 +229,21 @@
                       font =\tiny,
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
                       $\text{estado } v^{(0)}$,
-                      $\text{estado } v^{(2)}$,
-                      $\text{estado } v^{(4)}$,
-                      $\text{estado } v^{(6)}$,
-                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(1)}$,
                       $\text{estado } v^{(10)}$,
+                      $\text{estado } v^{(15)}$,
+                      $\text{estado } v^{(21)}$,
                     },
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot table {./ejercicios-4/dataFiles/item-c-plot/test\x-item-c.data};
+                \foreach \x in {0,...,3}{
+                    \addplot table {./ejercicios-4/dataFiles/item-c-plot/\x-step-item-c.data};
                   }
               \end{axis}
             \end{tikzpicture}
@@ -267,23 +262,21 @@
                       font =\tiny,
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
-                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(100)}$,
                       $\text{estado } v^{(200)}$,
-                      $\text{estado } v^{(400)}$,
-                      $\text{estado } v^{(600)}$,
-                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(500)}$,
                       $\text{estado } v^{(1000)}$,
                     },
                   grid=major,
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot table {./ejercicios-4/dataFiles/item-c-plot/test\x-item-c-final.data};
+                \foreach \x in {0,...,3}{
+                    \addplot table {./ejercicios-4/dataFiles/item-c-plot/\x-step-item-c-final.data};
                   }
               \end{axis}
             \end{tikzpicture}
@@ -318,22 +311,21 @@
                       at = {(1,-0.15)},
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
                       $\text{estado } v^{(0)}$,
-                      $\text{estado } v^{(2)}$,
-                      $\text{estado } v^{(4)}$,
-                      $\text{estado } v^{(6)}$,
-                      $\text{estado } v^{(8)}$,
+                      $\text{estado } v^{(1)}$,
                       $\text{estado } v^{(10)}$,
+                      $\text{estado } v^{(15)}$,
+                      $\text{estado } v^{(21)}$,
                     },
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot+ table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d.data};
+                \foreach \x in {0,...,3}
+                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/\x-step-item-d.data};
                   }
               \end{axis}
             \end{tikzpicture}
@@ -349,23 +341,21 @@
                       font =\tiny,
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
-                      $\text{estado } v^{(0)}$,
+                      $\text{estado } v^{(100)}$,
                       $\text{estado } v^{(200)}$,
-                      $\text{estado } v^{(400)}$,
-                      $\text{estado } v^{(600)}$,
-                      $\text{estado } v^{(800)}$,
+                      $\text{estado } v^{(500)}$,
                       $\text{estado } v^{(1000)}$,
                     },
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                   grid=major
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d-final.data};
+                \foreach \x in {0,...,3}{
+                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/\x-step-item-d-final.data};
                   }
               \end{axis}
             \end{tikzpicture} \\
@@ -385,7 +375,7 @@
                       at = {(1,-0.15)},
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
@@ -399,8 +389,8 @@
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot+ table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d2.data};
+                \foreach \x in {0,...,3}{
+                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/\x-step-item-d2.data};
                   }
               \end{axis}
             \end{tikzpicture}
@@ -416,7 +406,7 @@
                       font =\tiny,
                       anchor=center,
                       at = {(0.5,-0.25)},
-                      legend columns=3
+                      legend columns=4
                     },
                   legend entries =
                     {
@@ -431,8 +421,8 @@
                   every axis plot/.append style={only marks, mark size=2pt},
                   grid=major
                 ]
-                \foreach \x in {0,...,5}{
-                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/test\x-item-d2-final.data};
+                \foreach \x in {0,...,3}{
+                    \addplot table {./ejercicios-4/dataFiles/item-d-plot/\x-step-item-d2-final.data};
                   }
               \end{axis}
             \end{tikzpicture}
