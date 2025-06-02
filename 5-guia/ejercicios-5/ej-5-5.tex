@@ -3,4 +3,62 @@
   a una matriz diagonal real con elementos de la diagonal positivos.
 \end{enunciado}
 
-\hacer
+Hay que probar una doble implicación:
+\begin{itemize}
+  \item[($\red{\Rightarrow}$)]
+        $$
+          \begin{array}{l}
+            A v = \lambda v
+            \Sii{$\times v^*$}[$\to$]
+            v^* A v = \lambda v*v
+            \sii
+            v^* A v \igual{$\llamada1$} \lambda \norma{v}_2^2 \\
+            A v = \lambda v
+            \Sii{$^*$}
+            v^* A^* = \conj{\lambda} v^*
+            \Sii{$\times v$}[$\ot$]
+            v^* A^* v = \conj{\lambda} v^*v
+            \sii
+            v^* A^* v \igual{$\llamada2$} \conj{\lambda} \norma{v}_2^2
+          \end{array}
+        $$
+        Como $A = A^*$ el miembro izquierdo en $\llamada1$ y $\llamada2$ es igual.
+        Por lo tanto $\lambda = \conj{\lambda} \entonces \lambda \en \reales$.
+
+        Ahora si $A$ es una matriz definida positiva:
+        $$
+          Av = \lambda v
+          \Sii{$\times v$}[$\to$]
+          \ub{v^*Av}{>0 \text{ si } v\distinto 0} = \lambda v^*v = \lambda \cdot \norma{v}_2^2 > 0  \paratodo v \distinto 0
+          \entonces \lambda > 0
+        $$
+        Hasta acá, con las hipótesis tengo \textit{autovalores reales y positivos}, ahora voy a ver que los autovectores tienen que ser ortogonales.
+        Dado 2 autovectores $v_1$ y $v_2$ asociados a distintos autovalores:
+        $$
+          \begin{array}{l}
+            Av_1 = \lambda_1 v_1
+            \ytext
+            Av_2 = \lambda_2 v_2
+            \sii
+            \llave{rcl}{
+            v_2^* A v_1 \igual{\red{!}} (Av_2)^* v_1 = \lambda_2v_2^* \cdot v_1 & \igual{$\llamada3$} & \lambda_1 v_2^* \cdot v_1 \\
+            v_1^* A v_2 = \lambda_2 v_1^* \cdot v_2                             & \igual{$\llamada4$} & \lambda_2 v_1^* \cdot v_2
+            }
+          \end{array}
+        $$
+        Restando $\llamada3$ y $\llamada4$:
+        $$
+          0 \igual{\red{!!}}
+          \ub{
+            (\lambda_1 - \lambda_2)
+          }{
+            \distinto 0
+          }
+          (v_1^* \cdot v_2)
+          \sii
+          v_1 \perp v_2
+        $$
+
+  \item[($\red{\Leftarrow}$)]
+        {\large\red{CONSULTAR, probar por absurdo?}}
+\end{itemize}

@@ -105,7 +105,7 @@
         }
         Es decir con igual probabilidad en alguno de los pasos entre el \blue{bar} y la \blue{casa}
         y seguro que no está ni en el \blue{bar} ni en la \blue{casa}.
-        \codigoPython{ej-15/codigo4-15-2.py}
+        \codigoPython{ej-15/codigo4-15-bcd.py}
 
         El código te va a mostrar 2 gráficos, uno para 10 y otro para 1000 iteraciones. El estado evoluciona hacia el:
         {\small
@@ -324,7 +324,7 @@
                   cycle list name=color list,
                   every axis plot/.append style={only marks, mark size=2pt},
                 ]
-                \foreach \x in {0,...,3}
+                \foreach \x in {0,...,3}{
                     \addplot table {./ejercicios-4/dataFiles/item-d-plot/\x-step-item-d.data};
                   }
               \end{axis}

@@ -1,3 +1,135 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $A =
+    \matriz{ccc}{
+      4 & \alpha + 2 & 2 \\
+      \alpha^2 & 4 & 2 \\
+      2 & 2 & 1
+    }$
+  \begin{enumerate}[label=(\alph*)]
+    \item\label{ej-6:itema} Hallar los valores de $\alpha \en \reales$ para que $A$ sea simétrica y $\lambda = 0$ sea
+          autovalor de $A$.
+
+    \item Para el valor de $\alpha$ hallado en \ref{ej-6:itema}, diagonalizar ortonormalmente la matriz $A$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Quiero que $A$ sea simétrica:
+        $$
+          A = A^t
+          \sii
+          \alpha \en \set{-1, 2}
+        $$
+        Noto que si $\alpha = 2$ la matriz queda con filas \textit{linealmente independientes:}
+        $$
+          A_{\alpha = 2} =
+          \matriz{ccc}{
+            4 & 4 & 2 \\
+            4 & 4 & 2 \\
+            2 & 2 & 1
+          }
+          \quad
+          \ytext
+          \quad
+          A_{\alpha = -1} =
+          \matriz{ccc}{
+            4 & 1 & 2 \\
+            1 & 4 & 2 \\
+            2 & 2 & 1
+          }
+        $$
+        Por lo tanto cuando $\alpha = 2$ tengo autovalor $\lambda = 0$.
+
+  \item Dado que $A$ es una matriz simétrica, es \textit{ortonormalmente diagonalizable}. Hay que diagonalizar
+        asegurando que la base de \textit{autovectores} sea una BON. El procedimientos puede hacerse como cualquier
+        diagonalización, pero acá voy a \textit{explotar \faIcon{bomb}} el hecho de que la \textit{base de autovectores}
+        va a ser ortogonal.
+
+        Busco autovectores de $\lambda = 0$, que equivale a buscar elementos del núcleo de la matriz $A$ a ojo:
+        $$
+          (A - \blue{\lambda}I)v_{_{(\lambda = 0)}} = 0
+          \sii
+          v_{_{(\lambda = 0)}} \en \set{(1, -1, 0), (0,1, -2)}
+          \flecha{normalizando}
+          v_{_{(\lambda = 0)}} \en E_{_{(\lambda = 0)}} =
+          \set{(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 0), (0,\frac{1}{\sqrt{5}}, -\frac{2}{\sqrt{5}})}
+        $$
+        Como estoy en $\reales^3$ no hay muchas opciones para el vector restante, tiene que ser ortogonal a esos dos. Si no ves a ojo
+        que por ejemplo el vector (2,2,1) funciona podés plantear:
+        $$
+          \llave{rcl}{
+            (1, -1, 0) \cdot (x,y,z)    & = & 0\\
+            (0,1, -2) \cdot (x,y,z)    & = & 0
+          }
+        $$
+        Resolvelo y obtenés así un vector ortogonal.
+
+        Ahora quiero ver a que autovalor corresponde:
+        $$
+          A v=
+          \matriz{ccc}{
+            4 & 4 & 2 \\
+            4 & 4 & 2 \\
+            2 & 2 & 1
+          }
+          \matriz{c}{
+            2  \\
+            2  \\
+            1
+          }
+          =
+          \matriz{c}{
+            18  \\
+            18  \\
+            9
+          }
+          = \blue{9}
+          \matriz{c}{
+            2  \\
+            2  \\
+            1
+          }
+        $$
+        Tengo así la siguiente \textit{base ortonormal} para diagonalizar la matriz:
+        $$
+          \textstyle
+          \text{BON } =
+          \big\{
+          \ub{
+            (\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 0),
+            (0,\frac{1}{\sqrt{5}}, -\frac{2}{\sqrt{5}})
+          }{
+            E_{_{(\lambda = 0)}}
+          },
+          \ub{
+            (\frac{2}{3}, \frac{2}{3}, \frac{1}{3})
+          }{
+            E_{_{(\lambda = 9)}}
+          }
+          \big\}
+        $$
+        Y ahora queda fácil, porque la inversa de la matriz de autovectores $C$ es $C^t$,
+        dado que es una \textit{matriz ortogonal} o \textit{matriz unitaria}:
+        $$
+          A =
+          \matriz{ccc}{
+            \frac{1}{\sqrt{2}} & 0 & \frac{2}{3} \\
+            -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{5}} & \frac{2}{3} \\
+            0 & -\frac{2}{\sqrt{5}} & \frac{1}{3}
+          }
+          \matriz{ccc}{
+            0 & 0 & 0 \\
+            0 & 0 & 0 \\
+            0 & 0 & 9 \\
+          }
+          \matriz{ccc}{
+            \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 \\
+            0 & \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} \\
+            \frac{2}{3} & \frac{2}{3} & \frac{1}{3}
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
