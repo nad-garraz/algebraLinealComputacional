@@ -52,10 +52,12 @@
           \Entonces{de mayor}[a menor]
           \set{\sigma_1,  \sigma_2} = \set{2\sqrt{10}, \sqrt{10}}
           \Entonces{matriz}
-          \green{\Sigma} =
-          \sqrt{10}\matriz{cc}{
-            2 & 0 \\
-            0 & 1
+          \cajaResultado{
+            \green{\Sigma} =
+            \sqrt{10}\matriz{cc}{
+              2 & 0 \\
+              0 & 1
+            }
           }
         $$
         Calculo autovectores de $\violet{H}$ y los normalizo para obtener una \textit{base ortonormal} una BON:
@@ -78,16 +80,18 @@
         Estoy en condiciones de armar la matriz $\purple{V}$, matriz que tiene a los $\purple{v_i}$
         autovectores de $\violet{H}$ normalizados como columnas, es decir la BON recién calculada:
         $$
-          \purple{V} =
-          \matriz{cc}{
-            \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
-            \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
-          }
-          =
-          \frac{1}{\sqrt{2}}
-          \matriz{cc}{
-            1 & 1\\
-            1 & -1
+          \cajaResultado{
+            \purple{V} =
+            \matriz{cc}{
+              \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+              \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+            }
+            =
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              1 & 1\\
+              1 & -1
+            }
           }
         $$
         Falta menos. Ahora voy a buscar la $\blue{U}$, que tiene como columnas a los:
@@ -104,16 +108,18 @@
         $$
         Entonces tengo:
         $$
-          \blue{U} =
-          \matriz{cc}{
-            \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}}\\
-            \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}}
-          }
-          =
-          \frac{1}{\sqrt{5}}
-          \matriz{cc}{
-            1 & 2\\
-            2 & -1
+          \cajaResultado{
+            \blue{U} =
+            \matriz{cc}{
+              \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}}\\
+              \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}}
+            }
+            =
+            \frac{1}{\sqrt{5}}
+            \matriz{cc}{
+              1 & 2\\
+              2 & -1
+            }
           }
         $$
         Finalmente:
@@ -143,7 +149,7 @@
           }
         $$
 
-  \item
+  \item\label{ej-7:item-b}
         $$
           \begin{tikzpicture}[scale = 1.3, every pin/.style={font=\tiny, fill=white, draw= black}, every node/.style = {font=\footnotesize}]
             \begin{axis}[
@@ -188,7 +194,8 @@
             \end{axis}
           \end{tikzpicture}
         $$
-  \item La definición de norma subordinada:
+  \item\label{ej-7:item-c}
+        La definición de norma subordinada:
         $$
           \norma{A}_2 = \maximo[\norma{x}_2 = 1]\left(\frac{\norma{Ax}_2}{\norma{x}_2}\right)
         $$
@@ -224,11 +231,10 @@
           \cajaResultado{
             \condicion_2(A) =
             \norma{A}_2 \cdot \norma{A^{-1}}_2 =
-            \frac{\sigma_1}{\sigma_2}
+            \frac{\sigma_1}{\sigma_2} = 2
           }
         $$
-
-  \item Usando el cálculo del ítem anterior:
+  \item Usando el cálculo del ítem \ref{ej-7:item-c}:
         $$
           \cajaResultado{
             \textstyle
@@ -257,6 +263,174 @@
             }
           }
         $$
+        \parrafoDestacado[\red{\atencion}]{
+          Si bien esto es \underline{una descompsición} de $A^{-1}$
+
+          ¡\ul{No es una \textit{descomposición en valores sigulares}}!
+
+          Se puede sacar info de esa expresión, pero ya que la diagonal de $\green{\Sigma}$ no esté ordenada
+          en orden decreciente es suficiente para justificar que no es una SVD.
+        }
+        Pero moviendo las columnas se encuentra la \textit{descomposición en valores singulares}, mirá:
+        {\small
+        $$
+          \textstyle
+          \begin{array}{rcl}
+            A^{-1}
+            \igual{\red{!}}
+            \violet{V} \green{\Sigma}^{-1} \blue{U}^*
+                        & \igual{$\red{!!!}$} &
+            \frac{1}{\sqrt{2}}
+            \ob{
+              \matriz{cc}{
+            1           & 1                     \\
+            1           & -1
+              }
+              \yellow{
+                \matriz{cc}{
+            0           & 1                     \\
+            1           & 0
+                }
+              }
+            }{\text{permuto columnas}}
+            \frac{1}{\sqrt{10}}
+            \ob{
+              \yellow{
+                \matriz{cc}{
+            0           & 1                     \\
+            1           & 0
+                }
+              }
+              \matriz{cc}{
+            \frac{1}{2} & 0                     \\
+            0           & 1
+              }
+              \yellow{
+                \matriz{cc}{
+            0           & 1                     \\
+            1           & 0
+                }
+              }
+            }{
+              \text{permuto filas y columnas}
+            }
+            \frac{1}{\sqrt{5}}
+            \ob{
+              \yellow{
+                \matriz{cc}{
+            0           & 1                     \\
+            1           & 0
+                }
+              }
+              \matriz{cc}{
+            1           & 2                     \\
+            2           & -1
+              }
+            }{\text{permuto filas}}
+            \\
+            \\
+                        & =                   &
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+            1           & 1                     \\
+            -1          & 1
+            }
+            \frac{1}{\sqrt{10}}
+            \matriz{cc}{
+            1           & 0                     \\
+            0           & \frac{1}{2}
+            }
+            \frac{1}{\sqrt{5}}
+            \matriz{cc}{
+            2           & -1                    \\
+            1           & 2
+            }
+            \igual{\red{\checkmark}}
+            \frac{1}{20}
+            \matriz{cc}{
+            5           & 0                     \\
+            -3          & 4
+            }
+          \end{array}
+        $$
+        }
+        Notar que esa matriz
+          {\tiny
+            $\yellow{
+                \matriz{cc}{
+                  0&1 \\
+                  1&0
+                }
+              }$
+          } es involutiva, es su propia inversa.
+        Es así que la \textit{descomposición en valores singulares} de $A^{-1}$ que nadie pidió pero todos queremos:
+        $$
+          \cajaResultado{
+            \textstyle
+            A^{-1}
+            \igual{\red{!}}
+            \violet{\tilde{U}} \green{\tilde{\Sigma}} \blue{\tilde{V}}^*
+            =
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              1           & 1                     \\
+              -1          & 1
+            }
+            \frac{1}{\sqrt{10}}
+            \matriz{cc}{
+              1           & 0                     \\
+              0           & \frac{1}{2}
+            }
+            \frac{1}{\sqrt{5}}
+            \matriz{cc}{
+              2           & -1                    \\
+              1           & 2
+            }
+          }
+        $$
+
+        Acá te hago el gráfico del ítem \ref{ej-7:item-b} pero para $A^{-1}$:
+        $$
+          \begin{tikzpicture}[scale = 1.3, every pin/.style={font=\tiny, fill=white, draw= black}, every node/.style = {font=\footnotesize}]
+            \begin{axis}[
+                axis equal,
+                xlabel={$x_1$},
+                ylabel={$x_2$},
+                title={Scatter para 200 $\blue{\bm{x}} / \norma{\blue{\bm{x}}}_2 = 1$ y para 200 $\purple{A^{-1}x}$},
+                legend style={
+                    cells={anchor=center},
+                    font =\tiny,
+                    anchor=center,
+                    at = {(0.5,-0.25)},
+                    legend columns=2
+                  },
+                legend entries =
+                  {
+                    $\set{\blue{x}: x \en \reales^2, \norma{x}_2 = 1}$,
+                    $\set{\purple{A^{-1}x}: x \en \reales^2, \norma{x}_2 = 1}$,
+                  },
+                cycle list name=color list,
+                every axis plot/.append style={only marks, mark size=2pt},
+                xminorticks=true,
+                yminorticks=true,
+                grid=both,
+              ]
+              \addplot[mark size = 0.5pt, Cerulean] table {./ejercicios-5/dataFiles/7-ej-data/item-circulo.data};
+              \addplot[mark size = 0.5pt, purple] table {./ejercicios-5/dataFiles/7-ej-data/item-matrizInvDotCirculo.data};
+
+              \draw[-latex, thick, violet] (axis cs:0,0) --
+              node [midway, pin=below:{$A^{-1}\violet{\tilde{v}_2} = \tilde{\sigma}_1\blue{\tilde{u}_2}$}]{}
+              (axis cs:{({1/sqrt(20)},-{1/sqrt(20)})});
+              \draw[-latex, thick, violet] (axis cs:0,0) --
+              node [midway, pin=above:{$A^{-1}\violet{\tilde{v}_1} = \tilde{\sigma}_1\blue{\tilde{u}_1}$}]{}
+              (axis cs:{({1/sqrt(80)},{1/sqrt(80)})});
+
+              \node [coordinate, pin=above right:{$\maximo[\norma{x}_2 = 1](\frac{\norma{\purple{A^{-1}x}}_2}{\norma{x}_2})$}]
+              at (axis cs:{({1/sqrt(20)},-{1/sqrt(20)})}) {};
+            \end{axis}
+          \end{tikzpicture}
+        $$
+
 \end{enumerate}
 
 \begin{aportes}
