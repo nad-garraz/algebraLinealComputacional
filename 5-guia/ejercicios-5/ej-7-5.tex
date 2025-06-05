@@ -1,3 +1,264 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Considerar la matriz:
+  $$
+    A = \matriz{cc}{
+      4 & 0 \\
+      3 & 5
+    }
+  $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Calcular una descomposición en valores singulares de $A$.
+    \item Dibujar el círculo unitario en $\reales^2$ y la elipse $\set{Ax : x \en \reales^2,\ \norma{x}_2 = 1}$,
+          señalando los valores singulares y los vectores singulares a izquierda y a derecha.
+
+    \item Calcular $\norma{A}_2$ y $\condicion_2(A)$.
+
+    \item Calcular $A^{-1}$ usando la descomposición hallada.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        Quieron encontrar la \textit{descomposición en valores singulares}:
+        $$
+          A = \blue{U} \green{\Sigma} \purple{V}^*
+        $$
+
+        Voy a calcular $A^* \cdot A$ para calcular sus \textit{jugosos autovalores}. Como la matriz \ul{es cuadrada},
+        no me preocupo por pensar si es mejor hacer $A \cdot A^*$ o al revés, porque van a tener el mismo tamaño:
+        $$
+          \violet{H} = A^* \cdot A =
+          \matriz{cc}{
+            4 & 3 \\
+            0 & 5 \\
+          }
+          \matriz{cc}{
+            4 & 0 \\
+            3 & 5 \\
+          }
+          =
+          \matriz{cc}{
+            25 & 15 \\
+            15 & 25
+          }
+          \flecha{calculo}[autovalores]
+          \det(\violet{H} - \lambda I) = 0
+          \sii
+          \lambda \en \set{10, 40}
+        $$
+        Ahora puedo decir que los \textit{valores singulares} son:
+        $$
+          \sigma_i = \sqrt{\lambda_i}
+          \Entonces{de mayor}[a menor]
+          \set{\sigma_1,  \sigma_2} = \set{2\sqrt{10}, \sqrt{10}}
+          \Entonces{matriz}
+          \green{\Sigma} =
+          \sqrt{10}\matriz{cc}{
+            2 & 0 \\
+            0 & 1
+          }
+        $$
+        Calculo autovectores de $\violet{H}$ y los normalizo para obtener una \textit{base ortonormal} una BON:
+        $$
+          \textstyle
+          \violet{H} v_\lambda = \lambda v_\lambda
+          \sii
+          \llave{rcl}{
+            E_{_{\lambda = 40}} &=& \set{(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}})}\\
+            &\ytext&\\
+            E_{_{\lambda = 10}} &=& \set{(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}})}\\
+          }
+          \entonces
+          \text{BON} = \set{(\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}}),(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}})}
+        $$
+        \parrafoDestacado{
+          Siempre en una matriz unitaria como $\violet{H}$ los autovectores asociados a autovalores de \ul{distinto valor}
+          son perpendiculares.
+        }
+        Estoy en condiciones de armar la matriz $\purple{V}$, matriz que tiene a los $\purple{v_i}$
+        autovectores de $\violet{H}$ normalizados como columnas, es decir la BON recién calculada:
+        $$
+          \purple{V} =
+          \matriz{cc}{
+            \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}\\
+            \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+          }
+          =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            1 & 1\\
+            1 & -1
+          }
+        $$
+        Falta menos. Ahora voy a buscar la $\blue{U}$, que tiene como columnas a los:
+        $$
+          \textstyle
+          \blue{u_i} = \frac{A \purple{v_i}}{\sigma{i}}
+          \quad \text{ con } \quad
+          \sigma_i \distinto 0
+          \Entonces{armo}[BON]
+          \set{\blue{u_1}, \blue{u_2}} =
+          \set{\frac{A \purple{v_1}}{\sigma_1}, \frac{A \purple{v_2}}{\sigma_2}}
+          \igual{\red{!}}
+          \set{\frac{1}{\sqrt{5}}(1,2),\frac{1}{\sqrt{5}}(2,-1)}
+        $$
+        Entonces tengo:
+        $$
+          \blue{U} =
+          \matriz{cc}{
+            \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}}\\
+            \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}}
+          }
+          =
+          \frac{1}{\sqrt{5}}
+          \matriz{cc}{
+            1 & 2\\
+            2 & -1
+          }
+        $$
+        Finalmente:
+        $$
+          \cajaResultado{
+            A = \blue{U} \green{\Sigma} \violet{V}^*
+            =
+            \frac{1}{\sqrt{5}}
+            \matriz{cc}{
+              1 & 2\\
+              2 & -1
+            }
+            \sqrt{10}\matriz{cc}{
+              2 & 0 \\
+              0 & 1
+            }
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              1 & 1\\
+              1 & -1
+            }
+            \igual{$\red{\checkmark}$}
+            \matriz{cc}{
+              4 & 0\\
+              3 & 5
+            }
+          }
+        $$
+
+  \item
+        $$
+          \begin{tikzpicture}[scale = 1.3, every pin/.style={font=\tiny, fill=white, draw= black}, every node/.style = {font=\footnotesize}]
+            \begin{axis}[
+                ymax=7,
+                ymin=-6,
+                xmax=2,
+                xmin=2,
+                axis equal,
+                xlabel={$x_1$},
+                ylabel={$x_2$},
+                title={Scatter para 200 $\blue{\bm{x}} / \norma{\blue{\bm{x}}}_2 = 1$ y para 200 $\purple{Ax}$},
+                legend style={
+                    cells={anchor=center},
+                    font =\tiny,
+                    anchor=center,
+                    at = {(0.5,-0.25)},
+                    legend columns=2
+                  },
+                legend entries =
+                  {
+                    $\set{\blue{x}: x \en \reales^2, \norma{x}_2 = 1}$,
+                    $\set{\purple{Ax}: x \en \reales^2, \norma{x}_2 = 1}$,
+                  },
+                cycle list name=color list,
+                every axis plot/.append style={only marks, mark size=2pt},
+                xminorticks=true,
+                yminorticks=true,
+                grid=both,
+              ]
+              \addplot[mark size = 0.5pt, Cerulean] table {./ejercicios-5/dataFiles/7-ej-data/item-circulo.data};
+              \addplot[mark size = 0.5pt, purple] table {./ejercicios-5/dataFiles/7-ej-data/item-matrizDotCirculo.data};
+
+              \draw[-latex, thick, violet] (axis cs:0,0) --
+              node [midway, pin=above left:{$A\violet{v_1} = \sigma_1\blue{u_1}$}]{}
+              (axis cs:{({2*sqrt(2)*1},{2*sqrt(2)*2})});
+              \draw[-latex, thick, violet] (axis cs:0,0) --
+              node [midway, pin=right:{$A\violet{v_2} = \sigma_2\blue{u_2}$}]{}
+              (axis cs:{{(sqrt(2)*2},-{sqrt(2)})});
+
+              \node [coordinate, pin=right:{$\maximo[\norma{x}_2 = 1](\frac{\norma{Ax}_2}{\norma{x}_2})$}]
+              at (axis cs:{({2*sqrt(2)*1},{2*sqrt(2)*2})}) {};
+            \end{axis}
+          \end{tikzpicture}
+        $$
+  \item La definición de norma subordinada:
+        $$
+          \norma{A}_2 = \maximo[\norma{x}_2 = 1]\left(\frac{\norma{Ax}_2}{\norma{x}_2}\right)
+        $$
+        Y viendo el gráfico:
+        $$
+          \norma{A}_2 = \norma{\sigma_1 u_1}_2 = |\sigma_1| \cdot \ub{\norma{u_1}_2}{=1} = \sigma_1 \quad \llamada1
+        $$
+
+        Por otro lado la definición de condición:
+        $$
+          \condicion_2(A) = \norma{A}_2 \cdot \norma{A^{-1}}_2
+        $$
+        Ya tengo $\norma{A}_2$, ahora quiero encontrar $\norma{A^{-1}}$:
+        $$
+          A =
+          \blue{U} \green{\Sigma} \violet{V}^*
+          \Sii{invierto}[$\green{\Sigma} \en \reales^{2\times 2}$]
+          A^{-1}=
+          (\violet{V}^*)^{-1} \green{\Sigma}^{-1} \blue{U}^{-1}
+          \igual{\red{!}}
+          \violet{V} \green{\Sigma}^{-1} \blue{U}^* =
+          \violet{V}
+          \matriz{cc}{
+            \frac{1}{\sigma_1} & 0 \\
+            0 &\frac{1}{\sigma_2}
+          }
+          \blue{U}^*
+        $$
+        Por lo tanto
+        $$
+          \norma{A^{-1}} = \frac{1}{\sigma_2} \quad \llamada2
+          \Entonces{finalmente}[$\llamada1 \llamada2$]
+          \cajaResultado{
+            \condicion_2(A) =
+            \norma{A}_2 \cdot \norma{A^{-1}}_2 =
+            \frac{\sigma_1}{\sigma_2}
+          }
+        $$
+
+  \item Usando el cálculo del ítem anterior:
+        $$
+          \cajaResultado{
+            \textstyle
+            A^{-1}
+            \igual{\red{!}}
+            \violet{V} \green{\Sigma}^{-1} \blue{U}^* =
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              1 & 1\\
+              1 & -1
+            }
+            \frac{1}{\sqrt{10}}\matriz{cc}{
+              \frac{1}{2} & 0 \\
+              0 & 1
+            }
+            \frac{1}{\sqrt{5}}
+            \matriz{cc}{
+              1 & 2\\
+              2 & -1
+            }
+            \igual{$\red{\checkmark}$}
+            \frac{1}{20}
+            \matriz{cc}{
+              5 & 0\\
+              -3 & 4
+            }
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

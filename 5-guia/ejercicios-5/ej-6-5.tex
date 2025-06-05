@@ -20,7 +20,6 @@
           \sii
           \alpha \en \set{-1, 2}
         $$
-        Noto que si $\alpha = 2$ la matriz queda con filas \textit{linealmente independientes:}
         $$
           A_{\alpha = 2} =
           \matriz{ccc}{
@@ -38,7 +37,9 @@
             2 & 2 & 1
           }
         $$
-        Por lo tanto cuando $\alpha = 2$ tengo autovalor $\lambda = 0$.
+        Noto que si $\alpha = 2$ la matriz queda con filas \textit{linealmente dependientes},
+        por lo tanto cuando $\alpha = 2$ tengo autovalor $\lambda = 0$. Podría triangular la matriz con
+        $\alpha = -1$, para ver si hay alguna fila \textit{linealmente dependiente}, pero no hay ganas.
 
   \item Dado que $A$ es una matriz simétrica, es \textit{ortonormalmente diagonalizable}. Hay que diagonalizar
         asegurando que la base de \textit{autovectores} sea una BON. El procedimientos puede hacerse como cualquier
@@ -47,12 +48,14 @@
 
         Busco autovectores de $\lambda = 0$, que equivale a buscar elementos del núcleo de la matriz $A$ a ojo:
         $$
-          (A - \blue{\lambda}I)v_{_{(\lambda = 0)}} = 0
-          \sii
-          v_{_{(\lambda = 0)}} \en \set{(1, -1, 0), (0,1, -2)}
-          \flecha{normalizando}
-          v_{_{(\lambda = 0)}} \en E_{_{(\lambda = 0)}} =
-          \set{(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 0), (0,\frac{1}{\sqrt{5}}, -\frac{2}{\sqrt{5}})}
+          \begin{array}{c}
+            (A - \blue{\lambda}I)v_{_{(\lambda = 0)}} = 0
+            \sii
+            v_{_{(\lambda = 0)}} \en \set{(1, -1, 0), (0,1, -2)} \\
+            \flecha{normalizando}
+            v_{_{(\lambda = 0)}} \en E_{_{(\lambda = 0)}} =
+            \set{(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 0), (0,\frac{1}{\sqrt{5}}, -\frac{2}{\sqrt{5}})}
+          \end{array}
         $$
         Como estoy en $\reales^3$ no hay muchas opciones para el vector restante, tiene que ser ortogonal a esos dos. Si no ves a ojo
         que por ejemplo el vector (2,2,1) funciona podés plantear:
