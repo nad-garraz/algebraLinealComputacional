@@ -1,3 +1,102 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea
+  $$
+    A =
+    \matriz{cc}{
+      2 & 14 \\
+      8 & -19 \\
+      20 & -10
+    }
+  $$
+  Probar que para todo $v \en \reales^2$ se tiene $\norma{Av}_2 \geq 15 \norma{v}_2$.
 \end{enunciado}
+
+\textit{Let's calculate los singular values:}
+$$
+  \purple{H} =
+  A^* \cdot A =
+  \matriz{ccc}{
+    2 & 8 & 20 \\
+    14 & -19 & -10
+  }
+  \cdot
+  \matriz{cc}{
+    2 & 14 \\
+    8 & -19 \\
+    20 & -10
+  }
+  =
+  \matriz{cc}{
+    480 & -296\\
+    -296  &657
+  }
+$$
+\parrafoDestacado{
+  \textit{¿Por qué esos números feos?}
+}
+
+Calculo \textit{autovalores} de $\purple{H}$:
+$$
+  \det(H - \lambda I) = 0
+  \sii
+  \llave{l}{
+    \lambda_1 \approx 259.55\\
+    \lambda_2 \approx 877.45
+  }
+$$
+Los valores singulares sería:
+$$
+  \llave{l}{
+    \sigma_1  = \sqrt{\lambda_1} \approx 29.62 \\
+    \sigma_2  = \sqrt{\lambda_2} \approx 16.11
+  }
+$$
+Para todo $v \en \reales^2$ con $\norma{v}_2 = 1$ se va a cumplir que:
+$$
+  \sigma_2 \leq \norma{Av}_2 \leq \sigma_1
+  \equivalente
+  16.11 \leq \norma{Av}_2 \leq 29.62
+  \sii
+  \cajaResultado{
+    15 \leq \norma{Av}_2 \leq 30
+  }
+  \quad \paratodo v \en \reales^2,\, \norma{v}_2 = 1
+$$
+
+$$
+  \begin{tikzpicture}[scale = 1.3, every pin/.style={font=\tiny, fill=white, draw= black}, every node/.style = {font=\footnotesize}]
+    \begin{axis}[
+            xmin=-15,
+            xmax=15,
+        axis equal,
+        xlabel={$x_1$},
+        ylabel={$x_2$},
+        title={Scatter para 200 $\blue{\bm{x}} / \norma{\blue{\bm{x}}}_2 = 1$ y para 200 $\purple{Ax}$},
+        legend style={
+            cells={anchor=center},
+            font =\tiny,
+            anchor=center,
+            at = {(0.5,-0.25)},
+            legend columns=2
+          },
+        legend entries =
+          {
+            $\set{\blue{x}: x \en \reales^2, \norma{x}_2 = 1}$,
+            $\set{\purple{Ax}: x \en \reales^2, \norma{x}_2 = 1}$,
+          },
+        cycle list name=color list,
+        every axis plot/.append style={only marks, mark size=2pt},
+        xminorticks=true,
+        yminorticks=true,
+        grid=both,
+      ]
+      \addplot3[mark size = 0.5pt, Cerulean] table {./ejercicios-5/dataFiles/9-ej-data/circulo.data};
+      \addplot3[mark size = 0.5pt, purple] table {./ejercicios-5/dataFiles/9-ej-data/matrizDotCirculo.data};
+
+    \end{axis}
+  \end{tikzpicture}
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

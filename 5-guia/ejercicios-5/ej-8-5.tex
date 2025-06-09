@@ -1,3 +1,173 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Determinar una descomposición en valores singulares de las siguientes matrices:
+  \begin{enumerate}[label=(\alph*)]
+    \begin{multicols}{2}
+      \item
+      $\matriz{ccc}{
+          1 & -2 & 2 \\
+          -1 & 2 & -2
+        }$
+
+      \item
+      $\matriz{cc}{
+          7 & 1 \\
+          0 & 0  \\
+          5 & 5
+        }
+      $
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        Si
+        $$
+          A \igual{$\llamada1$}
+          \matriz{ccc}{
+            1 & -2 & 2 \\
+            -1 & 2 & -2
+          }
+        $$
+        llamo
+        $$
+          \hat{A} =
+          \matriz{cc}{
+            1 & -1  \\
+            -2 & 2 \\
+            2 & -2
+          }
+        $$
+        que no es otra cosa la tonta $A^t$  de antes con un sombrero distinto, sigue teniendo todos los horrendos estereotipos
+        de antes, \textit{¡Pero el sombrero es nuevo!}
+
+        Voy a calcular la \textit{descompsición en valores singulares} de $\hat{A} = \hat{U} \hat{\Sigma} \hat{V}^t$ porque así me quedo con la versión de $2 \times 2$ para hacer menos cuentas.
+        Una vez calculada esa la \textit{convierto} la descomposición a la de $A$.
+
+        Calculo autovectores de
+        $$
+          \hat{H} = \hat{A}^t \hat{A} =
+          \matriz{cc}{
+            9 & -9 \\
+            -9 & 9
+          }
+          \flecha{calculo autovalores}
+          |H - \lambda I| = 0
+          \sii
+          \lambda \en \set{0,18}
+          \text{ con }
+          \llave{rcl}{
+            E_{\lambda=18} & = & \ket{(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}})}\\
+            E_{\lambda=0} & = & \ket{(\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}})}
+          }
+        $$
+        Ya tengo:
+        $$
+          \hat{V} =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            1 & 1 \\
+            -1 & 1
+          }
+          \ytext
+          \hat{\Sigma} =
+          \matriz{cc}{
+            3\sqrt{2} & 0 \\
+            0 & 0 \\
+            0 & 0 \\
+          }.
+        $$
+        Necesito ahora encontrar $\hat{U}$, necesito una base ortonormal de $\reales^3$.
+        Como solo tengo un $\sigma \distinto 0$ voy a poder encontrar 1 de los 3 con la fórmula:
+        $$
+          \hat{u}_1 =
+          \frac{\hat{A}\hat{v}_1}{\hat{\sigma}_1}
+          =\frac{1}{3}
+          \matriz{c}{
+            1\\
+            -2\\
+            2
+          },
+        $$
+        el resto de los vectores puedo hacer \textit{Gram Schmidt} o lo que sea para encontrar
+        2 vectores más:
+        $$
+          (x,y,z) \cdot
+          \frac{1}{3}
+          \matriz{c}{
+            1\\
+            -2\\
+            2
+          } =  0
+          \sii
+          x -2y + 2z = 0 \sii (x, y, z)
+          \en
+          \ket{
+            \frac{1}{\sqrt{5}}
+            \matriz{c}{
+              2\\
+              1\\
+              0
+            },
+            \frac{1}{3\sqrt{5}}
+            \matriz{c}{
+              2\\
+              -4\\
+              -5
+            }
+          }.
+        $$
+        Listo tengo:
+        $$
+          \hat{U} =
+          \matriz{ccc}{
+            \frac{1}{3} & \frac{2}{\sqrt{5}} & \frac{2}{3\sqrt{5}} \\
+            -\frac{2}{3} & \frac{1}{\sqrt{5}} &-\frac{4}{3\sqrt{5}} \\
+            \frac{2}{3} &  0& -\frac{5}{3\sqrt{5}}
+          }
+        $$
+        Listo:
+        $$
+          \hat{A} = \hat{U} \hat{\Sigma} \hat{V}^t
+        $$
+        Pero yo estoy buscando la \textit{descomposición en valores singulares} de $A$ transpongo:
+        $$
+          \llamada1 A = \hat{A}^t = \hat{V} \hat{\Sigma}^t \hat{U}^t =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            1 & 1 \\
+            -1 & 1
+          }
+          \matriz{ccc}{
+            3\sqrt{2} & 0 & 0 \\
+            0 & 0 & 0
+          }
+          \matriz{ccc}{
+            \frac{1}{3} & -\frac{2}{3} &  \frac{2}{3}  \\
+            \frac{2}{\sqrt{5}}  & \frac{1}{\sqrt{5}} & 0\\
+            \frac{2}{3\sqrt{5}} &  -\frac{4}{3\sqrt{5}}& -\frac{5}{3\sqrt{5}}
+          }
+        $$
+        Quedó entonces sin el \textit{sombrero}, la SVD de $A$:
+        $$
+          \cajaResultado{
+            A = U \Sigma V^t =
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              1 & 1 \\
+              -1 & 1
+            }
+            \matriz{ccc}{
+              3\sqrt{2} & 0 & 0 \\
+              0 & 0 & 0
+            }
+            \matriz{ccc}{
+              \frac{1}{3} & -\frac{2}{3} &  \frac{2}{3}  \\
+              \frac{2}{\sqrt{5}}  & \frac{1}{\sqrt{5}} & 0\\
+              \frac{2}{3\sqrt{5}} &  -\frac{4}{3\sqrt{5}}& -\frac{5}{3\sqrt{5}}
+            }
+          }
+        $$
+
+  \item \hacer
+\end{enumerate}
