@@ -1,3 +1,65 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $A \en \reales^{m \times n}$, de rango $r$, con valores singulares no nulos: $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r$
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que $A$ puede escribirse como una suma de $r$ matrices de rango 1.
+
+    \item Probar que dado $s < r$ se pueden sumar $s$ matrices de rango 1, matrices adecuadamente elegidas, de manera de obtener
+          una matriz $A_s$ que satisface:
+          $$
+            \norma{A - A_s}_2 = \sigma_{s+1}
+          $$
+          \textit{Nota:} $A_s$ resulta ser la mejor aproximación a $A$ (en norma 2), entre todas las matrices de rango $s$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Para el caso en que la matriz $A$ tiene más filas que columnas, es decir que $m > n$
+        $$
+          A = \ua{U}{m\times m} \ \oa{\Sigma}{m \times n} \ \ua{V^t}{n \times n}
+        $$
+        Donde la $\Sigma$ tiene a los $r$ \textit{valores sigulares} no nulos ordenados de menor a mayor.
+        Esa matriz puede escribirse como una suma:
+        $$
+          \Sigma = \sumatoria{i = 1}{\magenta{r}} \hat{\Sigma}_i,
+        $$
+        donde las $\hat{\Sigma}_i$ son las matrices de $m \times n$ que tienen solo al \textit{valor singular} $\sigma_i$
+        en la posición $ii$ y ceros en los demás lugares. La suma es hasta $r$ dado que el resto de los $n - r$ \textit{demás valores sigulares son nulos}
+        son nulos, por lo tanto las $\hat{\Sigma}_i$ con $i > r$ son matrices de todos elementos cero.
+        $$
+          A = \sumatoria{i = 1}{\magenta{r}} U \hat{\Sigma}_i V^t,
+        $$
+        donde queda que $A$ se puede expresar como una suma de $r$ matrices singulares de $\rango(\Sigma_i) = 1$, dado que solo tienen una
+        columna no nula.
+
+  \item Dado $s < r$ puedo escribir así la suma del ítem anterior:
+        $$
+          A =
+          \ub{
+            \sumatoria{i = 1}{\blue{s}} U \hat{\Sigma}_i V^t
+          }{
+            A_{\blue{s}}
+          }
+          + \sumatoria{i = \blue{s + 1}}{\magenta{r}} U \hat{\Sigma}_i V^t
+          \sii
+          A - A_{\blue{s}} =
+          \sumatoria{i = \blue{s + 1}}{\magenta{r}} U \hat{\Sigma}_i V^t
+        $$
+        Ahora tomo norma a $A - A_{\blue{s}}$:
+        $$
+          \norma{A - A_{\blue{s}}}_2 =
+          \norma{\sumatoria{i = \blue{s + 1}}{\magenta{r}} U \hat{\Sigma}_i V^t}_2 = \sigma_{\blue{s+1}}.
+        $$
+        Dado que la norma 2 de una matriz, es el mayor de los \textit{valores singulares}.
+
+        \parrafoDestacado[\faIcon{atom}]
+        {
+          Como ya se vio en ejercicios pasados, una matriz $A$ funciona como una transformación que \textit{escala}
+          a un vector $v$ al hacer $Av$. Esa escala es proporcional a los \textit{valores sigulares}.
+          La matriz $A_{\blue{s}}$, es entonces similar o cercana a $A$, ya que tiene las \textit{mismas} $s$ mayores
+          componentes de mayor escalamiento.
+        }
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
