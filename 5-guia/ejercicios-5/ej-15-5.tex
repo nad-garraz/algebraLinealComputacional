@@ -1,3 +1,169 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea
+  $$
+    A =
+    \matriz{ccc}{
+      1 & 4 & 0 \\
+      -4 & -1 & 0 \\
+      0 & 0 & 2
+    }
+  $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Hallar la matriz de rango 2 que mejor aproxima a $A$ en norma 2.
+    \item Hallar la matriz de rango 1 que mejor aproxima a $A$ en norma 2.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Tengo que calcular la \textit{descomposición en valores singulares}:
+        $$
+          H = A^tA
+          =
+          \matriz{ccc}{
+            17 &  8 &  0 \\
+            8 & 17 & 0 \\
+            0 & 0 & 4
+          }
+        $$
+        Busco autovalores de $H$:
+        $$
+          |H - \lambda I| = 0
+          \sii
+          \lambda \en \set{4, 9, 25}
+          \text{ y autovectores }
+          Hv_{\lambda} = \lambda v_{\lambda}
+          \sii
+          \llave{l}{
+            E_{\lambda = 25} = \ket{\frac{1}{\sqrt{2}}(1,1,0)}\\
+            E_{\lambda = 9} = \ket{\frac{1}{\sqrt{2}}(1,-1,0)}\\
+            E_{\lambda = 4} = \ket{(0,0,1)}
+          }
+        $$
+        Los autovalores de una matriz simétrica resultaron todos distintos, por lo tanto los autovectores resultaron ortogonales.
+        Por lo tanto tengo a la matriz $V$ y $\Sigma$:
+        $$
+          V =
+          \frac{1}{\sqrt{2}}
+          \matriz{ccc}{
+            1 & 1 & 0 \\
+            1 & -1 & 0 \\
+            0 & 0 & \sqrt{2}
+          }
+          \ytext
+          \Sigma =
+          \matriz{ccc}{
+            5 & 0 & 0 \\
+            0 & 3 & 0 \\
+            0 & 0 & 2
+          }
+        $$
+        Ahora necesito la $U$, que la consigo con una BON:
+        $$
+          \textstyle
+          \set{u_1, u_2, u_3} =
+          \set{\frac{Av_1}{\sigma_1},\frac{Av_2}{\sigma_2},\frac{Av_3}{\sigma_3}} =
+          \set{
+            \frac{1}{\sqrt{2}}(1, -1, 0),
+            \frac{1}{\sqrt{2}}(-1, -1, 0),
+            (0, 0, 1)
+          }
+          \entonces
+          U =
+          \frac{1}{\sqrt{2}}
+          \matriz{ccc}{
+            1 & 1 & 0 \\
+            1 & -1 & 0 \\
+            0 & 0 & \sqrt{2}
+          }
+        $$
+        Por lo tanto la descomposición queda:
+        $$
+          \cajaResultado{
+            A =
+            U \Sigma V^t=
+            \frac{1}{\sqrt{2}}
+            \matriz{ccc}{
+              1 & -1 & 0 \\
+              -1 & -1 & 0 \\
+              0 & 0 & \sqrt{2}
+            }
+            \matriz{ccc}{
+              5 & 0 & 0 \\
+              0 & 3 & 0 \\
+              0 & 0 & 2
+            }
+            \frac{1}{\sqrt{2}}
+            \matriz{ccc}{
+              1 & 1 & 0 \\
+              1 & -1 & 0 \\
+              0 & 0 & \sqrt{2}
+            }
+          }
+        $$
+        La matriz de rango 2 que mejor aproxima a $A$:
+        $$
+          \cajaResultado{
+            B =
+            U \Sigma V^t=
+            \frac{1}{\sqrt{2}}
+            \matriz{ccc}{
+              1 & -1 & 0 \\
+              -1 & -1 & 0 \\
+              0 & 0 & \sqrt{2}
+            }
+            \matriz{ccc}{
+              5 & 0 & 0 \\
+              0 & 3 & 0 \\
+              0 & 0 & 0
+            }
+            \frac{1}{\sqrt{2}}
+            \matriz{ccc}{
+              1 & 1 & 0 \\
+              1 & -1 & 0 \\
+              0 & 0 & \sqrt{2}
+            }
+            =
+            \matriz{ccc}{
+              1 & 4 & 0 \\
+              -4 & -1 & 0 \\
+              0 & 0 & 0
+            }
+          }
+        $$
+
+  \item
+        La de rango 1:
+        $$
+          \cajaResultado{
+            B =
+            U \Sigma V^t=
+            \frac{1}{\sqrt{2}}
+            \matriz{ccc}{
+              1 & -1 & 0 \\
+              -1 & -1 & 0 \\
+              0 & 0 & \sqrt{2}
+            }
+            \matriz{ccc}{
+              5 & 0 & 0 \\
+              0 & 0 & 0 \\
+              0 & 0 & 0
+            }
+            \frac{1}{\sqrt{2}}
+            \matriz{ccc}{
+              1 & 1 & 0 \\
+              1 & -1 & 0 \\
+              0 & 0 & \sqrt{2}
+            }
+            =
+            \matriz{ccc}{
+              5 & 5 & 0 \\
+              -5 & -5 & 0 \\
+              0 & 0 & 0
+            }
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
