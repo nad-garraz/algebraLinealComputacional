@@ -1,3 +1,181 @@
 \begin{enunciado}{\ejercicio}
-  \hacer
+  Dada la matriz
+  $$
+    A =
+    \matriz{ccc}{
+      13 & 8 & 8 \\
+      -1 & 7 & -2 \\
+      -1 & -2 & 7
+    }
+  $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Hallar una descomposición de Schur $A = UTU^*$, con $U$ unitaria y $T$ triangular superior
+          con los autovalores de la matriz $A$ en la diagonal.
+
+    \item Descomponer a la matriz $T$ hallada en el ítem anterior como suma de una matriz diagonal $D$ y una matriz triangular
+          superior $S$ con ceros en la diagonal. Probar que $S^j = 0$ para todo $j \geq 2$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Busco \textit{autovalores} y \textit{autovectores} de $A$:
+        $$
+          |A - \lambda I| = 0
+          \sii
+          \lambda = 9
+          \quad \text{ con } \quad
+          E_{\lambda = 9} = \ket{\textstyle\frac{1}{\sqrt{5}}(-2,1,0), \frac{1}{\sqrt{5}}(-2, 0, 1)}
+        $$
+        Solo salieron 2 autovectores del único autovalor $\lambda = 9$. Esto nos dice que la matriz no es diagonalizable. Pero
+        nadie nos pidió que diagonalicemos, así que ahora para encontrar la \textit{descomposición de Schur}
+        expando a una \textit{base ortonormal} de $\reales^3$:
+        $$
+          \text{BON} =
+          \set{
+            \textstyle \frac{1}{\sqrt{5}}(-2,1,0), \frac{1}{5}(-2, -4, 5), \blue{\frac{1}{3}(1, 2, 2)}
+          }
+        $$
+        Donde usé Gram Schmidt para calcular el autovector $(-\frac{2}{5}, -\frac{4}{5}, 1)$ y también para calcular
+        un \blue{vector extra para formar todo $\reales^3$}.
+
+        Entonces tengo ya la base para encontrar la matriz unitaria $U_1$:
+        $$
+          U_1 =
+          \matriz{ccc}{
+            -\frac{2}{\sqrt{5}} & -\frac{2}{3\sqrt{5}} & \frac{1}{3} \\
+            \frac{1}{\sqrt{5}} & -\frac{4}{3\sqrt{5}} & \frac{2}{3} \\
+            0 & \frac{5}{3\sqrt{5}} & \frac{2}{3}
+          }
+        $$
+        Ahora calculo:
+        $$
+          \begin{array}{rcl}
+            U_1^t A U_1
+                                 & =                    &
+            \matriz{ccc}{
+            -\frac{2}{\sqrt{5}}  & \frac{1}{\sqrt{5}}   & 0                    \\
+            -\frac{2}{3\sqrt{5}} & -\frac{4}{3\sqrt{5}} & \frac{5}{3\sqrt{5}}  \\
+            \frac{1}{3}          & \frac{2}{3}          & \frac{2}{3}
+            }
+            \matriz{ccc}{
+            13                   & 8                    & 8                    \\
+            -1                   & 7                    & -2                   \\
+            -1                   & -2                   & 7
+            }
+            \matriz{ccc}{
+            -\frac{2}{\sqrt{5}}  & -\frac{2}{3\sqrt{5}} & \frac{1}{3}          \\
+            \frac{1}{\sqrt{5}}   & -\frac{4}{3\sqrt{5}} & \frac{2}{3}          \\
+            0                    & \frac{5}{3\sqrt{5}}  & \frac{2}{3}
+            }
+            \\
+                                 & =                    &
+            \frac{1}{3\sqrt{5}}
+            \matriz{ccc}{
+            -6                   & 3                    & 0                    \\
+            -2                   & -4                   & 5                    \\
+            \sqrt{5}             & 2\sqrt{5}            & 2\sqrt{5}
+            }
+            \matriz{ccc}{
+            13                   & 8                    & 8                    \\
+            -1                   & 7                    & -2                   \\
+            -1                   & -2                   & 7
+            }
+            \frac{1}{3\sqrt{5}}
+            \matriz{ccc}{
+            -6                   & -2                   & \sqrt{5}             \\
+            3                    & -4                   & 2\sqrt{5}            \\
+            0                    & 5                    & 2\sqrt{5}
+            }
+            =
+            \ub{
+              \matriz{ccc}{
+            9                    & 0                    & \frac{27}{5}\sqrt{5} \\
+            0                    & 9                    & -\frac{9}{5}\sqrt{5} \\
+            0                    & 0                    & 9
+              }
+            } { T }                                                            \\
+          \end{array}
+        $$
+        La matriz resultante quedó triangular superior.
+        \parrafoDestacado{
+          Las \ul{dos primeras} columnas de la matriz $T$ están regaladas, porque son autovectores, entonces
+          $U^t A v_i = \lambda_i e_i$. La tercera columna es parte de la arquitectura que sostiene al infierno.
+        }
+        Por lo tanto se tiene que:
+        $$
+          U_1^t A U_1 = T
+          \sii
+          A = U_1 T U_1^t
+        $$
+        $$
+          \cajaResultado{
+            A =
+            \frac{1}{3\sqrt{5}}
+            \matriz{ccc}{
+              -6                   & -2                   & \sqrt{5}             \\
+              3                    & -4                   & 2\sqrt{5}            \\
+              0                    & 5                    & 2\sqrt{5}
+            }
+            \matriz{ccc}{
+              9                    & 0                    & \frac{27}{5}\sqrt{5} \\
+              0                    & 9                    & -\frac{9}{5}\sqrt{5} \\
+              0                    & 0                    & 9
+            }
+            \frac{1}{3\sqrt{5}}
+            \matriz{ccc}{
+              -6                   & 3                    & 0                    \\
+              -2                   & -4                   & 5                    \\
+              \sqrt{5}             & 2\sqrt{5}            & 2\sqrt{5}
+            }
+          }
+        $$
+
+  \item Descompongo:
+        $$
+          T =
+          \matriz{ccc}{
+            9                    & 0                    & \frac{27}{5}\sqrt{5} \\
+            0                    & 9                    & -\frac{9}{5}\sqrt{5} \\
+            0                    & 0                    & 9
+          }
+          =
+          \matriz{ccc}{
+            9                    & 0                    & 0 \\
+            0                    & 9                    & 0 \\
+            0                    & 0                    & 9
+          }
+          +
+          \ub{
+            \matriz{ccc}{
+              0                    & 0                    & \frac{27}{5}\sqrt{5} \\
+              0                    & 0                    & -\frac{9}{5}\sqrt{5} \\
+              0                    & 0                    & 0
+            }
+          }{S}
+        $$
+        Ahora tengo que ver que $S^j = 0 \paratodo j \geq 2$:
+        $$
+          S^2 =
+          \matriz{ccc}{
+            0                    & 0                    & \frac{27}{5}\sqrt{5} \\
+            0                    & 0                    & -\frac{9}{5}\sqrt{5} \\
+            0                    & 0                    & 0
+          }
+          \matriz{ccc}{
+            0                    & 0                    & \frac{27}{5}\sqrt{5} \\
+            0                    & 0                    & -\frac{9}{5}\sqrt{5} \\
+            0                    & 0                    & 0
+          }
+          =
+          \matriz{ccc}{
+            0                    & 0                    & 0 \\
+            0                    & 0                    & 0 \\
+            0                    & 0                    & 0
+          }
+        $$
+        Que ejercicio raro, me deja pensando ¿Para que \textit{verga} hice esto?
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
