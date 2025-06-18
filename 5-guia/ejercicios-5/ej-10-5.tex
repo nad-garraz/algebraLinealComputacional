@@ -1,3 +1,42 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Mostrar que $A \en \complejos^{n \times n}$ tiene un valor singular nulo si y solo si tiene un autovalor nulo.
 \end{enunciado}
+\begin{itemize}
+  \item[$(\red{\Leftarrow})$]
+        Si $A$ tiene un autovalor $\lambda_i = 0$ tiene $\nucleo(A) \distinto 0$ y existe $Av = 0$ para algún $v$.
+        Entonces $A^*A$:
+        $$
+          A^* A v = 0
+        $$
+        Por lo tanto $A^*A$ tiene un autovalor nulo y como $\sigma_i^2 = \lambda_i$ hay un valor singular nulo.
+
+  \item[$(\red{\Rightarrow})$]
+        Si $A$ es cuadrada, su descomposición \textit{en valores singulares} es el producto de matrices cuadradas:
+        $$
+          A = U \Sigma V^*
+          \flecha{calculo}[determinante]
+          |A| =
+          |U \Sigma V^*| =
+          \ua{|U|}{\distinto 0} \cdot \ua{|\Sigma|}{= 0} \cdot \ua{|V^*|}{\distinto 0} = 0
+        $$
+        Porque sigma tiene la forma:
+        $$
+          [\Sigma]_{ij} =
+          \llave{rcl}{
+            \sigma_i & si & i = j\\
+            0 & si & i \distinto j
+          }
+        $$
+        Y si uno de los $\sigma_i = 0$, bueh, $\det(A) = 0$. Por lo tanto
+        $$
+          \nucleo(A) \distinto \set{0}
+        $$
+        Entonces existe un $v$ tal que:
+        $$
+          Av = 0 \sii Av = \ua{0}{\lambda_i} \cdot v
+        $$
+\end{itemize}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
