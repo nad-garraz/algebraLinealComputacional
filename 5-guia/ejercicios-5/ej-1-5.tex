@@ -14,6 +14,8 @@
 
     \item Descomponer a la matriz $T$ hallada en el ítem anterior como suma de una matriz diagonal $D$ y una matriz triangular
           superior $S$ con ceros en la diagonal. Probar que $S^j = 0$ para todo $j \geq 2$.
+
+    \item Usar los ítems anteriores para calcular $A^{10}$
   \end{enumerate}
 \end{enunciado}
 
@@ -139,11 +141,13 @@
             0                    & 0                    & 9
           }
           =
-          \matriz{ccc}{
-            9                    & 0                    & 0 \\
-            0                    & 9                    & 0 \\
-            0                    & 0                    & 9
-          }
+          \ub{
+            \matriz{ccc}{
+              9                    & 0                    & 0 \\
+              0                    & 9                    & 0 \\
+              0                    & 0                    & 9
+            }
+          }{D}
           +
           \ub{
             \matriz{ccc}{
@@ -173,7 +177,42 @@
             0                    & 0                    & 0
           }
         $$
-        Que ejercicio raro, me deja pensando en ¿Para que \textit{gaver} hice esto?
+
+  \item Hay que calcular $A^{10}$:
+        $$
+          A =
+          U T U^t =
+          U (D + S) U^t
+          \Sii{\red{!}}
+          A^{10} =
+          U (D + S)^{10} U^t
+        $$
+        Y ahora esa horrible expresión:
+        $$
+          \textstyle
+          (D + S)^{10} =
+          \sumatoria{k = 0}{10} \binom{10}{k} (D^kS^{10-k}) \igual{\red{!}}
+          \binom{10}{10} D^{10} +
+          \binom{10}{9} D^9S +
+          \ub{
+            \binom{10}{8} D^8S^2 + \cdots
+            \binom{10}{1} DS^9
+            \binom{10}{0} S^{10}
+          }{0}
+          \igual{\red{!}}
+          9\cdot(D + 10 S)
+        $$
+        Donde usé que justo en este ejercicio $D$ es una matriz escalar, es decir: $kI$ entonces conmuta en el producto, porque sino
+        \textit{esto no funciona ni en pedo}.
+
+        Por lo tanto:
+        $$
+          \cajaResultado{
+            A^{10} =
+            U\big( 9\cdot (D + 10S)\big) U^t =
+            9U (D + 10S) U^t
+          }
+        $$
 \end{enumerate}
 
 \begin{aportes}
