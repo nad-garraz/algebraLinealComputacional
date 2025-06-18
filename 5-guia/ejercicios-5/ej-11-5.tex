@@ -3,7 +3,50 @@
   $\matriz{c}{
       I_n\\
       A
-    }$ son $\sqrt{1 + \sigma_i^2}$ donde $I_n$ es la matriz identidad de $\complejos^{n \times n}$ y $\sigma_i$ es
+    }$
+  son $\sqrt{1 + \sigma_i^2}$ donde $I_n$ es la matriz identidad de $\complejos^{n \times n}$ y $\sigma_i$ es
   el $i$-ésimo valor singular de $A$.
 \end{enunciado}
-\hacer
+Calculo:
+$$
+  \blue{G} =
+  (I_n\ A^*) \cdot
+  \matriz{c}{
+    I_n\\
+    A
+  }
+  =
+  I_n + \ub{A^* A}{\en \complejos^{n \times n}} = I_n  + \purple{H}
+$$
+Calculo los autovalores de $I_n + \purple{H}$:
+$$
+  |I_n + \purple{H} - \lambda \cdot I_n| =
+  |\purple{H} - \ub{(\lambda - 1)}{\mu}\cdot I_n| =
+  |\purple{H} - \mu \cdot I_n|  = 0
+  \sii
+  \mu \text{ autovalores de } \purple{H} = A^*A
+$$
+Ahora identificando bien cada cosa:
+
+Si $\mu_i$ es un autovalor de $\purple{H}$, entonces los valores singulares de $A$:
+$$
+  \sigma_i = \sqrt{\mu_i} = \sqrt{\lambda_i - 1}\ \llamada1
+$$
+es un valor singular de $A$.
+
+Y si tengo que $\lambda_i$ es un autovalor de $\blue{G}$, entonces los valores singulares de
+$
+  \matriz{c}{
+    I_n\\
+    A
+  }
+$:
+$$
+  \cajaResultado{
+    \blue{\varsigma_i} = \sqrt{\lambda_i} \igual{$\llamada1$} \sqrt{1 + \sigma_i^2}
+  }
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
