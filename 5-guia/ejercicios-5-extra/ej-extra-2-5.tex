@@ -1,0 +1,155 @@
+\begin{enunciado}{\ejExtra} {\tiny\violet{[segundo parcial 8/7/2023]}} Sea $A \en \reales^{3 \times 2}$ dada por
+  $$
+    A =
+    \matriz{cc}{
+      1 & 0 \\
+      -2 & 1 \\
+      0 & 1
+    }
+  $$
+  \begin{enumerate}[label=(\alph*)]
+    \item Encontrar la descomposición SVD de la matriz $A$.
+    \item Construir una matriz $B$ de dimensión apropiada que satisfaga a la vez: $B^tB = A^tA$ y
+          $\imagen(B) = \ket{(1,1,0,0), (1,1,1,1)}$.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item La descomposiciónserá algo como:
+        $$
+          A = \ua{U}{\scriptscriptstyle \en \reales^{3 \times 3}} \
+          \oa{\Sigma}{\scriptscriptstyle \en \reales^{3 \times 2}} \
+          \ua{V^t}{\scriptscriptstyle \en \reales^{2 \times 2}}
+        $$
+        Primero busco los valores singulares $\sigma_i$ para formarme $\Sigma$:
+        $$
+          |A^tA - \lambda I_n| = 0
+          \sii
+          \deter{cc}{
+            5 - \lambda & -2         \\
+            -2          & 2 -\lambda
+          }
+          = 0
+          \sii
+          \llave{rcl}{
+            \lambda_1 & = & 6 \entonces \sigma_1 = \sqrt{6} \\
+            \lambda_2 & = & 1 \entonces \sigma_2 = 1
+          }
+        $$
+        $$
+          \textstyle
+          E_{\lambda = 6} = \ket{\frac{1}{\sqrt{5}}(-2,1)}
+          \ytext
+          E_{\lambda = 1} = \ket{\frac{1}{\sqrt{5}}(1,2)}
+        $$
+        Listo ya tengo $\Sigma$ y $V$ los autovectores ortonormalizados de $A^tA$ me forman las columnas de $V$:
+        $$
+          \Sigma =
+          \matriz{cc}{
+            \sqrt{6} & 0 \\
+            0 & 1 \\
+            0 & 0
+          }
+          \ytext
+          V =
+          \frac{1}{\sqrt{5}}
+          \matriz{cc}{
+            -2 & 1 \\
+            1 & 2
+          }
+        $$
+        Ahora falta encontrar $U$ solo voy a poder encontrar 2, luego completo con un vector perpendicular a ambos:
+        $$
+          A v_i =
+          U \Sigma V^t v_i =
+          U \Sigma e_i =
+          U \sigma_i e_i =
+          \sigma_i u_i
+          \entonces
+          BON_U = \set{\frac{1}{\sqrt{30}}(-2,5,1), \frac{1}{\sqrt{5}}(1, 0, 2), \frac{1}{\sqrt{6}}(2,1,-1)}
+        $$
+        La descomposición queda como:
+        $$
+          A =
+          \ub{
+            \matriz{ccc}{
+              -\frac{2}{\sqrt{30}} & \frac{1}{\sqrt{5}}    &\frac{2}{\sqrt{6}}  \\
+              \frac{5}{\sqrt{30}} &  0   &  \frac{1}{\sqrt{6}}  \\
+              \frac{1}{\sqrt{30}} &  \frac{2}{\sqrt{5}}   &  -\frac{1}{\sqrt{6}}
+            }
+          }{
+            U
+          }
+          \ub{
+            \matriz{cc}{
+              \sqrt{6} & 0 \\
+              0 & 1 \\
+              0 & 0
+            }
+          }{
+            \Sigma
+          }
+          \ub{
+            \frac{1}{\sqrt{5}}
+            \matriz{cc}{
+              -2 & 1 \\
+              1 & 2
+            }
+          }{
+            V^t
+          }
+        $$
+
+  \item
+        Tiro data para pensar y armar la matriz:
+        \begin{itemize}
+          \item $\imagen(B) = \ket{(1,1,0,0), (1,1,1,1)}$ lo voy a usar para las dos primeras columnas de $U$.
+          \item $B$ manda cosas de $\reales^2 \to \reales^4$, como la $\dim(\imagen(B)) = 2$ entonces $\dim(\nucleo(B)) = 0$,
+                esto implica que ninguna columna de $V$, $v_i \en \nucleo(B)$
+          \item $B^tB = A^tA$ la matriz $B \en \reales^{4 \times 2}$ y además tienen los mismos valores singulares que $A$.
+        \end{itemize}
+        $$
+          B =
+          \matriz{cccc}{
+            \frac{1}{\sqrt{2}} & \frac{1}{2} & * & * \\
+            \frac{1}{\sqrt{2}} & \frac{1}{2} & * & * \\
+            0 & \frac{1}{2} & * & * \\
+            0 & \frac{1}{2} & * & * \\
+          }
+          \matriz{cc}{
+            \sqrt{6} & 0 \\
+            0  & 1 \\
+            0  & 0 \\
+            0  & 0
+          }
+          \matriz{cc}{
+            1 & 0 \\
+            0 & 1
+          }
+        $$
+        Con eso estoy cumpliendo los requerimientos del enunciado. Falta expandir las columnas de $U$ a una base ortonormal. Sale a ojo,
+        si no se ve, entonces Gram-Schmidt:
+        $$
+          B =
+          \matriz{cccc}{
+            \frac{1}{\sqrt{2}} & \frac{1}{2} & \frac{-1}{\sqrt{2}} &0 \\
+            \frac{1}{\sqrt{2}} & \frac{1}{2} & \frac{1}{\sqrt{2}} &0 \\
+            0 & \frac{1}{2} & 0 & \frac{-1}{\sqrt{2}} \\
+            0 & \frac{1}{2} & 0 & \frac{1}{\sqrt{2}}  \\
+          }
+          \matriz{cc}{
+            \sqrt{6} & 0 \\
+            0  & 1 \\
+            0  & 0 \\
+            0  & 0
+          }
+          \matriz{cc}{
+            1 & 0 \\
+            0 & 1
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
