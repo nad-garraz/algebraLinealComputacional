@@ -1,3 +1,240 @@
 \begin{enunciado}{\ejExtra}
-    \hacer
+  {\tiny[segundo recu 5/12/2024]} Sean $A, B \en \reales^{n \times n}$.
+  \begin{enumerate}[label=(\alph*)]
+    \item
+          Probar que $A^t A = B^t B$ si y solo si existe una matriz ortogonal $U \en \reales^{n \times n}$ tal que
+          $B = UA$.
+
+    \item
+          Sea $A = QR$ la factorización $QR$ de $A$. Probar que $A$ y $R$ tienen los mismos valores singulares.
+
+    \item
+          Sea $
+            A = \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              1 & -1 \\
+              1 & 1
+            }
+            \matriz{cc}{
+              0 & 0 \\
+              0 & 7
+            }
+          $
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        \begin{itemize}
+          \item[$\red{(\Rightarrow)}$]
+                Multiplico por una $I_n = \blue{U}^* \blue{U}$ con $\blue{U}$ una matriz ortogonal. Luego acomodo y nombro a la matriz adecuada como $B$:
+                $$
+                  A^tA =
+                  A^t \blue{U}^t \blue{U} A =
+                  (\blue{U}A)^t (\blue{U} A) =
+                  B^t B
+                $$
+
+          \item[$\red{(\Leftarrow)}$]
+                Parto de $B = UA$, con $\blue{U}$ una matriz ortogonal:
+                $$
+                  B = \blue{U}A \sii B^t = (\blue{U}A)^t
+                  \entonces
+                  B^tB =
+                  (\blue{U}A)^t \blue{U}A =
+                  A^t\blue{U}^t \blue{U}A =
+                  A^t A
+                $$
+        \end{itemize}
+
+  \item Los valores singulares de una matriz $A$:
+        $$
+          \sigma_i = \sqrt{\lambda_i} \quad \text{ con $\lambda_i$ tal que }\quad |A^tA - \lambda_iI| = 0
+        $$
+        Usando el resultado del punto anterior y recordando que la $Q$ en la descomposición $QR$
+        tiene como columnas una base ortonormal, es decir que $Q$ es una matriz ortogonal, de forma tal que:
+        $$
+          Q^t Q = I_n
+          \entonces
+          A^tA =
+          (Q R)^t (Q R) \igual{\red{!}}
+          R^t R
+        $$.
+        Por lo tanto los valores singulares de $A$ y $R$ seran los mismos.
+
+  \item
+        Esto de la \textit{descomposición en valores sigulares} es mucho más sencillo cuando la matriz es cuadrada, porque hay menos cosas que contemplar.
+        Ya sé los tamaños de la matrices y no tengo que pensar que conviene hacer:
+        $$
+          C = \ua{U}{\en \reales^{2 \times 2}}\ \oa{\Sigma}{\en \reales^{2 \times 2}}\ \ua{V^t}{\en \reales^{2 \times 2}}
+        $$
+        Nos dan una $A$ que está casi en SVD. ¿Se ve?, voy a empezar a permutar para dejar bien ordenados los valores singulares:
+        {
+        \small
+        $$
+          A =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            1 & -1 \\
+            1 & 1
+          }
+          \matriz{cc}{
+            0 & 0 \\
+            0 & 7
+          }
+          =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            1 & -1 \\
+            1 & 1
+          }
+          \ub{
+            \green{
+              \matriz{cc}{
+                0 & 1 \\
+                1 & 0
+              }
+            }
+            \green{
+              \matriz{cc}{
+                0 & 1 \\
+                1 & 0
+              }
+            }
+          }{
+            I_2
+          }
+          \matriz{cc}{
+            0 & 0 \\
+            0 & 7
+          }
+          =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            -1 & 1 \\
+            1 & 1
+          }
+          \matriz{cc}{
+            0 & 7 \\
+            0 & 0
+          }
+        $$
+        }
+        Ahora permuto para mover ese 7 para la izquierda:
+        {
+        \small
+        $$
+          A =
+          \frac{1}{\sqrt{2}}
+          \matriz{cc}{
+            -1 & 1 \\
+            1 & 1
+          }
+          \matriz{cc}{
+            0 & 7 \\
+            0 & 0
+          }
+          \ub{
+            \green{
+              \matriz{cc}{
+                0 & 1 \\
+                1 & 0
+              }
+            }
+            \green{
+              \matriz{cc}{
+                0 & 1 \\
+                1 & 0
+              }
+            }
+          }{
+            I_2
+          }
+          =
+          \ub{
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              -1 & 1 \\
+              1 & 1
+            }
+          }{
+            U
+          }
+          \ub{
+            \matriz{cc}{
+              7 & 0 \\
+              0 & 0
+            }
+          }{
+            \Sigma
+          }
+          \ub{
+            \matriz{cc}{
+              0 & 1 \\
+              1 & 0
+            }
+          }{
+            V^t
+          }
+        $$
+        }
+        !Magia! ¿Y para qué me sirve eso? No sé, pero tenía ganas de hacerlo. ¡Nah, mentira! \red{Se terminó el ejercicio}. Esa última matriz
+        es la $C$ que cumple lo pedido.
+
+        Lo que viene a continuación es la forma menos \textit{hacker} de hacerlo, básicamente como lo encaré yo antes de darme cuenta
+        \red{\faIcon[regular]{sad-cry}} que esa SVD cumplía todo lo pedido.
+
+        Entendiendo como funciona la \hyperlink{teoria-5:svd}{\textit{descomposición en valores singulares} (mirá acá estos resultados \click)} sé que:
+        $$
+          \llave{rcc}{
+            \nucleo(A) & = & \ket{(0,1)}\\
+            \imagen(A)  & = & \ket{(-1,1)}\\
+            \norma{A}_2 & = & 7
+          }
+          \ytext
+          C^t
+          \ub{
+            \matriz{c}{
+              -1 \\
+              1
+            }
+          }{
+            C v\red{!!}
+          }
+          =
+          \matriz{c}{
+            0 \\
+            7\sqrt{2}
+          }
+        $$
+        Donde el \red{!!} señala que el $v$ \underline{no está en el} $\nucleo(C)$ ¡Porque sino el producto daría 0!
+        Con toda esa data se puede encontrar una matriz $C$ sin mucha rosca:
+        $$
+          C =
+          \ub{
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              -1 & 1 \\
+              1 & 1
+            }
+          }{
+            U
+          }
+          \ub{
+            \matriz{cc}{
+              7 & 0 \\
+              0 & 0
+            }
+          }{
+            \Sigma
+          }
+          \ub{
+            \matriz{cc}{
+              0 & 1 \\
+              1 & 0
+            }
+          }{
+            V^t
+          }
+        $$
+\end{enumerate}

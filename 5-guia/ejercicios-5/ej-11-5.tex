@@ -7,24 +7,34 @@
   son $\sqrt{1 + \sigma_i^2}$ donde $I_n$ es la matriz identidad de $\complejos^{n \times n}$ y $\sigma_i$ es
   el $i$-ésimo valor singular de $A$.
 \end{enunciado}
-Calculo:
+Apunto a obtener los \textit{valores singulares}, $\blue{\varsigma_i}$ de la matriz:
 $$
   \blue{G} =
-  (I_n\ A^*) \cdot
-  \matriz{c}{
-    I_n\\
-    A
+  \ub{
+    (I_n\ A^*)
+  }{
+    \en  \complejos^{n \times (n + m)}
+  }
+  \cdot
+  \ob{
+    \matriz{c}{
+      I_n\\
+      A
+    }
+  }{
+    \en \complejos^{(n + m) \times n}
   }
   =
   I_n + \ub{A^* A}{\en \complejos^{n \times n}} = I_n  + \purple{H}
 $$
-Calculo los autovalores de $I_n + \purple{H}$:
+Donde bauticé a $A^*A$ como $\purple{H}$.
+Calculo los autovalores de $\blue{G} = I_n + \purple{H}$:
 $$
   |I_n + \purple{H} - \lambda \cdot I_n| =
   |\purple{H} - \ub{(\lambda - 1)}{\mu}\cdot I_n| =
   |\purple{H} - \mu \cdot I_n|  = 0
-  \sii
-  \mu \text{ autovalores de } \purple{H} = A^*A
+  \Sii{\red{!}}
+  \mu \text{ autovalores de } \purple{H}
 $$
 Ahora identificando bien cada cosa:
 

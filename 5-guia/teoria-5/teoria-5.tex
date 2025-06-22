@@ -1,3 +1,60 @@
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
-    \item
+  \item \hypertarget{teoria-5:svd}{\textit{Descomposición en valores singulares}:}
+
+        Tengo una matriz $A \en K^{m \times n}$
+        $$
+          A = U \Sigma V^*
+        $$
+        Con $U$ y $V$ matrices unitarias, por lo tanto \ul{cuadradas, simétricas}
+        $\llaves{c}{
+            U^*U = I\\
+            V^*V = I
+          }$,
+        y $\Sigma \en K^{m \times n}$ el mismo tamaño que $A$.
+        \begin{itemize}
+          \item Para obtener $\Sigma$ calulo los valores $\sigma_i = \sqrt{\lambda_i}$ donde:
+                $$
+                  A^*A v_i = \lambda_i v_i
+                $$
+                y luego ordeno los elementos diagonales $[\Sigma]_{ii} = \sigma_i$ de mayor a menor. Completo con \textit{fila o columas de ceros},
+                hasta llegar a la dimesión correcta.
+
+          \item Para obtener la matriz $V$ pongo a los $v_i$ calculados previamente como columnas en orden correspondiente a su $\sigma_i$.
+
+          \item Para calcular $U$:
+                $$
+                  Av_i = U\Sigma V^*v_i =  U\Sigma e_i = U\sigma_i e_i = \sigma_i u_i
+                  \sii
+                  \cajaResultado{
+                    Av_i = \sigma_i u_i
+                  }
+                $$
+        \end{itemize}
+        De ese último resultado se desprende info de la matriz $A$. Como $A \en K^{m \times n}$ con $(m > n)$ tiene rango $r < n$:
+        $$
+          \nucleo(A) = \ket{v_{r+1}, \ldots, v_n}
+          \ytext
+          \imagen(A) = \ket{u_1, \ldots, u_r}
+        $$
+
+  \item \textit{Pseudo-inversa:}
+
+        Si se tiene una $A \en K^{m \times n}$
+        $$
+          A = U \Sigma V^*
+          \Entonces{pseudo}[inversa]
+          A^\dagger = V \Sigma^\dagger U^*,
+        $$
+        con la $\Sigma^\dagger$ que sería como $\Sigma^t$ invirtiendo los elementos diagonales $[\Sigma^\dagger]_{ii} = \frac{1}{\sigma_{ii}}$.
+        Propiedades de esta cosa dignas de ser mencionadas:
+        \begin{itemize}
+          \item Si bien en general, $\magenta{A A^\dagger} \distinto I_m$
+                y los mismo con $\magenta{A^\dagger A} \distinto I_n$, tenemos este simpático resultado:
+                $$
+                  \magenta{A A^\dagger} A = A
+                  \ytext
+                  \magenta{A^\dagger A} A^\dagger = A^\dagger
+                $$
+
+        \end{itemize}
 \end{enumerate}

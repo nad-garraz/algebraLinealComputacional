@@ -1,0 +1,78 @@
+\begin{enunciado}{\ejExtra}
+  {\tiny[Segundo cuatrimestre del 2023]}
+
+  Supongamos que los resultados de las elecciones presidenciales del próximo 22 de octubre dependen únicamente de los votos de las primarias del
+  13 de Agosto. Consideremos los tres candidatos más votados, denominados L, T y G.
+  Los encuestadores nos dicen que:
+  \begin{itemize}
+    \item Para los votantes de L:
+          \begin{itemize}
+            \item 80\% mantiene su voto a L
+            \item Ninguno cambiará su voto a G
+          \end{itemize}
+
+    \item Para los votantes de T:
+          \begin{itemize}
+            \item El porcentaje de gente que cambia su voto a G y el porcentaje de gente que cambia su voto a L es el mismo.
+            \item El porcentaje de gente que cambia su voto es el mismo porcentaje de gente que cambia su voto para los
+                  votantes de L.
+          \end{itemize}
+
+    \item Para los votantes de G:
+          \begin{itemize}
+            \item 40\% mantiene su voto a G
+            \item El resto se divide equitativamente entre L y T.
+          \end{itemize}
+  \end{itemize}
+  \begin{enumerate}[label=(\alph*)]
+    \item Construir la matriz de transición $A$ del proceso.
+    \item Si el 13 de Agosto la cantidad de votos para cada uno de los candidatos fue
+          \begin{itemize}
+            \item L: 30\%
+            \item T: 34\%
+            \item G: 36\%
+          \end{itemize}
+          determinar el porcentaje esperado para cada candidato en las elecciones del 22 de octubre.
+    \item Asumiendo que el proceso seguirá a largo plazo para próximas elecciones
+          (considerando como una unidad de tiempo el tiempo entre una elección y la siguiente),
+          decidir si existe un estado límite para los datos iniciales datos, y calcular, si existe, $A^{(\infinito)}$
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item  Teniendo en cuenta la interpretación de los elementos de una matriz de $Markov$ , pensando
+        que las columnas tienen que sumar 1, \hyperlink{teoria-4:markov}{mirá acá el resumen \click}:
+        $$
+          \matriz{ccc}{
+            0.8 & 0.1 & 0.3 \\
+            0.2 & 0.8 & 0.3 \\
+            0 & 0.1 & 0.4
+          }
+        $$
+
+  \item $$
+          A \cdot
+          \matriz{c}{
+            0.3\\
+            0.34\\
+            0.36
+          }
+          =
+          \matriz{c}{
+            0.403\\
+            0.4818\\
+            0.1152
+          }
+        $$
+
+  \item $A$ tiene un autovalor igual a 1 y ninguno igual a $-1$. Listo con eso sé que va a existir $A^{(\infinito)}$
+        más aún sé que las columnas de $A^{(\infinito)}$ son el autovector $v_1$, autovector asociado a $\lambda = 1$
+        $$
+          A =
+          \matriz{c|c|c}{
+            &&  \\
+            v_1 &\ldots&  v_1\\
+            &&
+          }
+        $$
+\end{enumerate}

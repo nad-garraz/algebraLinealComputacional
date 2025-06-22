@@ -1,0 +1,102 @@
+\begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
+  \item \textit{Matriz de iteraciones $M_I$:}
+
+        Busco un sistema equivalente al clásico y querido $A x= b$, porque invertir $A$ se complica:
+        $$
+          Ax = b
+          \sii
+          A = \yellow{B} + C
+          \sii
+          (\yellow{B} + C)x = b
+          \Sii{\red{!}}
+          x = \ub{-\yellow{B}^{-1}C}{M_I}x + \ub{\yellow{B}^{-1}b}{\tilde{b}}
+          \sii
+          \cajaResultado{
+            x = M_Ix + \tilde{b}
+          }\llamada1.
+        $$
+        Donde $B$ se elige porque es más fácil que invertir que $A$ \textit{sino me estaría pegando un tiro en el pie}.
+        La matriz $M_I$ es la \textit{matriz de iteraciones}, la cual se va a usar así:
+        $$
+          \begin{array}{ccl}
+            \text{\blue{espectativa}} & \to & x  = M_Ix + \tilde{b}           \\
+            \red{-}                   &     & \red{-}                         \\
+            \text{\blue{realidad}}    & \to & x_{k+1} = M_I x_k + \tilde{b}   \\ \hline
+            \text{error}              & \to & x - x_{k+1} = e_{k+1} = M_I e_k
+          \end{array}
+        $$
+        Y ese error, si le mando $M_I$ \textit{reiteradas veces}:
+        $$
+          e_{k+1} =M_I \cdot e_k =   M_I\cdot M_I e_{k-1}= \cdots = M_I^{k+1} e_0
+          \sii
+          \cajaResultado{
+          e_{k+1} = M_I^{k+1} e_0
+          }
+        $$
+        Si el error de iterar $k+1$ veces $e_{k+1} \to 0$, entonces
+        quiere decir que $M_I^{k+1} \to 0$
+        entonces la \blue{espectativa} y la \blue{realidad} no van a diferir más que lo que diferían al principio \ul{antes de iterar}:
+        \parrafoDestacado[\atencion]{
+        $$
+          \cajaResultado{
+          e_{k+1} \flecha{$k \to 0$} 0
+          \sii
+          M_i^{k+1} \flecha{$k \to 0$} 0
+          \sisolosi
+          \rho(M_I) < 1
+          }
+        $$
+        \text{Donde } \rho(M_I) = \lambda_{\text{máx}}
+        }
+
+  \item \textit{Jacobi y Gauss-Seidel}:
+        Si
+        $$
+          A = \ua{L}{
+            \text{trianguluar}\\\text{inferior}
+          } +
+          \oa{D}{
+            \text{diagonal}
+          } +
+          \ua{U}{
+            \text{triangular}\\\text{superior}
+          }
+        $$
+
+        \begin{enumerate}[label=\tiny\violet{\faIcon{pray})}]
+
+          \item \textit{Jacobi}: Tomando en este caso $\yellow{B} = D$
+                entonces, me queda la \textit{matriz de iteraciones} para resolver $\llamada1$:
+                $$
+                  \cajaResultado{
+                    \llave{rcl}{
+                      M_J & = & - D^{-1} (\ub{L + U}{C})\\
+                      C   & = & L + U
+                    }
+                  }
+                $$
+
+          \item \text{Gauss-Seidel}: Tomando en este caso $\yellow{B} = L + D$
+                entonces, me queda la \textit{matriz de iteraciones} para resolver $\llamada1$:
+                $$
+                  \cajaResultado{
+                    \llave{rcl}{
+                      M_{GS} & = & - (L + D)^{-1} \ua{U}{C} \\
+                      C & = & U
+                    }
+                  }
+                $$
+        \end{enumerate}
+
+        \begin{itemize}
+          \item Si $A$ es estrictamente diagonal dominante, es decir:
+                $$
+                  |a_{ii}| > \sumatoria{i \distinto j}{} |a_{ij}|
+                $$
+                entonces \textit{Jacobi} y \textit{Gauss-Seidel} convergen.
+
+          \item Si $A$ es tridiagonal entonces $\rho(T_{GS}) = \rho^2(T_{J})$
+
+          \item Si $A$ es simétrica (hermitiana) y definida positiva entonces \textit{Gauss-Seidel} converge.
+        \end{itemize}
+\end{enumerate}

@@ -7,4 +7,43 @@
     }$
   es singular, donde $I_n$ es la matriz identidad de $\complejos^{n \times n}$.
 \end{enunciado}
-\hacer
+
+\begin{itemize}
+  \item[$(\red{\Rightarrow})$] Sé que $\sigma$ es un \textit{valor singular} de $A$. Calculo el determinante:
+        $$
+          \det
+          \matriz{cc}{
+            A^* & -\sigma I_n \\
+            -\sigma I_n & A
+          } =
+          \det(A^*A - \sigma^2I_n).
+        $$
+        Y si
+        $\sigma > 0$ es un \text{valor singular} de $A$, entonces $\sigma^2 = \lambda$ con $\lambda$ autovalor de $A^*A$
+        $$
+          \det(A^*A - \ua{\lambda}{\sigma^2}I_n) = 0
+        $$
+        Entonces la matriz
+        $
+          \matriz{cc}{
+            A^* & -\sigma I_n \\
+            -\sigma I_n & A
+          }$ tiene determinante nulo, es decir que es singular si $\sigma$ es un valor singular de $A$.
+
+  \item[$(\red{\Leftarrow})$]
+        ¿Es lo mismo que el otro pero en reversa?
+        Sé que $\det\matriz{cc}{
+            A^* & -\sigma I_n \\
+            -\sigma I_n & A
+          } =
+          \det(\ub{A^*A - \sigma^2I_n}{\text{ecuación}\\\text{característica}})=
+          0$
+        La ecuación característica da 0 para los autovalores de $A^*A$, por lo tanto $\sqrt{\sigma^2} \igual{$\oa{}{\sigma>0}$} \sigma$ tiene que ser
+        un \textit{valor singular} de $A$.
+
+          {\huge \red{CONSULTAR}, esta demo con gusto a mal}
+\end{itemize}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
