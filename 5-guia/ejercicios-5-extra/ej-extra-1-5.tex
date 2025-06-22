@@ -235,7 +235,7 @@
         Con toda esa data se puede encontrar una matriz $C$ sin mucha rosca dado que al matriz es cuadrada y estamos
         en $\reales^{2 \times 2}$ a tener en cuenta:
         $$
-          C =
+          C_1 =
           \ub{
             \frac{1}{\sqrt{2}}
             \matriz{cc}{
@@ -257,6 +257,35 @@
             \matriz{cc}{
               0 & 1 \\
               1 & 0
+            }
+          }{
+            V^t
+          }
+        $$
+        Otra que cumpliría:
+        $$
+          C_2 =
+          \ub{
+            \frac{1}{\sqrt{2}}
+            \matriz{cc}{
+              -1 & 1 \\
+              1 & 1
+            }
+          }{
+            U
+          }
+          \ub{
+            \matriz{cc}{
+              7 & 0 \\
+              0 & 0
+            }
+          }{
+            \Sigma
+          }
+          \ub{
+            \matriz{cc}{
+              0 & 1 \\
+              \red{-}1 & 0
             }
           }{
             V^t
