@@ -193,22 +193,47 @@
           }
           \ytext
           C^t
-          \ub{
-            \matriz{c}{
-              -1 \\
-              1
-            }
-          }{
-            C v\red{!!}
+          \matriz{c}{
+            -1 \\
+            1
           }
-          =
+          \igual{$\llamada1$}
           \matriz{c}{
             0 \\
             7\sqrt{2}
           }
         $$
-        Donde el \red{!!} señala que el $v$ \underline{no está en el} $\nucleo(C)$ ¡Porque sino el producto daría 0!
-        Con toda esa data se puede encontrar una matriz $C$ sin mucha rosca:
+        \begin{itemize}
+          \item $\norma{C}_2 = \norma{A}_2 = \sigma_1 = 7$
+          \item $
+                  \dim(\nucleo(C)) = 1
+                  \entonces
+                  \sigma_2 = 0
+                $
+          \item $V$ tiene como columnas a una \textit{base ortonormal}
+                $
+                  B_V = \set{v_1, v_2}
+                $ donde $v_2 \en \nucleo(C)$
+                Quizás te estés preguntando: ¿Y $v_1$? {\tiny Me importa poco.}
+
+          \item $U$ tiene como columnas a una \textit{base ortonormal}
+                $
+                  B_U = \set{u_1, u_2}
+                $ donde $u_1 \en \imagen(C)$
+                Quizás te estés preguntando: ¿Y $u_2$? {\tiny Me importa otro poco.}
+        \end{itemize}
+        El dato de $\llamada1$ me dice que $(0, 7\sqrt{2})$ es una combinación de las columnas de $V$.
+        No sé si es la mejor forma de encararlo, pero me lo imagino así:
+        $$
+          C = U \Sigma V^t
+          \Sii{\red{!}}
+          C^t = V \Sigma U^t
+        $$
+        Por lo tanto los generadores de la $\imagen(C^t)$ son las columnas de $V$ ahora. Como $\dim(\imagen(C^t)) = 1$
+        están diciendo que $(0,7\sqrt{2}) \en \ket{(0,1)}$ lo cual es cierto!
+
+        Con toda esa data se puede encontrar una matriz $C$ sin mucha rosca dado que al matriz es cuadrada y estamos
+        en $\reales^{2 \times 2}$ a tener en cuenta:
         $$
           C =
           \ub{
