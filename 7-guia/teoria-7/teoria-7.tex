@@ -42,12 +42,20 @@
           e_{k+1} \flecha{$k \to 0$} 0
           \sii
           M_i^{k+1} \flecha{$k \to 0$} 0
-          \sisolosi
+          \Sii{\red{!!}}
           \rho(M_I) < 1
           }
         $$
-        Donde $\rho(M_I) = \lambda_{\text{máx}}$
+        Donde $\rho(M_I) = |\lambda_{\text{máx}}|$
         }
+        Para el cálculo de los autovalores de $M_I$ esta propiedad es \textit{clave}:
+        $$
+          \cajaResultado{
+          M_I = -B^{-1} C \text{ tiene autovalor } \blue{\lambda}
+          \sisolosi
+          \det(\blue{\lambda} B + C ) = 0
+          }
+        $$
 
   \item \textit{Jacobi y Gauss-Seidel}:
         Si una matriz $A \en \reales^{n \times n}$
@@ -99,4 +107,5 @@
 
           \item Si $A$ es simétrica (hermitiana) y definida positiva entonces \textit{Gauss-Seidel} converge.
         \end{itemize}
+
 \end{enumerate}
