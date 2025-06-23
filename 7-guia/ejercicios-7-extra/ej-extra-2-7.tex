@@ -1,0 +1,328 @@
+\begin{enunciado}{\ejExtra}
+  {\tiny[\violet{segundo cuatri 2023}]}
+  Dada una matriz real $A$, notamos $A = D + L + U$, donde $D$ es diagonal, $L$ triangular inferior estricta
+  y $U$ triangular superior estricta.
+  \begin{enumerate}[label=(\alph*)]
+    \item Probar que $x$ es solución de $Ax = b$ si y solo si $x$ satisface:
+          $$
+            \textstyle
+            (I + \frac{1}{2}L)x = - (D - I + \frac{1}{2}L + U)x + b.
+          $$
+
+    \item Considerar el método iterativo derivado de la formulación anterior:
+          $$
+            \textstyle
+            x^{n+1} = Bx^n + c,
+          $$
+          donde $B = -(I + \frac{1}{2}L)^{-1} (D - I + \frac{1}{2} L + U)$ y $c = (I + \frac{1}{2}L)^{-1}b.$ Probar que $\lambda$
+          es un autovalor de $B$ si y solo si $\lambda$ es raíz de la ecuación:
+          $$
+            \textstyle
+            \det\big(D - I + \frac{1}{2}L + U + \lambda(I + \frac{1}{2}L)\big) = 0.
+          $$
+
+    \item Para $a \en \reales$ se define
+          $$
+            \textstyle
+            A =
+            \matriz{ccc}{
+              1 & a & 0 \\
+              a & 1+a^2 & a \\
+              0 & a & 1
+            }.
+          $$
+          Probar que el método anterior converge para una matriz $A$ si y solo si $|a| < 1$.
+
+    \item Probar que para que el método de Jacobi converja se debe cumplir la misma condición. Deducir
+          de esto que la condición para que Gauss-Seidel converja es la misma ¿Qué método es preferible para la
+          matriz $A$?
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item  Para que $x$ sea solución solo hay que hacer un par de cuentas y ver que queda una igualdad:
+        $$
+          \begin{array}{rcl}
+            \textstyle
+            (I + \frac{1}{2}L)x = - (D - I + \frac{1}{2}L + U)x + b
+             & \sii &
+            Ix + \frac{1}{2}Lx = -Dx + Ix - \frac{1}{2}Lx - Ux + b \\
+             & \sii &
+            Dx + Lx + Ux =  b                                      \\
+             & \sii &
+            (D + L + U)x =  b                                      \\
+             & \sii &
+            Ax =  b
+          \end{array}
+        $$
+
+  \item  $B$ va a tener a $\lambda$ como autovalor si y solo si $|B - \lambda I| = 0$. Hay que acomodar ese determinante feo y llegar
+        a esa expresión:
+        {\footnotesize
+        $$
+          \begin{array}{rcl}
+            \det\big(
+            D - I + \frac{1}{2}L + U + \lambda(I + \frac{1}{2}L)
+            \big) = 0
+             & \sii          &
+            \det\big(
+            (\ub{-(I + \frac{1}{2}L)(-(I + \frac{1}{2}L)^{-1})}{I_n}
+            (D - I + \frac{1}{2}L + U) + \lambda(I + \frac{1}{2}L)
+            \big) = 0          \\
+             & \sii          &
+            \det\big(
+            (-(I + \frac{1}{2}L)B
+            + \lambda(I + \frac{1}{2}L)
+            \big) = 0          \\
+             & \sii          &
+            \det\big(
+            (-B + \lambda I)(I + \frac{1}{2}L)
+            \big) = 0          \\
+             & \Sii{\red{!}} &
+            \det( -B + \lambda I)
+            \cdot
+            \ub{\det( I + \frac{1}{2}L)}
+            {
+              \distinto 0
+            }
+            = 0                \\
+             & \sii          &
+            \det( -B + \lambda I)
+            = 0                \\
+             & \sii          &
+            \det( B - \lambda I)
+            = 0                \\
+          \end{array}
+        $$
+        }
+
+  \item De la teórica sabemos que:
+        $$
+          \text{La sucesión } \set{B^k} \text{ converge }
+          \sisolosi
+          \rho(B) \igual{def} \maximo\set{ |\lambda| : \lambda \text{ autovalor de } B} < 1
+        $$
+        Por lo tanto quiero calcular los autovalores de la matriz de iteración $B = -(I + \frac{1}{2}L)^{-1} (D - I + \frac{1}{2} L + U)$,
+        lo cual, dado lo visto en el ítem anterior, es lo mismo que calcular:
+        $$
+          \det\big(
+          D - I + \frac{1}{2}L + U + \lambda(I + \frac{1}{2}L)
+          \big) = 0
+        $$
+        Cálculo que \textit{no requiere invertir nada}, lo cual nos saca una sonrisa \rosa{\faIcon[regular]{smile}}. Junto los ingredientes para cocinar eso:
+        $$
+          A =
+          \ub{
+            \matriz{ccc}{
+              1 & 0 & 0 \\
+              0 & 1+a^2 & 0 \\
+              0 & 0 & 1
+            }
+          }{
+            D
+          }
+          +
+          \ub{
+            \matriz{ccc}{
+              0 & 0 & 0 \\
+              a & 0 & 0 \\
+              0 & a & 0
+            }
+          }{
+            L
+          }
+          +
+          \ub{
+            \matriz{ccc}{
+              0 & a & 0 \\
+              0 & 0 & a \\
+              0 & 0 & 0
+            }
+          }{
+            U
+          }
+        $$
+        $$
+          \textstyle
+          D - I + \frac{1}{2}L + U + \lambda(I + \frac{1}{2}L) =
+          \matriz{ccc}{
+            0 & a & 0 \\
+            \frac{a}{2} & a^2 & a \\
+            0 & \frac{a}{2} & 0 \\
+          }
+          +
+          \matriz{ccc}{
+            \lambda & 0 & 0 \\
+            \lambda\frac{a}{2} & \lambda & 0 \\
+            0 & \lambda\frac{a}{2} & \lambda
+          }
+          =
+          \matriz{ccc}{
+            \lambda & a & 0 \\
+            (\lambda + 1)\frac{a}{2} & a^2 + \lambda & a \\
+            0 & (\lambda + 1)\frac{a}{2} & \lambda
+          }
+        $$
+        Calculo el determinante de eso:
+        $$
+          \deter{ccc}{
+            \lambda                  & a                        & 0       \\
+            (\lambda + 1)\frac{a}{2} & a^2 + \lambda            & a       \\
+            0                        & (\lambda + 1)\frac{a}{2} & \lambda
+          }
+          \igual{\red{!}}
+          \lambda^3 - a^2\lambda \igual{\red{!}}
+          \lambda \cdot (\lambda - a) \cdot (\lambda + a) = 0
+          \sii
+          \llave{rcc}{
+            \lambda_1 & = & 0 \\
+            \lambda_2 & = & a \\
+            \lambda_3 & = & -a
+          }
+        $$
+        Por lo tanto para que la matriz de iteración $B$ converga sin importar el vector inicial:
+        $$
+          \cajaResultado{
+            |a| < 1
+          }
+        $$
+
+  \item La matriz de iteración, $B_J$, para el método de Jacobi:
+        $$
+          B_J = -D^{-1}(L + U).
+        $$
+        Con la propiedad que se usó en el ejercicio anterior, para calcular los autovalores de esta $B_J$:
+        $$
+          \lambda D + L + U =
+          \matriz{ccc}{
+            \lambda & a & 0 \\
+            a & \lambda(1+a^2) & a \\
+            0 & a & \lambda
+          }
+        $$
+        Calculo el determinante e igualo a cero:
+        $$
+          \textstyle
+          \deter{ccc}{
+            \lambda & a              & 0       \\
+            a       & \lambda(1+a^2) & a       \\
+            0       & a              & \lambda
+          } = 0
+          \Sii{\red{!}}
+          \lambda \cdot \left(\lambda - \sqrt{\frac{2a^2}{1+a^2}}\right) \cdot \left(\lambda + \sqrt{\frac{2a^2}{1+a^2}}\right) = 0
+          \sii
+          \llave{rcc}{
+            \lambda_1 & = & 0 \\
+            \lambda_2 & = & \sqrt{\frac{2a^2}{1+a^2}} \\
+            \lambda_3 & = & -\sqrt{\frac{2a^2}{1+a^2}}
+          }
+        $$
+        Por lo tanto el radio espectral de $B$, $\rho(B)$ debe cumplir que:
+        $$
+          \textstyle
+          \rho(B) < 1
+          \sii
+          \left|\sqrt{\frac{2a^2}{1+a^2}}\right| < 1
+          \Sii{\red{!}}
+          0 < \frac{2a^2}{1+a^2} < 1
+          \Sii{\red{!}}
+          0 < 2a^2 < 1 + a^2
+          \Sii{\red{!}}
+          -a^2 < a^2 < 1
+          \Sii{\red{!}}
+          \cajaResultado{
+            |a| < 1
+          }
+        $$
+        Misma condición que la matriz anterior.
+
+        Lo que sigue ahora queda servido para usar la propiedad de la \textit{tridiagonalidad} que relaciona los
+        \textit{radios espectrales} de los métodos de Jacobi y Gauss-Seidel.
+
+        Dado que $A$ es tridiagonal para todo valor de $a$, sé que:
+        $$
+          \textstyle
+          \rho^2(B_J) =
+          \rho(B_{GS})
+          \sii
+          \left(
+          \sqrt{\frac{2a^2}{1+a^2}}
+          \right)^2 = |\frac{2a^2}{1+a^2}|
+        $$
+        Para que el método de Gauss-Seidel converja:
+        $$
+          \textstyle
+          |\frac{2a^2}{1+a^2}| < 1
+          \Sii{\red{!}}
+          |a| < 1
+        $$
+        Por lo tanto tengo la misma condición que para el método de $Jacobi$.
+
+        Con respecto a la velocidad de convergencia, hay que pensar que lo que se está haciendo, \textit{maomeno}, es multiplicar
+        una matriz por sí misma una y otra vez, por lo tanto mientras más rápido se achique más rápido va a converger. Y dado que para
+        cualquier norma subordinada:
+        $$
+          \textstyle
+          \rho(B) = \limite{k}{\infinito} \sqrt[n]{\norma{B^k}},
+        $$
+        mientras más chico el $\rho(B)$ más rápido va a converger.
+        $$
+          \rho(B_J) < 1
+          \ytext
+          \rho(B_{GS}) < 1
+          \ytext
+          (\rho(B_J))^2 = \rho(B_{GS})
+          \Sii{\red{!}}
+          \cajaResultado{
+            \rho(B_J) > \rho(B_{GS})
+          }
+        $$
+        El método de Gauss-Seidel converge más rápido que el de Jacobi para esta matriz $A$.
+        Comparo con $\rho(B) = |a|$:
+        $$
+          \rho(B_{GS}) = \frac{2a^2}{1 + a^2}
+          \ytext
+          \rho(B) = |a|
+        $$
+        Abro el módulo de $a$ planteo un caso cuando $a > 0$ y otro cuando $a < 0$:
+        $$
+          \textstyle
+          |a| =
+          \llave{cc}{
+            \text{si } a > 0 &
+            \llave{rcl}{
+              \rho(B_{GS}) \taa{\red{?}}{}> \rho(B)
+              &\sii &
+              \frac{2a^2}{1 + a^2} > a\\
+              & \sii      &
+              2a^2 > a + a^3                                                                    \\
+              & \sii      &
+              0 > a \cdot (1 -2a + a^2) = a \cdot (a - 1)^2 \taa{\red{!}}{}> 0 \text{ ¡Absurdo!\faIcon{skull} } \\
+              & \entonces &
+              \cajaResultado{
+                \rho(B_{GS}) \taa{\red{\checkmark}}{}< \rho(B)
+              }
+            }\\
+            \text{si } a < 0 &
+            \llave{rcl}{
+              \rho(B_{GS}) \taa{\red{?}}{} > \rho(B)
+              &\sii&
+              \frac{2a^2}{1 + a^2} > -a\\
+              & \Sii{\red{!}}      &
+              2a^2 \,\red{<}\, a + a^3\\                                                                    \\
+              & \sii      &
+              0 < a \cdot (1 -2a + a^2) = a \cdot (a - 1)^2 \taa{\red{!}}{}< 0 \text{ ¡Absurdo!\faIcon{skull} } \\
+              & \entonces &
+              \cajaResultado{
+                \rho(B_{GS}) \taa{\red{\checkmark}}{}< \rho(B)
+              }
+            }
+          }
+        $$
+        Es así que el método de Gauss-Seidel es el más rápido para converger de los tres para la matriz $A$,
+        porque tiene el menor \textit{radio espectral}.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
