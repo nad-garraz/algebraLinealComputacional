@@ -46,11 +46,11 @@
           \rho(M_I) < 1
           }
         $$
-        \text{Donde } \rho(M_I) = \lambda_{\text{máx}}
+        Donde $\rho(M_I) = \lambda_{\text{máx}}$
         }
 
   \item \textit{Jacobi y Gauss-Seidel}:
-        Si
+        Si una matriz $A \en \reales^{n \times n}$
         $$
           A = \ua{L}{
             \text{trianguluar}\\\text{inferior}
@@ -70,8 +70,8 @@
                 $$
                   \cajaResultado{
                     \llave{rcl}{
-                      M_J & = & - D^{-1} (\ub{L + U}{C})\\
-                      C   & = & L + U
+                      M_J & = & - D^{-1} (L + U)\\
+                      \tilde{b}   & = & D^{-1}b
                     }
                   }
                 $$
@@ -81,8 +81,8 @@
                 $$
                   \cajaResultado{
                     \llave{rcl}{
-                      M_{GS} & = & - (L + D)^{-1} \ua{U}{C} \\
-                      C & = & U
+                      M_{GS} & = & - (L + D)^{-1} U \\
+                      \tilde{b} & = & (L + D)^{-1} b
                     }
                   }
                 $$
@@ -91,7 +91,7 @@
         \begin{itemize}
           \item Si $A$ es estrictamente diagonal dominante, es decir:
                 $$
-                  |a_{ii}| > \sumatoria{i \distinto j}{} |a_{ij}|
+                  |a_{ii}| > \sumatoria{i \distinto j}{} |a_{ij}| \quad \paratodo i \en \naturales_{\leq n}
                 $$
                 entonces \textit{Jacobi} y \textit{Gauss-Seidel} convergen.
 
