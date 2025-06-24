@@ -1,0 +1,82 @@
+\begin{enunciado}{\ejExtra}
+	\begin{enumerate}[label=(\alph*)]
+		\item Hallar, si existe, una matriz $A$ de coeficientes reales y del tamaño adecuado tal que
+		      $$
+			      A^tA
+			      \matriz{c}{
+				      3\\
+				      4
+			      }
+			      =
+			      \matriz{c}{
+				      \frac{3}{4}\\
+				      1
+			      },
+			      \quad
+			      \norma{A}_2 = 5,
+			      \ytext
+			      \matriz{c}{
+				      4\\
+				      1\\
+				      8
+			      } \en \nucleo(A^t)
+		      $$
+
+		\item Graficar la imagen de la esfera unitaria $S_2 = \set{x \en \reales^2}$ por la transformación lineal
+		      $T(x) = Ax$.
+	\end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+	\item
+	      \begin{itemize}
+		      \item Si $\norma{A}_2 = 5 = \blue{\sigma_1}$.
+		      \item
+		            Con el dato del autovector de $A^tA$:
+		            $$
+			            A^tA
+			            \matriz{c}{
+				            3\\
+				            4
+			            }
+			            =
+			            \matriz{c}{
+				            \frac{3}{4}\\
+				            1
+			            }
+			            =
+			            \ua{
+				            \frac{1}{4}
+			            }{
+				            \blue{\sigma^2_2}
+			            }
+			            \matriz{c}{
+				            3\\
+				            4
+			            }
+		            $$
+
+		      \item Si $(4,1,8) \en \nucleo(A^t)$:
+
+		            Es un vector de la matriz $U$ que siempre se multiplica donde hay ceros en $\Sigma$
+	      \end{itemize}
+	      $$
+		      A = U \Sigma V^t =
+		      \matriz{ccc}{
+			      0                       & \frac{\sqrt{65}}{9}     & \frac{4}{9} \\
+			      -\frac{8}{\sqrt{65}}    & -\frac{4}{9\sqrt{65}}   & \frac{1}{9}  \\
+			      \frac{1}{\sqrt{65}}     & -\frac{32}{9\sqrt{65}}  & \frac{8}{9}
+		      }
+		      \matriz{ccc}{
+			      5 & 0           \\
+			      0 & \frac{1}{2} \\
+			      0 & 0
+		      }
+		      \matriz{cc}{
+			      \frac{4}{5} & -\frac{3}{5}     \\
+			      \frac{3}{5} & \frac{4}{5}     \\
+		      }
+	      $$
+
+	\item \hacer
+\end{enumerate}
