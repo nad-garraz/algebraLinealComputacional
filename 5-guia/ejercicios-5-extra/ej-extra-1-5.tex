@@ -58,10 +58,24 @@
                   \sii
                   \ub{U_A^t A}{\blue{\Sigma} \blue{V}^t} = U_A^t \ub{U_A \blue{\Sigma} \blue{V}^t}{A}
                   \sii
-                  \ub{U_B^t \blue{\Sigma} \blue{V}^t}{B} = \ub{U_B^tU_A^t}{U} A
+                  \ub{U_B^t \blue{\Sigma} \blue{V}^t}{B} = \ub{U_B^tU_A^t}{\ua{U}{\text{ortogonal}}} A
                   \sii
                   \cajaResultado{B = UA}
                 $$
+                {\small
+                    La matriz $U$ del final es ortogonal, porque el producto de dos matrices ortogonales lo es:
+                    $$
+                      U_1^TU_1 = I
+                      \ytext
+                      U_2^TU_2 = I
+                      \entonces
+                      (U_1U_2)^t \cdot U_1U_2 = I
+                      \sii
+                      U_2^t \ub{U_1^t U_1}{I}U_2 = I
+                      \sii
+                      U_2^tU_2 = I
+                    $$
+                  }
 
           \item[$\red{(\Leftarrow)}$]
                 Parto de $B = UA$, con $\blue{U}$ una matriz ortogonal:
