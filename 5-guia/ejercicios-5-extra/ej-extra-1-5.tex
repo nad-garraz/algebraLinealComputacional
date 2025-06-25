@@ -39,12 +39,28 @@
   \item
         \begin{itemize}
           \item[$\red{(\Rightarrow)}$]
-                Multiplico por una $I_n = \blue{U}^* \blue{U}$ con $\blue{U}$ una matriz ortogonal. Luego acomodo y nombro a la matriz adecuada como $B$:
+                A partir de las descompsiciones de las matrices $A$ y $B$:
                 $$
-                  A^tA =
-                  A^t \blue{U}^t \blue{U} A =
-                  (\blue{U}A)^t (\blue{U} A) =
-                  B^t B
+                  \llave{rcl}{
+                    A & = & U_A \Sigma_A V_A^t\\
+                    B & = &  U_B \Sigma_B V_B^t
+                  }
+                $$
+                Por hipótesis, $A^tA = B^tB$, entonces, los \textit{autovalores} y \textit{autovectores} de
+                $A^tA$ y $B^tB$ son los mismos, por lo tanto también sus matrices $\Sigma$ y $V$
+                $$
+                  \llave{l}{
+                    A =  U_A \blue{\Sigma} \blue{V}^t\\
+                    B =  U_B \blue{\Sigma} \blue{V}^t
+                  }
+                  \entonces
+                  A = U_A \blue{\Sigma} \blue{V}^t
+                  \sii
+                  \ub{U_A^t A}{\blue{\Sigma} \blue{V}^t} = U_A^t \ub{U_A \blue{\Sigma} \blue{V}^t}{A}
+                  \sii
+                  \ub{U_B^t \blue{\Sigma} \blue{V}^t}{B} = \ub{U_B^tU_A^t}{U} A
+                  \sii
+                  \cajaResultado{B = UA}
                 $$
 
           \item[$\red{(\Leftarrow)}$]
@@ -56,6 +72,8 @@
                   (\blue{U}A)^t \blue{U}A =
                   A^t\blue{U}^t \blue{U}A =
                   A^t A
+                  \sii
+                  \cajaResultado{A^t A = B^t B}
                 $$
         \end{itemize}
 
@@ -70,9 +88,10 @@
           \entonces
           A^tA =
           (Q R)^t (Q R) \igual{\red{!}}
-          R^t R
-        $$.
-        Por lo tanto los valores singulares de $A$ y $R$ seran los mismos, más aún el cálculo de las columnas de $V$ también va a dar lo mismo.
+          R^t R.
+        $$
+        Por lo tanto los \textit{valores singulares} de $A$ y $R$ serán los \ul{mismos}, más aún el cálculo de las
+        \textit{columnas} de $V$ también va a dar lo \ul{mismo}.
 
   \item
         Esto de la \textit{descomposición en valores sigulares} es mucho más sencillo cuando la matriz es cuadrada, porque hay menos cosas que contemplar.

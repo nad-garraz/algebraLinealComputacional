@@ -1,0 +1,53 @@
+\begin{enunciado}{\ejExtra}{\tiny\violet{[segundo parcial 8/7/23]}}
+	Consideremos el siguiente sistema de ecuaciones
+	$$
+		\llave{rcl}{
+			x + ay & = & 1 \\
+			x + y + z &  = & 1 \\
+			by + z & = & 1
+		}
+	$$
+
+	\begin{enumerate}[label=(\alph*)]
+		\item Determinar todos los valores de $a$ y $b$ para que el sistema tenga solución única.
+
+		\item Para la matriz asociada al sistema dado, demostrar que el método de Jacobi converge
+		      si y solo si el método de Gauss-Seidel converge.
+
+		\item Determinar todos los valores de $a$ y $b$ para asegurar la convergencia de ambos métodos.
+		      ¿Cuál de los dos métodos elegiría?
+	\end{enumerate}
+\end{enunciado}
+
+
+\begin{enumerate}[label=(\alph*)]
+	\item Calcular determinante de la matriz de coeficientes:
+	      $$
+		      \det(A) =
+		      \deter{ccc}{
+			      1 & a & 0 \\
+			      1 & 1 & 1 \\
+			      0 & b & 1
+		      }
+		      =
+		      (a - 1) b = 0
+		      \sii
+		      \llave{c}{
+			      a  =  1 \\
+			      o \\
+			      b  =  0
+		      }
+	      $$
+	      Si $\det(A) \distinto 0$ entonces el sistema tendrá solución única, por lo tanto:
+	      $$
+		      \cajaResultado{
+			      \paratodo a \distinto 0 \ytext b \distinto 0
+		      }
+	      $$
+
+	\item Matriz tridiagonal, comparo los radios espectrales.
+
+	\item \hacer
+\end{enumerate}
+
+

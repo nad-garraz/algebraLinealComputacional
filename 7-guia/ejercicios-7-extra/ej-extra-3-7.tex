@@ -102,9 +102,55 @@
             E_{\blue{\lambda_2} = -\frac{3}{4}} & = & \ket{(-1, 8)}
           }
         $$
-        {\huge\red{¿¿Hay que usar: $\norma{A}_W = \norma{W^{-1} A W}_\infinito$?? }}
+        Recordar acá que:
+        \parrafoDestacado[\atencion]{
+          Una matriz de iteración $M_I$ converge si y solo si $\rho(M_I) \taa{\llamada1}{}< 1$.
+
+          Por otro lado para cualquier norma $\normaBullet$, se tiene que $\rho(M_I) < \norma{M_I}$. Por lo tanto
+          es \textit{\magenta{suficiente}} que $\norma{M_I} < 1$ para garantizar convergencia.
+
+          Peeeeero, si $\norma{M_I} > 1$ no quiere decir que no converja el método, debido todo depende de $\llamada1$.
+        }
+
+        Las normas pedidas:
+        \begin{enumerate}[label=(\blue{\faIcon{ruler}})]
+          \item $\norma{J}_1 = 6$
+          \item $\norma{J}_\infinito = 6$
+          \item $\norma{J}_2 = \frac{3}{4}\quad \to $ acá está la papa.
+        \end{enumerate}
 
   \item
-        \red{Si uso esa propiedad falopera de más arriba con los autovectores,
-          me queda $\norma{W^{-1}AW}_\infinito = \norma{D}_\infinito = \frac{3}{4} < 1$}
+        Hay que usar:
+        $$
+          \norma{A}_W = \norma{W^{-1} A W}_\infinito
+        $$
+        La matriz generada por los autovectores:
+        $$
+          C =
+          \matriz{cc}{
+            1 & -1 \\
+            8 & 8
+          }
+        $$
+        Y puedo hacer:
+        $$
+          J = CDC^{-1}
+          \sii
+          C^{-1} J C =
+          \matriz{cc}{
+            \frac{3}{4} & 0 \\
+            0 & -\frac{3}{4}
+          }
+        $$
+        Por lo tanto usando la norma $\normaBullet_C$
+        $$
+          \norma{J}_C =
+          \norma{C^{-1}JC}_\infinito =
+          \norma{D}_\infinito =
+          \frac{3}{4} < 1
+        $$
 \end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

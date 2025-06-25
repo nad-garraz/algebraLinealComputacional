@@ -1,4 +1,5 @@
-\begin{enunciado}{\ejExtra}{\tiny[\violet{segundo recu 5/12/2024}]}
+\begin{enunciado}{\ejExtra}
+  {\tiny [\violet{recu 5/12/2024}]}
   Se desea resolver el sistema $Ax = b$ para un $b \en \reales^3$ y
   $A = \matriz{ccc}{
       1 & 0 & \alpha \\
@@ -10,8 +11,206 @@
     \item Determinar los valores de $\alpha$ para los cuales el método de Gauss-Seidel converge para cualquier vector inicial $x_0$.
 
     \item Probar que si $\alpha = 0$ el método de Jacobi converge en 3 pasos para cualquier $x_0$.
-          \textit{Sugerencia:} analizar $B_J^3$, siendo $B_J$ la matriz que gobierna la iteranción del método de Jacobi.
+
+          \textit{Sugerencia:} analizar $B_J^3$, siendo $B_J$ la matriz que gobierna la iteración del método de Jacobi.
   \end{enumerate}
 \end{enunciado}
 
-\hacer
+\begin{enumerate}[label=(\alph*)]
+  \item Busco $\alpha$ tal que $\rho(B_{GS}) < 1$. Interesante en este ejercicio es el \textit{ratoneo}, demostración
+        de como las pocas ganas de invertir una matriz revelan una forma de encontrar lo deseado minimizando el
+        esfuerzo y coso, en fin:
+        $$
+          A =
+          \ub{
+            \matriz{ccc}{
+              0 & 0 & 0 \\
+              1 & 0 & 0 \\
+              -1 & 1 & 0
+            }
+          }{
+            L
+          }
+          \ub{
+            \matriz{ccc}{
+              1 & 0 & 0 \\
+              0 & 1 & 0 \\
+              0 & 0 & 1
+            }
+          }{
+            D
+          }
+          \ub{
+            \matriz{ccc}{
+              0 & 0 & \alpha \\
+              0 & 0 & 0 \\
+              0 & 0 & 0
+            }
+          }{
+            U
+          }
+          \entonces
+          T_{GS} =
+          -(D + L)^{-1}
+          \matriz{ccc}{
+            0 & 0 & \alpha \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+          }
+        $$
+        El producto $T_{GS}$ tiene ceros en la primera y segunda columna, mientras que en la tercera tiene
+        a la \textit{primera columna} de $-(D + L)^{-1}$ multiplicada por $\alpha$.
+        Es \textit{fácil} encontrar esa \textit{primera columna} sin invertir toda la matriz:
+        $$
+          (D + L)
+          \matriz{c}{
+            x_{11}\\
+            x_{21}\\
+            x_{31}
+          }
+          =
+          \matriz{c}{
+            1\\
+            0 \\
+            0
+          }
+          \sii
+          \matriz{c}{
+            x_{11}\\
+            x_{21}\\
+            x_{31}
+          }
+          =
+          \matriz{c}{
+            1 \\
+            -1 \\
+            2
+          }
+        $$
+        Así tengo $T_{GS}$:
+        $$
+          T_{GS} =
+          \matriz{ccc}{
+            0 & 0 & \alpha \\
+            0 & 0 & -\alpha \\
+            0 & 0 & 2\alpha
+          }
+        $$
+        Matriz que tiene un \textit{radio espectral}: $\rho(T_{GS}) = 2|\alpha|$.
+        Por lo tanto para que el método de Gauss-Seidel converja para todo vector inicial $x_0$:
+        $$
+          \cajaResultado{
+            |\alpha| < 1
+          }
+        $$
+        Fin.
+
+  \item Jacobi:
+        $$
+          A =
+          \ub{
+            \matriz{ccc}{
+              0 & 0 & 0 \\
+              1 & 0 & 0 \\
+              -1 & 1 & 0
+            }
+          }{
+            L
+          }
+          \ub{
+            \matriz{ccc}{
+              1 & 0 & 0 \\
+              0 & 1 & 0 \\
+              0 & 0 & 1
+            }
+          }{
+            D
+          }
+          \ub{
+            \matriz{ccc}{
+              0 & 0 & \alpha \\
+              0 & 0 & 0 \\
+              0 & 0 & 0
+            }
+          }{
+            U
+          }
+          \entonces
+          T_J =
+          -D^{-1} (L + U) =
+          \matriz{ccc}{
+            0 & 0 & 0 \\
+            -1 & 0 & 0 \\
+            1 & -1 & 0
+          }
+        $$
+        Hago hasta la cuarta iteración, para comparar la tercera y cuarta:
+        $$
+          \begin{array}{rcl}
+            x^{(1)} & = & \green{T_J x^{(0)} + b}                                                                                                    \\
+            x^{(2)} & = & T_J x^{(1)} + b = T_J (\green{T_J x^{(0)} + b}) + b = \violet{T_J^2 x^{(0)} + T_Jb + b}                                    \\
+            x^{(3)} & = & T_J x^{(2)} + b = T_J (\violet{T_J^2 x^{(0)} + T_Jb + b}) + b = \purple{T_J^3 x^{(0)} + T_J^2b + T_Jb + b}                 \\
+            x^{(4)} & = & T_J x^{(3)} + b = T_J (\purple{T_J^3 x^{(0)} + T_J^2b + T_Jb + b}) + b = \blue{T_J^4 x^{(0)} + T_J^3b + T_J^2b + T_Jb + b}
+          \end{array}
+        $$
+        Usando la sugerencia puedo ver que $x^{(3)} \ytext x^{(4)}$ son iguales:
+        {\tiny
+        $$
+          \textstyle
+          \begin{array}{c}
+            T_J^2 =
+            \matriz{ccc}{
+            0  & 0  & 0 \\
+            -1 & 0  & 0 \\
+            1  & -1 & 0
+            }
+            \matriz{ccc}{
+            0  & 0  & 0 \\
+            -1 & 0  & 0 \\
+            1  & -1 & 0
+            }
+            =
+            \matriz{ccc}{
+            0  & 0  & 0 \\
+            0  & 0  & 0 \\
+            1  & 0  & 0
+            }
+            \flecha{una}[más]
+            T_J^3 =
+            \matriz{ccc}{
+            0  & 0  & 0 \\
+            0  & 0  & 0 \\
+            1  & 0  & 0
+            }
+            \matriz{ccc}{
+            0  & 0  & 0 \\
+            -1 & 0  & 0 \\
+            1  & -1 & 0
+            }
+            =
+            \matriz{ccc}{
+            0  & 0  & 0 \\
+            0  & 0  & 0 \\
+            0  & 0  & 0
+            }
+          \end{array}
+        $$
+        }
+        Por lo tanto:
+        $$
+          \begin{array}{cccccl}
+                    & x^{(4)} & = & \blue{T_J^4 x^{(0)} + T_J^3b + T_J^2b + T_Jb + b} & = & \blue{T_J^2b + T_Jb + b}   \\
+            \red{-} &         &   &                                                   &   &                            \\
+                    & x^{(3)} & = & \purple{T_J^3 x^{(0)} + T_J^2b + T_Jb + b}        & = & \purple{T_J^2b + T_Jb + b} \\\hline
+          \end{array}
+          \to
+          \cajaResultado{
+            x^{(4)} = x^{(3)}
+          }
+        $$
+        Por lo tanto converge en la tercera iteración.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
