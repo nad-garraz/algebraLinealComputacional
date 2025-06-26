@@ -117,7 +117,8 @@
                 height = 8cm,
                 samples = 100,
                 smooth,
-                legend pos = north west
+                legend pos = north west,
+                rounded corners = 0pt
               ]
 
               \addplot[
@@ -131,6 +132,7 @@
               \node[OliveGreen, font=\small] at (axis cs:0.75,0.75) {$A = \frac{1}{4} = \frac{\varepsilon}{2}$};
 
               \fill[OliveGreen!20, opacity=0.7] (axis cs:1,0) rectangle (axis cs:1.5,0.5);
+
               \draw[OliveGreen, thick,line cap=rect] (axis cs:1,0) rectangle (axis cs:1.5,0.5);
               \node[OliveGreen, font=\small] at (axis cs:1.25,0.25) {$A = \frac{1}{4} = \frac{\varepsilon}{2}$};
 

@@ -221,26 +221,29 @@
 
   \item Tengo 4 autovectores que forman una base de $\reales^4$, por lo tanto la $P$ es diagonalizable:
         $$
-          P = C D C^{-1}
-          \sii
-          P^{\red{n}} = C D^{\red{n}} C^{-1} =
-          C
-          \matriz{cccc}{
-            1^{\red{n}} & 0 & 0 & 0 \\
-            0 & (-\frac{1}{4})^{\red{n}} & 0 & 0 \\
-            0 & 0 & (\frac{1}{2})^{\red{n}} & 0 \\
-            0 & 0 & 0 & (\frac{1}{2})^{\red{n}}
-          }
-          C^{-1}
-          \flecha{$n\to \infinito$}
-          C
-          \matriz{cccc}{
-            1 \\
-            0 \\
-            0 \\
-            0
-          }
-          C^{-1}
+          \begin{array}{rcc}
+            P = C D C^{-1}
+                        & \sii                             &
+            P^{\red{n}} = C D^{\red{n}} C^{-1}                                                                 \\
+                        & =                                &
+            C
+            \matriz{cccc}{
+            1^{\red{n}} & 0                                & 0                       & 0                       \\
+            0           & (-\frac{1}{4})^{\red{n}}         & 0                       & 0                       \\
+            0           & 0                                & (\frac{1}{2})^{\red{n}} & 0                       \\
+            0           & 0                                & 0                       & (\frac{1}{2})^{\red{n}}
+            }
+            C^{-1}                                                                                             \\
+                        & \flecha{$\red{n} \to \infinito$} &
+            C
+            \matriz{cccc}{
+            1           & 0                                & 0                       & 0                       \\
+            0           & 0                                & 0                       & 0                       \\
+            0           & 0                                & 0                       & 0                       \\
+            0           & 0                                & 0                       & 0
+            }
+            C^{-1}
+          \end{array}
         $$
         Entonces:
         $$
@@ -356,6 +359,19 @@
         todas las columnas son el vector normalizado $(\frac{2}{5},\frac{1}{5},\frac{1}{5},\frac{1}{5})^t$,
         por lo que \underline{sin importar el estado}, es decir el vector $\bm{v}$ que uses, en \underline{una sola} multiplicación ya
         se va al equilibrio.
+
+        \parrafoDestacado[\red{\atencion}]{
+          Puede surgir la pregunta:
+          ¿Qué pasa si encuentro un estado inicial $\green{v^{(0)}}$ cuyas coordenadas en la \textit{base de autovectores}
+          $\set{v^{eq}, v_2, \cdots, v_n}$ tenga \magenta{0} para el autovector $v^{eq}$, el autovector asociado a $\lambda = 1$?j
+          Es decir:
+          $$
+            \green{v^{(0)}} = \ua{\red{c_1}}{\magenta{0}} v^{eq} + \red{c_2} v_2 + \cdots + \red{c_n} v_n
+          $$
+          Bueno, resulta que en una base de autovectores de una \textit{matriz de Markov} eso no va a pasar nunca. Y te tiro la de \textit{Fermat}: Te demostraría
+          el por qué, porque es obvio, pero tengo que ir a colgar la ropa que recién terminó el lavado.
+        }
+
 \end{enumerate}
 
 \begin{aportes}

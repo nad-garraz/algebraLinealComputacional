@@ -1,4 +1,53 @@
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
+  \item \textit{Recuerdo nomenclatura de matrices}
+
+        \begin{minipage}{0.5\textwidth}
+          \textit{Nombres usados en matrices en $\reales$:}
+          \begin{itemize}
+            \item Ortogonal: $Q \en \reales^{n \times n}$  con $Q^tQ = I$
+                  \begin{enumerate}[label={\tiny\faIcon{atom}}]
+                    \item Las columnas de $Q$ forman una BON de $\reales^n$
+                    \item Es ortogonalmente diagonalizable.
+                    \item Preserva la norma en la multiplicación.
+                    \item $\det(U) = 1$
+                  \end{enumerate}
+
+            \item Simétrica: $A \en \reales^{n \times n}$  con $A^t = A$
+                  \begin{enumerate}[label={\tiny\faIcon{atom}}]
+                    \item $A$ tiene autovalores reales.
+                    \item Es ortogonalmente diagonalizable.
+                  \end{enumerate}
+
+          \end{itemize}
+        \end{minipage}
+        \begin{minipage}{0.5\textwidth}
+          \textit{Nombres usados en matrices en $\complejos$:}
+          \begin{itemize}
+            \item Unitaria: $U \en \complejos^{n \times n}$  con $U^*U = I$
+                  \begin{enumerate}[label={\tiny\faIcon{atom}}]
+                    \item Las columnas de $U$ forman una BON de $\complejos^n$
+                    \item Es ortogonalmente diagonalizable.
+                    \item Preserva la norma en la multiplicación.
+                    \item $\det(U) = 1$
+                  \end{enumerate}
+
+            \item Hermitiana: $A \en \complejos^{n \times n}$  con $A^* = A$
+                  \begin{enumerate}[label={\tiny\faIcon{atom}}]
+                    \item $A$ tiene autovalores reales.
+                    \item Es ortogonalmente diagonalizable.
+                  \end{enumerate}
+
+          \end{itemize}
+        \end{minipage}
+
+  \item \hypertarget{teoria-3:matrizOrtogonal}{\textit{Matriz Ortogonal}}:
+        \parrafoDestacado[{{ \huge \angry} }]{
+          Una matriz \red{ortogonal} tiene sus columnas \underline{\red{\Large ortonormales}}.
+        }
+        \begin{itemize}
+          \item Si $A$ es una \textit{matriz ortogonal} entonces $A^{-1} = A^*$.
+          \item Si $A$ y $B$ son \textit{matrices ortogonales} entonces $AB$ es una \textit{matriz ortogonal}.
+        \end{itemize}
 
   \item \hypertarget{teoria-3:definida-positiva}{\textit{Matriz definida positiva:}}
 
@@ -293,15 +342,6 @@
                         $$
                 \end{enumerate}
         \end{enumerate}
-
-  \item \hypertarget{teoria-3:matrizOrtogonal}\textit{Matriz Ortogonal}:
-        \parrafoDestacado[{{ \huge \angry} }]{
-          Una matriz \red{ortogonal} tiene sus columnas \underline{\red{\Large ortonormales}}.
-        }
-        \begin{itemize}
-          \item Si $A$ es una \textit{matriz ortogonal} entonces $A^{-1} = A^*$.
-          \item Si $A$ y $B$ son \textit{matrices ortogonales} entonces $AB$ es una \textit{matriz ortogonal}.
-        \end{itemize}
 
   \item\hypertarget{teoria-3:qr}{ \textit{Factorización $QR$:}\quad  $A = Q R$}
 
