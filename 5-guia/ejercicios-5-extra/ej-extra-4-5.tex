@@ -18,8 +18,52 @@
   \end{enumerate}
 \end{enunciado}
 
+\hyperlink{teoria-5:matrices}{Acá algunas cosas de matrices ortogonales y otras \click}
+
 \begin{enumerate}[label=(\alph*)]
-  \item \hacer
-  \item \hacer
-  \item \hacer
+  \item Si $Q$ y $P$ son dos matrices ortogonales:
+        $$
+          Q^t Q = I
+          \ytext
+          P^t P = I
+          \Entonces{$\llamada1$}
+          (QP)^t (QP) =
+          P^t\ub{Q^t Q}{I} P = P^t P = I
+        $$
+        por lo tanto el producto de dos matrices ortogonales es una matriz ortogonal.
+
+  \item Hay que demostrar la doble implicación:
+        \begin{itemize}
+          \item[$\red{(\Rightarrow)}$]
+                $$
+                  \llave{l}{
+                    A = U_A \blue{\Sigma} V_A^t\\
+                    B = U_B \blue{\Sigma} V_B^t
+                    \sii
+                    \blue{U_B^t B V_B} = \blue{\Sigma}
+                  }
+                  \entonces
+                  A = \ub{U_A \blue{U_B^t}}{P} \blue{B} \ub{\blue{V_B} V_A^t}{Q}
+                  \igual{$\llamada1$}
+                  PBQ
+                $$
+
+          \item[$\red{(\Leftarrow)}$]
+                La matriz $B$ como cualquier hija de vecino, tiene una \textit{descomposición en valores singulares}:
+                $$
+                  B = U \Sigma V^t
+                $$
+                Mientras que
+                $$
+                  A^tA =
+                  (PBQ)^t(PBQ) =
+                  Q^tB^tP^t PBQ =
+                  Q^tB^tBQ
+                $$
+                Dado que $Q^t = Q^{-1}$ queda que la matrices $A^tA$ y $B^tB$ son semejantes, es decir que tienen los mismos autovalores.
+                Dado que los valores singulares $A$ y $B$ son los $\sigma_i = \sqrt{\lambda_i}$, se concluye que $A$ y $B$ tienen mismos
+                valores singulares.
+        \end{itemize}
+
+  \item 
 \end{enumerate}

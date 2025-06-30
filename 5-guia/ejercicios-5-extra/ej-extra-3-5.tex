@@ -42,34 +42,44 @@
                   \begin{array}{c}
                     A^tA =
                     (U \Sigma V^t)^t(U \Sigma V^t) =
+                    V \Sigma^t \ub{U^tU}{I} \Sigma V^t =
                     V
                     \matriz{cc}{
-                    \sigma_1 & 0        \\
-                    0        & \sigma_2
-                    } V                 \\
+                    \sigma_1^2 & 0          \\
+                    0          & \sigma_2^2
+                    } V^t                   \\
                     \\
                     A^tA
                     \matriz{c}{
-                    3                   \\
+                    3                       \\
                       4
                     }
                     =
                     \matriz{c}{
-                    \frac{3}{4}         \\
+                    \frac{3}{4}             \\
                       1
                     }
                     =
                     \ua{
-                      \frac{1}{4}
+                      \magenta{\frac{1}{4}}
                     }{
                       \blue{\sigma^2_2}
                     }
                     \matriz{c}{
-                    3                   \\
+                    3                       \\
                       4
                     }
                   \end{array}
                 $$
+                Por lo que se ve que
+                $\matriz{c}{
+                    3                       \\
+                    4
+                  }$
+                es un autovector de $A^tA$ de
+                $\lambda = \magenta{\frac{1}{4}}$, por lo tanto $\sqrt{\magenta{\frac{1}{4}}} = \frac{1}{2} = \sigma_2 $
+                conseguí un \textit{valor singular}de $A$.
+                Ese autovector será una de la filas de la matriz $V$.
 
           \item Si $(4,1,8) \en \nucleo(A^t)$:
 

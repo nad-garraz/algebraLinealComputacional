@@ -104,9 +104,18 @@
         Tiro data para pensar y armar la matriz:
         \begin{itemize}
           \item $\imagen(B) = \ket{(1,1,0,0), (1,1,1,1)}$ lo voy a usar para las dos primeras columnas de $U$.
-          \item $B$ manda cosas de $\reales^2 \to \reales^4$, como la $\dim(\imagen(B)) = 2$ entonces $\dim(\nucleo(B)) = 0$,
+
+          \item $B$ manda cosas de $\reales^2 \to \reales^4$, dado que $B^tB = A^tA$, ambas $\en \reales^{2 \times 2}$
+                y la $\imagen(B) \en \reales^4$
+
+          \item Como la $\dim(\imagen(B)) = 2$ entonces $\dim(\nucleo(B)) = 0$, resultado que se cae de \textit{transformaciones lineales}:
+                $$
+                  \dim(\nucleo(B)) + \ub{\dim(\imagen(B))}{= 2} = \ub{\dim(\reales^2)}{\text{espacio de}\\\text{partida}},
+                $$
                 esto implica que ninguna columna de $V$, $v_i \en \nucleo(B)$
-          \item $B^tB = A^tA$ la matriz $B \en \reales^{4 \times 2}$ y además tienen los mismos valores singulares que $A$.
+
+          \item $B^tB = A^tA$ la matriz $B \en \reales^{4 \times 2}$ por lo tanto tienen mismos autovalores y autovectores.
+                Por lo tanto los \textit{valores singulares} de $A$ y $B$ son igules.
         \end{itemize}
         $$
           B =
