@@ -1,125 +1,127 @@
 \begin{enunciado}{\ejExtra}
-	Dadas las matrices $A, B \en \complejos^{n \times n}$ y un vector $v \en \complejos^n$, para cada una de las siguientes afirmaciones, determinar
-	su validez. En caso de ser falsas, dar un contraejemplo, y en caso de ser verdaderas demostrarlas:
-	\begin{enumerate}[label=(\alph*)]
-		\item Si $v$ es un autovector de $A$, y $A$ es inversible, entonces $v$ es un autovector de $A^{-1}$.
+  Dadas las matrices $A, B \en \complejos^{n \times n}$ y un vector $v \en \complejos^n$, para cada una de las siguientes afirmaciones, determinar
+  su validez. En caso de ser falsas, dar un contraejemplo, y en caso de ser verdaderas demostrarlas:
+  \begin{enumerate}[label=(\alph*)]
+    \item Si $v$ es un autovector de $A$, y $A$ es inversible, entonces $v$ es un autovector de $A^{-1}$.
 
-		\item Si $A$ y $B$ son diagonalizables, $A+B$ también lo es.
+    \item Si $A$ y $B$ son diagonalizables, $A+B$ también lo es.
 
-		\item Si $A$ y $B$ son diagonalizables, entonces $AB$ es diagonalizable.
+    \item Si $A$ y $B$ son diagonalizables, entonces $AB$ es diagonalizable.
 
-		\item Si $A$ o $B$ es inversible y $AB$ es diagonalizable entonces BA también es diagonalizables.
-	\end{enumerate}
+    \item Si $A$ o $B$ es inversible y $AB$ es diagonalizable entonces BA también es diagonalizables.
+  \end{enumerate}
 \end{enunciado}
 
 \parrafoDestacado[\atencion]{
-	Ejercicio de demostraciones. Dependiendo las horas que dormiste la noche anterior esto puede salir
-	enseguida o en horas. La matriz que uso en los contraejemplos
-	suele ser un \textit{caballito de batalla} para estos problemas, guardátela.
+  Ejercicio de demostraciones. Dependiendo las horas que dormiste la noche anterior esto puede salir
+  enseguida o en horas. La matriz que uso en los contraejemplos
+  suele ser un \textit{caballito de batalla} para estos problemas, guardátela.
 }
 
 \begin{enumerate}[label=(\alph*)]
-	\item Si $v$ es un autovector y además $\existe A^{-1}$ entonces:
-	      $$
-		      Av = \lambda v
-		      \Sii{\red{!}}
-		      A^{-1}Av = \lambda A^{-1}v
-                      \Sii{\red{!}}[$\lambda \distinto 0$]
-		      A^{-1}v = \frac{1}{\lambda} v
-	      $$
-	      Por lo tanto:
-	      $$
-		      \cajaResultado{
-			      \text{resultó verdadera}
-		      }
-	      $$
+  \item Si $v$ es un autovector y además $\existe A^{-1}$ entonces:
+        $$
+          Av = \lambda v
+          \Sii{\red{!}}
+          A^{-1}Av = \lambda A^{-1}v
+          \Sii{\red{!}}[$\lambda \distinto 0$]
+          A^{-1}v = \frac{1}{\lambda} v
+        $$
+        Por lo tanto:
+        $$
+          \cajaResultado{
+            \text{resultó verdadera}
+          }
+        $$
 
-	\item Si las matrices son diagonalizables, ¿La suma también lo es?:
-	      $$
-		      A =
-		      \matriz{cc}{
-			      1 & 1 \\
-			      0 & 1
-		      }
-		      \ytext
-		      B =
-		      \matriz{cc}{
-			      -1 & 1 \\
-			      0 & 0
-		      }
-	      $$
-	      Esas matrices son diagonalizables, porque cada una tiene todos sus autovalores distintos.
-	      $$
-		      A + B =
-		      \matriz{cc}{
-			      0 & 1 \\
-			      0 & 0
-		      }
-	      $$
-	      Matriz que no es diagonalizable, ya que tiene a $0$ como un autovalor doble, pero el autoespacio asociado es de dimensión 1:
-	      $$
-		      \mathcal{X}(\lambda) = \lambda^2 = 0, \quad \text{luego } E_{\lambda = 0} = \set{(1,0)}
-	      $$
-	      Por lo tanto:
-	      $$
-		      \cajaResultado{
-			      \text{resultó falsa}
-		      }
-	      $$
+  \item Si las matrices son diagonalizables, ¿La suma también lo es?:
+        $$
+          A =
+          \matriz{cc}{
+            1 & 1 \\
+            0 & 1
+          }
+          \ytext
+          B =
+          \matriz{cc}{
+            -1 & 1 \\
+            0 & 0
+          }
+        $$
+        Esas matrices son diagonalizables, porque cada una tiene todos sus autovalores distintos.
+        $$
+          A + B =
+          \matriz{cc}{
+            0 & 1 \\
+            0 & 0
+          }
+        $$
+        Matriz que no es diagonalizable, ya que tiene a $0$ como un autovalor doble, pero el autoespacio asociado es de dimensión 1:
+        $$
+          \mathcal{X}(\lambda) = \lambda^2 = 0, \quad \text{luego } E_{\lambda = 0} = \set{(1,0)}
+        $$
+        Por lo tanto:
+        $$
+          \cajaResultado{
+            \text{resultó falsa}
+          }
+        $$
 
-	\item Si las matrices son diagonalizables, ¿El producto también lo es?:
-	      $$
-		      A =
-		      \matriz{cc}{
-			      1 & -1 \\
-			      0 & 0
-		      }
-		      \ytext
-		      B =
-		      \matriz{cc}{
-			      0 & 0 \\
-			      0 & -1
-		      }
-	      $$
-	      Esas matrices son diagonalizables, porque cada una tiene todos sus autovalores distintos.
-	      $$
-		      A B =
-		      \matriz{cc}{
-			      0 & 1 \\
-			      0 & 0
-		      }
-	      $$
-	      Matriz que no es diagonalizable, ya que tiene a $0$ como un autovalor doble, pero el autoespacio asociado es de dimensión 1:
-	      $$
-		      \mathcal{X}(\lambda) = \lambda^2 = 0, \quad \text{luego } E_{\lambda = 0} = \set{(1,0)}
-	      $$
-	      Por lo tanto:
-	      $$
-		      \cajaResultado{
-			      \text{resultó falsa}
-		      }
-	      $$
+  \item Si las matrices son diagonalizables, ¿El producto también lo es?:
+        $$
+          A =
+          \matriz{cc}{
+            1 & -1 \\
+            0 & 0
+          }
+          \ytext
+          B =
+          \matriz{cc}{
+            0 & 0 \\
+            0 & -1
+          }
+        $$
+        Esas matrices son diagonalizables, porque cada una tiene todos sus autovalores distintos.
+        $$
+          A B =
+          \matriz{cc}{
+            0 & 1 \\
+            0 & 0
+          }
+        $$
+        Matriz que no es diagonalizable, ya que tiene a $0$ como un autovalor doble, pero el autoespacio asociado es de dimensión 1:
+        $$
+          \mathcal{X}(\lambda) = \lambda^2 = 0, \quad \text{luego } E_{\lambda = 0} = \set{(1,0)}
+        $$
+        Por lo tanto:
+        $$
+          \cajaResultado{
+            \text{resultó falsa}
+          }
+        $$
 
-	\item Alguna de las dos matrices es inversible y $AB$ es diagonalizable, entonces ¿$BA$ es diagonalizable también?
+  \item Alguna de las dos matrices es inversible y $AB$ es diagonalizable, entonces ¿$BA$ es diagonalizable también?
 
-	      Supongo que $\existe A^{-1}$:
-	      $$
-		      AB = C D C^{-1}
-		      \Sii{$ \to \times \blue{A^{-1}}$}[$ \ot \times \blue{A}$]
-		      \blue{A^{-1}}AB\blue{A} = \blue{A^{-1}}C D C^{-1} \blue{A}
-		      \sii
-		      B\blue{A} = \blue{A^{-1}}C  D (\blue{A^{-1}}C)^{-1}
-		      \Sii{$P = \blue{A^{-1}} C$}
-		      B\blue{A} = P D P^{-1}
-	      $$
-	      La expresión de $BA$ resultó diagonalizable. La demostración con $B$ diagonal es análoga.
-	      Por lo tanto:
-	      $$
-		      \cajaResultado{
-			      \text{resultó verdadera}
-		      }
-	      $$
-
-
+        Supongo que $\existe A^{-1}$ y por hipótesis $AB = CDC^{-1}$:
+        {\small
+        $$
+          \begin{array}{rcl}
+            AB = C D C^{-1}
+             & \Sii{$ \to \times \blue{A^{-1}}$}[$ \ot \times \blue{A}$] &
+            \ob{\blue{A^{-1}}A}{I} B \blue{A} = \blue{A^{-1}}C D C^{-1} \blue{A} \\
+             & \Sii{\red{!}}                                             &
+            B\blue{A} = (\blue{A^{-1}}C)  D (\blue{A^{-1}}C)^{-1}                \\
+             & \Sii{$P = \blue{A^{-1}} C$}                               &
+            B\blue{A} = P D P^{-1}
+          \end{array}
+        $$
+        }
+        La expresión de $BA$ resultó diagonalizable. La demostración con $B$ diagonal es análoga.
+        Por lo tanto:
+        $$
+          \cajaResultado{
+            \text{resultó verdadera}
+          }
+        $$
 
 \end{enumerate}
