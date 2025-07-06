@@ -31,7 +31,8 @@
       0\\
       \frac{1}{2}\\
       \frac{1}{2}
-    }$
+    }
+  $
   es un estado de equilibrio.
   \begin{enumerate}[label=(\alph*)]
     \item Hallar la matriz de transición $P$.
@@ -45,19 +46,219 @@
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-    \item Matriz de transición: Tiene en el elemento $p_{ij}$ la probabilidad
+  \item Matriz de transición: Tiene en el elemento $p_{ij}$ la probabilidad
         de que se pase del estado $i$ al $j$
         $$
-        P = 
-        \matriz{cccc}{
-            \frac{1}{2} & \frac{1}{2} & 0 & 0 \\  
-            \frac{1}{2} & 0 & 0 & 0 \\  
-            \frac{1}{2} & \frac{1}{2} & 0 & 0 \\  
-            \frac{1}{2} & \frac{1}{2} & 0 & 0
-        }
+          P =
+          \matriz{cccc}{
+            \frac{1}{2} & \frac{1}{2}   & a             & 0 \\
+            \frac{1}{2} & 0             & 0   & d \\
+            0           & \frac{1}{2}   & b             & e \\
+            0           &   0           & c             & 0
+          }
         $$
-      
-  \item \hacer
-  \item \hacer
-  \item \hacer
+        Para que eso sea una matriz de \textit{Markov} necesito que las columnas sumen cada una 1:
+        $$
+          \llamada1
+          \llave{rcl}{
+            a + b + c & = & 1 \\
+            d + e & = & 1
+          }
+        $$
+        Multiplicar por el vector de equilibrio $\bm{v}$ el cual cumple que $P \bm{v} = \bm{v}$ me va a dar más data para
+        determinar los valores de las constantes:
+        $$
+          P\bm{v} =
+          \matriz{cccc}{
+            \frac{1}{2} & \frac{1}{2}   & a             & 0 \\
+            \frac{1}{2} & 0             & 0   & d \\
+            0           & \frac{1}{2}   & b             & e \\
+            0           &   0           & c             & 0
+          }
+          \matriz{c}{
+            0\\
+            0\\
+            \frac{1}{2}\\
+            \frac{1}{2}
+          }
+          =
+          \matriz{c}{
+            \frac{a}{2}\\
+            \frac{d}{2}\\
+            \frac{b + e}{2} \\
+            \frac{c}{2}
+          }
+          \igual{\red{!}}
+          \matriz{c}{
+            0\\
+            0\\
+            \frac{1}{2}\\
+            \frac{1}{2}
+          }
+          \sii
+          \llave{rcl}{
+            a & = & 0 \\
+            d & = & 0 \\
+            b + e & = & 1 \\
+            c & = & 1
+          }
+        $$
+        Juntando $\llamada1$ con este último resultado:
+        $$
+          \cajaResultado{
+            P =
+            \matriz{cccc}{
+              \frac{1}{2} & \frac{1}{2}   & 0             & 0 \\
+              \frac{1}{2} & 0             & 0             & 0 \\
+              0           & \frac{1}{2}   & 0             & 1 \\
+              0           &   0           & 1             & 0
+            }
+          }
+        $$
+
+  \item Si $\bm{v}_0 = (\frac{1}{2}, 0, \frac{1}{2}, 0)^t$ hay que hacer $P^{10}\bm{v}_0$ o ir de a poco con:
+        $$
+          v^{(k+1)} = P v^{(k)}
+        $$
+        ¡Arranco!
+        $$
+          \bm{v}^{(1)} =
+          P \bm{v}^{(0)} =
+          \matriz{c}{
+            \frac{1}{4}\\
+            \frac{1}{4}\\
+            0 \\
+            \frac{1}{2}
+          }
+          ,\
+          \bm{v}^{(2)} =
+          P \bm{v}^{(1)} =
+          \matriz{c}{
+            \frac{1}{4}\\
+            \frac{1}{8}\\
+            \frac{5}{8}\\
+            0 \\
+          },\
+          \bm{v}^{(3)} =
+          P \bm{v}^{(2)} =
+          \matriz{c}{
+            \frac{3}{16}\\
+            \frac{1}{8}\\
+            \frac{1}{16}\\
+            \frac{5}{8} \\
+          },\
+          \bm{v}^{(4)} =
+          P \bm{v}^{(3)} =
+          \matriz{c}{
+            \frac{5}{32}\\
+            \frac{3}{32}\\
+            \frac{11}{16}\\
+            \frac{1}{16}\\
+          }
+        $$
+        No sé que onda, esto pero me rindo.
+
+  \item Calculo autovalores para ver que el único autovalor de módulo 1 sea el 1:
+        $$
+          \begin{array}{rcl}
+            \det(A - I_4\lambda) = 0
+                                  & \sisolosi   &
+            (-1)
+            \deter{ccc}{
+            \frac{1}{2} - \lambda & \frac{1}{2} & 0                                                                                   \\
+            \frac{1}{2}           & - \lambda   & 0                                                                                   \\
+            0                     & 0           & 1
+            }
+            +
+            (-\lambda)
+            \deter{ccc}{
+            \frac{1}{2} - \lambda & \frac{1}{2} & 0                                                                                   \\
+            \frac{1}{2}           & - \lambda   & 0                                                                                   \\
+            0                     & \frac{1}{2} & - \lambda
+            } = 0                                                                                                                     \\
+                                  & \sisolosi   &
+            (-1)[(\frac{1}{2} - \lambda) (-\lambda) - \frac{1}{4}] + \lambda^2 [(\frac{1}{2} - \lambda) (-\lambda) - \frac{1}{4}] = 0 \\
+                                  & \sisolosi   &
+            \frac{1}{4}[4\lambda^2 - 2\lambda - 1] (\lambda^2 - 1)  = 0                                                               \\
+                                  & \sisolosi   &
+            \llave{rcc}{
+            \lambda_1             & =           & 1                                                                                   \\
+            \lambda_2             & =           & \red{-1}                                                                            \\
+            \lambda_3             & =           & \blue{\frac{1}{4}(1 + \sqrt{5})}                                                    \\
+            \lambda_4             & =           & \blue{\frac{1}{4}(1 - \sqrt{5})}
+            }
+          \end{array}
+        $$
+        Con los autovalores se puede contestar que \ul{no}.
+        Para que haya un estado límite, debe existir el límite:
+        $$
+          \limite{k}{\infty} P^k\bm{v}^{(0)} = \bm{v}^{(\infinito)}
+        $$
+        Para que exista el estado límite para un $\bm{v}^{(0)}$ se necesita que para una combinación lineal en la base de autovectores,
+        el estado inicial tenga coordenada 0 en el autovector $\bm{v}_{-1}$ asociado al autovalor $\lambda = -1$:
+        $$
+          \bm{v}^{(0)} = c_1 \bm{v}^{eq} +
+          \ua{
+            c_2
+          }{
+            \text{\red{debe}}\\\text{\red{ser 0}}
+          }\bm{v}_{_{\red{-1}}} +
+          c_3 \bm{v}_{_{\blue{\frac{1}{4}(1 + \sqrt{5})}}} +
+          c_4 \bm{v}_{_{\blue{\frac{1}{4}(1 - \sqrt{5})}}}
+        $$
+
+        La matriz $P^\infinito$ no existe, porque no existe el límite:
+        $$
+          \limite{k}{\infinito}
+          P^k =
+          \limite{k}{\infinito}
+          C D^k C^{-1} =
+          \limite{k}{\infinito}
+          C
+          \matriz{cccc}{
+            1 & 0 & 0 & 0 \\
+            0 & (\red{-1})^k & 0 & 0 \\
+            0 & 0 & \blue{\frac{1}{4^k}(1 + \sqrt{5})}^k & 0 \\
+            0 & 0 & 0 & \blue{\frac{1}{4^k}(1 - \sqrt{5})}^k
+          }
+          C^{-1}
+        $$
+        Y bueh: $\limite{k}{\infinito} (-1)^k \noexiste$
+
+  \item Otra forma de decir esto del límite es que la sucesión de estados,
+        $
+          \set{
+            v^{(0)},
+            v^{(1)},
+            \ldots,
+            v^{(\infinito)},
+            \ldots,
+            v^{(\infinito)},
+            \ldots
+          }$ tiene que converger. Para el estado inicial esto no sucede
+        $$
+          v^{(0)} = (0,0,\frac{1}{3}, \frac{2}{3})^t,\
+          v^{(1)} = Pv^{(0)} = (0,0,\frac{2}{3}, \frac{1}{3})^t
+          v^{(2)} = Pv^{(1)} = (0,0,\frac{1}{3}, \frac{2}{3})^t,
+        $$
+        Y así los sucesivos estados van a estar oscilando entre un estado y otro. Más aún:
+        $$
+          \textstyle
+          v^{(0)} =
+          \magenta{1} \cdot
+          \ub{
+          (0, 0, \frac{1}{2}, \frac{1}{2})
+          }{
+          \bm{v}_{_{1}}
+          }
+          + \magenta{\frac{1}{3}}
+          \ub{
+          (0, 0, -\frac{1}{2}, \frac{1}{2})
+          }{
+          \bm{v}_{_{\red{-1}}}
+          } =
+          (0,0,\frac{1}{3}, \frac{2}{3})
+        $$
+        Claramente la coordenada del autovector asociado al $\lambda = \red{-1}$ en la combineta de autovectores no es 0, por lo tanto
+        \ul{ese estado inicial no tiene un estado límite}.
 \end{enumerate}

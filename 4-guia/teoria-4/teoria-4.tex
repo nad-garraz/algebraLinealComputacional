@@ -1,86 +1,90 @@
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
-\item\hypertarget{teoria-4:markov}{\textit{Procesos de Markov:}}
+  \item\hypertarget{teoria-4:markov}{\textit{Procesos de Markov:}}
 
-Sucesión de vectores $\bm{v}_k$ con $k \en \naturales_0$
-$$
-  \set{\bm{v}_0, \bm{v}_1, \ldots}
-  \quad
-  \text{con}
-  \quad
-  \bm{v}_{k+1} = M \bm{v}_k.
-$$
-$M$ es una matriz de \textit{Markov} si es una matriz estocástica \underline{por columnas}, es decir:
-\begin{itemize}
-  \item Todas los elementos $m_{ij}$ de la matriz $M$ son \underline{no negativos}.
-
-  \item Cada columna de $M$ suma 1:
+        Sucesión de vectores $\bm{v}_k$ con $k \en \naturales_0$
         $$
-          \left[\sumatoria{i = 1}{n} m_{i\blue{j}}\right]_{\blue{j}} = 1
+          \set{\bm{v}_0, \bm{v}_1, \ldots}
           \quad
-          \paratodo \blue{j} \en \naturales_{\leq n}
+          \text{con}
+          \quad
+          \bm{v}_{k+1} = M \bm{v}_k.
         $$
+        $M$ es una matriz de \textit{Markov} si es una matriz estocástica \underline{por columnas}, es decir:
+        \begin{itemize}
+          \item Todas los elementos $m_{ij}$ de la matriz $M$ son \underline{no negativos}.
 
-  \item $M$ tiene por lo menos un autovalor $\lambda = 1$.
+          \item Cada columna de $M$ suma 1:
+                $$
+                  \left[\sumatoria{i = 1}{n} m_{i\blue{j}}\right]_{\blue{j}} = 1
+                  \quad
+                  \paratodo \blue{j} \en \naturales_{\leq n}
+                $$
 
-  \item Los autovalores de $M$ cumplen que $|\lambda| \leq 1$.
-\end{itemize}
-\parrafoDestacado[\red{\atencion}]{
-  La interpretación para un elemento $a_{\magenta{i}\blue{j}}$, se lee:
-  \parrafoDestacado{
-    $a_{\magenta{i}\blue{j}}$
-    es la probabilidad de que \ul{la componente en el estado $\magenta{i}$}
-    pase a estar \ul{al estado $\blue{j}$}.
-  }
-}
+          \item $M$ tiene por lo menos un autovalor $\lambda = 1$.
 
-\item \textit{Vector estocástico, de estado o de probabilidad:}
-
-Sea un $\bm{v} = (v_1, \ldots, v_n)$ cumple que sus coordenadas son \underline{no negativas} y suman 1.
-Las coordenada $j-$ésima corresponde \ul{la probabilidad de estar en el estado $j-$ésimo o la proporción
-  de la población que se encuentra en ese estado}.
-
-\item
-\textit{El estado límite $v^{(\infinito)}$} es el estado para el cual existe el límite:
-$$
-  \limite{k}{\infinito} M^kv^{(0)} =
-  \limite{k}{\infinito} v^{(k+1)} =  v^{(\infinito)}
-$$
-\begin{enumerate}[label=\red{\tiny\faIcon{pray}$_{\arabic*}$}]
-  \item La existencia del estado límite, $v^{(\infinito)}$, como se ve en la definición, depende del estado inicial $v^{(0)}$.
-
-  \item Si los autovalores $\lambda_i$ de $A$ cumplen que si
-        $|\lambda_i| = 1 \entonces \lambda_i = 1 $
-        $\entonces$ podría existir \purple{existe el \textit{estado límite}}.
-\end{enumerate}
-
-\item \textit{El estado de equilibrio $v^{(eq)}$}:
-$$
-  M v^{(eq)} = v^{(eq)},
-$$
-por lo tanto $v^{(eq)}$ no es otra cosa que el autovector asociado al autovalor 1 de $M$
-\begin{enumerate}[label=\blue{\tiny\faIcon{pray}$_{\arabic*}$}]
-  \item Si la matriz $A \en \reales^{n \times n}$ \ul{diagonalizable} y tiene un \ul{único autovalor de valor $\lambda = 1$} y
-        $\lambda_i \distinto -1$ con autovector asociado $v^{eq}$, entonces existe:
-        $$
-          \limite{k}{\infinito} A^k = A^{(\infinito)}
-          \ytext
-          A^{(\infinito)} =
-          \matriz{c|c|c}{
-            \quad &  & \quad \\
-            v^{eq} & \cdots & v^{eq} \\
-            &  &
-          }.
-        $$
-        Con ese resultado, para cualquier estado inicial escrito como combineta de la base de autovectores:
-        $$
-          v^{(0)} = \red{c_1} v^{eq} + \cdots +  \red{c_n}v_n \text { con }  \red{c_1} \distinto 0
-        $$.
-        Eventualmente $A v^{(0)} \flecha{tiende}[a] v^{eq}$.
-        \parrafoDestacado{
-          \textit{Si hay estado límite $v^{(\infinito)}$ entonces es $v^{eq}$}.
+          \item Los autovalores de $M$ cumplen que $|\lambda| \leq 1$.
+        \end{itemize}
+        \parrafoDestacado[\red{\atencion}]{
+          La interpretación para un elemento $a_{\magenta{i}\blue{j}}$, se lee:
+          \parrafoDestacado{
+            $a_{\magenta{i}\blue{j}}$
+            es la probabilidad de que \ul{la componente en el estado $\magenta{i}$}
+            pase a estar \ul{al estado $\blue{j}$}.
+          }
         }
 
-  \item Si la matriz $A\en \reales^{n \times n}$ \ul{diagonalizable}, tiene \ul{$\lambda = 1$ con multiplicidad $m$} y $\lambda_i \distinto -1$ con
-        autoespacio $E_{\lambda = 1} = \set{v_1, \ldots, v_m}$
-        entonces el estado $v^{(\infinito)}$ es una combinación lineal de los vectores de $E_{\lambda = 1}$
+  \item \textit{Vector estocástico, de estado o de probabilidad:}
+
+        Sea un $\bm{v} = (v_1, \ldots, v_n)$ cumple que sus coordenadas son \underline{no negativas} y suman 1.
+        Las coordenada $j-$ésima corresponde \ul{la probabilidad de estar en el estado $j-$ésimo o la proporción
+          de la población que se encuentra en ese estado}.
+
+  \item
+        \textit{El estado límite $v^{(\infinito)}$} es el estado para el cual existe el límite:
+        $$
+          \limite{k}{\infinito} M^kv^{(0)} =
+          \limite{k}{\infinito} v^{(k+1)} =  v^{(\infinito)}
+        $$
+
+        \begin{enumerate}[label=\red{\tiny\faIcon{pray}$_{\arabic*}$}]
+          \item La existencia del estado límite, $v^{(\infinito)}$, como se ve en la definición, depende del estado inicial $v^{(0)}$.
+
+          \item Si los autovalores $\lambda_i$ de $A$ cumplen que si
+                $|\lambda_i| = 1 \entonces \lambda_i = 1 $
+                $\entonces$ podría existir \purple{existe el \textit{estado límite}}.
+        \end{enumerate}
+
+  \item \textit{El estado de equilibrio $v^{(eq)}$}:
+        $$
+          M v^{(eq)} = v^{(eq)},
+        $$
+        por lo tanto $v^{(eq)}$ no es otra cosa que el autovector asociado al autovalor 1 de $M$
+
+        \begin{enumerate}[label=\blue{\tiny\faIcon{pray}$_{\arabic*}$}]
+          \item Si la matriz $A \en \reales^{n \times n}$ \ul{diagonalizable} y tiene un \ul{único autovalor de valor $\lambda = 1$} y
+                $\lambda_i \distinto -1$ con autovector asociado $v^{eq}$, entonces existe:
+                $$
+                  \limite{k}{\infinito} A^k = A^{(\infinito)}
+                  \ytext
+                  A^{(\infinito)} =
+                  \matriz{c|c|c}{
+                    \quad &  & \quad \\
+                    v^{eq} & \cdots & v^{eq} \\
+                    &  &
+                  }.
+                $$
+                Con ese resultado, para cualquier estado inicial escrito como combineta de la base de autovectores:
+                $$
+                  v^{(0)} = \red{c_1} v^{eq} + \cdots +  \red{c_n}v_n \text { con }  \red{c_1} \distinto 0
+                $$.
+                Eventualmente $A v^{(0)} \flecha{tiende}[a] v^{eq}$.
+                \parrafoDestacado{
+                  \textit{Si hay estado límite $v^{(\infinito)}$ entonces es $v^{eq}$}.
+                }
+
+          \item Si la matriz $A\en \reales^{n \times n}$ \ul{diagonalizable}, tiene \ul{$\lambda = 1$ con multiplicidad $m$} y $\lambda_i \distinto -1$ con
+                autoespacio $E_{\lambda = 1} = \set{v_1, \ldots, v_m}$
+                entonces el estado $v^{(\infinito)}$ es una combinación lineal de los vectores de $E_{\lambda = 1}$
+
+        \end{enumerate}
 \end{enumerate}

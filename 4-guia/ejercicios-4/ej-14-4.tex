@@ -364,12 +364,12 @@
 
         Puede surgir la pregunta:
         \parrafoDestacado{
-          ¿Qué pasa si encuentro un estado inicial $\green{v^{(0)}}$ cuyas coordenadas en la \textit{base de autovectores}
-          de $P$ $\set{v^{eq}, v_2, \cdots, v_n}$ tenga \magenta{0} para el autovector $v^{eq}$, el autovector asociado a $\lambda = 1$?
+          ¿Qué pasa si encuentro un estado inicial $\green{\bm{v}^{(0)}}$ cuyas coordenadas en la \textit{base de autovectores}
+          de $P$ $\set{\bm{v}^{eq}, \bm{v}_2, \cdots, \bm{v}_n}$ tenga \magenta{0} para el autovector $\bm{v}^{eq}$, el autovector asociado a $\lambda = 1$?
         }
         Es decir:
         $$
-          \green{v^{(0)}} = \ua{\red{c_1}}{\magenta{0}} v^{eq} + \red{c_2} v_2 + \cdots + \red{c_n} v_n
+          \green{\bm{v}^{(0)}} = \ua{\red{c_1}}{\magenta{0}} \bm{v}^{eq} + \red{c_2} \bm{v}_2 + \cdots + \red{c_n} \bm{v}_n
         $$
         Bueno, resulta que en una base de autovectores de una \textit{matriz de Markov} eso no va a pasar nunca. Por
         esto:
@@ -377,29 +377,40 @@
           \llave{l}{
             \vec{1}^t = (1, \cdots, 1)   \\
             P : \textit{ matriz de Markov} \\
-            B = \set{v_1, v_2, \cdots, v_n} \textit{ autovectores de $P$},
+            B = \set{\bm{v}_1, \bm{v}_2, \cdots, \bm{v}_n} \textit{ autovectores de $P$},
           }
         $$
         La siguiente cuenta hace todo:
         $$
           0 =
-          \vec{1}^t P v_i -  \vec{1}^t P v_i =
-          (\vec{1}^t P) v_i - \vec{1}^t (P v_i) =
-          \vec{1}^t v_i - \vec{1}^t \lambda_i v_i =
-          (1 - \lambda) \vec{1}^t v_i
+          \vec{1}^t P \bm{v}_i -  \vec{1}^t P \bm{v}_i =
+          (\vec{1}^t P) \bm{v}_i - \vec{1}^t (P \bm{v}_i) =
+          \vec{1}^t \bm{v}_i - \vec{1}^t \lambda_i \bm{v}_i =
+          (1 - \lambda) \vec{1}^t \bm{v}_i
           \Sii{\red{!!!}}
           \llave{l}{
             1 - \lambda = 0 \\
             \text{ o }\\
-            \sumatoria{\blue{j} = 1}{n} (v_i)_{\blue{j}} = 0
+            \sumatoria{\blue{j} = 1}{n} (\bm{v}_i)_{\blue{j}} = 0
           }
         $$
-        Por lo tanto si el autovector no es $v^{eq}$, el autovector de $P$ asociado al $\lambda = 1$, los otros autovectores
+        Por lo tanto si el autovector no es $\bm{v}^{eq}$, el autovector de $P$ asociado al $\lambda = 1$, los otros autovectores
         no son \textit{vectores de probabilidad}, más aún \red{la suma de sus coordenadas es 0}. Y una combinación así:
         $$
-          \vec{1}^t \cdot \green{v^{(0)}} = \vec{1}^t \cdot \ob{(\ua{\red{c_1}}{\magenta{0}} v^{eq} + \red{c_2} v_2 + \cdots + \red{c_n} v_n)}{\green{v^{(0)}}} = 0
+          \vec{1}^t \cdot \green{\bm{v}^{(0)}} =
+          \vec{1}^t \cdot
+          \ob{
+            (\ua{
+              \red{c_1}
+            }{
+              \magenta{0}
+            }
+            \bm{v}^{eq} + \red{c_2} \bm{v}_2 + \cdots + \red{c_n} \bm{v}_n)
+          }{
+            \green{\bm{v}^{(0)}}
+          } \igual{\red{!}} \red{c_2} \bm{v}_2 + \cdots + \red{c_n} \bm{v}_n = 0
         $$
-        Por lo tanto el estado inicial $v^{(0)}$ \underline{nunca podría ser un vector de probabilidad con $\magenta{c_1} = 0$}.
+        \underline{nunca podría ser un vector de probabilidad, porque sus coordenadas sumarían 0.}
 \end{enumerate}
 
 \begin{aportes}
