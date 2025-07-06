@@ -3,14 +3,16 @@
   a una matriz diagonal real con elementos de la diagonal positivos.
 \end{enunciado}
 
-Hay que probar una doble implicación:
+Hay que probar una doble implicación.
+
+Para una matriz $A \en K^{n \times n}$ con autovector $v$ asociado a un autovalor $\lambda$:
 \begin{itemize}
   \item[($\red{\Rightarrow}$)]
         $$
           \begin{array}{l}
             A v = \lambda v
             \Sii{$\times v^*$}[$\to$]
-            v^* A v = \lambda v*v
+            v^* A v = \lambda v^*v
             \sii
             v^* A v \igual{$\llamada1$} \lambda \norma{v}_2^2 \\
             A v = \lambda v
@@ -23,17 +25,20 @@ Hay que probar una doble implicación:
           \end{array}
         $$
         Como $A = A^*$ el miembro izquierdo en $\llamada1$ y $\llamada2$ es igual.
-        Por lo tanto $\lambda = \conj{\lambda} \entonces \lambda \en \reales$.
+        Por lo tanto $\lambda = \conj{\lambda}
+          \sii
+          \lambda \en \reales$.
 
         Ahora si $A$ es una matriz definida positiva:
         $$
           Av = \lambda v
           \Sii{$\times v$}[$\to$]
-          \ub{v^*Av}{>0 \text{ si } v\distinto 0} = \lambda v^*v = \lambda \cdot \norma{v}_2^2 > 0  \paratodo v \distinto 0
-          \entonces \lambda > 0
+          \ub{v^*Av}{>0 \text{ si } v\distinto 0} = \lambda v^*v = \lambda \cdot \norma{v}_2^2 > 0
+          ,~\paratodo v \distinto 0
+          \sii \lambda > 0
         $$
-        Hasta acá, con las hipótesis tengo \textit{autovalores reales y positivos}, ahora voy a ver que los autovectores tienen que ser ortogonales.
-        Dado 2 autovectores $v_1$ y $v_2$ asociados a distintos autovalores:
+        Hasta acá, tengo \textit{autovalores reales y positivos}, tengo que ver que los autovectores tienen que ser ortogonales.
+        Dado 2 autovectores $v_1$ y $v_2$ asociados a \ul{distintos} autovalores $\lambda_1$ y $\lambda_2$ respectivamente:
         $$
           \begin{array}{l}
             Av_1 = \lambda_1 v_1
@@ -46,9 +51,9 @@ Hay que probar una doble implicación:
             }
           \end{array}
         $$
-        Restando $\llamada3$ y $\llamada4$:
+        Restando $\llamada3$ y $\llamada4$ y teniendo en cuenta que le producto interno entre 2 vectores es conmutativo:
         $$
-          0 \igual{\red{!!}}
+          0 \igual{\red{!}}
           \ub{
             (\lambda_1 - \lambda_2)
           }{
@@ -58,8 +63,55 @@ Hay que probar una doble implicación:
           \sii
           v_1 \perp v_2
         $$
-        Medio que con eso alcanzaría, porque en el caso de tener
+        Para el caso en que tenga autovalores de multiplicidad mayor a 1, puedo hacer Gram-Schmidt para conseguir los vectores ortogonales.
 
   \item[($\red{\Leftarrow}$)]
-        {\large\red{CONSULTAR, probar por absurdo?}}
+        En este caso:
+        $$
+          A = UDU^*
+          \ytext
+          A^* = (UDU^*)^*
+          \igual{\red{!}}
+          UDU^*
+          \sisolosi
+          A = A^*
+        $$
+        En el \red{!} use que los elementos diagonales de $D$ son reales. La matriz $A$ es hermiticana dado que es
+        igual a su autoadjunta o a su transpuesta conjugada, como más te guste decirle.
+
+        Por otro lado la \ul{matriz diagonal $D$ tiene todos sus elementos positivos}, es una matriz definida positiva:
+        $$
+          w^* A w = w^* U D U^* w
+          \sisolosi
+          w^* A w =
+          \ub{
+            (U^* w)^*
+          }{
+            \omega^*
+          } D
+          \ub{
+            U^* w
+          }{
+            \omega
+          } = \omega^* D \omega > 0 \paratodo \omega \distinto 0
+        $$
+        Eso último es:
+        $$
+          (\omega_1^*\ \cdots \ \omega_n^*)
+          \matriz{ccc}{
+            d_{11} & & 0\\
+            & \ddots & \\
+            0&  & d_{nn}
+          }
+          \matriz{c}{
+            \omega_1 \\
+            \vdots\\
+            \omega_n
+          }
+          = 
+          d_{11} w^2_1 +
+          \cdots + 
+          d_{nn} w^2_n > 0
+        $$
+        Ya que $d_{ii} > 0$ por hipótesis.
 \end{itemize}

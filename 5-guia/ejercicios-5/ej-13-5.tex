@@ -2,4 +2,48 @@
   Sea $A \en \complejos^{n \times n}$, probar que los valores singulares de $A^t,\, \bar{A} \ytext A^*$ son
   iguales a los de $A$.
 \end{enunciado}
-\hacer
+
+Una matriz $A \en \complejos^{n \times n}$ tiene una \textit{descomposición en valores singulares}:
+$$
+  A = U \Sigma V^*
+$$
+Donde $\Sigma$ tiene en sus elementos diagonales, $\sigma_{ii} = \sqrt{\lambda_i}$ donde esos $\lambda_i$
+son los autovalores de $A^* A$.
+La matriz $V$ tiene como columnas a los autovectores de $A^*A$ y
+la matriz $U$ tiene como columnas a una base ortonormal con los vectores $u_i = \frac{Av}{\sigma_i}$ con $\sigma_i \distinto 0$
+
+\bigskip
+
+\textit{Para $A^t$}:
+$$
+  A = U \Sigma V^*
+  \Sii{transpongo}
+  A^t = \bar{V} \Sigma^t U^t
+$$
+Como $A$ es una matriz cuadrada entonces $\Sigma$ también lo es, por lo tanto $\Sigma = \Sigma^t$, por lo que
+$A$ y $A^t$ tienen \ul{los mismos valores singulares}.
+
+\bigskip
+
+\textit{Para $\bar{A}$}:
+$$
+  A = U \Sigma V^*
+  \Sii{conjugo}
+  \bar{A} = \bar{U} \bar{\Sigma} V^t
+$$
+$\Sigma$ tiene a todos sus elementos no negativos y reales, por lo tanto $\Sigma = \bar{\Sigma}$.
+Es así que $A$ y $\bar{A}$ tienen \ul{los mismos valores singulares}.
+
+\bigskip
+
+\textit{Para $A^*$}:
+$$
+  A = U \Sigma V^*
+  \Sii{autoadjunto}
+  A^* = V \Sigma^* U^*
+$$
+Un mix de los resultados anteriores muestran que $A$ y $A^*$ tienen \ul{los mismos valores singulares}.
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
