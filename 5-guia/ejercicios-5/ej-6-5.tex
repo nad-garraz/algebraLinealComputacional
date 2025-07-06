@@ -44,28 +44,31 @@
   \item Dado que $A$ es una matriz simétrica, es \textit{ortonormalmente diagonalizable}. Hay que diagonalizar
         asegurando que la base de \textit{autovectores} sea una BON. El procedimientos puede hacerse como cualquier
         diagonalización, pero acá voy a \textit{explotar \faIcon{bomb}} el hecho de que la \textit{base de autovectores}
-        va a ser ortogonal.
+        va a ser ortogonal para distintos autovalores.
 
         Busco autovectores de $\lambda = 0$, que equivale a buscar elementos del núcleo de la matriz $A$ a ojo:
         $$
-          \begin{array}{c}
+          \begin{array}{rcl}
             (A - \blue{\lambda}I)v_{_{(\lambda = 0)}} = 0
-            \sii
+             & \sii                              &
             v_{_{(\lambda = 0)}} \en \set{(1, -1, 0), (0,1, -2)} \\
-            \flecha{normalizando}
-            v_{_{(\lambda = 0)}} \en E_{_{(\lambda = 0)}} =
-            \set{(\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 0), (0,\frac{1}{\sqrt{5}}, -\frac{2}{\sqrt{5}})}
+             & \Sii{ortonormalizo}[Gram-Schmidt] &
+            v_{_{(\lambda = 0)}} \en
+            \set{
+              \frac{1}{\sqrt{2}}(1, -1, 0),
+              \frac{1}{\sqrt{2}}(\frac{1}{3},\frac{1}{3}, -\frac{4}{3})
+            }                                                    \\
           \end{array}
         $$
-        Como estoy en $\reales^3$ no hay muchas opciones para el vector restante, tiene que ser ortogonal a esos dos. Si no ves a ojo
-        que por ejemplo el vector (2,2,1) funciona podés plantear:
+        Como estoy en $\reales^3$ no hay muchas opciones para el vector restante, tiene que ser ortogonal a esos dos:
         $$
           \llave{rcl}{
-            (1, -1, 0) \cdot (x,y,z)    & = & 0\\
-            (0,1, -2) \cdot (x,y,z)    & = & 0
+            \frac{1}{\sqrt{2}}(1, -1, 0)\cdot (x,y,z)    & = & 0\\
+            \frac{1}{\sqrt{2}}(\frac{1}{3}, \frac{1}{3}, -\frac{4}{3}) \cdot (x,y,z)    & = & 0
           }
+          \Sii{\red{!}}
+          (x,y,z)  = \frac{1}{3}(2,2,1)
         $$
-        Resolvelo y obtenés así un vector ortogonal.
 
         Ahora quiero ver a que autovalor corresponde:
         $$
@@ -99,26 +102,26 @@
           \text{BON } =
           \big\{
           \ub{
-            (\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}, 0),
-            (0,\frac{1}{\sqrt{5}}, -\frac{2}{\sqrt{5}})
+            \frac{1}{\sqrt{2}}(1, -1, 0),
+            \frac{1}{\sqrt{2}}(\frac{1}{3},\frac{1}{3}, -\frac{4}{3})
           }{
             E_{_{(\lambda = 0)}}
           },
           \ub{
-            (\frac{2}{3}, \frac{2}{3}, \frac{1}{3})
+            \frac{1}{3}(2,2,1)
           }{
             E_{_{(\lambda = 9)}}
           }
           \big\}
         $$
         Y ahora queda fácil, porque la inversa de la matriz de autovectores $C$ es $C^t$,
-        dado que es una \textit{matriz ortogonal} o \textit{matriz unitaria}:
+        dado que es una \textit{matriz ortogonal} (o \textit{matriz unitaria} si $\en \complejos$):
         $$
           A =
           \matriz{ccc}{
-            \frac{1}{\sqrt{2}} & 0 & \frac{2}{3} \\
-            -\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{5}} & \frac{2}{3} \\
-            0 & -\frac{2}{\sqrt{5}} & \frac{1}{3}
+            \frac{1}{\sqrt{2}}  &   \frac{1}{3\sqrt{2}}  & \frac{2}{3} \\
+            -\frac{1}{\sqrt{2}} & \frac{1}{3\sqrt{2}}    & \frac{2}{3} \\
+            0                   & -\frac{2\sqrt{2}}{3}   & \frac{1}{3}
           }
           \matriz{ccc}{
             0 & 0 & 0 \\
@@ -127,7 +130,7 @@
           }
           \matriz{ccc}{
             \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}} & 0 \\
-            0 & \frac{1}{\sqrt{5}} & -\frac{2}{\sqrt{5}} \\
+            \frac{1}{3\sqrt2} & \frac{1}{3\sqrt2} & -\frac{2\sqrt{2}}{3} \\
             \frac{2}{3} & \frac{2}{3} & \frac{1}{3}
           }
         $$
