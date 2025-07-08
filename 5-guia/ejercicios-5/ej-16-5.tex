@@ -1,3 +1,190 @@
 \begin{enunciado}{\ejercicio}
+  Dada una matriz $A \en \reales^{m \times n},\, m\geq$, cuya descomposición en valores singulares reducida
+  es $A = \hat{U}\hat{\Sigma}\hat{V}^t$. Se define la pseudo-inversa de $A$ como $A^\dagger = \hat{V}\hat{\Sigma}^{-1}\hat{U}^t$.
+  \begin{enumerate}[label=(\alph*)]
+    \item Verificar que $A^\dagger$ satisface las siguientes propiedades:
+          \begin{enumerate}[label=\roman*.]
+            \begin{multicols}{2}
+              \item $A A^\dagger A = A $
+              \item $ A^\dagger A A^\dagger = A^\dagger$
+              \item $ (AA^\dagger)^t = A A^\dagger$
+              \item $ (A^\dagger A)^t = A^\dagger A$
+            \end{multicols}
+          \end{enumerate}
 
+    \item Probar que si dos matrices $B_1$ y $B_2$ satisfacen las 4 propiedades del ítem anterior,
+          entonces veerifican $AB_1 = AB_2$ y $B_1A = B_2A$.
+
+    \item Probar que la pseudo-inversa de $A$ es única.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item Verificar que $A^\dagger$ satisface las siguientes propiedades:
+        \begin{enumerate}[label=\roman*.]
+          \item
+                $$
+                  \begin{array}{rcl}
+                    A A^\dagger A = A
+                     & \sii &
+                    \hat{U}\hat{\Sigma}
+                    \ub{
+                      \hat{V}^t \cdot \hat{V}
+                    }{
+                      I_n
+                    }
+                    \hat{\Sigma}^{-1}
+                    \ub{
+                      \hat{U}^t \cdot \hat{U}
+                    }{
+                      I_n
+                    }
+                    \hat{\Sigma}\hat{V}^t
+                    =
+                    A         \\
+                     & \sii &
+                    \hat{U}
+                    \ub{
+                      \hat{\Sigma}
+                      \hat{\Sigma}^{-1}
+                    }{
+                      I_n
+                    }
+                    \hat{\Sigma}\hat{V}^t
+                    =
+                    A         \\
+                     & \sii &
+                    \hat{U}
+                    \hat{\Sigma}
+                    \hat{V}^t
+                    =
+                    A
+                  \end{array}
+                $$
+
+          \item
+                $$
+                  \begin{array}{rcl}
+                    A^\dagger A A^\dagger = A^\dagger
+                     & \sii &
+                    \hat{V} \hat{\Sigma}^{-1}
+                    \ub{
+                      \hat{U}^t \cdot \hat{U}
+                    }{
+                      I_n
+                    }
+                    \hat{\Sigma}
+                    \ub{
+                      \hat{V}^t \cdot \hat{V}
+                    }{
+                      I_n
+                    }
+                    \hat{\Sigma}^{-1} \hat{U}^t
+                    = A^\dagger \\
+                     & \sii &
+                    \hat{V}
+                    \ub{
+                      \hat{\Sigma}^{-1}
+                      \hat{\Sigma}
+                    }{
+                      I_n
+                    }
+                    \hat{U}^t
+                    = A^\dagger
+                  \end{array}
+                $$
+
+          \item Sale enseguida, igual que los anteriores. Supongo que de mil maneras distintas, me quedo con esta porque pintó.
+                $$
+                  \begin{array}{rcl}
+                    (A A^\dagger)^t  = AA^\dagger
+                     & \sii          &
+                    (A^\dagger)^t A^t  = AA^\dagger \\
+                     & \Sii{\red{!}} &
+                    \hat{U} \hat{\Sigma}^{-1} \hat{V}^t
+                    \cdot
+                    \hat{V}\hat{\Sigma}\hat{U}^t
+                    =
+                    AA^\dagger                      \\
+                     & \Sii{\red{!}} &
+                    \hat{U}
+                    \ub{
+                      \hat{\Sigma}^{-1} \hat{V}^t
+                      \cdot
+                      \hat{V}\hat{\Sigma}
+                    }{
+                      I_n
+                    }\hat{U}^t
+                    =
+                    AA^\dagger                      \\
+                     & \sii          &
+                    \hat{U}
+                    \hat{U}^t
+                    =
+                    AA^\dagger                      \\
+                     & \sii          &
+                    \hat{U}
+                    \blue{
+                      \hat{\Sigma}
+                      \hat{V}^t
+                    }
+                    \cdot
+                    \blue{
+                      \hat{V}
+                      \hat{\Sigma}^{-1}
+                    }
+                    \hat{U}^t
+                    =
+                    AA^\dagger                      \\
+                  \end{array}
+                $$
+
+          \item
+                $$
+                  \begin{array}{rcl}
+                    (A^\dagger A)^t  = A^\dagger A
+                     & \sii                                    &
+                    A^t (A^\dagger)^t  = A^\dagger A             \\
+                     & \Sii{\red{!}}                           &
+                    \hat{V}\hat{\Sigma}\hat{U}^t
+                    \cdot
+                    \hat{U} \hat{\Sigma}^{-1} \hat{V}^t
+                    =
+                    A^\dagger A                                  \\
+                     & \Sii{\red{!}}                           &
+                    \hat{V}
+                    \hat{\Sigma}
+                    \ub{
+                      \hat{U}^t \cdot \hat{U}
+                    }{
+                      I_n
+                    }
+                    \hat{\Sigma}^{-1}
+                    \hat{V}^t
+                    =
+                    A^\dagger  A                                 \\
+                     & \Sii{{\tiny conmuta}}[{\tiny diagonal}] &
+                    \hat{V}
+                    \hat{\Sigma}^{-1}
+                    \hat{\Sigma}
+                    \hat{V}^t
+                    =
+                    A^\dagger A                                  \\
+                     & \Sii{\red{!}}                           &
+                    \hat{V}
+                    \hat{\Sigma}^{-1}
+                    \hat{U}^t
+                    \cdot
+                    \hat{U}
+                    \hat{\Sigma}
+                    \hat{V}^t
+                    =
+                    A^\dagger A                                  \\
+                  \end{array}
+                $$
+        \end{enumerate}
+
+  \item  \hacer
+
+  \item  \hacer
+\end{enumerate}

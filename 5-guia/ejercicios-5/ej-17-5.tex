@@ -1,3 +1,131 @@
-\begin{enunciado}{\ejercicio}
-\hacer
+\begin{enunciado}{\ejercicior
+  Caracterizar geométricamente y graficar la imagen de la esfera unitaria
+  $$
+    S_2 = \set{\bm{x} \en \reales^3 : \norma{\bm{x}}_2 = 1}
+  $$
+  por la transformación $T(\bm{x} ) = A\bm{x}$, con
+  $$
+    A =
+    \matriz{cc}{
+      1 & \frac{-2}{\sqrt{5}}  \\
+      2 & \frac{1}{\sqrt{5}}
+    }
+    \matriz{ccc}{
+      2 & 0 & 0  \\
+      0 & 1 & 0
+    }
+    \matriz{ccc}{
+      2 & 1 & 2  \\
+      2 & -2 & -1 \\
+      1 & 2 & -2
+    }.
+  $$
 \end{enunciado}
+
+Acomodo la expresión de $A$, para que sea una \textit{descomposición en valores singulares}:
+$$
+  A =
+  U \Sigma V^t
+  \igual{\red{!}}
+  \matriz{cc}{
+    \frac{1}{\sqrt{5}} & \frac{-2}{5}  \\
+    \frac{2}{\sqrt{5}} & \frac{1}{5}
+  }
+  \matriz{ccc}{
+    6\sqrt{5} & 0 & 0  \\
+    0 & 3\sqrt{5} & 0
+  }
+  \matriz{ccc}{
+    \frac{2}{3} & \frac{1}{3} & \frac{2}{3}  \\
+    \frac{2}{3} & \frac{-2}{3} & \frac{-1}{3} \\
+    \frac{1}{3} & \frac{2}{3} & \frac{-2}{3}
+  }
+$$
+Y la expresión reducida:
+$$
+  A =
+  \hat{U} \hat{\Sigma} \hat{V}^t
+  \igual{\red{!}}
+  \matriz{cc}{
+    \frac{1}{\sqrt{5}} & \frac{-2}{5}  \\
+    \frac{2}{\sqrt{5}} & \frac{1}{5}
+  }
+  \matriz{cc}{
+    6\sqrt{5} & 0   \\
+    0 & 3\sqrt{5}
+  }
+  \matriz{ccc}{
+    \frac{2}{3} & \frac{1}{3} & \frac{2}{3}  \\
+    \frac{2}{3} & \frac{-2}{3} & \frac{-1}{3}
+  }
+  =
+  \frac{1}{5}
+  \matriz{ccc}{
+    20 - 4\sqrt{5} & 20 + 4\sqrt{5} & 20 + 2 \sqrt{5} \\
+    40 + 2\sqrt{5} & 20 - 2\sqrt{5} & 40 + \sqrt{5}
+  }
+$$
+
+$$
+  \begin{tikzpicture}[
+      scale = 2,
+      every pin/.style = {font=\tiny,
+          fill=white,
+          draw= black},
+      every node/.style = {font=\tiny}]
+    \begin{axis}[
+        % enlargelimits = false,
+        xmin=-50, xmax=50,
+        ymin=-70, ymax=70,
+        zmin=-10, zmax=15,
+        view={120}{30},
+        % view={0}{90},
+        % 3d box,
+        xtick={-75, -60, -40, -20, 0, 20, 30, 40, 60, 75},
+        ytick={-50, -30, -10, 0, 10, 30, 50, 60},
+        ztick={-30, -20, -10, 0, 10, 20, 30},
+        xminorticks=true,
+        yminorticks=true,
+        axis equal,
+        xlabel={$x_1$},
+        ylabel={$x_2$},
+        zlabel={$x_3$},
+        title={Scatter para 500 $\blue{\bm{x}} \en \reales^3 / \norma{\blue{\bm{x}}}_2 = 1$ y para 500 $\purple{Ax}\en \reales^2$  },
+        legend style={
+            cells={anchor=center},
+            font =\tiny,
+            anchor=center,
+            at = {(0.5,-0.25)},
+            legend columns=2,
+            opacity=1
+          },
+        legend entries =
+          {
+            $\set{\blue{x}: x \en \reales^3, \norma{x}_2 = 1}$,
+            $\set{\purple{Ax \en \reales^2}: x \en \reales^3, \norma{x}_2 = 1}$,
+          },
+        cycle list name=color list,
+        every axis plot/.append style={only marks, mark size=1pt},
+        grid=both
+      ]
+      \addplot3[mark size = 0.1pt, Cerulean, opacity=0.2] table[x expr=-69]  {./ejercicios-5/dataFiles/17-ej-data/circulo.data};
+      \addplot3[mark size = 0.1pt, Cerulean, opacity=0.2] table [y expr=-70] {./ejercicios-5/dataFiles/17-ej-data/circulo.data};
+      \addplot3[mark size = 0.1pt, Cerulean, opacity=0.3] table [z expr=-33] {./ejercicios-5/dataFiles/17-ej-data/circulo.data};
+      \addplot3[mark size = 0.4pt, Cerulean, opacity = 1] table {./ejercicios-5/dataFiles/17-ej-data/circulo.data};
+
+      \addplot3[mark size = 0.1pt, purple, opacity=0.2] table [x expr=-69] {./ejercicios-5/dataFiles/17-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.1pt, purple, opacity=0.2] table [y expr=-70] {./ejercicios-5/dataFiles/17-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.1pt, purple, opacity=0.5] table [z expr=-33] {./ejercicios-5/dataFiles/17-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.4pt, purple, opacity=1] table {./ejercicios-5/dataFiles/17-ej-data/matrizDotCirculo.data};
+
+    \end{axis}
+  \end{tikzpicture}
+$$
+
+Si bien la perspectiva puede ser engañoza, la transformación de la \blue{esfera unitaria} da como
+resultado una \purple{superficie elíptica en dos dimensiones} que está ubicada en el plano $x_3 = 0$, como se puede ver
+en las proyecciones a los planos catesianos.
+$$
+A 
+= 
+$$

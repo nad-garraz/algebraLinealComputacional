@@ -64,13 +64,26 @@ $$
 $$
 
 $$
-  \begin{tikzpicture}[scale = 1.3, every pin/.style={font=\tiny, fill=white, draw= black}, every node/.style = {font=\footnotesize}]
+  \begin{tikzpicture}[
+      scale = 1.5,
+      every pin/.style = {font=\tiny,
+          fill=white,
+          draw= black},
+      every node/.style = {font=\footnotesize}]
     \begin{axis}[
-            xmin=-15,
-            xmax=15,
+        enlargelimits = false,
+        xmin=-50, xmax=50,
+        ymin=-25, ymax=25,
+        zmin=-25, ymax=25,
+        view={110}{20},
+        3d box,
+        xtick={-25, 0, 25},
+        ytick={-25, 0, 25},
+        ztick={-25, 0, 25},
         axis equal,
         xlabel={$x_1$},
         ylabel={$x_2$},
+        zlabel={$x_3$},
         title={Scatter para 200 $\blue{\bm{x}} / \norma{\blue{\bm{x}}}_2 = 1$ y para 200 $\purple{Ax}$},
         legend style={
             cells={anchor=center},
@@ -90,8 +103,15 @@ $$
         yminorticks=true,
         grid=both,
       ]
-      \addplot3[mark size = 0.5pt, Cerulean] table {./ejercicios-5/dataFiles/9-ej-data/circulo.data};
-      \addplot3[mark size = 0.5pt, purple] table {./ejercicios-5/dataFiles/9-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.3pt, Cerulean, opacity=1 ] table {./ejercicios-5/dataFiles/9-ej-data/circulo.data};
+      \addplot3[mark size = 0.1pt, Cerulean, opacity=0.2] table [x expr=-50] {./ejercicios-5/dataFiles/9-ej-data/circulo.data};
+      \addplot3[mark size = 0.1pt, Cerulean, opacity=0.2] table [y expr=-50] {./ejercicios-5/dataFiles/9-ej-data/circulo.data};
+      \addplot3[mark size = 0.1pt, Cerulean, opacity=0.2] table [z expr=-25] {./ejercicios-5/dataFiles/9-ej-data/circulo.data};
+
+      \addplot3[mark size = 0.3pt, purple, opacity=1] table {./ejercicios-5/dataFiles/9-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.1pt, purple, opacity=0.2] table [x expr=-50] {./ejercicios-5/dataFiles/9-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.1pt, purple, opacity=0.2] table [y expr=-50] {./ejercicios-5/dataFiles/9-ej-data/matrizDotCirculo.data};
+      \addplot3[mark size = 0.1pt, purple, opacity=0.2] table [z expr=-25] {./ejercicios-5/dataFiles/9-ej-data/matrizDotCirculo.data};
 
     \end{axis}
   \end{tikzpicture}

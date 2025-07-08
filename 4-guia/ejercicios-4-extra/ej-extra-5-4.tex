@@ -1,0 +1,326 @@
+\begin{enunciado}{\ejExtra}
+  Una aplicación para escuchar música estudiar un estraño comportamiento en las elecciones
+  musicales de sus usuarios. Cada dos minutos cambian entre,
+  \textit{Juan d'Arienzo},
+  \textit{Carlos di Sarli},
+  \textit{Aníbal Troilo}
+  y
+  \textit{Francisco Canaro} según el diagrama:
+  $$
+    \begin{tikzpicture}[
+      scale=3,
+      node distance=5cm,
+      estado/.style={circle, draw, fill=violet!20!white, minimum size=2cm, inner sep=0pt},
+      proba/.style={-{Latex[length=2mm]}},
+      every node/.style={font={\normalsize}}
+      ]
+      \node[estado, align = center] (1) {Carlos \\ di Sarli};
+      \node[estado, right of=1, align = center] (2) {Francisco \\ Canaro};
+      \node[estado, below of=1, align = center] (3) {Aníbal \\ Troilo};
+      \node[estado, below of=2, align = center] (4) {Juan \\ d'Arienzo};
+
+      \draw[proba, bend right=20] (3) to node[right] {$0.5$} (1);
+      \draw[proba, bend right=20] (1) to node[left] {$c$} (3);
+      \draw[proba, bend right=20] (2) to node[above] {$0.5$} (1.east);
+      \draw[proba, bend right=20] (1) to node[below] {$b$} (2.west);
+      \draw[proba, bend right=5]  (1.south east) to node[left, below] {$d$}(4.north west);
+
+      \draw[proba] (1) to [out=180, in=90, looseness=4]  node[left] {$a$} (1.north);
+      \draw[proba] (2.east) to [out=0, in=90, looseness=4]  node[right] {$0.5$} (2.north);
+      \draw[proba] (3.south) to [out=270, in=180, looseness=4]  node[left] {$0.5$} (3.west);
+      \draw[proba] (4.south) to [out=270, in=0, looseness=4]  node[right] {$1$} (4.east);
+    \end{tikzpicture}
+  $$
+  Por ejemplo, de quienes están escuchando a \textit{Pancho Canaro}, en dos minutos el 50\% pasará a
+  escuchar a \textit{Carlos Di Sarli} y el otro 50\% seguirá escuchando a \textit{Francisco Canaro}.
+
+  \bigskip
+
+  Sabiendo que la matriz $P$ que representa el proceso de transición es de Markov y que
+  $$v = \frac{1}{8}
+    \matriz{c}{
+      3\\
+      2\\
+      2\\
+      1
+    }
+    \hspace{-5pt}
+    \begin{array}{l}
+      \to  \text{Carlos di Sarli}  \\
+      \to  \text{Francisco Canaro} \\
+      \to  \text{Aníbal Troilo}    \\
+      \to  \text{Juan d'Arienzo}
+    \end{array}
+  $$
+  es un estado de equilibrio.
+  \begin{enumerate}[label=(\alph*)]
+    \item (1 pt.) Dar la matriz de transición $P$ y determinar si existe $P^\infinito$.
+    \item (1.5 pt.) Si en el instante inicial del estudio hay 300 usuarios escuchando a \textit{Carlos di Sarli},
+          100 usuarios escuchando a \textit{Francisco Canaro} y 300 usuarios escuchando a \textit{Aníbal Troilo}.
+          ¿Cuántos usuarios aproximandamente estarán escuchando a \textit{Aníbal Troilo} a los 20 minutos?
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item
+        $$
+          \begin{array}{rr}
+            \text{Di Sarli}  & \to \\
+            \text{Canaro}    & \to \\
+            \text{Troilo}    & \to \\
+            \text{d'Arienzo} & \to
+          \end{array}
+          \matriz{cccc}{
+            a & 0.5 & 0.5 & 0 \\
+            b & 0.5 & 0 & 0 \\
+            c & 0 & 0.5 & 0 \\
+            d & 0 & 0 & 1
+          }
+          = P
+        $$
+        Para que sea una matriz \textit{estocástica, de probabilidad o de Markov}, sus columnas tienen que sumar 1.
+        Si $v$ es un estado de equilibrio:
+        $$
+          Pv = v
+          \sii
+          Pv =
+          \frac{1}{8}
+          \matriz{c}{
+            3a + 2 \\
+            3b + 1 \\
+            3c + 1 \\
+            3d + 1
+          }
+          =
+          \frac{1}{8}
+          \matriz{c}{
+            3 \\
+            2 \\
+            2 \\
+            1
+          }
+          \sisolosi
+          \llave{rcl}{
+            a & = & \frac{1}{3} \\
+            b & = & \frac{1}{3} \\
+            c & = & \frac{1}{3} \\
+            d & = & 0 \\
+          }
+        $$
+        Por lo tanto:
+        $$
+          P =
+          \matriz{cccc}{
+            \frac{1}{3} & 0.5 & 0.5 & 0 \\
+            \frac{1}{3} & 0.5 & 0 & 0 \\
+            \frac{1}{3} & 0 & 0.5 & 0 \\
+            0 & 0 & 0 & 1
+          }
+        $$
+        Para determinar la existencia de $P^\infinito$ necesito que los autovalores de la matriz de módulo 1 sean solo el 1:
+        $$
+          \text{Si } \paratodo \lambda \text{ tal que } |\lambda| = 1 \ytext \lambda = 1
+          \entonces
+          \existe P^\infinito
+        $$
+        Calculo autovalores:
+        {\small
+        $$
+          |P - \lambda I_4| = 0
+          \sii
+          \deter{cccc}{
+            \frac{1}{3} - \lambda & 0.5           & 0.5           & 0           \\
+            \frac{1}{3}           & 0.5 - \lambda & 0             & 0           \\
+            \frac{1}{3}           & 0             & 0.5 - \lambda & 0           \\
+            0                     & 0             & 0             & 1 - \lambda
+          }
+          = 0
+          \Sii{\red{!!}}
+          \llave{rcccl}{
+            \lambda_1 &\igual{\red{!}}& 1 & \to & E_{\lambda = 1} = \ket{(0,0,0,1), (\frac{3}{2},1,1,0)} \\
+            \lambda_2 &=& \frac{1}{2} & \to & E_{\lambda = \frac{1}{2}} = \ket{(0,-1,1,0)} \\
+            \lambda_3 &=& \frac{-1}{6} & \to & E_{\lambda = \frac{-1}{6}} = \ket{(-2,1,1,0)}
+          }
+        $$
+        }
+        Dado que los únicos autovalores de módulo uno son el 1, la matriz $P^\infinito$ existirá. Más aún, habrá
+        estados límites para todo estado inicial. Además como $P$ es diagonalizable, dado que hay una base de $\reales^4$
+        puedo encontrar la forma exacta de $P^\infinito$, \ul{si bien en el enunciado no piden el cálculo}.
+        $$
+          \begin{array}{rcl}
+            \limite{k}{\infinito}
+            P^k = C D^k C^{-1} & =            &
+            \limite{k}{\infinito}
+            \matriz{cccc}{
+            0                  & \frac{3}{2}  & 0               & -2               \\
+            0                  & 1            & -1              & 1                \\
+            0                  & 1            & 1               & 1                \\
+            1                  & 0            & 0               & 0
+            }
+            \matriz{cccc}{
+            1                  & 0            & 0               & 0                \\
+            0                  & 1            & 0               & 0                \\
+            0                  & 0            & (\frac{1}{2})^k & 0                \\
+            0                  & 0            & 0               & (\frac{-1}{6})^k
+            }
+            \matriz{cccc}{
+            0                  & \frac{3}{2}  & 0               & -2               \\
+            0                  & 1            & -1              & 1                \\
+            0                  & 1            & 1               & 1                \\
+            1                  & 0            & 0               & 0
+            }^{-1}                                                                 \\
+                               & =            &
+            \matriz{cccc}{
+            0                  & \frac{3}{2}  & 0               & -2               \\
+            0                  & 1            & -1              & 1                \\
+            0                  & 1            & 1               & 1                \\
+            1                  & 0            & 0               & 0
+            }
+            \matriz{cccc}{
+            1                  & 0            & 0               & 0                \\
+            0                  & 1            & 0               & 0                \\
+            0                  & 0            & 0               & 0                \\
+            0                  & 0            & 0               & 0
+            }
+            \matriz{cccc}{
+            0                  & 0            & 0               & 1                \\
+            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                  & \frac{-1}{2} & \frac{1}{2}     & 0                \\
+            \frac{-2}{7}       & \frac{3}{14} & \frac{3}{14}    & 0
+            }                                                                      \\
+                               & =            &
+            \matriz{cccc}{
+            0                  & \frac{3}{2}  & 0               & 0                \\
+            0                  & 1            & 0               & 0                \\
+            0                  & 1            & 0               & 0                \\
+            1                  & 0            & 0               & 0
+            }
+            \matriz{cccc}{
+            0                  & 0            & 0               & 1                \\
+            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                  & \frac{-1}{2} & \frac{1}{2}     & 0                \\
+            \frac{-2}{7}       & \frac{3}{14} & \frac{3}{14}    & 0
+            }                                                                      \\
+                               & =            &
+            \matriz{cccc}{
+            \frac{3}{7}        & \frac{3}{7}  & \frac{3}{7}     & 0                \\
+            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                  & 0            & 0               & 1
+            }
+            = P^\infinito
+          \end{array}
+        $$
+
+  \item Hay que agarrar la calculadora y armarse de paciencia. Me voy a basar en las
+        \textit{palabras del enunciado, sobre todo en la de aproximadamente}.
+
+        Quieren que se calcule $v^{(10)} = P^{(10)}v^{(0)}$ para el estado inicial:
+        $$
+          v^{(0)}=
+          \matriz{c}{
+            300     \\
+            100     \\
+            300     \\
+            0
+          }
+        $$
+        Calculo:
+        $$
+          \begin{array}{rcccl}
+            v^{(1)}  & =      & P v^{(0)} & =      & (300, 150, 250, 0)                                \\
+            v^{(2)}  & =      & P v^{(1)} & =      & (300, 175, 225, 0)                                \\
+            v^{(3)}  & =      & P v^{(2)} & =      & (300, 187.5, 212.5, 0)                            \\
+            v^{(4)}  & =      & P v^{(3)} & =      & (300, 193.75, 206.25, 0)                          \\
+            v^{(5)}  & =      & P v^{(4)} & =      & (300, 196.875, 203.125, 0)                        \\
+            v^{(6)}  & =      & P v^{(5)} & =      & (300, 198.437, 201.563, 0)                        \\
+            \vdots   & \vdots & \vdots    & \vdots & \vdots                                            \\
+            v^{(10)} & =      & P v^{(9)} & =      & (300, 199.9, 200.1, 0) \approx (300, 200, 200, 0)
+          \end{array}
+        $$
+        Así habrá aproximadamente:
+        $$
+          \cajaResultado{
+            v^{(10)} \approx (300, 200, 200, 0)
+          }
+        $$
+        O también está la versión con $P^{\red{10}}$:
+        $$
+          \begin{array}{rcl}
+            P^{\red{10}} = C D^{\red{10}} C^{-1}
+                         & =            &
+            \matriz{cccc}{
+            0            & \frac{3}{2}  & 0                        & -2                        \\
+            0            & 1            & -1                       & 1                         \\
+            0            & 1            & 1                        & 1                         \\
+            1            & 0            & 0                        & 0
+            }
+            \matriz{cccc}{
+            1            & 0            & 0                        & 0                         \\
+            0            & 1            & 0                        & 0                         \\
+            0            & 0            & (\frac{1}{2})^{\red{10}} & 0                         \\
+            0            & 0            & 0                        & (\frac{-1}{6})^{\red{10}}
+            }
+            \matriz{cccc}{
+            0            & 0            & 0                        & 1                         \\
+            \frac{2}{7}  & \frac{2}{7}  & \frac{2}{7}              & 0                         \\
+            0            & \frac{-1}{2} & \frac{1}{2}              & 0                         \\
+            \frac{-2}{7} & \frac{3}{14} & \frac{3}{14}             & 0
+            }                                                                                  \\
+                         & \approx      &
+            \matriz{cccc}{
+            0            & \frac{3}{2}  & 0                        & 0                         \\
+            0            & 1            & 0                        & 0                         \\
+            0            & 1            & 0                        & 0                         \\
+            1            & 0            & 0                        & 0
+            }
+            \matriz{cccc}{
+            1            & 0            & 0                        & 0                         \\
+            0            & 1            & 0                        & 0                         \\
+            0            & 0            & 0.001                    & 0                         \\
+            0            & 0            & 0                        & 0.00000002
+            }
+            \matriz{cccc}{
+            0            & 0            & 0                        & 1                         \\
+            \frac{2}{7}  & \frac{2}{7}  & \frac{2}{7}              & 0                         \\
+            0            & \frac{-1}{2} & \frac{1}{2}              & 0                         \\
+            \frac{-2}{7} & \frac{3}{14} & \frac{3}{14}             & 0
+            }                                                                                  \\
+                         & \approx      &
+            P^\infinito
+          \end{array}
+        $$
+        Por lo tanto, nuevamente, me voy a agarrar de las palabras del enunciado, y aproximadamente habrá:
+        $$
+          \cajaResultado{
+          P^{(10)}v^{(0)}
+          \approx
+          P^\infinito v^{(0)} =
+          \matriz{cccc}{
+            \frac{3}{7}        & \frac{3}{7}  & \frac{3}{7}     & 0                \\
+            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                  & 0            & 0               & 1
+          }
+          \matriz{c}{
+            300     \\
+            100     \\
+            300     \\
+            0
+          }
+          \approx
+          \matriz{c}{
+            300     \\
+            200     \\
+            200     \\
+            0
+          }
+          }
+        $$
+        Por lo tanto de los 700 usuarios con un muy buen gusto musical, es decir no escuchan la \textit{basura} que se escucha hoy en día,
+        estarían escuchando 300 a \textit{el señor del tango}, 200 a \textit{Pirincho} y otros 200 a \textit{Pichuco}.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
