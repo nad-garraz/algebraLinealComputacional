@@ -1,3 +1,80 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Decidir para cada una de las siguientes matrices si los métodos de Jacobi y de Gauss-Seidel converge.
+  $$
+    A =
+    \matriz{ccc}{
+      1 & 1 & 0 \\
+      -1 & 2 & 1 \\
+      0 & 0 & 1 \\
+    }
+    \qquad
+    B =
+    \matriz{ccc}{
+      1 & 0 & -1 \\
+      -2 & 1 & 1 \\
+      -1 & 0 & -1
+    }
+    \qquad
+    C =
+    \matriz{ccc}{
+      3 & -1 & -4 \\
+      -1 & 5 & 7 \\
+      -4 & 7 & 14
+    }
+  $$
 \end{enunciado}
+
+\textit{Matriz $A$:}
+
+$A$ es una matriz \textit{tridiagonal} es decir que averiguando el radio espectra de algún método ya
+sé lo que pasa con el otro, debido a que para este tipo de matrices:
+$$
+  \rho(T_{GS}) \igual{$\llamada1$} \rho^2(T_J)
+$$
+Calculo $T_J = -D^{-1}(L+U)$:
+$$
+  T_J =
+  -\matriz{ccc}{
+    1 & 0 & 0 \\
+    0 & \frac{1}{2} & 0 \\
+    0 & 0 & 1
+  }
+  \matriz{ccc}{
+    0 & 1 & 0 \\
+    -1 & 0 & 1 \\
+    0 & 0 & 0
+  }
+  =
+  \matriz{ccc}{
+    0 & -1 & 0\\
+    \frac{1}{2} & 0 & \frac{-1}{2}\\
+    0 & 0 & 0
+  } $$
+Calculo los autovalores:
+$$
+  \det(T_J - \lambda I) = -\lambda \cdot (\lambda^2 + \frac{1}{2}) = 0
+  \sii
+  \llave{rcl}{
+    \lambda_1 & = & 0\\
+    \lambda_2 & = & \frac{i}{\sqrt{2}}\\
+    \lambda_3 & = & \frac{-i}{\sqrt{2}}
+  }
+  \entonces
+  \rho(T_J) = \maximo_i(|\lambda_i|) = \frac{1}{\sqrt{2}} \Entonces{$\llamada1$} \rho(T_{GS}) = \frac{1}{2}
+$$
+Ambos métodos convergen dado que:
+$$
+  \cajaResultado{
+    \rho(T_J) = \frac{1}{\sqrt{2}} < 1 \ytext \rho(T_{GS}) = \frac{1}{2} < 1.
+  }
+$$
+En particular el método de Gauss-Seidel converge más rápido dado que el de Jacobi, dado que $\rho_{GS} < \rho{J}$
+
+\bigskip
+
+\textit{Matriz $B$:}
+
+\hacer
+
+\textit{Matriz $C$:}
+C es una matriz \textit{simétrica y definida positiva}.

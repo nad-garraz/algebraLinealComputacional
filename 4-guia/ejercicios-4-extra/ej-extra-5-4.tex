@@ -143,72 +143,85 @@
           }
         $$
         }
-        Dado que los únicos autovalores de módulo uno son el 1, la matriz $P^\infinito$ existirá. Más aún, habrá
-        estados límites para todo estado inicial. Además como $P$ es diagonalizable, dado que hay una base de $\reales^4$
-        puedo encontrar la forma exacta de $P^\infinito$, \ul{si bien en el enunciado no piden el cálculo}.
+        Dado que los únicos autovalores de módulo uno son el 1, la matriz $P^\infinito$ existirá. En este caso
+        el autovalor 1 es múltiple raíz del polinomio característico y su espacio asociado junto los otros autovectores
+        generan una base de $\reales^4$. Esto me asegura la convergencia de cualquier estado inicial a un estado
+        límite $v^{(0)} \to v^{\infinito}$ donde $ v^{(\infinito)} \en E_{\lambda = 1}$.
+
+        Como la matriz es diagonalizable puedo encontrar distintas (infinitas) expresiones de $P^\infinito$.
+        El límite:
+        $$
+          \limite{k}{\infinito} P^k =
+          \limite{k}{\infinito} C_{\magenta{j}} D^k C_{\magenta{j}}^{-1} = P_{\magenta{j}}^\infinito
+        $$
+        existirá para cualquier matriz $C_{\magenta{j}}$, cuyas columnas son una base de los autovectores de $P$, que elija.
+        El subíndice $\magenta{j}$ lo pongo para designar que habrá distintas $P^{\infinito}$.
+
+        Como $P$ es diagonalizable,
+        puedo encontrar una forma exacta de $P_{\magenta{j}}^\infinito$, \ul{si bien en el enunciado no piden el cálculo}.
         $$
           \begin{array}{rcl}
             \limite{k}{\infinito}
-            P^k = C D^k C^{-1} & =            &
+            P^k = C_{\magenta{j}} D^k C_{\magenta{j}}^{-1} & =            &
             \limite{k}{\infinito}
             \matriz{cccc}{
-            0                  & \frac{3}{2}  & 0               & -2               \\
-            0                  & 1            & -1              & 1                \\
-            0                  & 1            & 1               & 1                \\
-            1                  & 0            & 0               & 0
+            0                                              & \frac{3}{2}  & 0               & -2               \\
+            0                                              & 1            & -1              & 1                \\
+            0                                              & 1            & 1               & 1                \\
+            1                                              & 0            & 0               & 0
             }
             \matriz{cccc}{
-            1                  & 0            & 0               & 0                \\
-            0                  & 1            & 0               & 0                \\
-            0                  & 0            & (\frac{1}{2})^k & 0                \\
-            0                  & 0            & 0               & (\frac{-1}{6})^k
+            1                                              & 0            & 0               & 0                \\
+            0                                              & 1            & 0               & 0                \\
+            0                                              & 0            & (\frac{1}{2})^k & 0                \\
+            0                                              & 0            & 0               & (\frac{-1}{6})^k
             }
             \matriz{cccc}{
-            0                  & \frac{3}{2}  & 0               & -2               \\
-            0                  & 1            & -1              & 1                \\
-            0                  & 1            & 1               & 1                \\
-            1                  & 0            & 0               & 0
-            }^{-1}                                                                 \\
-                               & =            &
+            0                                              & \frac{3}{2}  & 0               & -2               \\
+            0                                              & 1            & -1              & 1                \\
+            0                                              & 1            & 1               & 1                \\
+            1                                              & 0            & 0               & 0
+            }^{-1}                                                                                             \\
+                                                           & =            &
             \matriz{cccc}{
-            0                  & \frac{3}{2}  & 0               & -2               \\
-            0                  & 1            & -1              & 1                \\
-            0                  & 1            & 1               & 1                \\
-            1                  & 0            & 0               & 0
+            0                                              & \frac{3}{2}  & 0               & -2               \\
+            0                                              & 1            & -1              & 1                \\
+            0                                              & 1            & 1               & 1                \\
+            1                                              & 0            & 0               & 0
             }
             \matriz{cccc}{
-            1                  & 0            & 0               & 0                \\
-            0                  & 1            & 0               & 0                \\
-            0                  & 0            & 0               & 0                \\
-            0                  & 0            & 0               & 0
+            1                                              & 0            & 0               & 0                \\
+            0                                              & 1            & 0               & 0                \\
+            0                                              & 0            & 0               & 0                \\
+            0                                              & 0            & 0               & 0
             }
             \matriz{cccc}{
-            0                  & 0            & 0               & 1                \\
-            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
-            0                  & \frac{-1}{2} & \frac{1}{2}     & 0                \\
-            \frac{-2}{7}       & \frac{3}{14} & \frac{3}{14}    & 0
-            }                                                                      \\
-                               & =            &
+            0                                              & 0            & 0               & 1                \\
+            \frac{2}{7}                                    & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                                              & \frac{-1}{2} & \frac{1}{2}     & 0                \\
+            \frac{-2}{7}                                   & \frac{3}{14} & \frac{3}{14}    & 0
+            }                                                                                                  \\
+                                                           & =            &
             \matriz{cccc}{
-            0                  & \frac{3}{2}  & 0               & 0                \\
-            0                  & 1            & 0               & 0                \\
-            0                  & 1            & 0               & 0                \\
-            1                  & 0            & 0               & 0
+            0                                              & \frac{3}{2}  & 0               & 0                \\
+            0                                              & 1            & 0               & 0                \\
+            0                                              & 1            & 0               & 0                \\
+            1                                              & 0            & 0               & 0
             }
             \matriz{cccc}{
-            0                  & 0            & 0               & 1                \\
-            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
-            0                  & \frac{-1}{2} & \frac{1}{2}     & 0                \\
-            \frac{-2}{7}       & \frac{3}{14} & \frac{3}{14}    & 0
-            }                                                                      \\
-                               & =            &
+            0                                              & 0            & 0               & 1                \\
+            \frac{2}{7}                                    & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                                              & \frac{-1}{2} & \frac{1}{2}     & 0                \\
+            \frac{-2}{7}                                   & \frac{3}{14} & \frac{3}{14}    & 0
+            }                                                                                                  \\
+                                                           & =            &
             \matriz{cccc}{
-            \frac{3}{7}        & \frac{3}{7}  & \frac{3}{7}     & 0                \\
-            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
-            \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
-            0                  & 0            & 0               & 1
+            \frac{3}{7}                                    & \frac{3}{7}  & \frac{3}{7}     & 0                \\
+            \frac{2}{7}                                    & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            \frac{2}{7}                                    & \frac{2}{7}  & \frac{2}{7}     & 0                \\
+            0                                              & 0            & 0               & 1
             }
-            = P^\infinito
+            = P_{\magenta{j}}^\infinito
           \end{array}
         $$
 
@@ -287,7 +300,7 @@
             \frac{-2}{7} & \frac{3}{14} & \frac{3}{14}             & 0
             }                                                                                  \\
                          & \approx      &
-            P^\infinito
+            P_{\magenta{j}}^\infinito
           \end{array}
         $$
         Por lo tanto, nuevamente, me voy a agarrar de las palabras del enunciado, y aproximadamente habrá:
@@ -295,7 +308,7 @@
           \cajaResultado{
           P^{(10)}v^{(0)}
           \approx
-          P^\infinito v^{(0)} =
+          P_{\magenta{j}}^\infinito v^{(0)} =
           \matriz{cccc}{
             \frac{3}{7}        & \frac{3}{7}  & \frac{3}{7}     & 0                \\
             \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\

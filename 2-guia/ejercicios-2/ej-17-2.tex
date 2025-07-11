@@ -2,8 +2,8 @@
   Probar que para toda matriz $A \en \reales^{n \times n}$
   \begin{enumerate}[label=(\alph*)]
     \begin{multicols}{2}
-      \item $\norma{A}_\infty = \maximo[1 \leq i \leq n]\set{ \sumatoria{j=1}{n}|a_{ij}|}$
-      \item $\norma{A}_1 = \maximo[1 \leq j \leq n]\set{ \sumatoria{i=1}{n}|a_{ij}|}$
+      \item $\norma{A}_\infty = \maximo_{1 \leq i \leq n} \set{ \sumatoria{j=1}{n}|a_{ij}|}$
+      \item $\norma{A}_1 = \maximo_{1 \leq j \leq n}\set{ \sumatoria{i=1}{n}|a_{ij}|}$
     \end{multicols}
   \end{enumerate}
 \end{enunciado}
@@ -13,31 +13,31 @@
         Definición de norma infinito:
         $$
           \norma{A}_\infty =
-          \maximo[\norma{x}_\infty = 1] \set{\norma{Ax}_\infty}
+          \maximo_{\norma{x}_\infty = 1} \set{\norma{Ax}_\infty}
         $$
         Veamos que:
         $$
           \norma{Ax}_\infty =
-          \maximo[1 \leq i \leq n]
+          \maximo_{1 \leq i \leq n}
           \sumatoria{j=1}{n}  |a_{ij} \cdot x_j|
           \menorIgual{$\oa{}{\text{Des. triangular}}$}
-          \maximo[1 \leq i \leq n] \sumatoria{j=1}{n}  |a_{ij}| \cdot |x_j|
+          \maximo_{1 \leq i \leq n} \sumatoria{j=1}{n}  |a_{ij}| \cdot |x_j|
           \menorIgual{$\oa{}{\text{Por ser le máx }|x_j|}$}
-          \maximo[1 \leq i \leq n] \sumatoria{j=1}{n}  |a_{ij}| \cdot \norma{x}_\infty =
-          \maximo[1 \leq i \leq n] \norma{x}_\infty \cdot \sumatoria{j=1}{n}  |a_{ij}|
+          \maximo_{1 \leq i \leq n} \sumatoria{j=1}{n}  |a_{ij}| \cdot \norma{x}_\infty =
+          \maximo_{1 \leq i \leq n} \norma{x}_\infty \cdot \sumatoria{j=1}{n}  |a_{ij}|
         $$
         Luego, nos queda que
         $$
-          \norma{Ax}_\infty \leq \norma{x}_\infty \maximo[1 \leq i \leq n] \sumatoria{j=1}{n}  |a_{ij}|
+          \norma{Ax}_\infty \leq \norma{x}_\infty \maximo_{1 \leq i \leq n} \sumatoria{j=1}{n}  |a_{ij}|
         $$
         Volvamos a $\norma{A}_\infty$.
         Reemplazamos $\norma{Ax}_\infty$ por la desigualdad que obtuvimos
         $$
-          \norma{A}_\infty \leq \maximo[\norma{x}_\infty = 1] \norma{x}_\infty \maximo[1 \leq i \leq n] \sumatoria{j=1}{n}  |a_{ij}|
+          \norma{A}_\infty \leq \maximo_{\norma{x}_\infty = 1} \norma{x}_\infty \maximo_{1 \leq i \leq n} \sumatoria{j=1}{n}  |a_{ij}|
         $$
         Como $\norma{x}_\infty = 1$, nos queda que:
         $$
-          \norma{A}_\infty \leq \maximo[1 \leq i \leq n] \sumatoria{j=1}{n}  |a_{ij}|
+          \norma{A}_\infty \leq \maximo_{1 \leq i \leq n} \sumatoria{j=1}{n}  |a_{ij}|
         $$
         Llamaremos a esta expresión de la derecha $M$.
         $$
@@ -57,14 +57,14 @@
           \item Existe un $\tilde{x}$ tal que $\norma{A\tilde{x}}_\infty = M$
         \end{itemize}
         $$
-          \norma{A}_\infty = \maximo[\norma{x}_\infty = 1]{ \norma{Ax}_\infty} = M
+          \norma{A}_\infty = \maximo_{\norma{x}_\infty = 1}{ \norma{Ax}_\infty} = M
         $$
         Puesto que encontramos un $x$ que cumple la igualdad, y se que todo el resto son menores o iguales.
 
   \item Quiero probar la fórmula cerrada:
         $$
           \norma{A}_1 =
-          \maximo[1 \leq j \leq n] \sumatoria{i=1}{n} |a_{ij}| =
+          \maximo_{1 \leq j \leq n} \sumatoria{i=1}{n} |a_{ij}| =
           \ub{\maximo \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots , \sumatoria{i = 1}{n} |a_{in}|}}{\llamada1}
         $$
         Usando \textit{normas inducidas o subordinadas} voy a ponerle una cota a $\norma{A}_1$ para cualquier $x \en K^n$ con $\norma{x}_1 = 1$:
@@ -74,36 +74,36 @@
             {\Bigg\|}
             \textstyle
             \matriz{c}{
-            \sumatoria{j = 1}{n} a_{1j}x_j                                            \\
-            \vdots                                                                    \\
-            \sumatoria{j = 1}{n} a_{nj}x_j                                            \\
+            \sumatoria{j = 1}{n} a_{1j}x_j                                             \\
+            \vdots                                                                     \\
+            \sumatoria{j = 1}{n} a_{nj}x_j                                             \\
             }
             {\Bigg\|}_1
              & \igual{def}                           &
             | \sumatoria{j = 1}{n} a_{1j}x_j |
             + \cdots +
-            |\sumatoria{j = 1}{n} a_{nj}x_j|                                          \\
-             & \menorIgual{$\oa{}{\text{desigualdad}                                  \\ \text{triangular}}$} &
+            |\sumatoria{j = 1}{n} a_{nj}x_j|                                           \\
+             & \menorIgual{$\oa{}{\text{desigualdad}                                   \\ \text{triangular}}$} &
                \sumatoria{j = 1}{n} |a_{1j}| \cdot |x_j |
                + \cdots +
-            \sumatoria{j = 1}{n} |a_{nj}| \cdot |x_j|                                 \\
+            \sumatoria{j = 1}{n} |a_{nj}| \cdot |x_j|                                  \\
              & \igual{\red{!}}                       &
             \sumatoria{i = 1}{n}
             \sumatoria{j = 1}{n}
-            |a_{ij}| \cdot |x_j |                                                     \\
+            |a_{ij}| \cdot |x_j |                                                      \\
              & \igual{\red{!!}}                      &
             \sumatoria{j = 1}{n} \sumatoria{i = 1}{n} |a_{ij}| \cdot |x_j|
             =
-            \sumatoria{j = 1}{n} |x_j| \cdot \sumatoria{i = 1}{n} |a_{ij}|            \\
+            \sumatoria{j = 1}{n} |x_j| \cdot \sumatoria{i = 1}{n} |a_{ij}|             \\
              & =                                     &
             |x_1| \cdot \ub{\sumatoria{i = 1}{n} |a_{i1}|}{\norma{ \columna(A_1)}_1} +
             \cdots +
-            |x_n| \cdot \ub{\sumatoria{i = 1}{n} |a_{in}|}{\norma{ \columna(A_n)}_1}  \\
+            |x_n| \cdot \ub{\sumatoria{i = 1}{n} |a_{in}|}{\norma{ \columna(A_n)}_1}   \\
              & \menorIgual{\red{!}}                  &
-            \ub{\sumatoria{j = 1}{n} |x_j|}{\norma{x}_1} \cdot \maximo[1 \leq i \leq n] \set{\norma{ \columna(A_i)}_1} =
-            \norma{x}_1 \cdot \maximo[1 \leq i \leq n] \set{\norma{ \columna(A_i)}_1} \\
+            \ub{\sumatoria{j = 1}{n} |x_j|}{\norma{x}_1} \cdot \maximo_{1 \leq i \leq n} \set{\norma{ \columna(A_i)}_1} =
+            \norma{x}_1 \cdot \maximo_{1 \leq i \leq n} \set{\norma{ \columna(A_i)}_1} \\
              & \igual{HIP}[$\ua{}{\norma{x}_1 = 1}$] &
-            \maximo[1 \leq i \leq n]\set{\norma{ \columna(A_i)}_1} = \llamada1
+            \maximo_{1 \leq i \leq n}\set{\norma{ \columna(A_i)}_1} = \llamada1
           \end{array}
         $$
         Después de ese parto se obtiene que:
@@ -144,7 +144,7 @@
         $A \cdot \magenta{\tilde{x}} \en \llamada1$ y justo es el elemento máximo {\LARGE \surprise} de $\llamada1$ por lo tanto el más poronga entre todos los
         $\norma{y} = 1$:
         $$
-          \maximo[\norma{y} = 1] \frac{\norma{Ay}}{\norma{y}}
+          \maximo_{\norma{y} = 1} \frac{\norma{Ay}}{\norma{y}}
           \igual{$\oa{}{\text{el}\\ \text{más}\\ \text{groso}\\\magenta{\tilde{x}}}$}
           \norma{A \magenta{\tilde{x}}}_1 =
           \maximo \set{\sumatoria{i = 1}{n} |a_{i1}|, \ldots , \sumatoria{i = 1}{n} |a_{i\magenta{j}}|, \ldots, \sumatoria{i = 1}{n} |a_{in}|} =
@@ -152,7 +152,7 @@
         $$
         Y por definición (la otra con $x\distinto 0$)
         de norma inducida con norma 1:
-        $\norma{A}_1 = \maximo[x \distinto 0] \frac{\norma{Ax}_1}{\norma{x}_1}$, así pudiendo expresar:
+        $\norma{A}_1 = \maximo_{x \distinto 0} \frac{\norma{Ax}_1}{\norma{x}_1}$, así pudiendo expresar:
         $$
           \cajaResultado{
           \norma{A}_1 =
