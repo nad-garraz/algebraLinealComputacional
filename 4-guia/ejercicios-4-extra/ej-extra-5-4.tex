@@ -148,17 +148,18 @@
         generan una base de $\reales^4$. Esto me asegura la convergencia de cualquier estado inicial a un estado
         límite $v^{(0)} \to v^{\infinito}$ donde $ v^{(\infinito)} \en E_{\lambda = 1}$.
 
-        Como la matriz es diagonalizable puedo encontrar distintas (infinitas) expresiones de $P^\infinito$.
+        Como la matriz es diagonalizable puedo encontrar $P^\infinito$.
         El límite:
         $$
           \limite{k}{\infinito} P^k =
-          \limite{k}{\infinito} C_{\magenta{j}} D^k C_{\magenta{j}}^{-1} = P_{\magenta{j}}^\infinito
+          \limite{k}{\infinito} C_{\magenta{j}} D^k C_{\magenta{j}}^{-1} = P^\infinito
         $$
         existirá para cualquier matriz $C_{\magenta{j}}$, cuyas columnas son una base de los autovectores de $P$, que elija.
-        El subíndice $\magenta{j}$ lo pongo para designar que habrá distintas $P^{\infinito}$.
+        El subíndice $\magenta{j}$ lo pongo para designar que habrá distintas $C$ según los autovectores que uno haya despejado
+        en $E_{\lambda = 1}$.
 
         Como $P$ es diagonalizable,
-        puedo encontrar una forma exacta de $P_{\magenta{j}}^\infinito$, \ul{si bien en el enunciado no piden el cálculo}.
+        puedo encontrar una forma exacta de $P^\infinito$, \ul{si bien en el enunciado no piden el cálculo}.
         $$
           \begin{array}{rcl}
             \limite{k}{\infinito}
@@ -221,10 +222,15 @@
             \frac{2}{7}                                    & \frac{2}{7}  & \frac{2}{7}     & 0                \\
             0                                              & 0            & 0               & 1
             }
-            = P_{\magenta{j}}^\infinito
+            = P^\infinito
           \end{array}
         $$
-
+        \parrafoDestacado{
+          A primera vista no parece obvio que al cambiar una $C_{\magenta{j}}$ por otra
+          $C_{\magenta{i}}$ las cuentas den siempre el mismo resultado, pero esto debe ser así.
+          El límite de $\limite{k}{\infinito}P^k$ existe y por definición de límite,
+          no importa \textit{el camino usado} siempre se debe llegar al mismo resultado.
+        }
   \item Hay que agarrar la calculadora y armarse de paciencia. Me voy a basar en las
         \textit{palabras del enunciado, sobre todo en la de aproximadamente}.
 
@@ -300,7 +306,7 @@
             \frac{-2}{7} & \frac{3}{14} & \frac{3}{14}             & 0
             }                                                                                  \\
                          & \approx      &
-            P_{\magenta{j}}^\infinito
+            P^\infinito
           \end{array}
         $$
         Por lo tanto, nuevamente, me voy a agarrar de las palabras del enunciado, y aproximadamente habrá:
@@ -308,7 +314,7 @@
           \cajaResultado{
           P^{(10)}v^{(0)}
           \approx
-          P_{\magenta{j}}^\infinito v^{(0)} =
+          P^\infinito v^{(0)} =
           \matriz{cccc}{
             \frac{3}{7}        & \frac{3}{7}  & \frac{3}{7}     & 0                \\
             \frac{2}{7}        & \frac{2}{7}  & \frac{2}{7}     & 0                \\
