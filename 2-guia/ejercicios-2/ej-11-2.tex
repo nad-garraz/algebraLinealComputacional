@@ -10,15 +10,23 @@
   $$
 \end{enunciado}
 
-\hyperlink{teoria-2:normas}{Acá están las definiciones de las normas que se usan en el ejercicio {\tiny($\ot$ click {\tiny\faIcon{mouse}})}}
+\hyperlink{teoria-2:normas}{Acá están las definiciones de las normas que se usan en el ejercicio {\tiny \click }})
 
 Si $x = (0,\ldots, 0)$ la desigualdad es el caso de la igualdad. Entonces si tengo un $x \en \reales^n$ y $x \distinto 0$:
 $$
   x = (x_1, \cdots, x_n)
   \flecha{calculo}[$\normaBullet_2$]
-  \norma{x}_2 = \sqrt{x_1^2 + \cdots + x_n^2} =
-  |\ua{x_i}{\maximo_{1\leq i \leq n} |x_i|| \cdot
-  \ub{\sqrt{\parentesis{\frac{x_1}{x_i}}^2 + \cdots + \ua{1}{i-\text{ésimo lugar}} + \cdots + \parentesis{\frac{x_n}{x_i}}^2}}{\geq 1}
+  \norma{x}_2 = \sqrt{x_1^2 + \cdots + x_n^2}
+  \igual{\red{!}}
+  \maximo_{1\leq i \leq n} |x_i|
+  \cdot
+  \ub{
+    \sqrt{
+      \parentesis{\frac{x_1}{x_i}}^2 + \cdots + \ua{1}{i-\text{ésimo lugar}} + \cdots + \parentesis{\frac{x_n}{x_i}}^2
+    }
+  }{
+    \geq 1
+  }
   \mayorIgual{\red{!}}
   |x_i|=
   \norma{x}_\infty

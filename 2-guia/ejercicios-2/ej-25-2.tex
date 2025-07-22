@@ -1,3 +1,95 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $A_n \en \reales^n$ la matriz dada por $A_n = (a_{ij})$,
+  $$
+    a_{ij} =
+    \llave{cl}{
+      1 & \text{ si } i = 1 \text{ o } j = 1 \\
+      1/i & \text{ si } i = j \\
+      0 & \text{ en otro caso}
+    }
+  $$
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que $\condicion_\infinito (A_n) \geq f(n)$ para alguna función $f(n) \en O(n^2)$.
+    \item Probar que $\condicion_2(A_n) \to \infinito$ cuando $n \to \infinito$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        Hay que encontrar una $B$ (antes de verla, mirá el ejercicio \ref{ej:23} para inspirarte)
+        $$
+          \condicion_\infinito(A)
+          \geq
+          \supremo \set{\frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} : B \text{ es singular}}
+        $$
+        El caso con $n = 2$ se puede calcular a mano:
+        $$
+          A =
+          \matriz{cc}{
+            1 & 1 \\
+            1 & \frac{1}{2}
+          }
+          \ytext
+          A^{-1} =
+          \matriz{cc}{
+            -1 & 2 \\
+            2 & -2
+          }
+          \entonces
+          \condicion_\infinito(A) =
+          \norma{A}_\infinito \cdot
+          \norma{A^{-1}}_\infinito = 2 \cdot 4 = 8
+        $$
+        Para $n \geq 3$:
+        $$
+          b_{ij} =
+          \llave{cl}{
+            1 & \text{ si } i = 1 \text{ o } j = 1 \\
+            1/i & \text{ si } i = j, ~ \magenta{i,j < n - 1}\\
+            0 & \text{ en otro caso}
+          }
+        $$
+        Las últimas 2 filas son iguales, así que \ul{$B$ es singular}:
+        $$
+          A - B =
+          \llave{cl}{
+            \frac{1}{n-1} & \text{ si } i = j = n - 1\\
+            \frac{1}{n} & \text{ si } i = j = n\\
+            0 & \text{ en otro caso}
+          }
+        $$
+        Entonces queda que:
+        $$
+          \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} = \frac{n}{\frac{1}{n - 1}} = n^2 - n \en O(n^2)
+        $$
+
+  \item Pispeá el ejercicio \ref{ej:16}, ahí están las acotaciones falopa de la normas.
+
+        Entonces usando que:
+        $$
+          \frac{1}{\sqrt{n}} \norma{A}_\infinito \menorIgual{$\llamada1$} \norma{A}_2 \leq \sqrt{n} \norma{A}_\infinito
+        $$
+        sale con fritas \simpleicon{kfc}.
+        $$
+          \begin{array}{rcl}
+            \limite{n}{\infinito} \condicion_2(A)
+             & =                        &
+            \limite{n}{\infinito} \norma{A}_2 \cdot \norma{A^{-1}}_2                                                     \\
+             & \mayorIgual{$\llamada1$} &
+            \limite{n}{\infinito} \frac{1}{\sqrt{n}}\norma{A}_\infinito \cdot \frac{1}{\sqrt{n}}\norma{A^{-1}}_\infinito \\
+             & =                        &
+            \limite{n}{\infinito} \frac{1}{n} \norma{A}_\infinito \cdot \norma{A^{-1}}_\infinito                         \\
+             & \igual{def}              &
+            \limite{n}{\infinito}
+            \ub{
+              \frac{1}{n} \ob{\condicion_\infinito(A)}{\en O(n^2)}
+            }{
+              \en O(n)
+            } \flecha{$n \to \infinito$} \infinito
+          \end{array}
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
