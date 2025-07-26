@@ -18,7 +18,7 @@
 \end{enunciado}
 
 \begin{enumerate}[label=\alph*)]
-  \item
+  \item Igualar el determinante a cero:
         $$
           A(\alpha) =
           \deter{cccc}{
@@ -35,7 +35,7 @@
           \alpha \en \set{-1, 1, 2}
         $$
 
-  \item
+  \item Uso el mega resultado.
         $$
           \condicion(A)
           \geq
@@ -67,5 +67,37 @@
           \limite{\alpha}{1} \bigg|\frac{6\alpha + \alpha^2}{\alpha^2 - 1}\bigg| = +\infinito
         $$
 
-  \item  \hacer
+  \item
+        Uso el resultado:
+        $$
+          \frac{1}{\sqrt{n}} \norma{A}_\infinito \menor{$\llamada1$} \norma{A}_2 \leq \sqrt{n} \norma{A}_\infinito
+        $$
+        Dado que $A(\alpha) \en \reales^{4 \times 4}$
+        $$
+          \begin{array}{rcl}\vspace{3pt}
+            \condicion_2(A(\alpha))
+             & \igual{def}              &
+            \norma{A(\alpha)}_2 \cdot \norma{A(\alpha)^{-1}}_2                                                     \\
+             & \mayorIgual{$\llamada1$} &
+            \frac{1}{\sqrt{4}}\norma{A(\alpha)}_\infinito \cdot \frac{1}{\sqrt{4}}\norma{A(\alpha)^{-1}}_\infinito \\
+             & =                        &
+            \frac{1}{4}\norma{A(\alpha)}_\infinito \cdot \norma{A(\alpha)^{-1}}_\infinito                          \\
+             & \igual{def}              &
+            \frac{1}{4} \condicion_\infinito(A(\alpha))                                                            \\
+             & \flecha{$\alpha \to 1$}  & \infinito
+          \end{array}
+        $$
+        Se concluye que:
+        $$
+          \cajaResultado{
+            \condicion_2(A(\alpha))
+            \flecha{$\alpha \to \infinito$}
+            \infinito
+          }
+        $$
+        La cota superior también tiende a infinito. Se prueba igual pero no es necesario.
 \end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

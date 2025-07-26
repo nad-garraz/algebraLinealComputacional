@@ -1,0 +1,116 @@
+\begin{enunciado}{\ejExtra}
+  \fechaEjercicio{final 20/7/23}
+  Sea $\varepsilon > 0$ y
+  $A =
+    \matriz{cccc}{
+      7 & 2 & 5 & 3 \\
+      1 & -2 & 3 & 4 \\
+      8 & \frac{1}{\varepsilon} & 8 & 7 \\
+      0 & 0 & 3 & 1
+    }$
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que $\condicion_\infinito(A)\to \infinito$ cuando $\varepsilon \to \infinito$.
+    \item Probar que $\condicion_\infinito(A)\to \infinito$ cuando $\varepsilon \to 0^+$.
+    \item Probar que $\condicion_2(A)\to \infinito$ cuando $\varepsilon \to 0^+$ y cuando $\varepsilon \to \infinito$.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Uso el resultado:
+        $$
+          \condicion(A)
+          \mayorIgual{$\llamada1$}
+          \supremo \set{\frac{\norma{A}}{\norma{A - B}} : B \text{ es singular}}.
+        $$
+        Notar que sumando la \textit{primera} y \textit{segunda} filas queda casi la tercerca fila, por lo tanto la $B$ singular:
+        $$
+          B =
+          \matriz{cccc}{
+            7 & 2 & 5 & 3 \\
+            1 & -2 & 3 & 4 \\
+            8 & 0 & 8 & 7 \\
+            0 & 0 & 3 & 1
+          }
+        $$
+        Usando $\llamada1$ para la $\normaBullet_\infinito$:
+        $$
+          \condicion_\infinito(A)
+          \geq
+          \frac{\norma{A}_\infinito}{\norma{A - B}\infinito} =
+          \frac{23}{\frac{1}{\varepsilon}} = 23\varepsilon
+        $$
+        Calculando el límite:
+        $$
+          \limite{\varepsilon}{\infinito} 23\varepsilon =
+          \infinito \leq \condicion_\infinito(A)
+          \entonces
+          \cajaResultado{
+            \condicion_\infinito(A) \flecha{$\varepsilon \to \infinito$} \infinito
+          }
+        $$
+
+  \item
+        Parecido al anterior ahora la $B$ singular candidata:
+        $$
+          B =
+          \matriz{cccc}{
+            7 & 2 & 5 & 3 \\
+            1 & -2 & 3 & 4 \\
+            8 & \frac{1}{\epsilon} & 8 & 7 \\
+            0 & 0 & 0 & 0
+          }
+        $$
+        Usando nuevamente $\llamada1$ para la $\normaBullet_\infinito$:
+        $$
+          \condicion_\infinito(A)
+          \geq
+          \frac{\norma{A}_\infinito}{\norma{A - B}\infinito} =
+          \frac{23 + \frac{1}{\varepsilon}}{4} =
+        $$
+        Calculando el límite:
+        $$
+          \limite{\varepsilon}{0^+} \frac{23 + \frac{1}{\varepsilon}}{4} = \infinito
+          \leq \condicion_\infinito(A)
+          \entonces
+          \cajaResultado{
+            \condicion_\infinito(A) \flecha{$\varepsilon \to 0^+$} \infinito
+          }
+        $$
+
+  \item Usamos la útil y misma de siempre, \textit{sanguchinni de cotardi}:
+        $$
+          \frac{1}{\sqrt{n}} \norma{A}_\infinito \menor{$\llamada2$} \norma{A}_2 \leq \sqrt{n} \norma{A}_\infinito
+        $$
+        Si queda acotada inferiormente por infinito, listo:
+        $$
+          \begin{array}{rcl}\vspace{3pt}
+            \condicion_2(A)
+             & \igual{def}                     &
+            \norma{A}_2 \cdot \norma{A^{-1}}_2                                                     \\
+             & \mayorIgual{$\llamada2$}[$n=4$] &
+            \frac{1}{\sqrt{4}}\norma{A}_\infinito \cdot \frac{1}{\sqrt{4}}\norma{A^{-1}}_\infinito \\
+             & =                               &
+            \frac{1}{4}\norma{A}_\infinito \cdot \norma{A^{-1}}_\infinito                          \\
+             & \igual{def}                     &
+            \frac{1}{4} \condicion_\infinito(A)  \flecha{$\varepsilon \to 0^+ ~\lor~ \varepsilon \to \infinito$}[\red{!!!}]  \infinito
+          \end{array}
+        $$
+        Donde lo último es lo calculado en los ítems anteriores \rollingEyes.
+
+        Finiquitando:
+        $$
+          \cajaResultado{
+            \condicion_2(A)
+            \flecha{$\varepsilon \to 0^+$}\infinito
+            \ytext
+            \condicion_2(A)
+            \flecha{$\varepsilon \to \infinito$}\infinito
+          }
+        $$
+        La cota superior también tiende a infinito. Se prueba igual pero no es necesario.
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
