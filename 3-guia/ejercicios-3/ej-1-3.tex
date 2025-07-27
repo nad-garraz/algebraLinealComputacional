@@ -121,7 +121,8 @@
         $$
         Cálculo directo
         $$
-          A \cdot A\matriz{cc}{
+          A \cdot A =
+          \matriz{cc}{
             0 & a_{12} \\
             0 & 0
           }
@@ -143,7 +144,9 @@
         \textit{Paso inductivo:}
         Voy a asumir que para algún $\blue{k} \en \enteros$
         $$
-          p(\blue{k}) : \ub{A \en K^{\blue{k} \times \blue{k}} \text{ estrictamente triangular superior} \entonces A^{\blue{k}} = 0}{\text{\purple{hipótesis inductiva}}}
+          p(\blue{k}) : \ub{A \en K^{\blue{k} \times \blue{k}} \text{ estrictamente triangular superior}
+            \entonces
+            A^{\blue{k}} = 0}{\text{\purple{hipótesis inductiva}}}
         $$
         es verdadera. Por lo tanto ahora quiero probar que:
         $$
@@ -152,7 +155,7 @@
         Para probar esta tremenda garompa, voy a usar el producto en bloques.
         Tengo una matriz $A \en K^{(\blue{k+1}) \times (\blue{k+1})}$ estrictamente triangular superior y la parto en bloques así:
         $$
-          \begin{tikzpicture}[baseline=0, scale = 1]
+          \begin{tikzpicture}[baseline=0, scale = 1, every node/.style={font=\small}]
             \draw[blue, thin, fill=blue!10,yshift = 0, xshift = 0] (-37px, 20px) rectangle ++(13px,13px);
             \draw[OliveGreen, thin, fill=OliveGreen!10,yshift = 0, xshift = 0] (-20px, 20px) rectangle ++(80px,13px);
             \draw[orange, thin, fill=orange!10,yshift = 0, xshift = 0] (-20px, -32px) rectangle ++(80px,50px);
@@ -161,9 +164,9 @@
               $
                 A =
                 \matriz{c|ccc}{
-                  \yellow{0} & \violet{a_{12}} & \violet{\cdots} & \violet{a_{1 \blue{k+1}}} \\ \hline
+                  ~ \yellow{0} ~& \violet{a_{12}} & \violet{\cdots} & \violet{a_{1 \blue{(k + 1)}}} \\ \hline
                   \red{0} & \green{0} & \green{\ddots} & \green{\vdots} \\
-                  \red{\vdots} & \green{0} & \green{\ddots} & \green{a_{k \blue{k+1}}} \\
+                  \red{\vdots} & \green{0} & \green{\ddots} & \green{a_{k \blue{(k + 1)}}} \\
                   \red{0} & \green{0} & \green{0} & \green{0}
                 }
               $
@@ -229,22 +232,24 @@
                   \begin{array}{ccccc}
                     0      & 0 & a' & \cdots & a \\
                     \vdots & 0 & 0  & \cdots & 0 \\
-                    0      & 0 & 0  & \cdots & 0 \\
+                    0      & 0 & 0  & \cdots & 0
                   \end{array}
                 $};
           \end{tikzpicture}
         }
         $$
           \begin{array}{rcl}
-            A^2 = A \cdot A                                            & =                                                          & \bloques \times \bloques \\ \\
+            A^2 = A \cdot A
+                                                                       & =                                                          &
+            \left( \bloques \right) \cdot \left( \bloques \right)                                                                     \\ \\
                                                                        & =                                                          &
             \matriz{c|c}{
-            \bloqueAzul\ \bloqueAzul + \bloqueVerde\ \bloqueViolet     & \bloqueAzul\ \bloqueVerde + \bloqueVerde\ \bloqueOrange                               \\ \hline
+            \bloqueAzul\ \bloqueAzul + \bloqueVerde\ \bloqueViolet     & \bloqueAzul\ \bloqueVerde + \bloqueVerde\ \bloqueOrange      \\ \hline
             \bloqueViolet\ \bloqueAzul +  \bloqueOrange\ \bloqueViolet & \bloqueViolet\ \bloqueVerde + \bloqueOrange\ \bloqueOrange
-            }                                                                                                                                                  \\
+            }                                                                                                                         \\
                                                                        & =                                                          &
             \matriz{c|c}{
-            \bloqueAzulZ                                               & \bloqueVerdeZ                                                                         \\ \hline
+            \bloqueAzulZ                                               & \bloqueVerdeZ                                                \\ \hline
             \bloqueVioletZ                                             & \bloqueOrangeZ
             }
           \end{array}

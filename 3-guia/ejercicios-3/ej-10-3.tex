@@ -22,7 +22,7 @@
 \end{enunciado}
 
 \begin{itemize}
-  \item[(\red{$\Longrightarrow$})]
+  \item[(\red{$\Rightarrow$})]
         Si $A$ es una matriz simétrica y definida positiva va a admitir la descomposición de Cholesky \hyperlink{teoria-3:cholesky}{(mirá acá)}.
         $$
           A
@@ -48,9 +48,9 @@
           \set{x_1,\ldots, x_n} = \set{e_1,\ldots, e_n}
           \entonces
           \llave{c}{
-            \bm{y}_1 = L^t e_1 = \columna(L^t)_1\\
+            \bm{y}_1 = L^t e_1 = \columna_1(L^t)\\
             \vdots \\
-            \bm{y}_n = L^t e_n = \columna(L^t)_n\\
+            \bm{y}_n = L^t e_n = \columna_n(L^t)
           }
         $$
         La matriz $L$ es triangular inferior \triangularInferior, con unos en la diagonal por lo que sus columnas son mega \textit{linealmente independientes}.
@@ -64,11 +64,11 @@
         tenemos que el conjunto que verifica lo pedido:
         $$
           \cajaResultado{
-            \set{\columna(L^T)_1, \ldots, \columna(L^T)_n} \subseteq \reales^n
+            \set{\columna_1(L^t), \ldots, \columna_n(L^t)} \subseteq \reales^n
           }
         $$
 
-  \item[(\red{$\Longleftarrow$})]
+  \item[(\red{$\Leftarrow$})]
         La hipótesis ahora me dice que tengo vectores \textit{linealmente independientes} y además que con esos vectores me formo la matriz $A$.
         Es decir que $A = X^tX$, con $X$:
         $$
