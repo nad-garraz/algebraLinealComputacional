@@ -1,0 +1,185 @@
+\begin{enunciado}{\ejExtra}
+  Sea $\set{q_1, q_2, q_3, q_4, q_5}$ una base ortonormal de $\reales^5$, $A$ una matriz de $5 \times 3$
+  con columnas $q_1,\, q_2,\, q_3$ y el vector $b = q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5$.
+
+  \begin{enumerate}[label=(\alph*)]
+    \item Mostrar que el sistema $Ax = b$ no tiene solución. Plantear las ecuaciones normales y hallar la solución $\hat{x}$ de cuadrados
+          mínimos para dicho sistema.
+
+    \item Calcular el error cometido en la aproximación.
+
+    \item Mostrar que $A^\dagger = A^t$, siendo $A^\dagger$ la pseudoinversa de $A$.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=(\alph*)]
+  \item En la cuentilla uso notación
+        $(q_i)_j$ con $j \en [1,5]$ como la coordenada $j$-ésima del vector $q_i$:
+        $$
+          \begin{array}{rcl}
+            A x = b
+                  & \sii                    &
+            \matriz{c|c|c}{
+            \quad & \quad                   & \quad                    \\
+            \quad & \quad                   & \quad                    \\
+            q_1   & q_2                     & q_3                      \\
+            \quad & \quad                   & \quad                    \\
+            \quad & \quad                   & \quad
+            }
+            \cdot
+            \matriz{c}{
+            x_1                                                        \\
+            x_2                                                        \\
+              x_3
+            }
+            =
+            q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5                            \\
+                  & \sii                    &
+            \matriz{c}{
+            x_1 (q_1)_1 + x_2 (q_2)_1 + x_3 (q_3)_1                    \\
+            x_1 (q_1)_2 + x_2 (q_2)_2 + x_3 (q_3)_2                    \\
+            x_1 (q_1)_3 + x_2 (q_2)_3 + x_3 (q_3)_3                    \\
+            x_1 (q_1)_4 + x_2 (q_2)_4 + x_3 (q_3)_4                    \\
+            x_1 (q_1)_5 + x_2 (q_2)_5 + x_3 (q_3)_5                    \\
+            }
+            =
+            q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5                            \\
+                  & \sii                    &
+            x_1q_1 + x_2q_2 + x_3q_3 = q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5 \\
+                  & \Sii{\red{!}}           &
+            q_4^t \cdot (x_1q_1 + x_2q_2 + x_3q_3) =
+            q_4^t \cdot (q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5)              \\
+                  & \Entonces{\red{!}}[BON] &
+            0 = 4 \quad \text{\red{\faIcon{skull}}}
+          \end{array}
+        $$
+        Por lo tanto ese sistema no tiene una solución.
+
+        Planteo las ecuaciones normales para encontrar la solución $\hat{x}$ que mejor
+        aproxima por cuadrados mínimos:
+        {
+        \small
+        $$
+          \begin{array}{rcl}
+            A^tA \hat{x} = A^tb
+                      & \sii          &
+            \matriz{ccc}{
+            \quad     & q_1^t         & \quad       \\\hline
+            \quad     & q_2^t         & \quad       \\\hline
+            \quad     & q_3^t         & \quad       \\
+            }
+            \matriz{c|c|c}{
+            \quad     & \quad         & \quad       \\
+            \quad     & \quad         & \quad       \\
+            q_1       & q_2           & q_2         \\
+            \quad     & \quad         & \quad       \\
+            \quad     & \quad         & \quad
+            }
+            \cdot
+            \matriz{c}{
+            \hat{x}_1                               \\
+            \hat{x}_2                               \\
+              \hat{x}_3
+            }
+            =
+            \matriz{ccc}{
+            \quad     & q_1^t         & \quad       \\\hline
+            \quad     & q_2^t         & \quad       \\\hline
+            \quad     & q_3^t         & \quad       \\
+            }
+            (q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5)       \\
+                      & \Sii{\red{!}} &
+            I_3
+            \cdot
+            \matriz{c}{
+            \hat{x}_1                               \\
+            \hat{x}_2                               \\
+              \hat{x}_3
+            }
+            =
+            \matriz{c}{
+            1                                       \\
+            2                                       \\
+              3
+            }                                       \\
+                      & \sii          &
+            \llave{rcl}{
+            \hat{x}_1 & =             & \magenta{1} \\
+            \hat{x}_2 & =             & \magenta{2} \\
+            \hat{x}_3 & =             & \magenta{3}
+            }
+          \end{array}
+        $$
+        }
+
+  \item Si venís haciendo los ejercicio donde te dan los datos para aproximar $(\blue{x_i}, \green{y_i})$ este punto puede ser \textit{confuso}, pero
+        tenés que pensar que los $\blue{x_i}$ están en la matriz $A$ y los $\green{y_i}$ son los elementos de $b$.
+
+        El error viene dado por:
+        $$
+          \sumatoria{i = 1}{5} (\green{y_i} - \blue{x_i}\tilde{x})^2 =
+          \norma{\green{b} - \blue{A}\tilde{x}}_2^2
+          \igual{\red{!}}
+          \norma{
+            \green{q_1 + 2q_2 + 3q_3 + 4q_4 + 5q_5} - (\magenta{1}q_1 + \magenta{2}q_2 + \magenta{3}q_3)
+          }_2^2
+          =
+          \norma{
+            \green{4q_4 + 5q_5}
+          }_2^2
+        $$
+
+  \item Recordando que la pseudoinversa es como la transpuesta, pero invirtiendo los valores singulares:
+        $$
+          A = U \Sigma V^*
+          \Entonces{pseudo}[inversa]
+          A^\dagger = V \Sigma^\dagger U^*,
+        $$
+        con la $\Sigma^\dagger$ que sería como $\Sigma^t$ invirtiendo los elementos diagonales $[\Sigma^\dagger]_{ii} = \frac{1}{\sigma_{ii}}$.
+
+        En los calculos de los ítems anteriores se vio que:
+        $$
+          A^t \cdot A = I_3
+          \Entonces{\ \red{!}\ }
+          \sigma_i = 1
+          \Sii{$\llamada1$}
+          \frac{1}{\sigma_i} = 1
+        $$
+        por lo tanto:
+        $$
+          A = U
+          \ua{
+            \Sigma
+          }{
+            \matriz{c}{
+              I_3 \\ \hline
+              0
+            }
+          }
+          V^t
+          \sii
+          A^t = V
+          \ua{
+            \Sigma^t
+          }{
+            \matriz{c|c}{
+              I_3 & 0\\
+            }
+          }
+          U^t
+          \ytext
+          A^\dagger = V
+          \ua{
+            \Sigma^\dagger
+          }{
+            \matriz{c|c}{
+              (I_3)^{-1} & 0
+            }
+          }
+          U^t \igual{$\llamada1$} V \Sigma^t U^t = A^t
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
