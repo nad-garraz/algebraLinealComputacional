@@ -1,0 +1,191 @@
+\begin{enunciado}{\ejExtra}\fechaEjercicio{final 21/7/25}
+  Sea una matriz $A \en \reales^{n \times n}$ con $n$ autovalores mayores a cero y distintos entre sí.
+  Sean $\lambda_1, \ldots, \lambda_n$ sus autovalores y $v_1, \ldots, v_n$ los autovectores asociados. Mostrar que:
+
+  \begin{enumerate}[label=\alph*)]
+    \item $\set{v_1, \ldots, v_n}$ forma una base de $\reales^n$. Justificar.
+    \item La matriz $C \en \reales^{n \times n}$ cuyas columnas están dadas por los vectores $v_1, \ldots, v_n$
+          es inversible y cumple que $AC = CS$, con $S$ una matriz diagonal con $\lambda_1, \ldots, \lambda_n$ en
+          la diagonal.
+    \item La matriz $A$ es diagonalizable.
+  \end{enumerate}
+
+\end{enunciado}
+\begin{enumerate}[label=\alph*)]
+  \item Si los autovalores son distintos entre sí los autovectores son \textit{linealmente independientes}, eso
+        se puede probar por inducción:
+
+        Voy a probar la proposición:
+        \begin{center}
+          $p(n):
+            \set{\lambda_1, \ldots, \lambda_n}
+            \text{ y }
+            \set{v_1, \ldots, v_n}
+            \text{ con } \lambda_i \distinto \lambda_j \paratodo i, j$
+          entonces los autovectores asociados son \textit{LI}.
+        \end{center}
+
+        \bigskip
+
+        \textit{Caso base:}
+        \begin{center}
+          $p(2):
+            \set{\lambda_1, \ldots, \lambda_2}
+            \text{ y }
+            \set{v_1, \ldots, v_2}
+            \text{ con } \lambda_1 \distinto \lambda_2$
+          entonces $v_1$ y $v_2$ son \textit{LI}.
+        \end{center}
+        $$
+          E_{\lambda_1} = \set{v_1}
+          \ytext
+          E_{\lambda_{\blue{2}}} = \set{v_{\blue{2}}}
+        $$
+        Voy a suponer que son \textit{\underline{linealmente \red{de}pendientes}}, es decir que
+        $E_{\lambda_1} \inter E_{\lambda_2} \distinto \set{0}$ y así llegar a un absurdo.
+        Dado un $\magenta{v} \en E_{\lambda_1} \inter E_{\lambda_2}$:
+        $$
+          \begin{array}{rrcl}
+                    & A\magenta{v} & \igual{\red{!}} & \lambda_1 \magenta{v}                                                            \\
+            \red{-} &              &                 &                                                                                  \\
+                    & A\magenta{v} & \igual{\red{!}} & \lambda_2 \magenta{v}                                                            \\\hline
+                    & 0            & =               & (\ub{\lambda_1 - \lambda_2}{\distinto 0}) \cdot \magenta{v} \sii \magenta{v} = 0
+          \end{array}
+        $$
+        Dado que $\magenta{v}$ es un vector genérico de la intersección y ese es 0,
+        se concluye $E_{\lambda_1} \inter E_{\lambda_2} \distinto \set{0}$ y por lo tanto que
+        $v_1 \ytext v_{\blue{2}}$ son \textit{LI}.
+
+        \bigskip
+
+        \textit{Paso inductivo:}
+
+        Para algún $k \en \naturales$ supongo que la proposición:
+        \begin{center}
+          $p(k):
+            \ub{
+              \set{\lambda_1, \ldots, \lambda_k}
+              \text{ y }
+              \set{v_1, \ldots, v_k}
+              \text{ con } \lambda_i \distinto \lambda_j \paratodo i, j
+              \text{ entonces los autovectores asociados son \textit{LI}}
+            }{
+              \text{
+                \purple{hipótesis inductiva}
+              }
+            }
+          $,
+        \end{center}
+        es verdadera. Entonces quiero probar que la proposición:
+        \begin{center}
+          $
+            p(k + 1):
+            \set{\lambda_1, \ldots, \lambda_{(k+1)}}
+            \text{ y }
+            \set{v_1, \ldots, v_{(k+1)}}
+            \text{ con } \lambda_i \distinto \lambda_j \paratodo i, j
+            \text{ entonces los autovectores asociados son \textit{LI},}
+          $
+        \end{center}
+        también lo sea.
+
+        Similar a lo planteado anteriormente puedo suponer que $E_{\lambda_{(k+1)}} \inter \set{v_1, \ldots, v_k} \distinto 0$
+        para llegar a un absurdo.
+        Dado un $\magenta{v} \en ( E_{\lambda_{(k+1)}} \inter \set{v_1, \ldots, v_k})$:
+        $$
+          \begin{array}{rcl}
+            \ub{
+              \magenta{v} = v_1 + \cdots + v_k
+            }{
+              \llamada1
+            }
+             & \Sii{$\times A$}[$\to$] &
+            \ub{
+              A\magenta{v} = \lambda_1 \cdot v_1 + \cdots +  \lambda_k \cdot v_k
+            }{
+              \llamada2
+            }
+          \end{array}
+        $$
+        Si elijo a $\magenta{v} = v_{(k+1)}$ y multiplico por $\lambda_{(k+1)}$ en $\llamada1$:
+        $$
+          \begin{array}{rrcl}
+            \llamada1 \to & \lambda_{(k+1)} \cdot v_{(k+1)}
+                          & \igual{\red{!}}                 &
+            \lambda_{(k+1)} \cdot v_1 + \cdots +  \lambda_{(k+1)} \cdot v_k \\
+            \red{-}       &                                 &   &           \\
+            \llamada2 \to & \lambda_{(k+1)} \cdot v_{(k+1)}
+                          & \igual{\red{!}}                 &
+            \lambda_1 \cdot v_1 + \cdots +  \lambda_k \cdot v_k             \\ \hline
+                          & 0                               & = &
+            (\ub{\lambda_{(k+1)} - \lambda_1}{\distinto 0}) \cdot v_1 +
+            \cdots +
+            (\ub{\lambda_{(k+1)} - \lambda_k}{\distinto 0}) \cdot v_k \quad \llamada3
+          \end{array}
+        $$
+        La ecuación en $\llamada3$
+        es una combinación lineal de vectores \textit{LI} por \textit{hipótesis inductiva}, y dado que
+        los coeficientes de la combinación son no nulos, entonces los vectores deben serlo. Por lo tanto
+        $\magenta{v} = \ua{v_1}{0} + \cdots + \ua{v_k}{0} = v_{(k+1)}$,
+        es decir $E_{\lambda_{(k+1)}} \inter \set{v_1, \ldots, v_k} = \set{0}$.
+
+        \bigskip
+
+        Por principio de inducción, los autovectores asociados a distintos autovalores son \textit{linealmente independientes}
+        por lo tanto de haber $n$ autovalores distintos en $\reales^n$ generaran una base del espacio.
+
+  \item Hecho el anterior ejercicio no hay mucho que hacer acá. Si las columnas de una matriz de $\reales^{n \times n}$
+        son una base de $\reales^n$, la matriz tiene determinante distinto de 0, por lo tanto es inversible.
+        $$
+          \begin{array}{rcl}
+            AC = CS
+                                          & \sii   &
+            \matriz{c|c|c}{
+                                          &        &                                \\
+            A v_1                         & \cdots & A v_n                          \\
+                                          &        &
+            }
+            =
+            \matriz{c|c|c}{
+                                          &        &                                \\
+            C \lambda_1                   & \cdots & C \lambda_n                    \\
+                                          &        &
+            }                                                                       \\\\
+                                          & \sii   &
+            \matriz{c|c|c}{
+                                          &        &                                \\
+            \lambda_1 v_1                 & \cdots & \lambda_n v_n                  \\
+                                          &        &
+            }
+            =
+            \matriz{c|c|c}{
+                                          &        &                                \\
+            \columna_1(C) \cdot \lambda_1 & \cdots & \columna_n(C) \cdot  \lambda_n \\
+                                          &        &
+            }                                                                       \\
+                                          & \sii   &
+            \matriz{c|c|c}{
+                                          &        &                                \\
+            \lambda_1 v_1                 & \cdots & \lambda_n v_n                  \\
+                                          &        &
+            }
+            =
+            \matriz{c|c|c}{
+                                          &        &                                \\
+            v_1 \cdot \lambda_1           & \cdots & v_n \cdot  \lambda_n           \\
+                                          &        &
+            }
+          \end{array}
+        $$
+
+  \item En el ítem anterior es hacer:
+        $$
+          AC = CS
+          \Sii{$\times C^{-1}$}[$\ot$]
+          A = CSC^{-1}
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
