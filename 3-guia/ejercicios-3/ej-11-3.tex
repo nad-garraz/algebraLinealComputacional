@@ -1,3 +1,62 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sean las matrices $A, B \en \reales^{n \times n}$. Demostrar que $A$ es simétrica definida positiva y B
+  es no singular si y solo si $BAB^t$ es simétrica definida positiva.
 \end{enunciado}
+Muestro una doble implicación:
+\begin{itemize}
+  \item[$(\red{\Rightarrow})$]
+        $A$ es definida positiva:
+        $\paratodo x \en \reales^n$ y  $x \distinto 0$, entonces $x^t A x > 0 $. Y $B$ es no singular, entonces $\det(B) \distinto 0$.
+
+        $$
+          x^t A x > 0
+          \sii
+          x^tB^{-1}B A B^t(B^t)^{-1} x > 0
+          \Sii{\red{!}}
+          ((B^t)^{-1}x)^tB A B^t ((B^t)^{-1} x) > 0
+          \sii
+          \cajaResultado{
+            \blue{y}^tB A B^t \blue{y} > 0
+          }
+          \text{ con } \blue{y} \distinto 0
+        $$
+        Dado que $B$ es inversible sé que $(B^t)^{-1} \distinto 0$.
+
+        No sé si es necesario mostrar esto o no, pero:
+        $$
+          (BAB^t)^t =
+          (AB^t)^tB^t
+          =
+          BA^tB^t =
+          \igual{\red{!}}
+          BAB^t =
+        $$
+
+  \item[$(\red{\Leftarrow})$]
+        Una propiedad de las matrices simétricas definidas positivas es que son inversibles, su definición implica que $\nucleo = \set{0}$, así que su determinante es distinto de 0.
+        En un producto matricial:
+        $$
+          0 \distinto \det(B A B^t) =
+          \det(B) \cdot \det(A) \cdot \det(B^t) =
+          (\det(B))^2 \cdot \det(A)
+          \entonces
+          \det(A) \distinto 0  \ytext \ub{\det(B) \distinto 0}{B \text{ no singular}}
+        $$
+        Para demostrar que $A$ es definida positiva se puede recorrer el camino en reversa que se hizo en $(\red{\Rightarrow})$ ahora
+        que se sabe que $\det(B) \distinto 0$. Para $x \text{ e } \blue{y} \distinto 0$, se tiene que $(B^t)^{-1} x = \blue{y}\quad \llamada1$ entonces por hipótesis:
+        $$
+          \blue{y}^tB A B^t \blue{y} \ua{>}{\text{HIP}} 0
+          \Sii{$\llamada1$}
+          ((B^t)^{-1}x)^tB A B^t ((B^t)^{-1} x) > 0
+          \sii
+          x^t B^{-1}B A B^t(B^t)^{-1} x > 0
+          \sii
+          \cajaResultado{
+            x^t A x > 0
+          } \text{ con } x \distinto 0
+        $$
+\end{itemize}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
