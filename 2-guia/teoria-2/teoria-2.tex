@@ -140,19 +140,19 @@
 
         \textit{Normas subordinadas}.
 
-        Dada una matriz $A \en K^{n \times n}$, y un par de normas vectoriales $\normaBullet_n,\, \normaBullet_m$ en $K^n$ y $K^m$
-        respectivamente, definimos
+        Dada una matriz $A \en K^{n \times n}$ y una norma vectoria $\normaBullet_n$ en $K^n$
+        respectivamente, definimos la norma en el espacio de matrices de $n \times n$ como:
         $$
-          \norma{A} =
-          \maximo_{0 \distinto x\en K^m} \frac{ \norma{Ax}}{\norma{x}} =
-          \maximo_{x \en K^n, \norma{x}_m = 1} \norma{Ax}.
+          \norma{A}_n =
+          \maximo_{\scriptscriptstyle 0 \distinto x \en K^n} \frac{ \norma{Ax}_n}{\norma{x}_n} =
+          \maximo_{\scriptscriptstyle x \en K^n, \norma{x}_n = 1} \norma{Ax}_n.
         $$
 
         Se desprenden los siguiente resultados útiles para los ejercicios de \textit{condicionamiento de matrices:}
         \begin{enumerate}[label=\purple{\faIcon{gamepad}$_{\arabic*)}$}]
           \item
                 $$
-                  \norma{Ax} \leq \norma{A} \norma{x} \paratodo x\en \reales^n
+                  \norma{Ax} \leq \norma{A} \norma{x} \paratodo x \en \reales^n
                 $$
           \item
                 $$

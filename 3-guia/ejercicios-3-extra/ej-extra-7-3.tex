@@ -1,0 +1,110 @@
+\begin{enunciado}{\ejExtra} \fechaEjercicio{final 18/12/23}
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que si $P : \reales^n \to \reales^n$ es un proyector no nulo y $A = |P|_{\mathcal{E}}$ es la
+          matriz $P$ en la base canónica, entonces $\norma{A} \geq 1$.
+
+    \item Dada la base $B = \set{(1,0,0);(1,1,0);(1,0,1)}$ de $\reales^3$ y la transformación lineal $f: \reales^3 \to \reales^3$
+          tal que
+          $$
+            |f|_{BB} =
+            \matriz{ccc}{
+              1 & 1 & 0 \\
+              0 & 1 & 0 \\
+              0 & 0 & 0
+            }.
+          $$
+          \begin{enumerate}[label=\roman*)]
+            \item Decidir si $f$ es un proyector.
+            \item Construir $g: \reales^3 \to \reales^3$ proyector ortogonal distinto de la identidad tal que
+                  $g(v) = v$ para todo $v \en \imagen(f)$
+          \end{enumerate}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item Si $A$ es un proyector por defición cumple que:
+        $$
+          Av = v \quad \paratodo v \en \imagen(P).
+        $$
+        La definición de norma vectorial inducida:
+        $$
+          \norma{A}_2 = \maximo_{\norma{v}_2 = 1}\set{\norma{Av}_2} \geq \norma{Av} \igual{def} \norma{v} = 1
+        $$
+
+  \item
+        \begin{enumerate}[label=\roman*)]
+          \item
+                De los cambios de base y por definición de proyector sé que :
+                $$
+                  |f|_{\mathcal{EE}}^2 \igual{def} |f|_{\mathcal{EE}}
+                  \ytext
+                  |f|_{\mathcal{EE}} = C_{B\mathcal{E}}|f|_{BB}\ub{C_{\mathcal{E}B}}{C_{B\mathcal{E}}^{-1}}
+                $$
+                $$
+                  |f|_{\mathcal{EE}}^2 = C_{B\mathcal{E}} |f|_{BB}^2 C_{\mathcal{E}B}
+                  \Sii{\red{!!}} |f|_{BB} = |f|_{BB}^2
+                $$
+                Multiplico la matriz del enunciado y veo si cumple:
+                $$
+                  |f|_{BB}^2 =
+                  \matriz{ccc}{
+                    1 & 2 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 0
+                  }
+                  \distinto
+                  |f|_{BB}
+                $$
+                No es un proyector
+
+          \item
+                No es necesario, pero las cuentas parecen simples así que voy a pasar ese proyector a base canónica:
+                $$
+                  |f|_{\mathcal{EE}} = C_{B\mathcal{E}}|f|_{BB}\ub{C_{\mathcal{E}B}}{C_{B\mathcal{E}}^{-1}}
+                  =
+                  \matriz{ccc}{
+                    1 & 1 & 1\\
+                    0 & 1 & 0\\
+                    0 & 0 & 1
+                  }
+                  \matriz{ccc}{
+                    1 & 1 & 0 \\
+                    0 & 1 & 0 \\
+                    0 & 0 & 0
+                  }
+                  \matriz{ccc}{
+                    1 &-1 &-1\\
+                    0 & 1 & 0\\
+                    0 & 0 & 1
+                  }
+                  =
+                  \matriz{ccc}{
+                    1 &1 & -1\\
+                    0 & 1 & 0\\
+                    0 & 0 & 0
+                  }
+                $$
+                En base canónica es más fácil ver que $\imagen(f) = \set{(1,0,0), (1,1,0)}$ y el $\nucleo(f) = \set{(1,0,1)}$.
+                Para armarme ese proyector ortogonal $g$ necesito que el $\nucleo(g) \perp \imagen(p)$:
+                $$
+                  \cajaResultado{
+                    \llave{rcl}{
+                      g(1,0,0) & = & (1,0,0) \\
+                      g(1,1,0) & = & (1,1,0) \\
+                      g(0,0,1) & = & (0,0,0)
+                    }
+                  }
+                  \quad \text{donde} \quad
+                  \llave{rcl}{
+                    \nucleo(g) & = & \set{(0,0,1)}\\
+                    \imagen(g) & = & \set{(1,0,0), (1,1,0)}
+                  }
+                  \ytext \nucleo(g) \perp \imagen(g)
+                $$
+                $g \distinto I_3$ es un proyector ortogonal que cumple que para todo $v \en \imagen(f),\, g(v) = v $
+        \end{enumerate}
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
