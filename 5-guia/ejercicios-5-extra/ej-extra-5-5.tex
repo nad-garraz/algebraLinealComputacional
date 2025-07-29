@@ -1,0 +1,135 @@
+\begin{enunciado}{\ejExtra}
+  \begin{enumerate}[label=\alph*)]
+    \item
+          Sea $A \en \reales^{n \times n}$. Probar que $A$ tiene todos sus valores singulares iguales si y solo si
+          es múltiplo de una matriz ortogonal.
+          (\textit{Sugerencia: Recordar que el producto de dos matrices ortogonales es una matriz ortogonal y que el 'si y solo si' son dos implicaciones}).
+
+    \item Sea $B = (-2)Q$, con
+          $Q =
+            \matriz{c|c|c}{
+              \quad& \quad& \quad\\
+              q_1 & q_2 & q_3 \\
+              \quad& \quad& \quad
+            }$ una matriz ortogonal. Hallar dos descomposiciones en valores sigulares distintas de $B$.
+          (Observación: dos descomposiciones
+          $C =
+            U_1 \Sigma_1 V_1^t =
+            U_2 \Sigma_2 V_2^t
+          $ son iguales si y solo si
+          $U_1 = U_2$, $\Sigma_1 = \Sigma_2 $ y $ V_1 = V_2$).
+
+    \item Calcular una matriz singular que sea más cercana a $B$ en norma 2.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        \begin{itemize}
+          \item[$(\red{\Rightarrow})$]
+                $$
+                  A = U \cdot \Sigma \cdot V^t
+                  \igual{HIP} U  \cdot \sigma I_n \cdot V^t
+                  = \sigma \ub{U \cdot V^t}{Q}
+                  \igual{sug.} \sigma Q
+                  \entonces
+                  \cajaResultado{
+                    A = \sigma Q
+                  }
+                $$
+                Donde $Q$ es una matriz ortogonal ya que $(U  V^t ) \cdot (U  V^t)^t = I_n$.
+
+          \item[$(\red{\Leftarrow})$] Como $A = \blue{k} Q$ y la matriz ortogonal tiene determinante no nulo,
+                entonces no hay ningún valor singular nulo. Los valores singulares los saco de los
+                autovalores de $A^tA$:
+                $$
+                  A^tA = \blue{k}^2Q^tQ = \blue{k}^2 I_n
+                  \Entonces{autovalores}
+                  |\blue{k}^2 I_n - \lambda I_n| = 0
+                  \sii
+                  \lambda = \blue{k}^2 \text{ con multiplicidad } n
+                $$
+                Por lo tanto todos los $n$ valores singulares de $A$ son:
+                $$
+                  \cajaResultado{
+                    \sigma = \sqrt{\blue{k}^2} = |\blue{k}|
+                  }
+                $$
+        \end{itemize}
+
+  \item  Del ítem anterior tengo que los valores singulares de $B$ son todos $2$, luego para calcular $V$ busco los autovectores de
+        $B^t B$ los $v_i$, y por último $U$ tiene como columnas a $Bv_i = \sigma u_i$
+        $$
+          B_1 = U_1 \Sigma_1 V_1^t =
+          \matriz{c|c|c}{
+            \quad& \quad& \quad\\
+            -q_1 & -q_2 & -q_3 \\
+            \quad& \quad& \quad
+          }
+          \matriz{ccc}{
+            2 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & 2
+          }
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+          }
+        $$
+        y la otra sale como:
+        $$
+          B_2 = U_2 \Sigma_2 V_2^t =
+          \matriz{c|c|c}{
+            \quad& \quad& \quad\\
+            q_1 & q_2 & q_3 \\
+            \quad& \quad& \quad
+          }
+          \matriz{ccc}{
+            2 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & 2
+          }
+          \matriz{ccc}{
+            -1 & 0 & 0 \\
+            0 & -1 & 0 \\
+            0 & 0 & -1
+          }
+        $$
+
+  \item La matriz \ul{singular más cercana a $B$}, $\tilde{B}$ va a ser aquella que \textit{transforme} un vector $x$ y cuya diferencia sea mínima entre
+        $$
+          \norma{Bx - \tilde{B}x}_2
+        $$
+        Esa matriz se consigue eliminando el menor de los valores singulares, ya que ese valor es el que menos perturba en la transformación, pero como acá son todos iguales,
+        saco solo el último, así generando una fila de ceros que me dé la \ul{singularidad}.
+        $$
+          B = U \Sigma V^t =
+          \matriz{c|c|c}{
+            \quad& \quad& \quad\\
+            -q_1 & -q_2 & -q_3 \\
+            \quad& \quad& \quad
+          }
+          \matriz{ccc}{
+            2 & 0 & 0 \\
+            0 & 2 & 0 \\
+            0 & 0 & \magenta{0}
+          }
+          \matriz{ccc}{
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+          }
+          =
+          (-2)
+          \matriz{c|c|c}{
+            \quad& \quad& \quad\\
+            q_1 & q_2 & 0 \\
+            \quad& \quad& \quad
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
