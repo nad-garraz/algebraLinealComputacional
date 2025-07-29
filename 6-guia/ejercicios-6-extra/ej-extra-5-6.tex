@@ -118,7 +118,7 @@
         va a ser única. Tené en cuenta que si le pido eso a $A$ para que $ A \alpha = \beta $ tenga solución única, entonces el
         sistema $A^tA x = A^t b$ también va a cumplir eso, no sé si es obvio, pero se prueba sin mucho sufrimiento.
 
-        Propogno:
+        Propongo:
         $$
           A =
           \matriz{ccc}{
@@ -132,7 +132,7 @@
           \begin{array}{|c|c|c|c|}
             \hline
             x & 0   & 1   & 1   \\ \hline
-            y & e   & 1   & e   \\ \hline
+            y & 1   & 1   & e   \\ \hline \hline
             z & e^2 & e^2 & e^2 \\ \hline
           \end{array}
         $$
@@ -141,7 +141,10 @@
         todo por los aires.
 
   \item Por lo hecho antes necesito un sistema compatible determinado, así que necesito por lo menos 3 puntos para encontrar los 3 parámetros
-        $a,\,b \ytext c$.
+      $a,\,b \ytext c$. Esos 3 puntos deben formar 3 ecuaciones \textit{linealmente independientes}.
+
+        Si tengo menos puntos voy a tener menos ecuaciones que incongnitas y alguna incógnita va a quedar libre \textit{generando} las
+        infinitas soluciones.
 \end{enumerate}
 
 \begin{aportes}

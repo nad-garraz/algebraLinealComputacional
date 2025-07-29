@@ -1,0 +1,116 @@
+\begin{enunciado}{\ejExtra} \fechaEjercicio{final 24/02/25}
+  Se dice que $A \en K^{n \times n}$ es semejante a $B \en K^{n \times n}$ si existe una matriz invertible $S \en K^{n \times n}$ tal que:
+  $$
+    SA(S)^{-1} = B
+  $$
+  \begin{enumerate}[label=\arabic*.]
+    \item Demostrar que la relación de semejanza es una relación de equivalencia.
+    \item Demostrar que si $A$ es semejante a $B$, entonces:
+          $$
+            \traza(A) = \traza(B)
+          $$
+          \textbf{Sugerencia:} Utilizar la propiedad $\traza(EC) = \traza(CE)$ para matrices $C$ y $E$
+
+    \item Probar que si $A$ es diagonalizable (es decir, $A$ es semejante a una matriz diagonal $D$) y los valores propios de
+          $A$ son 0 y 1, entonces:
+          $$
+            A^2 = A
+          $$
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\arabic*.]
+  \item Para demostrar que es una relación de equivalencia voy a demostrar que la relación es
+        \textit{reflexiva}, \textit{simétrica} y \textit{transitiva}:
+
+        \bigskip
+
+        \textit{Reflexividad:} ¿Es $B$ semejante a $B$?
+        $$
+          B = I_n B I_n^{-1}
+        $$
+        Sí, la relación de semejanza es \textit{reflexiva}.
+
+        \bigskip
+
+        \textit{Simetría:} Si $B$ es semejante a $A$, ¿$A$ es semejante a $B$?
+        $$
+          B = S A S^{-1}
+          \Sii{$S$ es}[invertible]
+          S^{-1} B S = A
+        $$
+        Sí, la relación de semejanza es \textit{simétrica}.
+
+        \bigskip
+
+        \textit{Transitividad:} Si $B$ es semejante a $A$ y  $A$ es semejante a $C$ ¿$B$ es semejante a $C$?
+        $$
+          B = S \blue{A} S^{-1}
+          \ytext
+          \blue{A} = \blue{Q} \violet{C} \blue{Q^{-1}}
+          \Sii{reemplazo}
+          B = S \blue{Q} \violet{C} \blue{Q^{-1}} S^{-1}
+          \sii
+          B = (S \blue{Q}) \violet{C} (SQ)^{-1}
+          \Sii{$P = SQ$}
+          B = P \violet{C} P^{-1}
+        $$
+        Sí, la relación de semejanza es \textit{transitiva}.
+
+        Así de muestra que la relación de semejanza es una relación de equivalencia.
+
+  \item Usando la \textbf{sugerencia} y que $A = SBS^{-1}$:
+        $$
+          \traza(A) =
+          \traza(SBS^{-1})
+          =
+          \traza((S) \cdot(BS^{-1}))
+          \igual{\red{!}}[\textbf{sug.}]
+          \traza((BS^{-1}) \cdot (S))
+          =
+          \traza(B)
+        $$
+
+  \item
+        $$
+          \begin{array}{rcl}
+            A = CDC^{-1}
+                        & \sii                                                                                                                                &
+            A = C
+            \matriz{ccc}{
+            \lambda_1   & \cdots                                                                                                                              & 0           \\
+            \vdots      & \ddots                                                                                                                              & \vdots      \\
+            0           & \cdots                                                                                                                              & \lambda_n
+            }
+            C^{-1}                                                                                                                                                          \\\\
+                        & \sii                                                                                                                                &
+            A^2 = CDC^{-1} \cdot CDC^{-1}                                                                                                                                   \\
+                        & \sii                                                                                                                                &
+            A^2 = CD^2C^{-1}                                                                                                                                                \\
+                        & \sii                                                                                                                                &
+            A^2 = C
+            \matriz{ccc}{
+            \lambda_1^2 & \cdots                                                                                                                              & 0           \\
+            \vdots      & \ddots                                                                                                                              & \vdots      \\
+            0           & \cdots                                                                                                                              & \lambda_n^2
+            }
+            C^{-1}                                                                                                                                                          \\
+                        & \Sii{$\scriptscriptstyle \lambda = 1 \Rightarrow \lambda_i^2 = 1$} [$\scriptscriptstyle \lambda_i = 0 \Rightarrow \lambda_i^2 = 0$] &
+            \cajaResultado{
+              A^2 =
+              C
+              \matriz{ccc}{
+            \lambda_1   & \cdots                                                                                                                              & 0           \\
+            \vdots      & \ddots                                                                                                                              & \vdots      \\
+            0           & \cdots                                                                                                                              & \lambda_n
+              }
+              C^{-1}
+              = A
+            }
+          \end{array}
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
