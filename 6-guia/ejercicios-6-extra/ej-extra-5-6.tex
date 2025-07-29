@@ -1,0 +1,149 @@
+\begin{enunciado}{\ejExtra}\fechaEjercicio{final 24/02/25}
+  Dada la función:
+  $$
+    z = ay^b e^{cx + 2}
+  $$
+  \begin{enumerate}[label=\arabic*.]
+    \item Plantear la ecuaciones de mínimos cuadrados para estimar los parámetros $a,\, b \ytext c$.
+    \item Proponer puntos de datos para que la solución sea única.
+    \item Determinar la mínima cantidad de puntos necesarios para que la solución sea única.
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\arabic*.]
+  \item Necesito que los parámetros a encontrar sean lineales en la ecuación. Para eso \textit{ logaritmo natural to the rescue} con sus ricas propiedades:
+        $$
+          \begin{array}{c}
+            \textstyle
+            \cajaResultado{\log_{\red{a}}(\green{b})+\log_{\red{a}}(\blue{c})=\log_{\red{a}}(\green{b}\cdot \blue{c})}               \\
+            \textstyle
+            \cajaResultado{\log_{\red{a}}(\green{b})-\log_{\red{a}}(\blue{c})=\log_{\red{a}}\left(\frac{\green{b}}{\blue{c}}\right)} \\
+            \cajaResultado{\log_{\red{a}}(\green{b}^{\blue{c}})=\blue{c}\cdot\log_{\red{a}}(\green{b})}
+          \end{array}
+        $$
+        $$
+          \begin{array}{rcl}
+            z = ay^b e^{cx + 2}
+             & \sii          &
+            \ln(z) = \ln(ay^b e^{cx + 2})                 \\
+             & \Sii{\red{!}} &
+            \ln(z) = \ln(a) + \ln(y^b) +  \ln(e^{cx + 2}) \\
+             & \Sii{\red{!}} &
+            \ln(z) = \ln(a) + b\ln(y) +  cx + 2           \\
+             & \Sii{\red{!}} &
+            \ub{\ln(z) - 2}{\tilde{z}} = b \ln(y) + cx + \ub{\ln(a)}{\tilde{a}}
+          \end{array}
+        $$
+        Busco minimizar la función que ahora es lineal en sus parámetros:
+        $$
+          \tilde{z} = b \ln(y) + cx + \tilde{a}
+        $$
+        Las ecuaciones normales:
+        {
+        \small
+        $$
+          \begin{array}{rcl}
+            A \alpha = \beta
+                     & \sii                                  &
+            \matriz{ccc}{
+            \ln(y_1) & x_1                                   & 1      \\
+            \vdots   & \vdots                                & \vdots \\
+            \ln(y_n) & x_n                                   & 1
+            }
+            \cdot
+            \matriz{c}{
+            b                                                         \\
+            c                                                         \\
+              \tilde{a}
+            }
+            =
+            \matriz{c}{
+            \tilde{z}_1                                               \\
+            \vdots                                                    \\
+            \tilde{z}_n                                               \\
+            }                                                         \\
+                     & \Sii{$\times A^t \to $}[Ec. normales] &
+            \matriz{ccc}{
+            \ln(y_1) & x_1                                   & 1      \\
+            \vdots   & \vdots                                & \vdots \\
+            \ln(y_n) & x_n                                   & 1
+            }^t
+            \matriz{ccc}{
+            \ln(y_1) & x_1                                   & 1      \\
+            \vdots   & \vdots                                & \vdots \\
+            \ln(y_n) & x_n                                   & 1
+            }
+            \cdot
+            \matriz{c}{
+            b                                                         \\
+            c                                                         \\
+              \tilde{a}
+            }
+            =
+            \matriz{ccc}{
+            \ln(y_1) & x_1                                   & 1      \\
+            \vdots   & \vdots                                & \vdots \\
+            \ln(y_n) & x_n                                   & 1
+            }^t
+            \matriz{c}{
+            \tilde{z}_1                                               \\
+            \vdots                                                    \\
+            \tilde{z}_n                                               \\
+            }                                                         \\\\
+                     & \sii                                  &
+            \cajaResultado{A^t A \alpha = A^t \beta}
+          \end{array}
+        $$
+        }
+
+  \item
+        \ul{En general} un sistema de la pinta:
+        $$
+          \oa{M}{\en \reales^{m \times n}} \cdot \ua{\magenta{x}}{\en \reales^n} = \oa{b}{\en \reales^m}
+        $$
+        tiene solución si $b \en \columna(M)$, lo que equivale a decir que $b \en \imagen(M)$ si pensás a $M$ como una transformación lineal.
+        Si el sistema tiene solución, para que esta sea única deberían pasar estas cosas que son todas lo mismo dicho de diferente forma:
+
+        \begin{itemize}
+          \item Si al triangular la matriz $M$ quedan tantas filas \textit{linealmente independientes} como cantidad de \textit{\magenta{incognitas}}.
+          \item Que el rango de $M$, $\rango(M)$ sea completo, es decir que sus columnas sean \textit{linealmente independientes}.
+          \item Si la matriz es cuadrada su determinante tiene que ser \underline{distinto} de cero.
+        \end{itemize}
+
+        La idea es resolver el sistema:
+        $$
+          A^t A \alpha = A^t \beta
+        $$
+        Entonces quiero una $A$ que tenga columnas \textit{LI} y además que $\beta \en \columna(A)$. Si tengo eso, sé que la solución
+        va a ser única. Tené en cuenta que si le pido eso a $A$ para que $ A \alpha = \beta $ tenga solución única, entonces el
+        sistema $A^tA x = A^t b$ también va a cumplir eso, no sé si es obvio, pero se prueba sin mucho sufrimiento.
+
+        Propogno:
+        $$
+          A =
+          \matriz{ccc}{
+            \ln(1) & 0 & 1 \\
+            \ln(1) & 1 & 1 \\
+            \ln(e) & 1 & 1
+          }
+        $$
+        Los puntos que elegí:
+        $$
+          \begin{array}{|c|c|c|c|}
+            \hline
+            x & 0   & 1   & 1   \\ \hline
+            y & e   & 1   & e   \\ \hline
+            z & e^2 & e^2 & e^2 \\ \hline
+          \end{array}
+        $$
+        Para armar los puntos \textit{"no pensé"} en los $z$, porque si las columnas de $A$ generan todo $\reales^3$, $z$ seguro va a pertenecer
+        al $\columna(A)$, pero dado que $z$ e $y$ están como argumentos de $\ln(\cdot)$ por lo menos tienen que ser positivos para que no explote
+        todo por los aires.
+
+  \item Por lo hecho antes necesito un sistema compatible determinado, así que necesito por lo menos 3 puntos para encontrar los 3 parámetros
+        $a,\,b \ytext c$.
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
