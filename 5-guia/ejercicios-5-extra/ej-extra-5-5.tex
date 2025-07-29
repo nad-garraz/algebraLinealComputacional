@@ -1,4 +1,4 @@
-\begin{enunciado}{\ejExtra}
+\begin{enunciado}{\ejExtra} \fechaEjercicio{final }<++>
   \begin{enumerate}[label=\alph*)]
     \item
           Sea $A \en \reales^{n \times n}$. Probar que $A$ tiene todos sus valores singulares iguales si y solo si
@@ -58,9 +58,13 @@
         \end{itemize}
 
   \item  Del ítem anterior tengo que los valores singulares de $B$ son todos $2$, luego para calcular $V$ busco los autovectores de
-        $B^t B$ los $v_i$, y por último $U$ tiene como columnas a $Bv_i = \sigma u_i$
+        $B^t B$ los $v_i$, y por último $U$ tiene como columnas a $Bv_i = \sigma u_i$, Las cosas quedan \textit{lindas}, porque:
         $$
-          B_1 = U_1 \Sigma_1 V_1^t =
+          B^t B = 4Q^tQ = 4I_n
+        $$
+        Con esas cosas puedo calcular todos los ingredientes para cocinar dos SVD para la matriz B:
+        $$
+          B = U_1 \Sigma_1 V_1^t =
           \matriz{c|c|c}{
             \quad& \quad& \quad\\
             -q_1 & -q_2 & -q_3 \\
@@ -79,7 +83,7 @@
         $$
         y la otra sale como:
         $$
-          B_2 = U_2 \Sigma_2 V_2^t =
+          B = U_2 \Sigma_2 V_2^t =
           \matriz{c|c|c}{
             \quad& \quad& \quad\\
             q_1 & q_2 & q_3 \\
