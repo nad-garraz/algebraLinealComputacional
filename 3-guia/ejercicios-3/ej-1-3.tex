@@ -50,221 +50,239 @@
 }
 
 \begin{enumerate}[label=(\alph*)]
-  \item  Una matriz $A$ va a ser triangular superior si todos los número debajo de la diagonal son cero:
-        $$
-          A_{\green{i}\blue{j}}
-          \igual{$\llamada1$}
-          \llave{ccl}{
-            0 & \text{ si } & \green{i} > \blue{j} \\
-            a_{\green{i}\blue{j}} & \text{ si } & \green{i} \leq \blue{j}
-          }
-          \qquad
-          \triangularSuperior
-        $$
-        Los $a_{\green{i}\blue{j}}$ no tienen que  ser necesariamente distinto a cero. Ahora multiplico dos matrices triangulares superiores:
-        $$
-          [A \cdot B]_{\green{i}\blue{j}} = \sumatoria{\purple{k} = 1}{n} a_{\green{i}\purple{k}} \cdot b_{\purple{k}\blue{j}}
-          =
-          a_{\green{i}\purple{1}} \cdot b_{\purple{1}\blue{j}} + a_{\green{i}\purple{2}} \cdot b_{\purple{2}\blue{j}} + \cdots + a_{\green{i}\purple{n}} \cdot b_{\purple{n}\blue{j}}
-          \igual{$\llamada1$}
-          \llave{cc}{
-            \sumatoria{\green{i} \leq \purple{k}\leq  \blue{j}}{} a_{\green{i}\purple{k}} \cdot b_{\purple{k}\blue{j}} & \llamada2 \\
-            0 & \text{ en otro caso}
-          }
-        $$
-        Se cumple $\llamada2$ son los que tiene las
-        \textit{\green{filas} menores o iguales \purple{columnas}} y \textit{\purple{filas} menores o iguales \blue{columnas}},
-        si no son cero. Básicamente la definición de matriz triangular superior.
+\item  Una matriz $A$ va a ser triangular superior si todos los número debajo de la diagonal son cero:
+$$
+  A_{\green{i}\blue{j}}
+  \igual{$\llamada1$}
+  \llave{ccl}{
+    0 & \text{ si } & \green{i} > \blue{j} \\
+    a_{\green{i}\blue{j}} & \text{ si } & \green{i} \leq \blue{j}
+  }
+  \qquad
+  \triangularSuperior
+$$
+Los $a_{\green{i}\blue{j}}$ no tienen que  ser necesariamente distinto a cero. Ahora multiplico dos matrices triangulares superiores:
+$$
+  [A \cdot B]_{\green{i}\blue{j}} = \sumatoria{\purple{k} = 1}{n} a_{\green{i}\purple{k}} \cdot b_{\purple{k}\blue{j}}
+  =
+  a_{\green{i}\purple{1}} \cdot b_{\purple{1}\blue{j}} + a_{\green{i}\purple{2}} \cdot b_{\purple{2}\blue{j}} + \cdots + a_{\green{i}\purple{n}} \cdot b_{\purple{n}\blue{j}}
+  \igual{$\llamada1$}
+  \llave{cc}{
+    \sumatoria{\green{i} \leq \purple{k}\leq  \blue{j}}{} a_{\green{i}\purple{k}} \cdot b_{\purple{k}\blue{j}} & \llamada2 \\
+    0 & \text{ en otro caso}
+  }
+$$
+Se cumple $\llamada2$ son los que tiene las
+\textit{\green{filas} menores o iguales \purple{columnas}} y \textit{\purple{filas} menores o iguales \blue{columnas}},
+si no son cero. Básicamente la definición de matriz triangular superior.
 
-  \item Esta es un poco más fácil. Una matriz es diagonal si:
-        $$
-          A_{ij}
-          \igual{$\llamada1$}
-          \llave{ccl}{
-            0 & \text{ si } & i \distinto j\\
-            a_{ij} &\text{ si } & i = j
-          }
-          \qquad \diagonal
-        $$
-        Nuevamente, los elementos diagnonales no tienen que ser necesariamente distintos de cero. Ahora multiplico dos matrices diagonales:
-        $$
-          [A \cdot B]_{\green{i}\blue{j}} = \sumatoria{\purple{k} = 1}{n} a_{\green{i}\purple{k}} \cdot b_{\purple{k}\blue{j}}
-          =
-          a_{\green{i}\purple{1}} \cdot b_{\purple{1}\blue{j}} + a_{\green{i}\purple{2}} \cdot b_{\purple{2}\blue{j}} + \cdots + a_{\green{i}\purple{n}} \cdot b_{\purple{n}\blue{j}}
-          \igual{$\llamada1$}
-          \llave{cc}{
-            a_{\green{i}\purple{i}}\cdot b_{\purple{i}\blue{i}} & \llamada2\\
-            0 & \text{ en otro caso }
-          }
-        $$
-        En la sumatoria las \purple{columnas} de los elementos de $A$ coinciden con las filas de los elementos de $B$, pero
-        solo cuando estemos multiplicando la \green{fila} $i$ con la \blue{columna} $i$ es que ambos elementos podrían ser no nulos.
+\item Esta es un poco más fácil. Una matriz es diagonal si:
+$$
+  A_{ij}
+  \igual{$\llamada1$}
+  \llave{ccl}{
+    0 & \text{ si } & i \distinto j\\
+    a_{ij} &\text{ si } & i = j
+  }
+  \qquad \diagonal
+$$
+Nuevamente, los elementos diagnonales no tienen que ser necesariamente distintos de cero. Ahora multiplico dos matrices diagonales:
+$$
+  [A \cdot B]_{\green{i}\blue{j}} = \sumatoria{\purple{k} = 1}{n} a_{\green{i}\purple{k}} \cdot b_{\purple{k}\blue{j}}
+  =
+  a_{\green{i}\purple{1}} \cdot b_{\purple{1}\blue{j}} + a_{\green{i}\purple{2}} \cdot b_{\purple{2}\blue{j}} + \cdots + a_{\green{i}\purple{n}} \cdot b_{\purple{n}\blue{j}}
+  \igual{$\llamada1$}
+  \llave{cc}{
+    a_{\green{i}\purple{i}}\cdot b_{\purple{i}\blue{i}} & \llamada2\\
+    0 & \text{ en otro caso }
+  }
+$$
+En la sumatoria las \purple{columnas} de los elementos de $A$ coinciden con las filas de los elementos de $B$, pero
+solo cuando estemos multiplicando la \green{fila} $i$ con la \blue{columna} $i$ es que ambos elementos podrían ser no nulos.
 
-  \item  Una matriz $A$ va a ser triangular superior estricta si todos los número debajo y de la diagonal son cero:
-        $$
-          A_{\green{i}\blue{j}}
-          \igual{$\llamada1$}
-          \llave{ccl}{
-            0 & \text{ si } & \green{i} \geq \blue{j} \\
-            a_{\green{i}\blue{j}} & \text{ si } & \green{i} < \blue{j}
-          }
-          \qquad \triangularSuperiorEstricta
-        $$
-        Meto inducción porque es un viaje.
-        Quiero probar que:
-        $$
-          p(n) : A \en K^{n \times n} \text{ estrictamente triangular superior} \entonces A^n = 0.
-        $$
-        \textit{Caso base:}
-        $$
-          p(\blue{2}) : A \en K^{\blue{2} \times \blue{2}} \text{ estrictamente triangular superior} \entonces A^{\blue{2}} = 0
-        $$
-        Cálculo directo
-        $$
-          A \cdot A =
-          \matriz{cc}{
-            0 & a_{12} \\
-            0 & 0
-          }
-          \cdot
-          \matriz{cc}{
-            0 & a_{12} \\
-            0 & 0
-          }
-          =
-          \matriz{cc}{
-            0 & 0 \\
-            0 & 0
-          }
-        $$
-        por lo tanto $p(\blue{2})$ es verdadera.
+\item
+Una matriz $A$ va a ser triangular superior estricta si todos los número debajo y de la diagonal son cero:
+$$
+  A_{\green{i}\blue{j}}
+  \igual{$\llamada1$}
+  \llave{ccl}{
+    0 & \text{ si } & \green{i} \geq \blue{j} \\
+    a_{\green{i}\blue{j}} & \text{ si } & \green{i} < \blue{j}
+  }
+  \qquad \triangularSuperiorEstricta
+$$
+Meto inducción porque es un viaje.
+Quiero probar que:
+\begin{center}
+  $p(n) : A \ytext B \en K^{n \times n}$ matrices triangulares superior estrictas, MTSE, entonces $A \cdot B$ también lo es,
+  y además tiene una submatriz también MTSE de un \textit{orden matricial} menos en la esquina superior derecha.
+\end{center}
 
-        \medskip
+\bigskip
 
-        \textit{Paso inductivo:}
-        Voy a asumir que para algún $\blue{k} \en \enteros$
-        $$
-          p(\blue{k}) : \ub{A \en K^{\blue{k} \times \blue{k}} \text{ estrictamente triangular superior}
-            \entonces
-            A^{\blue{k}} = 0}{\text{\purple{hipótesis inductiva}}}
-        $$
-        es verdadera. Por lo tanto ahora quiero probar que:
-        $$
-          p(\blue{k+1}) : A \en K^{(\blue{k+1}) \times (\blue{k+1})} \text{ estrictamente triangular superior} \entonces A^{\blue{k+1}} = 0
-        $$
-        Para probar esta tremenda garompa, voy a usar el producto en bloques.
-        Tengo una matriz $A \en K^{(\blue{k+1}) \times (\blue{k+1})}$ estrictamente triangular superior y la parto en bloques así:
-        $$
-          \begin{tikzpicture}[baseline=0, scale = 1, every node/.style={font=\small}]
-            \draw[blue, thin, fill=blue!10,yshift = 0, xshift = 0] (-37px, 20px) rectangle ++(13px,13px);
-            \draw[OliveGreen, thin, fill=OliveGreen!10,yshift = 0, xshift = 0] (-20px, 20px) rectangle ++(80px,13px);
-            \draw[orange, thin, fill=orange!10,yshift = 0, xshift = 0] (-20px, -32px) rectangle ++(80px,50px);
-            \draw[violet, thin, fill=violet!10,yshift = 0, xshift = 0] (-37px, -32px) rectangle ++(13px,50px);
-            \node at (0,0) {
-              $
-                A =
-                \matriz{c|ccc}{
-                  ~ \yellow{0} ~& \violet{a_{12}} & \violet{\cdots} & \violet{a_{1 \blue{(k + 1)}}} \\ \hline
-                  \red{0} & \green{0} & \green{\ddots} & \green{\vdots} \\
-                  \red{\vdots} & \green{0} & \green{\ddots} & \green{a_{k \blue{(k + 1)}}} \\
-                  \red{0} & \green{0} & \green{0} & \green{0}
-                }
-              $
-            };
-          \end{tikzpicture}
-        $$
-        \def\bloques{
-          \begin{tikzpicture}[baseline=0, scale = 1.3, every node/.style={font=\tiny}]
-            \draw[blue, thin, fill=blue!10,yshift = 0, xshift = -12] (-37px, 20px) rectangle ++(13px,13px) node[midway]{$1\times 1$};
-            \draw[OliveGreen, thin, fill=OliveGreen!10,yshift = 0, xshift = -12] (-20px, 20px) rectangle ++(80px,13px) node[midway]{$1\times k$};
-            \draw[orange, thin, fill=orange!10,yshift = 0, xshift = -12] (-20px, -32px) rectangle ++(80px,50px) node[midway]{$k \times k$};
-            \draw[violet, thin, fill=violet!10,yshift = 0, xshift = -12] (-37px, -32px) rectangle ++(13px,50px)node[midway]{$k \times 1$};
-          \end{tikzpicture}
-        }
-        \def\bloqueAzul{
-          \begin{tikzpicture}[baseline=10, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[blue, thin, fill=blue!10,yshift = 0, xshift = -12] (-37px, 20px) rectangle ++(13px,13px);
-          \end{tikzpicture}
-        }
-        \def\bloqueAzulZ{
-          \begin{tikzpicture}[baseline=10, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[blue, thin, fill=blue!10,yshift = 0, xshift = -12] (-37px, 20px) rectangle ++(13px,13px) node[midway]{$0$};
-          \end{tikzpicture}
-        }
-        \def\bloqueVioletZ{
-          \begin{tikzpicture}[baseline=0, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[violet, thin, fill=violet!10,yshift = 0, xshift = -12] (-37px, -32px) rectangle ++(13px,70px)
-            node[midway]{$
-                  \begin{array}{c}
-                    0      \\
-                    \vdots \\
-                    0
-                  \end{array}
-                $
-              };
-          \end{tikzpicture}
-        }
-        \def\bloqueViolet{
-          \begin{tikzpicture}[baseline=0, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[violet, thin, fill=violet!10,yshift = 0, xshift = -12] (-37px, -32px) rectangle ++(13px,50px);
-          \end{tikzpicture}
-        }
-        \def\bloqueVerde{
-          \begin{tikzpicture}[baseline=0, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[OliveGreen, thin, fill=OliveGreen!10, yshift = -20, xshift = -12] (-50px, 20px) rectangle ++(80px,13px);
-          \end{tikzpicture}
-        }
-        \def\bloqueVerdeZ{
-          \begin{tikzpicture}[baseline=0, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[OliveGreen, thin, fill=OliveGreen!10, yshift = -20, xshift = -12] (-20px, 20px) rectangle ++(160px,13px) node[midway]{$0 \cdots\cdots\cdots 0$};
-          \end{tikzpicture}
-        }
-        \def\bloqueOrange{
-          \begin{tikzpicture}[baseline=0, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[orange, thin, fill=orange!10,yshift = 0, xshift = -12] (-20px, -32px) rectangle ++(80px,50px);
-          \end{tikzpicture}
-        }
-        \def\bloqueOrangeZ{
-          \begin{tikzpicture}[baseline=0, scale = 0.5, every node/.style={font=\tiny}]
-            \draw[orange, thin, fill=orange!10,yshift = 0, xshift = -12] (-20px, -32px) rectangle ++(160px,70px)
-            node[midway]{
-                $
-                  \begin{array}{ccccc}
-                    0      & 0 & a' & \cdots & a \\
-                    \vdots & 0 & 0  & \cdots & 0 \\
-                    0      & 0 & 0  & \cdots & 0
-                  \end{array}
-                $};
-          \end{tikzpicture}
-        }
-        $$
-          \begin{array}{rcl}
-            A^2 = A \cdot A
-                                                                       & =                                                          &
-            \left( \bloques \right) \cdot \left( \bloques \right)                                                                     \\ \\
-                                                                       & =                                                          &
-            \matriz{c|c}{
-            \bloqueAzul\ \bloqueAzul + \bloqueVerde\ \bloqueViolet     & \bloqueAzul\ \bloqueVerde + \bloqueVerde\ \bloqueOrange      \\ \hline
-            \bloqueViolet\ \bloqueAzul +  \bloqueOrange\ \bloqueViolet & \bloqueViolet\ \bloqueVerde + \bloqueOrange\ \bloqueOrange
-            }                                                                                                                         \\
-                                                                       & =                                                          &
-            \matriz{c|c}{
-            \bloqueAzulZ                                               & \bloqueVerdeZ                                                \\ \hline
-            \bloqueVioletZ                                             & \bloqueOrangeZ
-            }
-          \end{array}
-        $$
-        Oka, esto se fue al carajo.
-        Pero está demostrado.
-        La última matriz, es el resultado de $A^2$. Tiene todos ceros excepto en el \orange{bloque naranja}, que está en $K^{\blue{k} \times \blue{k}}$ y es
-        el producto de hacer el \orange{bloque naranja} por el \orange{bloque naranja} dado que el \violet{bloque violeta} por el \green{bloque verde} dio 0.
-        Por lo tanto el \orange{bloque naranja} es la \purple{hipótesis inductiva}\red{!!!} Multiplicar $k+1$ veces $A$ por si misma dará 0, porque el producto,
-        será el (\orange{bloque naranja})$^2$ con cada vez más ceros.
-\end{enumerate}
+\textit{Caso base:}
+\begin{center}
+  $p(2) : A \ytext B \en K^{2 \times 2}$ MTSE, entonces $A \cdot B$ también lo es,
+  y además tiene una submatriz también MTSE de un \textit{orden matricial} menos en la esquina superior derecha.
+\end{center}
+Cálculo directo
+$$
+  A \cdot B =
+  \matriz{cc}{
+    0 & a_{12} \\
+    0 & 0
+  }
+  \cdot
+  \matriz{cc}{
+    0 & b_{12} \\
+    0 & 0
+  }
+  =
+  \matriz{cc}{
+    0 & 0 \\
+    0 & 0
+  }
+$$
+por lo tanto $p(\blue{2})$ es verdadera.
 
-Dado que $p(2), p(k) \ytext p(k+1)$ resultaron verdaderas, por el principio de inducción en $p(n)$ también será verdadera  $\paratodo n \en \naturales$
+\medskip
 
-El caso con $n=1$ es trivial, dejame en paz.
+\textit{Paso inductivo:}
+Voy a asumir que para algún $\blue{k} \en \enteros$
+\begin{center}
+  $p(k) : A \ytext B \en K^{k \times k}$ estrictamente triangular superior, entonces $A \cdot B$ también lo es
+  y además tiene una submatriz también MTSE de un \textit{orden matricial} menos en la esquina superior derecha.
+\end{center}
+es \ul{verdadera}. Por lo tanto ahora quiero probar que:
+\begin{center}
+  $p(k+1) : A \ytext B \en K^{(k+1) \times (k+1)}$ estrictamente triangular superior, entonces $A \cdot B$ también lo es
+  y además tiene una submatriz también MTSE de un \textit{orden matricial} menos en la esquina superior derecha.
+\end{center}
+Primero voy a ver que onda esto de multiplicar dos MTSE:
+$$
+  A \cdot B =
+  \matriz{ccccc}{
+    0 & \blue{a_{12}} & \blue{\cdots} & \blue{\cdots} & \blue{a_{1(k+1)}} \\
+    0 & 0 & \blue{\ddots} & \blue{\ddots} & \blue{\vdots} \\
+    0 & 0 & \ddots & \blue{\ddots} & \blue{\vdots} \\
+    0 & 0 & \cdots & 0 & \blue{a_{k(k+1)}} \\
+    0 & 0 & \cdots & 0 & 0
+  }
+  \cdot
+  \matriz{ccccc}{
+    0 & \blue{b_{12}} & \blue{\cdots} & \blue{\cdots} & \blue{b_{1(k+1)}} \\
+    0 & 0 & \blue{\ddots} & \blue{\ddots} & \blue{\vdots} \\
+    0 & 0 & \ddots & \blue{\ddots} & \blue{\vdots} \\
+    0 & 0 & \cdots & 0 & \blue{b_{k(k+1)}} \\
+    0 & 0 & \cdots & 0 & 0
+  }
+$$
+Notar que las columnas de $A$ y $B$ tienen la forma:
+{
+\small
+$$
+  \llave{rcl}{
+    \columna_1(A) = A  e_1 & = & 0 \\
+    \columna_2(A) = A  e_2 & = & a_{21} e_1  \\
+    \columna_3(A) = A  e_3 & = & a_{31} e_1 + a_{32} e_2\\
+    \columna_4(A) = A  e_4 & = & a_{41} e_1 + a_{42} e_2 + a_{43} e_3\\
+    & \vdots & \\
+    \columna_k(A) = A e_k & = & \sumatoria{i = \magenta{1}}{k-1} a_{k \magenta{i}} e_i \\
+    \columna_{(k+1)}(A) = A  e_{k+1} & = & \sumatoria{i = \magenta{1}}{k} a_{(k+1) \magenta{i}} e_i \\
+  }
+  \ytext
+  \llave{rcl}{
+    \columna_1(B) = B  e_1 & = & 0 \\
+    \columna_2(B) = B  e_2 & = & b_{21} e_1  \\
+    \columna_3(B) = B  e_3 & = & b_{31} e_1 + b_{32} e_2\\
+    \columna_4(B) = B  e_4 & = & b_{41} e_1 + b_{42} e_2 + b_{43} e_3\\
+    & \vdots & \\
+    \columna_k(B) = B e_k & = & \sumatoria{i = \magenta{1}}{k-1} b_{k \magenta{i}} e_i \\
+    \columna_{(k+1)}(B) = B  e_{k+1} & = & \sumatoria{i = \magenta{1}}{k} b_{(k+1) \magenta{i}} e_i \\
+  }
+$$
+}
+Entonces al multiplicar $A \cdot B$
+$$
+  \llave{rcl}{
+    \columna_1(A \cdot B) = A \cdot B e_1 & = & A \cdot 0 = 0 \\
+    \columna_2(A \cdot B) = A \cdot B e_2 & = & b_{21} A e_1 \igual{\red{!}} 0  \\
+    \columna_3(A \cdot B) = A \cdot B e_3 & = & b_{31} A e_1 + b_{32} A e_2 \igual{\red{!}} b_{32} a_{21} e_1\\
+    \columna_4(A \cdot B) = A \cdot B e_4 & = & b_{41} A e_1 + b_{42} A e_2 + b_{43} A e_3 \igual{\red{!}}  b_{42}a_{21}e_1 + b_{43}a_{31}e_1 +  b_{43}a_{32}e_2  \\
+  & \vdots & \\
+  \columna_{(k+1)}(A \cdot B) = A \cdot B e_{k+1}
+  & = &
+  \sumatoria{i = \magenta{1}}{k} b_{(k+1) \magenta{i}} A \cdot e_i =
+  \sumatoria{i = \magenta{1}}{k} \sumatoria{j = \yellow{1}}{\red{k-1}}   b_{(k+1) \magenta{i}} a_{(k+1) \yellow{j}} e_{\yellow{j}}
+  }
+$$
+A esta altura estarás preguntándote ¿que mierda es todo esto?, yo también. Lo que importa es que todas las columnas de $AB$
+se construyen con vectores que \ul{tienen un cero más que antes},
+entendiendo por \ul{tienen un cero más que antes}:
+$$
+  (a_1,a_2,a_3,0) \flecha{luego de}[multiplicar] (a'_1, a'_2, 0, 0).
+$$
+
+La matriz $AB$ tiene $\columna(AB)_1 = \columna(AB)_2 = 0$ y como todos las columnas \ul{tienen un cero más abajo} es
+decir que hay una fila de ceros nueva, quedando así una MTSE de un \textit{orden matricial} menor.
+
+\begin{tikzpicture}[
+    rect/.style={draw, thick, minimum width=0.8cm, minimum height=0.8cm},
+    submatriz/.style={draw, thick, color=#1, rounded corners=2pt, inner sep=0pt},
+    matrix_style/.style={
+        matrix of nodes,
+        nodes={rect, draw=white, anchor=center, font=\small},
+        column sep=0\pgflinewidth,
+        row sep=0\pgflinewidth,
+        left delimiter=(,
+        right delimiter=)
+      }
+  ]
+  \matrix (A) [matrix_style] {
+    $0$      & $\blue{a_{12}}$ & $\blue{\cdots}$ & $\blue{\cdots}$ & $\blue{a_{1(k+1)}}$  \\
+    $0$      & $0$                                    & $\blue{\ddots}$ & $\blue{\ddots}$ & $\blue{\vdots}$                         \\
+    $\vdots$ & $\vdots$                               & $\ddots$        & $\blue{\ddots}$ & $\blue{\vdots}$                         \\
+    $0$      & $0$                                    & $\cdots$        & $0$             & $\blue{a_{k(k+1)}}$ \\
+    $0$      & $0$                                    & $\cdots$        & $0$             & $0$                                     \\
+  };
+  \node[submatriz=Cerulean, fit=(A-1-2.north west)(A-4-5.south east)] {};
+
+  \matrix (B) [matrix_style, right=0.6cm of A] {
+    $0$      & $\blue{b_{12}}$ & $\blue{\cdots}$ & $\blue{\cdots}$ & $\blue{b_{1(k+1)}}$ \\
+    $0$      & $0$                                     & $\blue{\ddots}$ & $\blue{\ddots}$ & $\blue{\vdots}$                         \\
+    $\vdots$ & $\vdots$                                & $\ddots$        & $\blue{\ddots}$ & $\blue{\vdots}$                         \\
+    $0$      & $0$                                     & $\cdots$        & $0$             & $\blue{b_{k(k+1)}}$ \\
+    $0$      & $0$                                     & $\cdots$        & $0$             & $0$                                     \\
+  };
+  \node[submatriz=Cerulean, fit=(B-1-2.north west)(B-4-5.south east)] {};
+
+  \matrix (C) [matrix_style, right=1.2cm of B] {
+    $0$ & $0$ & $\orange{*}$ & $\orange{\cdots}$ & $\orange{*}$      \\
+    $0$ & $0$ & $\ddots$     & $\orange{\ddots}$ & $\orange{\vdots}$ \\
+    $0$ & $0$ & $\cdots$     & $\ddots$          & $\orange{*}$      \\
+    $0$ & $0$ & $\cdots$     & $0$               & $0$               \\
+    $0$ & $0$ & $\cdots$     & $0$               & $0$               \\
+  };
+
+  \node[left=0.3cm of C.west] {$=$};
+  \node[submatriz=orange, fit=(C-1-2.north west)(C-4-5.south east)] {};
+
+  % Labels
+  \node[below=0.3cm of A] {$A \en K^{(k+1) \times (k+1)}$};
+  \node[below=0.3cm of B] {$B \en K^{(n \times n)}$};
+  \node[above=0.3cm of C, align=center] {
+    $A \cdot B \en K^{(k+1) \times (k+1)}$ \\
+    \orange{MTSE $\en K^{k \times k}$}
+  };
+\end{tikzpicture}
+
+Por lo tanto probé (creo) por inducción que al multiplicar una matriz MTSE por otra MTSE,
+se obtiene una nueva MTSE con una submatriz TSE también de un \textit{orden matricial} menor.
+
+Así es cuestión de multiplicar a $A \en K^{n \times n}$ por sí misma $n$ veces para obtener una matriz nula:
+$$
+  A^n = 0
+$$
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
