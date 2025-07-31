@@ -13,56 +13,89 @@
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-  \item
+  \item Si $A \en \reales^{n \times n}$ y sus autovalores $\lambda_i \en \reales$, eso se calculó con un polinomio característico:
         $$
-          A v_i = \lambda_i v_i
-          \ytext
-          \conj{A v_i} = \conj{\lambda_i v_i}
-          \Sii{\red{!}}
-          A \conj{v}_i = \lambda_i \conj{v}_i
+          \mathcal{X}(A) = \det(A - \lambda_i)
         $$
-        Ahora la papa está en usar que $(\text{\poo} + \conj{\text{\poo}}) \en \reales$:
+        Los autovalores resultaron reales y ahora tengo que calcular los autovectores asociados resolviendo el sistema:
         $$
-          \begin{array}{rcl}
-            Av_i + A \conj{v}_i = \lambda_i v_i + \lambda_i \conj{v}_i
-             & \sii &
-            A(v_i + \conj{v}_i) = \lambda_i (v_i + \conj{v}_i)                                      \\
-             & \sii &
-            A(\ub{2\re(v_i)}{=w_i \en \reales^n}) = \lambda_i (\ub{2\re(v_i)}{= w_i \en \reales^n}) \\
-             & \sii &
-            Aw_i = \lambda_i w_i
-          \end{array}
+          (A - \lambda I_n)v = 0 .
         $$
-        Queda por lo tanto que si $A \en \reales^{n \times n}$ con un autovector $\lambda \en \reales$
-        entonces su autovector asociado tendrá coordenadas reales.
+        Donde no hay razón \textit{necesaria} para que la solución de ese sistema tenga elementos con parte imaginaria no nula. Los
+        $v$ serán vectores con todas sus coordenadas reales.
+          {\footnotesize
+            \parrafoDestacado[\orange\atencion]{
+              Siempre uno puede complicar la vida y hacer cosas como:
+              $$
+                \matriz{cc}{
+                  1 & 0 \\
+                  0 & 0
+                }
+                \matriz{cc}{
+                  0\\
+                  i
+                }
+                =
+                \magenta{0}
+                \matriz{cc}{
+                  0\\
+                  i
+                }
+                =
+                \matriz{cc}{
+                  0\\
+                  0
+                }
+              $$
+              concluyendo que el autovector
+              $
+                \matriz{cc}{
+                  0\\
+                  i
+                }
+              $
+              es un autovector $\en \complejos$ asociado al autovalor $\magenta{0}$, pero el \textit{\ul{pueden tomarse del enunciado}} justamente dice que
+              para no pegarnos un tiro en el pie, \textit{tomaríamos} el
+              $
+                \matriz{cc}{
+                  0\\
+                  1
+                }
+              $ y listo el \simpleicon{kfc}.
+            }
+          }
+  \item $A$ es simétrica, supogno que $\lambda$ es un autovalor con autovector asociado $v$:
+        $$
+          \llave{l}{
+            v^* A v = \lambda v^*v = \lambda \norma{v}_2^2\\
+            v^* A v \igual{\red{!!}} (Av)^* v = \bar{\lambda} v^*v  = \bar{\lambda} \norma{v}_2^2
+          }
+          \entonces
+          \lambda \norma{v}_2^2 = \bar{\lambda} \norma{v}_2^2 \sii \lambda = \bar{\lambda} \sii \lambda \en \reales
+        $$
 
-  \item $A$ es simétrica:
+  \item Si a es una matriz SDP, por lo visto antes tiene autovalores reales. Si $\lambda$ es un autovalor de $A$ con autovector asociado $v$:
         $$
-          v^* A v = \lambda v^*v \igual{$\llamada1$} \lambda \norma{v}_2^2 \en \reales
-        $$
-        Ahora la idea es conjugar esa expresión y ver que da lo mismo:
-        $$
-          (v^* A v)^* = (v^* \lambda v)^*
-          \Entonces{fuaa el loco vivía las implicaciones al 1000\%}
-          [$
-              \begin{array}{rcl}
-                (v^* A v)^*  =  v^* (Av^*)^* = v^* A^* v & \igual{\red{!}} & v^* A v \llamada1                                  \\
-                                                         & =               & (v^* \lambda v)^* = \conj{\lambda (\norma{v}_2^2)} \\
-                                                         & =               & (v^* \lambda v)^* = \conj{\lambda} \norma{v}_2^2
-              \end{array}
-            $]
-          v^* A v \igual{$\llamada2$} \conj{\lambda} \norma{v}_2^2
-        $$
-        De ahí sale que $\llamada1$ y $\llamada2$ tienen que ser iguales, si bien en la expresión de $\llamada2$ el autovalor está conjugado. Por lo tanto
-        para que se cumpla la igualdad tengo que tener:
-        $$
-          \lambda = \conj{\lambda}
-          \sisolosi
-          \lambda \en \reales
+          v^t A v \mayor{$(<)$} 0
+          \Sii{en particular}[para $Av = \lambda v$]
+          \lambda \norma{v}_2^2 \mayor{$(<)$} 0
+          \sii
+          \lambda \mayor{$(<)$} 0
         $$
 
-  \item \hacer
-
-  \item \hacer
+  \item Si a es una matriz simétrica, y tengo 2 autovalores $\lambda_1 \ytext \lambda_2$ con autovectores asociado $v_1 \ytext v_2$ respectivamente:
+        $$
+          \llave{l}{
+            v_2^t A v_1 = \lambda_1 v_2^t v_1\\
+            v_2^t A v_1 \igual{\red{!!}} (Av_2)^t A v_1 = \lambda_2 v_2^t v_1\\
+          }
+          \Sii{restando}[M.A.M.]
+          0 =  \ub{(\lambda_1 - \lambda_2)}{\distinto 0} v_2^t \cdot v_1
+          \entonces
+          v_1 \perp v_2
+        $$
 \end{enumerate}
 
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
