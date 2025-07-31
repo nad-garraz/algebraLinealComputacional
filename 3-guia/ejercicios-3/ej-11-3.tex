@@ -14,26 +14,27 @@ Muestro una doble implicación:
           x^tB^{-1}B A B^t(B^t)^{-1} x > 0
           \Sii{\red{!}}
           ((B^t)^{-1}x)^tB A B^t ((B^t)^{-1} x) > 0
-          \sii
+          \Sii{\red{!}}
           \cajaResultado{
             \blue{y}^tB A B^t \blue{y} > 0
           }
           \text{ con } \blue{y} \distinto 0
         $$
-        Dado que $B$ es inversible sé que $(B^t)^{-1} \distinto 0$.
+        Dado que $B$ es inversible sé que $(B^t)^{-1}x \distinto 0$.
 
         No sé si es necesario mostrar esto o no, pero:
         $$
           (BAB^t)^t =
           (AB^t)^tB^t
           =
-          BA^tB^t =
+          BA^tB^t
           \igual{\red{!}}
           BAB^t =
         $$
 
   \item[$(\red{\Leftarrow})$]
-        Una propiedad de las matrices simétricas definidas positivas es que son inversibles, su definición implica que $\nucleo = \set{0}$, así que su determinante es distinto de 0.
+        Una propiedad de las matrices simétricas definidas positivas es que son inversibles,
+        su definición implica que $\nucleo = \set{0}$, así que su determinante es distinto de 0.
         En un producto matricial:
         $$
           0 \distinto \det(B A B^t) =

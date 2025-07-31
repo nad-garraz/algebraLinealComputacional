@@ -172,32 +172,45 @@
                   $$
                 }
                 $$
-                  B=
                   \begin{tikzpicture}[
-                      rect/.style={draw, thin, minimum width=1.2cm, minimum height=1.2cm},
-                      submatriz/.style={draw, thin, color=#1, rounded corners=1pt, scale= 0.9},
-                      submatriz/.default=red,
-                      baseline = 0,
+                      rect/.style={
+                          draw,
+                          thick,
+                          minimum width=0.8cm,
+                          minimum height=0.8cm
+                        },
+                      submatriz/.style={
+                          draw,
+                          thin,
+                          anchor = center,
+                          inner sep = -1pt,
+                          color=#1,
+                          rounded corners=3pt
+                        }
                     ]
-
                     \matrix (A) [
                       matrix of nodes,
                       nodes={draw = white,
                           rect,
                           anchor=center,
-                          font=\small}
+                          font=\small},
+                      left delimiter=(,
+                      right delimiter=),
+                      column sep=0\pgflinewidth,
                     ] {
                       $\magenta{1}$ & $0$      & $\cdots$ & $0$      \\
                       $\vdots$      & $a_{11}$ & $\cdots$ & $a_{1n}$ \\
                       $\vdots$      & $\vdots$ & $\ddots$ & $\vdots$ \\
                       $\vdots$      & $a_{31}$ & $\dots$  & $a_{nn}$ \\
                     };
+                    \node[submatriz=black!20!white, fit=(A-2-1)(A-4-1)] {\large\color{black!20!white}{$\bm{b}$}};
+                    \node[submatriz=black!20!white, fit=(A-1-2)(A-1-4)] {\large\color{black!20!white}{$\bm{c}$}};
+                    \node[submatriz=black!20!white, fit=(A-2-2)(A-4-4)] {\huge\color{black!20!white}{$A$}};
+                    \node[submatriz=orange, fit=(A-1-1)(A-3-3)] {};
+                    \node[submatriz=OliveGreen, fit=(A-1-1)(A-2-2)] {};
                     \node[submatriz=blue, fit=(A-1-1)] {};
-                    \node[submatriz=green!70!black, fit=(A-1-1)(A-1-2)(A-2-1)(A-2-2)] {};
-                    \node[submatriz=orange, fit=(A-1-1)(A-1-2)(A-1-3)(A-2-1)(A-2-2)(A-2-3)(A-3-1)(A-3-2)(A-3-3)] {};
-                    \node[submatriz=violet, fit=(A-1-1)(A-1-2)(A-1-3)(A-1-4)(A-2-1)(A-2-2)(A-2-3)(A-2-4)(A-3-1)(A-3-2)(A-3-3)(A-3-4)(A-4-1)(A-4-2)(A-4-3)(A-4-4)] {};
-                    \node[submatriz=black, fit=(A-2-2)(A-2-3)(A-2-4)(A-3-2)(A-3-3)(A-3-4)(A-4-2)(A-4-3)(A-4-4)] {\huge\color{black!20!white}{$A$}};
-                    \node[submatriz=black, fit=(A-2-1)(A-3-1)(A-4-1)] {\large\color{black!20!white}{$\bm{b}$}};
+
+                    \node[left=0.3cm of A] {$B = $};
                   \end{tikzpicture}
                 $$
         \end{itemize}

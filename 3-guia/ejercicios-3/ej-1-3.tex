@@ -227,8 +227,8 @@ La matriz $AB$ tiene $\columna(AB)_1 = \columna(AB)_2 = 0$ y como todos las colu
 decir que hay una fila de ceros nueva, quedando así una MTSE de un \textit{orden matricial} menor.
 
 \begin{tikzpicture}[
-    rect/.style={draw, thick, minimum width=0.8cm, minimum height=0.8cm},
-    submatriz/.style={draw, thick, color=#1, rounded corners=2pt, inner sep=0pt},
+    rect/.style={draw, thin, minimum width=0.6cm, minimum height=0.6cm},
+    submatriz/.style={draw, thick, color=#1, text=#1!20!white,  rounded corners=1pt, inner sep=0pt},
     matrix_style/.style={
         matrix of nodes,
         nodes={rect, draw=white, anchor=center, font=\small},
@@ -238,14 +238,13 @@ decir que hay una fila de ceros nueva, quedando así una MTSE de un \textit{orde
         right delimiter=)
       }
   ]
-  \matrix (A) [matrix_style] {
+  \matrix (A) [matrix_style, scale = 0.5] {
     $0$      & $\blue{a_{12}}$ & $\blue{\cdots}$ & $\blue{\cdots}$ & $\blue{a_{1(k+1)}}$  \\
     $0$      & $0$                                    & $\blue{\ddots}$ & $\blue{\ddots}$ & $\blue{\vdots}$                         \\
     $\vdots$ & $\vdots$                               & $\ddots$        & $\blue{\ddots}$ & $\blue{\vdots}$                         \\
     $0$      & $0$                                    & $\cdots$        & $0$             & $\blue{a_{k(k+1)}}$ \\
     $0$      & $0$                                    & $\cdots$        & $0$             & $0$                                     \\
   };
-  \node[submatriz=Cerulean, fit=(A-1-2.north west)(A-4-5.south east)] {};
 
   \matrix (B) [matrix_style, right=0.6cm of A] {
     $0$      & $\blue{b_{12}}$ & $\blue{\cdots}$ & $\blue{\cdots}$ & $\blue{b_{1(k+1)}}$ \\
@@ -254,22 +253,23 @@ decir que hay una fila de ceros nueva, quedando así una MTSE de un \textit{orde
     $0$      & $0$                                     & $\cdots$        & $0$             & $\blue{b_{k(k+1)}}$ \\
     $0$      & $0$                                     & $\cdots$        & $0$             & $0$                                     \\
   };
-  \node[submatriz=Cerulean, fit=(B-1-2.north west)(B-4-5.south east)] {};
 
   \matrix (C) [matrix_style, right=1.2cm of B] {
-    $0$ & $0$ & $\orange{*}$ & $\orange{\cdots}$ & $\orange{*}$      \\
-    $0$ & $0$ & $\ddots$     & $\orange{\ddots}$ & $\orange{\vdots}$ \\
-    $0$ & $0$ & $\cdots$     & $\ddots$          & $\orange{*}$      \\
-    $0$ & $0$ & $\cdots$     & $0$               & $0$               \\
-    $0$ & $0$ & $\cdots$     & $0$               & $0$               \\
+    $0$ & $0$ & $\orange{(ab)_{13}}$ & $\orange{\cdots}$ & $\orange{(ab)_{1(k+1)}}$ \\
+    $0$ & $0$ & $\ddots$                                               & $\orange{\ddots}$ & $\orange{\vdots}$                                      \\
+    $0$ & $0$ & $\cdots$                                               & $\ddots$          & $\orange{(ab)_{(k-1)(k+1)}}$ \\
+    $0$ & $0$ & $\cdots$                                               & $0$               & $0$                                                    \\
+    $0$ & $0$ & $\cdots$                                               & $0$               & $0$                                                    \\
   };
 
   \node[left=0.3cm of C.west] {$=$};
-  \node[submatriz=orange, fit=(C-1-2.north west)(C-4-5.south east)] {};
+  \node[submatriz=Cerulean, fit=(A-1-2.north west)(A-4-5.south east)] {$k \times k$\\triangular superior};
+  \node[submatriz=Cerulean, fit=(B-1-2.north west)(B-4-5.south east)] {$k \times k$\\triangular superior};
+  \node[submatriz=orange, fit=(C-1-2.north west)(C-3-5.south east)(C-4-5.south east)] {$k \times k$\\triangular superior\\estricto};
 
   % Labels
   \node[below=0.3cm of A] {$A \en K^{(k+1) \times (k+1)}$};
-  \node[below=0.3cm of B] {$B \en K^{(n \times n)}$};
+  \node[below=0.3cm of B] {$B \en K^{(k+1) \times (k+1)}$};
   \node[above=0.3cm of C, align=center] {
     $A \cdot B \en K^{(k+1) \times (k+1)}$ \\
     \orange{MTSE $\en K^{k \times k}$}
