@@ -7,8 +7,28 @@ Dejame escribir al proyector como $P$ en vez de $f$, porque me da \textit{cosita
 Tenemos un proyector y por definición:
 $$
   P \circ P = P
+  \ytext
+  Pv = v
 $$
-Si el proyector tiene forma diagonal:
+Una forma de ver esto, dado un $v$ autovector asociado a $\lambda$:
+$$
+  \llave{c}{
+    Pv = \lambda v\\
+    \quad \land \quad\\
+    P(Pv) = \lambda^2v
+  }
+  \Sii{def}
+  \lambda v = \lambda^2 v
+  \sii
+  \lambda( \lambda - 1) v = 0
+  \sii
+  \llave{rcl}{
+    \lambda_1  &=& 1 \\
+    & \text{ o } & \\
+    \lambda_2  &=& 0
+  }
+$$
+Suponiendo que el proyector siempre puede ser diagonalizado ¿Es esto cierto? Sí. ¿Por qué? Me contó un \href{https://youtu.be/5Zdi2UaqIFE?t=47}{\faIcon{twitter}}:
 $$
   \begin{array}{c}
     P = C D C^{-1}
