@@ -21,35 +21,37 @@
 
 El polinomio característico de $A$ y $B$:
 $$
-  \begin{array}{rcl}
-    \mathcal{X}_A & = & (1 - \lambda)^2 - 1 = \lambda \cdot (\lambda - 2) = 0
-    \sii
-    \llave{l}{
+  \mathcal{X}_A  =  (1 - \lambda)^2 - 1 = \lambda \cdot (\lambda - 2) = 0
+  \sii
+  \llave{l}{
     \lambda_1 = 0                                                             \\
-      \lambda_2 = 2
-    }                                                                         \\
-    \mathcal{X}_B & = & (1 - \lambda)^2 = 0
-    \sii
-    \llave{l}{
-    \lambda_1 = 1                                                             \\
-      \lambda_2 = 1
-    }
-  \end{array}
+    \lambda_2 = 2
+  }                                                                         \\
 $$
+
+$$
+  \mathcal{X}_B  =  (1 - \lambda)^2 = 0
+  \sii
+  \llave{l}{
+    \lambda_1 = 1                                                             \\
+    \lambda_2 = 1
+  }
+$$
+
 Medio que el enunciado cuenta todo. En particular se puede acotar la condición de esas matrices.
+
 Por ejemplo para
 $C =
   \matriz{cc}{
     1 & \frac{1}{\epsilon}\\
     0 & 0
   }$:
+
 $$
-  \begin{array}{c}
-    \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - C}_\infinito} =
-    \frac{1 + \frac{1}{\epsilon}}{\epsilon + 1}
-    \flecha{$\epsilon \to 0$}
-    \infinito
-  \end{array}
+  \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - C}_\infinito} =
+  \frac{1 + \frac{1}{\epsilon}}{\epsilon + 1}
+  \flecha{$\epsilon \to 0$}
+  \infinito
 $$
 Lo mismo se puede hacer para la matriz $B$. Esas matrices están mal condicionadas y como se puede ver en los autovalores,
 a pesar de tener elementos similares los resultados en el cálculo de los \textit{autovalores} las resultados pueden variar mucho.

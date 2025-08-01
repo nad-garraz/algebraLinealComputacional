@@ -1,3 +1,36 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  Sea $A \en \reales^{n \times n}$ tal que admite una base de autovectores $\mathcal{B} = \set{v_1, \ldots, v_n}$
+  (que supondremos normalizados) y, además, tiene un único autovalor de máximo módulo (digamos: $\lambda_1$).
+  Es decir, sus autovalores satisfacen:
+  $$
+    |\lambda_1| >
+    |\lambda_2| >
+    |\lambda_3| >
+    \dots >
+    |\lambda_n|.
+  $$
+  Dado $v^{(0)}$ un vector cualquiera tal que sus coordenadas en base $\mathcal{B}$ son $(a_1, \ldots, a_n),$ con $a_1 \distinto 0$.
+
+  Definimos $v^{(k+1)} = Av^{(k)} = A^k v^{(0)}$.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que $A v^{(k)} = a_1 \lambda_1^k v_1 + \cdots + a_n \lambda_n^k v_n$.
+
+    \item Deducir que $Av^{(k)} = \lambda_1^k(a_1v_1 + \varepsilon_k)$, donde $\varepsilon_k \to 0$ cuando $k \to \infinito$.
+
+    \item Sea $\varphi : \complejos^n \to \complejos$ una funcional lineal tal que $\varphi(v_1) \distinto 0$. Probar que:
+          $$
+            \frac{\varphi(Av^{(k)})}{\varphi(v^{(k)})} \to \lambda_1.
+          $$
+
+    \item Para evitar que $\norma{v^{(k)}}$ tianda a $0$ o a $\infinito$ es usual normalizar $v^{(k)}$ al cabo de cada iteración.
+          Probar que en tal caso, si $\lambda_1$ es real positivo, se tiene que $v^{(k)} \to v_1$.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item \hacer
+  \item \hacer
+  \item \hacer
+  \item \hacer
+\end{enumerate}

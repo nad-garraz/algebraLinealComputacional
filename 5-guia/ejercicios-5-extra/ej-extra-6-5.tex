@@ -18,15 +18,78 @@
   \end{enumerate}
 \end{enunciado}
 
+Una matriz real que cumple  $A^t = A = A^{-1}$ es una matriz ortogonal.
 \begin{enumerate}[label=\alph*)]
   \item
         $$
-          A^2 = A \cdot A^-1 = I_n
+          A^2 = A \cdot A^{-1} = I_n
           \entonces \det(A^2) = (\det(A))^2 = \det(I_n) \sii \cajaResultado{\det(A) = \pm 1}
         $$
+        Dado que $A$ es simétrica, se puede diagonalizar. En particular tiene una diagonalización ortogonal.
 
-    \item
+  \item Como $A$ es diagonalizable y además cumple que $A = A^{-1}$:
         $$
+          \textstyle
+          A = C D C^{-1}
+          \sii
+          A v = \lambda v
+          \Sii{$\times A$}[$\to$]
+          v = \lambda A^{-1}v
+          \Sii{$\lambda \distinto 0$}
+          A^{-1} v = \frac{1}{\lambda} v
+        $$
+        Entonces la matriz $A$ tiene un autovector $v$ con autovalor $\lambda$, entonces $A^{-1}$ también lo tiene como autovector pero
+        asociado al autovalor $\frac{1}{\lambda}$, peeeeeero como:
+        $$
+          A = A^{-1}
+          \sii
+          \lambda_i = \frac{1}{\lambda_i}
+          \sii
+          \lambda_i^2 = 1
+          \sii
+          \cajaResultado{
+            \lambda_i = \pm1
+          }
+        $$
+
+  \item  Para calcular $\Sigma$ calculos los autovalores de $M = A^t \cdot A$. Teniendo en cuenta que los autovalores de $A$ y de $A^t$ son los mismos
+        y como se vio antes los autovalores son $1$ o $-1$:
+        $$
+          M = A^tA = CD^2C^{-1} = I
+          \sii
+          D = I_n
+          \sii
+          \lambda_{ii} = 1
+        $$
+        Los autovalores de $M$, $\lambda_M$ son todos iguales a 1. Los valores singulares $\sigma_i = \sqrt{\lambda_M} = 1$:
+        $$
+          \Sigma = I_n
+        $$
+        Como a es una matriz cuadrada también lo es $\Sigma$.
+
+  \item Como indica la \textit{sugerencia}:
+
+        La matriz $B$ es una matriz ortogonal, sus columnas o filas forman una base ortonormal de $\reales^4$, es simétrica y $A^t \cdot A = I_n$
+        Por lo tanto sus autovalores valen $1$ o $-1$. Dado que $B$ es semejante a una matriz $D$ con los autovalores en la diagonal, es decir
+        $$
+          B = C D C^{-1} \quad \text{con} \quad
+          D =
+          \matriz{cccc}{
+            \lambda_1 & 0 & 0 & 0 \\
+            0 & \lambda_2 & 0 & 0 \\
+            0 & 0 & \lambda_3 & 0 \\
+            0 & 0 & 0 & \lambda_4
+          }
+        $$
+        la \textit{relación de semejanza de matrices} tiene entre otras propiedades que las trazas de las matrices coinciden. La traza
+        de $B$, $\traza(B) = 2$, por lo tanto:
+        $$
+          \llave{rcl}{
+            \lambda_1 & = &  1 \\
+            \lambda_2 & = &  1 \\
+            \lambda_3 & = &  1 \\
+            \lambda_4 & = &  -1
+          }
         $$
 \end{enumerate}
 
