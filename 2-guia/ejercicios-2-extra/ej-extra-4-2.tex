@@ -1,18 +1,20 @@
-\begin{enunciado}{\ejercicio}
-    Sea $A_n \en \reales^{n \times n}$ la matriz dada por $A_n = (a_{ij})$,
+\begin{enunciado}{\ejExtra} \fechaEjercicio{final 09/07/24}
+  Sea $A_n \en \reales^{n \times n}$ la matriz con coeficientes dados por,
   $$
     a_{ij} =
     \llave{cl}{
-      1 & \text{ si } i = 1 \text{ o } j = 1 \\
-      1/i & \text{ si } i = j \\
+      n & \text{ si } i = 1 \text{ o } j = 1 \\
+      n/i & \text{ si } i = j \\
       0 & \text{ en otro caso}
     }
   $$
   \begin{enumerate}[label=\alph*)]
-    \item Probar que $\condicion_\infinito (A_n) \geq f(n)$ para alguna función $f(n) \en O(n^2)$.
+    \item Probar que $\condicion_\infinito (A_n) \geq cn^2$ para alguna constante independiente de $n$.
     \item Probar que $\condicion_2(A_n) \to \infinito$ cuando $n \to \infinito$.
   \end{enumerate}
 \end{enunciado}
+
+Mirá el ejercicio \refEjercicio{ej:23} para inspiración y bueh, el ejercicio \refEjercicio{ej:25} que es \textit{exactamente igual} a este.
 
 \begin{enumerate}[label=\alph*)]
   \item
@@ -26,26 +28,26 @@
         $$
           A =
           \matriz{cc}{
-            1 & 1 \\
-            1 & \frac{1}{2}
+            2 & 1 \\
+            1 & 1
           }
           \ytext
           A^{-1} =
           \matriz{cc}{
-            -1 & 2 \\
-            2 & -2
+            1 & -1 \\
+            -1 & 2
           }
           \entonces
           \condicion_\infinito(A) =
           \norma{A}_\infinito \cdot
-          \norma{A^{-1}}_\infinito = 2 \cdot 4 = 8
+          \norma{A^{-1}}_\infinito = 3 \cdot 3 = 9 \geq c \cdot \ua{2}{n}^2
         $$
         Para $n \geq 3$:
         $$
           b_{ij} =
           \llave{cl}{
-            1 & \text{ si } i = 1 \text{ o } j = 1 \\
-            1/i & \text{ si } i = j, ~ \magenta{i,j < n - 1}\\
+            n & \text{ si } i = 1 \text{ o } j = 1 \\
+            n/i & \text{ si } i = j, ~ \magenta{i,j < n - 1}\\
             0 & \text{ en otro caso}
           }
         $$
@@ -53,17 +55,21 @@
         $$
           A - B =
           \llave{cl}{
-            \frac{1}{n-1} & \text{ si } i = j = n - 1\\
-            \frac{1}{n} & \text{ si } i = j = n\\
+            \frac{n}{n-1} & \text{ si } i = j = n - 1\\
+            1 & \text{ si } i = j = n\\
             0 & \text{ en otro caso}
           }
         $$
         Entonces queda que:
         $$
-          \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} = \frac{n}{\frac{1}{n - 1}} = n^2 - n \en O(n^2)
+          \textstyle
+          \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} =
+          \frac{n^2}{\frac{n}{n - 1}} =
+          \frac{n-1}{n} \cdot n^2 \geq c \cdot n^2
         $$
+        Esto último es verdadero, en particular, para cualquier $c < 1$.
 
-  \item Pispeá el ejercicio \ref{ej:16}, ahí están las acotaciones falopa de la normas.
+  \item Pispeá el ejercicio \refEjercicio{ej:16}, ahí están las acotaciones falopa de la normas.
 
         Entonces usando que:
         $$
@@ -81,11 +87,14 @@
             \limite{n}{\infinito} \frac{1}{n} \norma{A}_\infinito \cdot \norma{A^{-1}}_\infinito                         \\
              & \igual{def}              &
             \limite{n}{\infinito}
-            \ub{
-              \frac{1}{n} \ob{\condicion_\infinito(A)}{\en O(n^2)}
-            }{
-              \en O(n)
-            } \flecha{$n \to \infinito$} \infinito
+            \frac{1}{n} \condicion_\infinito(A)                                                                          \\
+             & \mayorIgual{\red{!}}     &
+            \limite{n}{\infinito}
+            \frac{1}{n} c \cdot n^2                                                                                      \\
+             & =                        &
+            \limite{n}{\infinito}
+            c \cdot n
+            = \infinito
           \end{array}
         $$
 \end{enumerate}

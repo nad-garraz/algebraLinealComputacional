@@ -26,7 +26,7 @@
           de $D$. Sea como sea, la \textit{sugerencia del final} dice que voy a terminar calculando $J$.
         }
         Escribiendo a la matriz como $A = L + D + U$ (\hyperlink{teoria-7:determinante}{ver acá el genérico \click)},
-        Si quiero los autovalores de la matriz de iteración es $J = -D^{-1}(D + U)$ puedo hacer:
+        Si quiero los autovalores de la matriz de iteración es $J = -D^{-1}(L + U)$ puedo hacer:
         $$
           J = -D^{-1}(L + U) \text{ tiene autovalor }\blue{\lambda}
           \sii
@@ -75,6 +75,7 @@
   \item La matriz de iteración de Jacobi:
         $$
           J =
+          -
           \ub{
             \matriz{cc}{
               \frac{1}{64} & 0 \\
@@ -93,15 +94,70 @@
           }
           =
           \matriz{cc}{
-            0 & -\frac{3}{32} \\
-            -6 & 0 \\
-          }
-          \flecha{autovectores}
-          \llave{rcc}{
-            E_{\blue{\lambda_1} = \frac{3}{4}} & = & \ket{(1, 8)} \\
-            E_{\blue{\lambda_2} = -\frac{3}{4}} & = & \ket{(-1, 8)}
+            0 & \frac{3}{32} \\
+            6 & 0 \\
           }
         $$
+        Calculo la $\normaBullet_2$ con la SVD. Sale fácil multiplicando por matrices de permutación a esa matriz fea:
+        $$
+          J =
+          \ob{
+            \ub{
+              \matriz{cc}{
+                0 & 1 \\
+                1 & 0
+              }
+            }{
+              U
+            }
+            \matriz{cc}{
+              0 & 1 \\
+              1 & 0
+            }
+          }{
+            I_2
+          }
+          \ub{
+            \matriz{cc}{
+              0 & \frac{3}{32}\\
+              6 & 0 \\
+            }
+          }{
+            \Sigma
+          }
+          \ub{
+            \matriz{cc}{
+              1 & 0\\
+              0 & 1
+            }
+          }{
+            V^t
+          }
+          =
+          \matriz{cc}{
+            0 & 1 \\
+            1 & 0
+          }
+          \matriz{cc}{
+            6 & 0 \\
+            0 & \frac{3}{32}
+          }
+          \matriz{cc}{
+            1 & 0\\
+            0 & 1
+          }
+        $$
+        Ahí tengo que $\sigma_1 = 6 \entonces \norma{J}_2 = 6$
+
+        Las normas pedidas:
+        \begin{center}
+          \begin{enumerate}[label=(\blue{\faIcon{ruler}})]
+            \item $\norma{J}_1 = 6$
+            \item $\norma{J}_\infinito = 6$
+            \item $\norma{J}_2 = 6$
+          \end{enumerate}
+        \end{center}
+
         Recordar acá que:
         \parrafoDestacado[\atencion]{
           Una matriz de iteración $M_I$ converge si y solo si $\rho(M_I) \taa{\llamada1}{}< 1$.
@@ -109,15 +165,8 @@
           Por otro lado para cualquier norma $\normaBullet$, se tiene que $\rho(M_I) < \norma{M_I}$. Por lo tanto
           es \textit{\magenta{suficiente}} que $\norma{M_I} < 1$ para garantizar convergencia.
 
-          Peeeeero, si $\norma{M_I} > 1$ no quiere decir que no converja el método, debido todo depende de $\llamada1$.
+          Peeeeero, si $\norma{M_I} > 1$ no quiere decir que no converja el método, debido a que todo depende de $\llamada1$.
         }
-
-        Las normas pedidas:
-        \begin{enumerate}[label=(\blue{\faIcon{ruler}})]
-          \item $\norma{J}_1 = 6$
-          \item $\norma{J}_\infinito = 6$
-          \item $\norma{J}_2 = \frac{3}{4}\quad \to $ acá está la papa.
-        \end{enumerate}
 
   \item
         Hay que usar:
