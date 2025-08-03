@@ -65,9 +65,22 @@ Mirá el ejercicio \refEjercicio{ej:23} para inspiración y bueh, el ejercicio \
           \textstyle
           \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} =
           \frac{n^2}{\frac{n}{n - 1}} =
-          \frac{n-1}{n} \cdot n^2 \geq c \cdot n^2
+          \frac{n-1}{n} \cdot n^2 \geq \ua{c}{\red{?}} \cdot n^2
         $$
-        Esto último es verdadero, en particular, para cualquier $c < 1$.
+        La sucesión:
+        $$
+          \textstyle
+          (a_n)_{n\geq 3} = \frac{n-1}{n} = \set{\frac{2}{3}, \frac{3}{4}, \ldots, \frac{n-1}{n}}
+          \entonces
+          \minimo(a_n) = \frac{2}{3}
+        $$
+        Tomo por ejemplo:
+        $$
+          \cajaResultado{
+            c = \frac{2}{3}
+          },
+        $$
+        y se cumple lo pedido para todo $n \en \naturales$.
 
   \item Pispeá el ejercicio \refEjercicio{ej:16}, ahí están las acotaciones falopa de la normas.
 
