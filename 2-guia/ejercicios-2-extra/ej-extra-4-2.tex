@@ -46,12 +46,12 @@ Mirá el ejercicio \refEjercicio{ej:23} para inspiración y bueh, el ejercicio \
         $$
           b_{ij} =
           \llave{cl}{
-            n & \text{ si } i = 1 \text{ o } j = 1 \\
-            n/i & \text{ si } i = j, ~ \magenta{i,j < n - 1}\\
+            n & \text{ si } i = 1 ~ \lor ~  j = 1 \\
+            n / i & \text{ si } i = j ~ \land ~ \magenta{i,j < n - 1}\\
             0 & \text{ en otro caso}
           }
         $$
-        Las últimas 2 filas son iguales, así que \ul{$B$ es singular}:
+        Las últimas 2 filas son iguales, así que \ul{$B$ es singular} con solo 2 entradas distintas de 0:
         $$
           A - B =
           \llave{cl}{

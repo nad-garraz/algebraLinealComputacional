@@ -1,5 +1,5 @@
 \begin{enunciado}{\ejercicio}
-    Sea $A_n \en \reales^{n \times n}$ la matriz dada por $A_n = (a_{ij})$,
+  Sea $A_n \en \reales^{n \times n}$ la matriz dada por $A_n = (a_{ij})$,
   $$
     a_{ij} =
     \llave{cl}{
@@ -44,12 +44,12 @@
         $$
           b_{ij} =
           \llave{cl}{
-            1 & \text{ si } i = 1 \text{ o } j = 1 \\
-            1/i & \text{ si } i = j, ~ \magenta{i,j < n - 1}\\
+            1 & \text{ si } i = 1 ~ \lor ~ j = 1 \\
+            1/i & \text{ si } i = j ~ \land ~ \magenta{i,j < n - 1}\\
             0 & \text{ en otro caso}
           }
         $$
-        Las últimas 2 filas son iguales, así que \ul{$B$ es singular}:
+        Las últimas 2 filas son iguales, así que \ul{$B$ es singular} con solo 2 entradas distintas de cero:
         $$
           A - B =
           \llave{cl}{
@@ -63,7 +63,7 @@
           \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito} = \frac{n}{\frac{1}{n - 1}} = n^2 - n \en O(n^2)
         $$
 
-  \item Pispeá el ejercicio \ref{ej:16}, ahí están las acotaciones falopa de la normas.
+  \item Pispeá el ejercicio \refEjercicio{ej:16}, ahí están las acotaciones falopa de la normas.
 
         Entonces usando que:
         $$
