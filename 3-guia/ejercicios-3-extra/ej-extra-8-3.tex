@@ -1,0 +1,173 @@
+\begin{enunciado}{\ejExtra} \fechaEjercicio{final 18/12/23}
+  Una matriz $A \en \reales^{n \times n}, n\geq 2$, se dice una \textit{matriz flecha} si es de la forma
+  $$
+    A =
+    \begin{bmatrix}
+      d_1    & 0      & \ldots & 0       & 0       & c_1     \\
+      0      & d_2    & \ldots & 0       & 0       & c_2     \\
+      \vdots & \vdots & \ddots &         & \vdots  & \vdots  \\
+      0      & 0      &        & d_{n-2} & 0       & c_{n-2} \\
+      0      & 0      & \ldots & 0       & d_{n-1} & c_{n-1} \\
+      b_1    & b_2    & \ldots & b_{n-2} & b_{n-1} & d_n
+    \end{bmatrix}
+  $$
+  para constantes reales $d_i \ (1 \leq i \leq n)$ y $c_i,\, b_i\ (1 \leq i \leq n-1)$, y con $d_i \distinto 0$ para
+  $1 \leq i \leq n-1$.
+
+  Sea $A \en \reales^{n \times n}$ una matriz flecha inversible.
+  \begin{enumerate}[label=\alph*)]
+    \item Probar que $A$ admite descomposición LU ($L$ con unos en la diagonal). Calcular explícitamente
+          los valores de $L$ y $U$.
+
+    \item Sea $d_i = 1$ para todo $1 \leq i \leq n$. Para cada ítem, hallar valores no nulos de $c_i$ y $b_i$ para
+          los cuales:
+          \begin{enumerate}[label=\roman*)]
+            \item $\condicion_\infinito(L) \flecha{}[$n \to \infinito$] + \infinito$.
+            \item $\condicion_\infinito(A) \geq n^2$.
+          \end{enumerate}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item \ul{Una matriz \textit{con sus submatrices principales inversibles} admite descomposición $LU$} (\hyperlink{teoria:3-lu}{mirá acá \click}).
+
+        Dado que, todas la submatrices $A(1:k, 1:k)$ para los $k \en [1, n-1]$ son matrices diagonales con elementos diagonales $d_i \distinto 0$,
+        tienen determinante no nulo y como matriz $A$ es inversible por hipótesis listo:
+        $$
+          \cajaResultado{
+            A \text{ tiene descomposición } LU
+          }
+        $$
+        El cálculo de la descomposción $LU$ lo podés ver en el ejercicio \refEjercicio{ej:2}.
+        Para triangular la matriz se puede multiplicar a la matriz $A$ por las matrices elementales
+        $T^{ij}(a), a \en \reales, 1\leq i, j \leq n$, con $i \distinto j$.
+
+        \textit{Recordar que $T^{ij}(a) \en K^{n \times n}$ se define como:}
+        \parrafoDestacado{
+          $
+            T^{ij}(a) = a E^{ij} + I_n, \quad 1\leq i,j \leq n,\quad i\distinto j, a \en K,
+          $
+          siendo $E^{ij}$ las matrices canónicas de $K^{n \times n}$
+        }
+
+        Esas matrices serían:
+        $$
+          \textstyle
+          T^{n1}(\red{-}\frac{b_1}{d_1}) = (\red{-}\frac{b_1}{d_1})E^{n1} + I_n =
+          \matriz{ccc|c}{
+            1 & \cdots & 0 & 0 \\
+            \vdots & \ddots &  \vdots & \vdots \\
+            0 & \cdots & 1 &  0 \\ \hline
+            \red{-}\frac{b_1}{d_1} & \cdots &  0 & 1
+          }
+        $$
+        En general para triangular la columna $j$ de la matriz $A$:
+        $$
+          \textstyle
+          T^{nj}(\red{-}\frac{b_j}{d_j}) = (\red{-}\frac{b_j}{d_j})E^{nj} + I_n =
+          \matriz{ccccc|c}{
+            1 & 0 & \cdots & \cdots & 0 & 0 \\
+            0 & 1 & \ddots & \cdots &  0 & 0 \\
+            \vdots & \ddots & \ddots & \ddots &  \vdots & \vdots \\
+            \vdots & \vdots & \ddots & \ddots &  0 & 0 \\
+            0 & 0 & \cdots & 0 & 1 &  0 \\ \hline
+            0 &  \cdots & \red{-}\frac{b_j}{d_j} & \cdots &  0 & 1
+          }
+        $$
+        La matriz $L$ se obtiene multiplicando y luego invirtiendo la $T^{ij}$. Multiplicar las $T^{ij}$ es
+        sumar los elementos no diagonales e invertirla es cambiar el signo de los elementos no diagonales:
+        $$
+          L^{-1} =
+          \productoria{j=1}{n-1} T^{nj} =
+          \textstyle
+          \matriz{ccc|c}{
+            &  & &   \\
+            & I_{n-1} & & 0  \\
+            &  & &   \\  \hline
+            \red{-}\frac{b_1}{d_1}& \cdots& \red{-}\frac{b_{n-1}}{d_{n-1}} &1
+          }
+          \flecha{invirtiendo}
+          \cajaResultado{
+            L =
+            \matriz{ccc|c}{
+              &  & &   \\
+              & I_{n-1} & & 0  \\
+              &  & &   \\  \hline
+              \frac{b_1}{d_1}& \cdots& \frac{b_{n-1}}{d_{n-1}} &1
+            }
+          }
+        $$
+        La $U$ queda triangular superior con \ul{solo} su última fila \textit{toqueteada} por al matriz $T^{ij}$:
+        $$
+          \textstyle
+          L^{-1} \cdot A =
+          U =
+          \begin{bmatrix}
+            d_1     & 0       & \ldots & 0       & 0       & c_1                                                                                       \\
+            0       & d_2     & \ldots & 0       & 0       & c_2                                                                                       \\
+            \vdots  & \vdots  & \ddots &         & \vdots  & \vdots                                                                                    \\
+            0       & 0       &        & d_{n-2} & 0       & c_{n-2}                                                                                   \\
+            0       & 0       & \ldots & 0       & d_{n-1} & c_{n-1}                                                                                   \\
+            \red{0} & \red{0} & \ldots & \red{0} & \red{0} & d_n + \sumatoria{\blue{j} = 1}{n-1} \red{-}\frac{d_{\blue{j}}}{b_{\blue{j}}} c_{\blue{j}}
+          \end{bmatrix}
+        $$
+
+  \item \hacer
+        \begin{enumerate}[label=\roman*)]
+          \item
+                Para $c_i = b_i = 1$ Se tiene que:
+                $$
+                  L =
+                  \matriz{ccc|c}{
+                    &  & &   \\
+                    & I_{n-1} & & 0  \\
+                    &  & &   \\  \hline
+                    1 & \cdots& 1 &1
+                  }
+                  \entonces
+                  \limite{n}{\infinito}
+                  \condicion_{\infinito}(L) \igual{def}[\red{!}]
+                  \limite{n}{\infinito}
+                  \norma{L}_\infinito \cdot
+                  \norma{L^{-1}}_\infinito =
+                  \limite{n}{\infinito} n^2 = + \infinito
+                $$
+
+          \item
+                Para $c_i = 1 \ytext b_i = n^3$ Se tiene que:
+                $$
+                  A =
+                  \matriz{ccc|c}{
+                    &  & &  1 \\
+                    & I_{n-1} & & \vdots  \\
+                    &  & &  1 \\  \hline
+                    n^2 & \cdots& n^2 &1
+                  }
+                  \entonces
+                  \norma{A}_\infinito = n^2 \cdot (n-1) + 1
+                $$
+                Puedo encontrar una \textit{cota inferior} para la $\condicion_\infinito(A)$:
+                {
+                \small
+                $$
+                  \condicion_\infinito(A) \geq \frac{\norma{A}_\infinito}{\norma{A - B}_\infinito}
+                  \quad \text{con} \quad
+                  B =
+                  \matriz{ccc|c}{
+                    & & & 0\\
+                    & 0_{n-1} & & \vdots \\
+                    &  & & 0 \\ \hline
+                    n^2 & \cdots& n^2 &1
+                  }
+                  \entonces
+                  \condicion_\infinito(A) \geq \frac{n^2 \cdot (n-1) + 1}{2}
+                  \mayorIgual{\red{!}} n^2
+                  \paratodo n \geq 2
+                $$
+                }
+        \end{enumerate}
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

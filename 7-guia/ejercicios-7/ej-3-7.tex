@@ -56,7 +56,7 @@
             }
           }{ U }
         $$
-        Calculo determinante:
+        Calculo el siguiente determinante para encontrar :
         $$
           \det\big(\blue{\lambda} D + (L + U)\big) = 0
           \sii
@@ -70,7 +70,7 @@
             \blue{\lambda_2} & = & -\frac{3}{4}
           }
         $$
-        Dado que el radio espectral $\rho(A) = \frac{3}{4} < 1$ el método converge para cualquier valor inicial.
+        Dado que el radio espectral $\rho(J) = \frac{3}{4} < 1$ el método de Jacobi converge para cualquier valor inicial.
 
   \item La matriz de iteración de Jacobi:
         $$
@@ -147,7 +147,9 @@
             0 & 1
           }
         $$
-        Ahí tengo que $\sigma_1 = 6 \entonces \norma{J}_2 = 6$
+        Ahí tengo que $\sigma_1 = 6
+          \entonces
+          \norma{J}_2 = 6$
 
         Las normas pedidas:
         \begin{center}
@@ -160,9 +162,9 @@
 
         Recordar acá que:
         \parrafoDestacado[\atencion]{
-          Una matriz de iteración $M_I$ converge si y solo si $\rho(M_I) \taa{\llamada1}{}< 1$.
+          Una matriz de iteración $M_I$ converge si y solo si $\rho(M_I) \menor{$\llamada1$} 1$.
 
-          Por otro lado para cualquier norma $\normaBullet$, se tiene que $\rho(M_I) < \norma{M_I}$. Por lo tanto
+          Por otro lado para cualquier norma $\normaBullet$, se tiene que $\rho(M_I) \leq \norma{M_I}$. Por lo tanto
           es \textit{\magenta{suficiente}} que $\norma{M_I} < 1$ para garantizar convergencia.
 
           Peeeeero, si $\norma{M_I} > 1$ no quiere decir que no converja el método, debido a que todo depende de $\llamada1$.
