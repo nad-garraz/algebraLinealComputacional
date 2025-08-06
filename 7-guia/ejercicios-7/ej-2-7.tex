@@ -1,3 +1,121 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  El objetivo de este ejercicio es probar que el radio espectral de una matriz $\bm{A} \en \reales^{n \times n}$ acota
+  inferiormente a toda norma de $\bm{A}$, sin utilizar normas complejas.
+
+  Dada $\bm{A} \en \reales^{n \times n}$, sea $\lambda = a + ib$ un autovalor de $\bm{A}$ y sea $\bm{u} + i \bm{v}$ el autovector correspondiente,
+  con $a,\, b \en \reales$, $\bm{u},\, \bm{v} \en \reales^{n}$.
+
+  \begin{enumerate}[label=\alph*)]
+    \item Calcular $\bm{Au}$ y $\bm{Av}$ y probar que:
+          $$
+            \norma{\bm{Au}}_2^2 +
+            \norma{\bm{Av}}_2^2 =
+            (a^2 + b^2)(\norma{\bm{u}}_2^2 + \norma{\bm{v}}_2^2).
+          $$
+
+    \item Concluir que:
+          $$
+            |\lambda| \leq \norma{\bm{A}}_2.
+          $$
+
+    \item Probar que dada una norma cualquiera $\normaBullet$ en $\reales^{n \times n}$ vale que:
+          $$
+            |\lambda| \leq \norma{\bm{A}}.
+          $$
+          \textit{Sugerencia: Usar la equivalencia de normas. Notar que si $\bm{B} = \bm{A}^m$, entonces $\lambda^m$
+            es autovalor de $\bm{B}$}.
+  \end{enumerate}
 \end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item
+        $$
+          \Big(
+          \bm{A} (\bm{u} + i \bm{v}) =
+          (a + ib)(\bm{u} + i \bm{v}) =
+          \ub{a \bm{u} - b \bm{v}}{\en \reales^n} + i \cdot \ub{(a\bm{v} + b\bm{u})}{\en \reales^n}
+          \Big)
+          ~ \land ~
+          \Big(
+          \bm{A} (u + i v) =
+          \bm{Au} + i \bm{Av}
+          \Big)
+          \Entonces{$ \llamada1$}
+          \llave{rcl}{
+            \bm{Au} & = & a \bm{u} - b \bm{v} \\
+            \bm{Av} & = & a \bm{v} + b \bm{u}
+          }
+        $$
+        Uso ese último resultado de $\llamada1$:
+        $$
+          \llave{l}{
+            \norma{\bm{A}\bm{u}}_2^2 =
+            (\bm{A}\bm{u})^t (\bm{A}\bm{u}) =
+            (a \bm{u}^t - b \bm{v}^t)
+            \cdot
+            (a \bm{u} - b \bm{v}) =
+            a^2 \norma{\bm{u}}_2^2 -(a + b) (\bm{u} \cdot \bm{v}) + b^2 \norma{\bm{v}}_2^2 \quad \llamada2\\
+            \norma{\bm{A}\bm{v}}_2^2 =
+            (\bm{A}\bm{v})^t (\bm{A}\bm{v}) =
+            (a \bm{v}^t + b \bm{u}^t)
+            \cdot
+            (a \bm{v} + b \bm{u}) =
+            a^2 \norma{\bm{v}}_2^2 + (a + b) (\bm{u} \cdot \bm{v}) + b^2 \norma{\bm{u}}_2^2 \quad \llamada3\\
+          }
+        $$
+        Sumando $\llamada2 \ytext \llamada3$ y el hermoso \textit{factor común en grupos}:
+        $$
+          \begin{array}{rcl}
+            \norma{\bm{A}\bm{u}}_2^2 + \norma{\bm{A}\bm{v}}_2^2
+             & = &
+            a^2 \norma{\bm{u}}_2^2 -(a + b) (\bm{u} \cdot \bm{v}) + b^2 \norma{\bm{v}}_2^2 + a^2 \norma{\bm{v}}_2^2 + (a + b) (\bm{u} \cdot \bm{v}) + b^2 \norma{\bm{u}}_2^2 \\
+             & = &
+            a^2 \norma{\bm{u}}_2^2 + b^2 \norma{\bm{v}}_2^2 + a^2 \norma{\bm{v}}_2^2 + b^2 \norma{\bm{u}}_2^2                                                                \\
+             & = &
+            a^2 ( \norma{\bm{u}}_2^2 + \norma{\bm{v}}_2^2 )  + b^2 ( \norma{\bm{u}}_2^2 +  \norma{\bm{v}}_2^2)                                                               \\
+             & = &
+            (a^2 + b^2) \cdot ( \norma{\bm{u}}_2^2 +  \norma{\bm{v}}_2^2)                                                                                                    \\
+          \end{array}
+        $$
+
+  \item El la $\normaBullet_2^2$ del autovector:
+        $$
+          \norma{\bm{u} + i\bm{v}}_2^2 =
+          (\bm{u} + i\bm{v})^*
+          (\bm{u} + i\bm{v})=
+          (\bm{u}^t - i\bm{v}^t)
+          (\bm{u} + i\bm{v}) =
+          \norma{\bm{u}}_2^2 + \norma{\bm{v}}_2^2
+        $$
+        Ahora queda más claro. Si \ul{$\bm{w} = \bm{u} + i\bm{v}$} con $\bm{w} \distinto 0$, \textit{because} autovector:
+        $$
+          \begin{array}{rcl}
+            \norma{\bm{A}\bm{w}}_2^2 =
+            (\bm{A}\bm{w})^* \cdot (\bm{A}\bm{w}) \igual{\red{!}}
+            \lambda^2 \norma{\bm{w}}_2^2
+             & \sii               &
+            \lambda^2 = \frac{\norma{\bm{A}\bm{w}}_2^2}{\norma{\bm{w}}_2^2} \\
+             & \sii               &
+            |\lambda| = \frac{\norma{\bm{A}\bm{w}}_2}{\norma{\bm{w}}_2}     \\
+             & \Sii{def}[\red{!}] &
+            \cajaResultado{
+              |\lambda| \leq \norma{\bm{A}}_2
+            }
+          \end{array}
+        $$
+
+  \item
+        En un espacio vectorial de dimension finita todas las normas son equivalentes, entonces existen $c_1,\, c_2 > 0$ tal que:
+        $$
+          c_1 \norma{\bm{w}}_2
+          \leq
+          \norma{\bm{w}}
+          \leq
+          c_2 \norma{\bm{w}}_2
+        $$
+        \hacer
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
