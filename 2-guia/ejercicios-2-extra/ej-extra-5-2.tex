@@ -1,0 +1,47 @@
+\begin{enunciado}{\ejExtra}\fechaEjercicio{final 21/7/25}
+  Probar la desigualdad de Cauchy-Schwartz: $|x^*y| \leq \norma{x}_2 \norma{y}_2$
+\end{enunciado}
+
+Si alguno de los vectores es nulo no hay nada que hacer, es trivial. Por lo tanto si $x,\, y$ no nulos:
+
+$$
+  (\bm{y}^* \accion \bm{x})^* = \overline{\bm{y}^* \accion \bm{x}}  =  (\bm{x}^* \accion \bm{y})
+  \entonces
+  (\bm{x}^* \accion \bm{y})^* \cdot (\bm{x}^* \accion \bm{y}) = |\bm{x}^* \accion \bm{y}|^2
+$$
+
+El inicio de la demo, \textit{es lo que es, \ul{menos averigua Dios y perdona}}. Pero está hecho para que quede la expresión buscada.
+Es medio particular, pero dado que $x$ y $y$ son genéricos, la demo vale en general:
+$$
+  \textstyle
+  \begin{array}{rcl}
+    0 \leq \norma{\bm{x} - \frac{\bm{y}^* \accion \bm{x}}{\norma{\bm{y}}_2^2}\bm{y}}_2^2
+     & \sii           &
+    0 \leq (\bm{x} - \frac{\bm{y}^* \accion \bm{x}}{\norma{\bm{y}}_2^2}\bm{y})^* \accion (\bm{x} - \frac{\bm{y}^* \accion \bm{x}}{\norma{\bm{y}}_2^2}\bm{y})              \\\vspace{2pt}
+     & \sii           &
+    0 \leq (\bm{x}^* - \frac{\overline{\bm{y}^* \accion \bm{x}}}{\norma{\bm{y}}_2^2}\bm{y}^*) \accion (\bm{x} - \frac{\bm{y}^* \accion \bm{x}}{\norma{\bm{y}}_2^2}\bm{y}) \\\vspace{2pt}
+     & \sii           &
+    0 \leq \bm{x}^* \accion \bm{x} -
+    \frac{\bm{y}^* \accion \bm{x}}{\norma{\bm{y}}_2^2}\ub{ \bm{x}^* \accion \bm{y}}{\red{!}} -
+    \frac{\overline{\bm{y}^* \accion \bm{x}}}{\norma{\bm{y}}_2^2}\bm{y}^* \accion \bm{x} +
+    \frac{\overline{\bm{y}^* \accion \bm{x}}}{\norma{\bm{y}}_2^2} \cdot \frac{\bm{y}^* \accion \bm{x}}{\norma{\bm{y}}_2^2}\bm{y}^* \accion \bm{y}                         \\\vspace{2pt}
+     & \Sii{\red{!!}} &
+    0 \leq \norma{\bm{x}}_2^2  \red{-}
+    \frac{
+      2|\bm{y}^* \accion \bm{x}|^2
+    }{
+      \norma{\bm{y}}_2^2
+    } +
+    \frac{|\bm{y}^* \accion \bm{x}|^2}{\norma{\bm{y}}_2^2}                                                                                                                \\\vspace{2pt}
+     & \sii           &
+    0 \leq \norma{\bm{x}}_2^2 \red{-} \frac{|\bm{y}^* \accion \bm{x}|^2}{\norma{\bm{y}}_2^2}                                                                              \\\vspace{2pt}
+     & \sii           &
+    |\bm{y}^* \accion \bm{x}|^2 \leq \norma{\bm{x}}_2^2 \cdot \norma{\bm{y}}_2^2                                                                                          \\\vspace{2pt}
+     & \sii           &
+    |\bm{y}^* \accion \bm{x}| \leq \norma{\bm{x}}_2 \cdot \norma{\bm{y}}_2                                                                                                \\\vspace{2pt}
+  \end{array}
+$$
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
