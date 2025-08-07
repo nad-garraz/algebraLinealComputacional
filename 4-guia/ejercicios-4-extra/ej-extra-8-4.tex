@@ -1,0 +1,145 @@
+\begin{enunciado}{\ejExtra} \fechaEjercicio{final 7/8/25}
+  \begin{enumerate}[label=\alph*)]
+    \item Sea $P \en \reales^{n \times n}$ la matriz de un proceso de Markov en el que hay $k$ estados $i_1,\, i_2,\,\ldots,\,i_k$
+          tales que la probabilidad de pasar de $i_j$  $i_{j+1}$ para $j = 1, \ldots, k-1$ y de $i_k$ a $i_1$
+          es 1. Probar que existe un $\lambda \en \complejos$ autovalor de $P$ tal que $\lambda \distinto 1$, pero
+          $|\lambda| = 1$.
+
+    \item
+          \begin{minipage}{0.7\textwidth}
+            Considerar el proceso descripto por el grafo, donde las probabilidades de transición desde cada nodo se reparten en partes iguales
+            entre todas la ramas salientes. Hallar un estado de equilibrio. ¿Es único? ¿Se alcanza este equilibrio desde cualquier estado inicial?
+          \end{minipage}
+          \begin{minipage}{0.2\textwidth}
+            $$
+              \begin{tikzpicture}[
+                baseline= 3,
+                scale=2,
+                node distance=1.4cm,
+                estado/.style={circle, draw, fill=white, minimum size=0.75cm, inner sep=0pt},
+                proba/.style={-{latex[length=1pt]}},
+                every node/.style={font={\bf\normalsize}}
+                ]
+                \node[estado, align = center] (1) {1};
+                \node[estado, below right of=1, align = center] (4) {4};
+                \node[estado, above right of=1, align = center] (2) {2};
+                \node[estado, right of=2, align = center] (3) {3};
+                \node[estado, right of=4, align = center] (5) {5};
+
+                \draw[proba] (1) to node[left] {} (2);
+                \draw[proba] (2) to node[above] {} (4);
+                \draw[proba] (4) to node[] {} (1.south east);
+                \draw[proba] (5) to node[] {} (4.east);
+                \draw[proba, bend right = 10mm] (3.south) to node[] {} (5.north);
+                \draw[proba, bend right = 10mm] (5.north) to node[] {} (3.south);
+
+                \draw[proba] (3) to [out=30, in=90, looseness=6]  node[left] {} (3);
+              \end{tikzpicture}
+            $$
+          \end{minipage}
+  \end{enumerate}
+\end{enunciado}
+
+\begin{enumerate}[label=\alph*)]
+  \item El grafo que describe el proceso de Markov es:
+        $$
+          \begin{tikzpicture}[
+            node distance=2cm,
+            estado/.style={circle, draw, minimum size=1cm, inner sep=0pt},
+            proba/.style={-{Latex[length=2mm]}, thin, bend left=20}
+            ]
+            \node[estado] (1) {$i_1$};
+            \node[estado, right of=1] (2) {$i_2$};
+            \node[estado, right of=2] (3) {$i_3$};
+            \node[estado, right of=3, dashed] (dots) {$\cdots$};
+            \node[estado, right of=dots] (k-2) {$i_{k-2}$};
+            \node[estado, right of=k-2] (k-1) {$i_{k-1}$};
+            \node[estado, right of=k-1] (k) {$i_k$};
+
+            \draw[proba] (1) to node[above] {$1$} (2);
+            \draw[proba] (2) to node[above] {$1$} (3);
+            \draw[proba] (3) to node[above] {$1$} (dots);
+            \draw[proba] (dots.north east) to node[above] {$1$} (k-2);
+            \draw[proba] (k-2) to node[above] {$1$} (k-1);
+            \draw[proba] (k-1) to node[above] {$1$} (k);
+            \draw[proba] (k) to node[below] {$1$} (1);
+
+          \end{tikzpicture}
+        $$
+        Cuya matriz $M$:
+        $$
+          M =
+          \matriz{c|c}{
+            \bm{0}^t & 1          \\\hline
+            I_{n-1}      & \bm{0}
+          }
+          =
+          \begin{pmatrix}
+            0      & 0      & \cdots & 0      & 1      \\
+            1      & 0      & \cdots & 0      & 0      \\
+            0      & 1      & \cdots & 0      & 0      \\
+            \vdots & \ddots & \ddots & \vdots & \vdots \\
+            0      & \cdots & 0      & 1      & 0
+          \end{pmatrix}
+        $$
+        Los autovalores de $M$:
+        $$
+          \det(M - \lambda I) = 0
+          \sii
+          \begin{pmatrix}
+            \lambda & 0       & \cdots & 0      & 1       \\
+            1       & \lambda & \cdots & 0      & 0       \\
+            0       & 1       & \cdots & 0      & 0       \\
+            \vdots  & \ddots  & \ddots & \vdots & \vdots  \\
+            0       & \cdots  & 0      & 1      & \lambda
+          \end{pmatrix}
+          \Sii{$F_1$}
+          \lambda^k  - 1 = 0
+          \sii
+          \cajaResultado{
+            \lambda \en G_k
+          }
+        $$
+        Donde $G_k$ son la $k$ raíces $k-$ésimas de la unidad, \textit{esas de álgebra 1, sí, esas que no te acordas ni a palos}:
+        $$
+          G_{\blue{k}} = \set{e^{i \frac{2\pi}{\blue{k}} h}} \quad \text{con}\quad h \en \enteros{[0,\blue{k}-1]}
+        $$
+        Todos los elementos de $G_{\blue{k}}$ tienen módulo 1.
+
+  \item
+        \textit{Hallar un estado de equilibrio}.
+        Únicamente viendo el grafo, los nodos 1, 2 y 4, tienen \blue{una arista de probabilidad \textbf{1}} de ir de uno a otro estado. Considero:
+        $$
+          v_{eq} = (1, 1, 0, 1, 0)^t
+        $$
+        Ese estado es de equilibrio porque en cierta forma se van a estar pasando la pelota entre los 3 nodos y nada va a cambiar.
+
+        \bigskip
+
+        \textit{¿Es único?} Sí, tiene pinta, pero no quiero hacer las cuentas.
+        Habría que calcular la matriz del proceso y ver la multiplicidad aritmética de $\lambda = 1$.
+
+        \bigskip
+
+        \textit{¿Se alcanza este equilibrio desde cualquier estado inicial?} No. Por ejemplo:
+        $$
+          v = (1, 0, 0, 0, 0)^t
+        $$
+        Ese estado va a oscilar entre los estados:
+        $$
+          (1, 0, 0, 0, 0)^t
+          \to
+          (0, 1, 0, 0, 0)^t
+          \to
+          (0, 0, 0, 1, 0)^t
+          \to
+          (1, 0, 0, 0, 0)^t
+        $$
+        \textit{...and so on.}
+
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
+
