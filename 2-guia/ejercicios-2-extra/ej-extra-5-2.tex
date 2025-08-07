@@ -2,8 +2,7 @@
   Probar la desigualdad de Cauchy-Schwartz: $|x^*y| \leq \norma{x}_2 \norma{y}_2$
 \end{enunciado}
 
-Si alguno de los vectores es nulo no hay nada que hacer, es trivial. Por lo tanto si $x,\, y$ no nulos:
-
+Voy a estar el producto canónico en $\complejos$:
 $$
   (\bm{y}^* \accion \bm{x})^* = \overline{\bm{y}^* \accion \bm{x}}  =  (\bm{x}^* \accion \bm{y})
   \entonces
@@ -11,7 +10,9 @@ $$
 $$
 
 El inicio de la demo, \textit{es lo que es, \ul{menos averigua Dios y perdona}}. Pero está hecho para que quede la expresión buscada.
-Es medio particular, pero dado que $x$ y $y$ son genéricos, la demo vale en general:
+Es medio particular, pero dado que $\bm{x}$ y $\bm{y}$ son genéricos, la demo vale en general:
+
+Si alguno de los vectores es nulo no hay nada que hacer, es trivial. Por lo tanto si $\bm{x},\, \bm{y}$ no nulos:
 $$
   \textstyle
   \begin{array}{rcl}
@@ -38,9 +39,14 @@ $$
      & \sii           &
     |\bm{y}^* \accion \bm{x}|^2 \leq \norma{\bm{x}}_2^2 \cdot \norma{\bm{y}}_2^2                                                                                          \\\vspace{2pt}
      & \sii           &
-    |\bm{y}^* \accion \bm{x}| \leq \norma{\bm{x}}_2 \cdot \norma{\bm{y}}_2                                                                                                \\\vspace{2pt}
+    \cajaResultado{
+      |\bm{y}^* \accion \bm{x}| \leq \norma{\bm{x}}_2 \cdot \norma{\bm{y}}_2
+    }
   \end{array}
 $$
+
+Por la forma en que armé el vector inicial quedó el miembro izquierdo al revés de la fórmula del enunciado, pero
+es lo mismo porque $|y^* x| = |x^* y|$, ya que el módulo de un número complejo $z$ y el módulo de su conjugado complejo $\bar{z}$ son iguales.
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
