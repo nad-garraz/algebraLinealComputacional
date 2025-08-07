@@ -86,14 +86,15 @@
         $$
           \det(M - \lambda I) = 0
           \sii
-          \begin{pmatrix}
+          \deter{ccccc}{
+            \rowcolor{red!10!white}
             \lambda & 0       & \cdots & 0      & 1       \\
             1       & \lambda & \cdots & 0      & 0       \\
             0       & 1       & \cdots & 0      & 0       \\
             \vdots  & \ddots  & \ddots & \vdots & \vdots  \\
             0       & \cdots  & 0      & 1      & \lambda
-          \end{pmatrix}
-          \Sii{$F_1$}
+          } = 0
+          \Sii{desarrollando}[por $F_1$]
           \lambda^k  - 1 = 0
           \sii
           \cajaResultado{
@@ -104,7 +105,7 @@
         $$
           G_{\blue{k}} = \set{e^{i \frac{2\pi}{\blue{k}} h}} \quad \text{con}\quad h \en \enteros{[0,\blue{k}-1]}
         $$
-        Todos los elementos de $G_{\blue{k}}$ tienen módulo 1.
+        \ul{Todos los elementos de $G_{\blue{k}}$ tienen módulo 1}, son todos distintos. El autovalor $\lambda = 1$ está en el grupo.
 
   \item
         \textit{Hallar un estado de equilibrio}.
@@ -116,7 +117,7 @@
 
         \bigskip
 
-        \textit{¿Es único?} Sí, tiene pinta, pero no quiero hacer las cuentas.
+        \textit{¿Es único?} Sí, {\tiny (creo)} tiene pinta, pero no quiero hacer las cuentas.
         Habría que calcular la matriz del proceso y ver la multiplicidad aritmética de $\lambda = 1$.
 
         \bigskip
