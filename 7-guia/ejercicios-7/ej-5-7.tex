@@ -51,7 +51,99 @@
 \end{enunciado}
 
 \begin{enumerate}[label=\alph*)]
-  \item \hacer
-  \item \hacer
+  \item Esta matriz es \textit{estrictamente diagonal dominante}:
+        $$
+          |a_{ii}| > \sumatoria{i \distinto j}{} |a_{ij}|
+          \quad \paratodo i \en \naturales_{\leq n}
+        $$
+        Por lo tanto ambos métodos convergen.
+        Para resolver el sistema encuentro las matrices de iteración.
+
+        \bigskip
+
+        \textit{Jacobi}:
+        $$
+          M_J = - D^{-1} \cdot (L + U) =
+          -\matriz{ccc}{
+            \frac{1}{3} & 0 & 0 \\
+            0 & \frac{1}{6}  & 0 \\
+            0 & 0 &\frac{1}{4}
+          }
+          \matriz{ccc}{
+            0 & 1 & 1\\
+            2 & 0 & 1\\
+            1 & 1 & 0
+          }
+          =
+          -\matriz{ccc}{
+            0 & \frac{1}{3} & \frac{1}{3}\\
+            \frac{1}{3} & 0 & \frac{1}{6}\\
+            \frac{1}{4} & \frac{1}{4} & 0
+          }
+          \ytext
+          \tilde{b} = D^{-1}\cdot b =
+          \matriz{c}{
+            \frac{5}{3} \\
+            \frac{3}{2} \\
+            \frac{3}{2}
+          }
+        $$
+        Con todos esos ingredientes puedo empezar a iterar. Agarro
+        a $x_0 = (1,1,1)^t$ como semilleeeta, porque a ojo se ve que la solución
+        viene por este lado, \textit{¿Es esto hacer trampa?, no sé. Si te molesta andá al psicólogo}:
+        $$
+          x_1 = M_Jx_0 + \tilde{b} = (1,1,1)^t                                            \\
+        $$
+        Bueh, dado que $x_0 = x_1$ el método de Jacobi ya convergió con esa excelente semilla.
+
+        \bigskip
+
+        \textit{Gauss-Seidel:}
+        $$
+          \begin{array}{c}
+            M_{GS} = - (L+D)^{-1} \cdot U =
+            -\matriz{ccc}{
+            \frac{1}{3}   & 0             & 0             \\
+            -\frac{1}{9}  & \frac{1}{6}   & 0             \\
+            -\frac{1}{18} & -\frac{1}{24} & \frac{1}{4}
+            }
+            \matriz{ccc}{
+            0             & 1             & 1             \\
+            0             & 0             & 1             \\
+            0             & 0             & 0
+            }
+            =
+            -\matriz{ccc}{
+            0             & \frac{1}{3}   & \frac{1}{3}   \\
+            0             & -\frac{1}{9}  & \frac{1}{18}  \\
+            0             & -\frac{1}{18} & -\frac{7}{72}
+            }                                             \\
+            \ytext                                        \\
+            \tilde{b} = (L + D)^{-1}\cdot b =
+            \matriz{c}{
+            \frac{5}{3}                                   \\
+            \frac{17}{18}                                 \\
+              \frac{61}{72}
+            }
+          \end{array}
+        $$
+        ¿Uso la misma semilla? La altero un poquito, $x_0 = (3/4,1,1/2)$:
+        $$
+          \llave{rcl}{
+            x_1 & = & M_{GS} \cdot x_0 + \tilde{b} = (7/6,37/36,137/144)^t \approx (1.167, 1.028, 0.951)                                      \\
+            x_2 & = & M_{GS} \cdot x_1 + \tilde{b} = (145/144,869/864,3445/3456)^t   \approx (1.006, 1.006, 0.997)                                         \\
+            x_3 & = & M_{GS} \cdot x_2 + \tilde{b} = (1151/1152,20753/20736, 82945/82944)^t   \approx (0.999, 1.001, 1.000)                                         \\
+          }
+        $$
+        Listo, suficiente para mí, \textit{quedo con una sensación entre espantado y maravillado!}
+
+        Para ver la velocidad de convergencia, habría que ver los \textit{radios espectrales}:
+        \hacer
+
+  \item
+        \textit{Jacobi:}
+        \hacer
+        \textit{Gauss-Seidel:}
+        \hacer
 \end{enumerate}
 
