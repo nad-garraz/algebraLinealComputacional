@@ -32,11 +32,11 @@ Los pdfs que querés están en:
 - [Guía 6](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/6-guia/6-sol.pdf)
 - [Guía 7](https://github.com/nad-garraz/algebraLinealComputacional/blob/main/7-guia/7-sol.pdf)
 
-## Apunte Único ALC. Primere cuatri 2025:
+## Apunte Único ALC. Primer cuatri 2025:
 
 ### La idea es siempre la misma:
 
-Entre todos seguramente podemos hacer un materia de calidad. Mandar fotos
+Entre todos seguramente podemos hacer un material de calidad. Mandar fotos
 es muy lindo, pero es una manera poco eficiente de transmitir la info. En este formato se pueden corregir
 y mejorar los aportes, ya sea en estilo o didáctica.
 
