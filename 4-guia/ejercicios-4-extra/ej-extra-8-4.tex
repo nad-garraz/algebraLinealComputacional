@@ -78,9 +78,9 @@
             \bm{0}_{(n-k)} & B_{k}
           }
         $$
-        Con el bloque de arriba a la derecha:
+        Con el bloque de arriba a la derecha, lo llamo $C$:
         $$
-          \begin{pmatrix}
+          C = \begin{pmatrix}
             0      & 0      & \cdots & 0      & 1      \\
             1      & 0      & \cdots & 0      & 0      \\
             0      & 1      & \cdots & 0      & 0      \\
@@ -88,9 +88,9 @@
             0      & \cdots & 0      & 1      & 0
           \end{pmatrix}
         $$
-        Los autovalores de $M$:
+        Los autovalores del bloque $C$:
         $$
-          \det(M - \lambda I) = 0
+          \det(C - \lambda I) = 0
           \sii
           \deter{ccccc}{
             \rowcolor{red!10!white}
@@ -113,7 +113,7 @@
         $$
         \ul{Todos los elementos de $G_{\blue{k}}$ tienen módulo 1}, son todos distintos. El autovalor $\lambda = 1$ está en el grupo.
 
-        El autovector $v_{\lambda = 1} \en \reales^n$ asociado al autovalor 1:
+        El autovector de $M$, $v_{\lambda = 1} \en \reales^n$ asociado al autovalor 1:
         $$
           v_{\lambda = 1} = (\ob{1, \cdots, 1,}{k \text{ elementos}} 0, \cdots, 0)
         $$
@@ -148,8 +148,8 @@
 
         \bigskip
 
-        \textit{¿Es único?} Sí, {\tiny (creo)} tiene pinta, pero no quiero hacer las cuentas.
-        Habría que calcular la matriz del proceso y ver la multiplicidad aritmética de $\lambda = 1$.
+        \textit{¿Es único?} Sí, {\tiny (creo)} tiene pinta, pero no quiero hacer las cuentas y no se me ocurre otra cosa que
+        calcular la matriz del proceso y ver la multiplicidad aritmética de $\lambda = 1$.
 
         \bigskip
 
