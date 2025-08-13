@@ -41,7 +41,8 @@
 \end{enunciado}
 
 \begin{enumerate}[label=\alph*)]
-  \item El grafo que describe el proceso de Markov es:
+  \item
+        El grafo que describe el proceso de Markov para $k \leq n$ estados:
         $$
           \begin{tikzpicture}[
             node distance=2cm,
@@ -66,14 +67,19 @@
 
           \end{tikzpicture}
         $$
-        Cuya matriz $M$:
+        Cuya matriz $M \en \reales^{n \times n}$:
         $$
           M =
           \matriz{c|c}{
-            \bm{0}^t & 1          \\\hline
-            I_{n-1}      & \bm{0}
+            \begin{array}{c|c}
+              \bm{0^t} & 1      \\\hline
+              I_{k-1}  & \bm{0}
+            \end{array} & A_{(n-k)} \\ \hline
+            \bm{0}_{(n-k)} & B_{k}
           }
-          =
+        $$
+        Con el bloque de arriba a la derecha:
+        $$
           \begin{pmatrix}
             0      & 0      & \cdots & 0      & 1      \\
             1      & 0      & \cdots & 0      & 0      \\
@@ -106,18 +112,34 @@
           G_{\blue{k}} = \set{e^{i \frac{2\pi}{\blue{k}} h}} \quad \text{con}\quad h \en \enteros{[0,\blue{k}-1]}
         $$
         \ul{Todos los elementos de $G_{\blue{k}}$ tienen módulo 1}, son todos distintos. El autovalor $\lambda = 1$ está en el grupo.
-          {
-            \footnotesize
-            \parrafoDestacado{
-              $\llamada1$  Este resultado se da para $k$ par, si $k$ es impar quedan las raíces rotadas, porque el polinomio característico queda
-              $$
-                \lambda^k + 1 = 0
-              $$
-            }
-          }
+
+        El autovector $v_{\lambda = 1} \en \reales^n$ asociado al autovalor 1:
+        $$
+          v_{\lambda = 1} = (\ob{1, \cdots, 1,}{k \text{ elementos}} 0, \cdots, 0)
+        $$
+        Es el estado en que cada nodo le pasa uno, pero es un grafo circular por lo que el estado no cambia.
+
+        Un estado que tiene un autovalor de módulo 1, pero donde $\magenta{\lambda} \distinto 1$ es por ejemplo el:
+        $$
+          v_{|\magenta{\lambda}| = 1} = (\ob{1, 0, \cdots, 0,}{k \text{ elementos}} 0, \cdots, 0)
+        $$
+        Ese estado va a ir pasando circularmente ese uno infinitamente sin alterar su módulo.
+        {
+        \footnotesize
+        \parrafoDestacado{
+          $\llamada1$  Este resultado se da para $k$ par, si $k$ es impar quedan las raíces rotadas, porque el polinomio característico queda
+          $$
+            \lambda^k + 1 = 0
+          $$
+        }
+        }
 
   \item
+
+        Este grafo es similar al anterior, donde $k = 3$ y la cadena circular está formada por los nodos $1,2 \ytext 4$.
+
         \textit{Hallar un estado de equilibrio}.
+
         Únicamente viendo el grafo, los nodos 1, 2 y 4, tienen \blue{una arista de probabilidad \textbf{1}} de ir de uno a otro estado. Considero:
         $$
           v_{eq} = (1, 1, 0, 1, 0)^t
@@ -131,7 +153,9 @@
 
         \bigskip
 
-        \textit{¿Se alcanza este equilibrio desde cualquier estado inicial?} No. Por ejemplo:
+        \textit{¿Se alcanza este equilibrio desde cualquier estado inicial?}
+
+        No. Por ejemplo:
         $$
           v = (1, 0, 0, 0, 0)^t
         $$
