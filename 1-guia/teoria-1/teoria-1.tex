@@ -382,24 +382,26 @@ En un conjunto $A \distinto \vacio$
 
           \item
                 \atencion
+                Para clasificar, primero hay que calcular
                 $$
-                  \flecha{para clasificar}[hay que calcular]
-                  \llave{c}{
-                    \rg( \green{A^*} ) \\
-                    \rg(A)
-                  }
+                  \rango(\green{A^*})
+                  \ytext
+                  \rango(A)
                 $$
+                Esos rangos se calculan por ejemplo, triangulando las matrices $A$ y $\green{A^*}$
 
+                Luego si:
                 $$
-                  \flecha{luego}[si]
-                  \llaves{lcl}{
-                    \rango( \green{A^*} ) > \rango(A) &\to& \mbox{S.I. $\to$ !`No hay solución!}\\
+                  \begin{array}{lcl}
+                    \rango(\green{A^*}) > \rango(A) & \to & \text{Sistema incompatible $\to$ ¡No hay solución!}                 \\
                     \\
-                    \rango( \green{A^*} ) = \rango(A) &\to& \llave{lcl}{
-                      \rango( \green{A^*} ) = \red{n} & \to & \mbox{S.C.D. $\to$ !`Única solución!}      \\
-                      \rango( \green{A^*} ) < \red{n} & \to & \mbox{S.C.I. $\to$ !`$\infty$ soluciones!}
+                    \rango(\green{A^*}) = \rango(A)
+                                                    & \to &
+                    \llave{lcl}{
+                    \rango(\green{A^*}) = \red{n}   & \to & \text{Sistema compatible determinado $\to$ ¡Única solución!}        \\
+                    \rango(\green{A^*}) < \red{n}   & \to & \text{Sistema Compatible indeterminado $\to$ ¡$\infty$ soluciones!}
                     }
-                  }
+                  \end{array}
                 $$
         \end{enumerate}
 \end{enumerate}
