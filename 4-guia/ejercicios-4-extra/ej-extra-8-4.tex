@@ -20,11 +20,11 @@
                 proba/.style={-{latex[length=1pt]}},
                 every node/.style={font={\bf\normalsize}}
                 ]
-                \node[estado, align = center] (1) {1};
-                \node[estado, below right of=1, align = center] (4) {4};
-                \node[estado, above right of=1, align = center] (2) {2};
-                \node[estado, right of=2, align = center] (3) {3};
-                \node[estado, right of=4, align = center] (5) {5};
+                \node[estado] (1) {1};
+                \node[estado, below right of=1] (4) {4};
+                \node[estado, above right of=1] (2) {2};
+                \node[estado, right of=2] (3) {3};
+                \node[estado, right of=4] (5) {5};
 
                 \draw[proba] (1) to node[left] {} (2);
                 \draw[proba] (2) to node[above] {} (4);

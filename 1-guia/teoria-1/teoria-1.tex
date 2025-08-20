@@ -326,5 +326,81 @@ En un conjunto $A \distinto \vacio$
                 $$
         \end{enumerate}
 
+  \item \textit{Clasificación de un sistema en general: Teorema de Rouché-Frobenius}
+
+        \begin{enumerate}[label=\roman*)]
+          \item Dado un sistema de $\blue{m}$ ecuaciones y $\red{n}$ incognitas:
+                $$
+                  \llave{ccl}{
+                    a_{11}\red{x_1}+a_{12}\red{x_2}+\cdots+a_{1n}\red{x_n} &=& \blue{b_1},\\
+                  a_{21}\red{x_1}+a_{22}\red{x_2}+\cdots+a_{2n}\red{x_n} &=& \blue{b_2},\\
+                  \vdots  &= &\vdots\\
+                  a_{m1}\red{x_1}+a_{m2}\red{x_2}+\cdots+a_{mn}\red{x_n} & = & \blue{b_m}
+                  }
+                $$
+
+          \item Se lo puede llevar a forma matricial así:
+                $$
+                  \underbrace{
+                  \matriz{cccc}{
+                  a_{11}  & a_{12} & \cdots & a_{1n} \\
+                  a_{21}  &a_{22} & \cdots & a_{2n}\\
+                  \vdots&\vdots&\ddots&\vdots\\
+                  a_{m1}& a_{m2} & \cdots & a_{mn}
+                  }
+                  }_{\text{matriz de coeficientes}}
+                  \matriz{c}{
+                    \red{x_1}	\\
+                    \red{x_2}	\\
+                    \vdots		\\
+                    \red{x_n}
+                  }	=
+                  \matriz{c}{
+                    \blue{b_1}\\
+                    \blue{b_2}\\
+                    \vdots\\
+                    \blue{b_m}
+                  }	\flecha{más}[compacto]
+                  A \cdot \red{\mathbf{x}} = \blue{\mathbf{b}}
+                $$
+
+          \item Para resolver por triangulación:
+
+                $$
+                  \green{A^*}=
+                  \underbrace{
+                    \matriz{cccc|c}{
+                      a_{11}  	& a	_{12} 	& \cdots 	& a_{1n}	 	& \blue{b_1} \\
+                      a_{21}  	&	a_{22} 	& \cdots 	& a_{2n}		& \blue{b_2}\\
+                      \vdots	&	\vdots	&	\ddots	&\vdots			& \vdots\\
+                      a_{m1}		& a_{m2} 	& \cdots 	& 	a_{mn}		& \blue{b_m}
+                    }
+                  }_{\green{\text{matriz ampliada}}}
+                  \flecha{más}[compacto]
+                  \green{A^*} = (A|\blue{\mathbf{b}})
+                $$
+
+          \item
+                \atencion
+                $$
+                  \flecha{para clasificar}[hay que calcular]
+                  \llave{c}{
+                    \rg( \green{A^*} ) \\
+                    \rg(A)
+                  }
+                $$
+
+                $$
+                  \flecha{luego}[si]
+                  \llaves{lcl}{
+                    \rango( \green{A^*} ) > \rango(A) &\to& \mbox{S.I. $\to$ !`No hay solución!}\\
+                    \\
+                    \rango( \green{A^*} ) = \rango(A) &\to& \llave{lcl}{
+                      \rango( \green{A^*} ) = \red{n} & \to & \mbox{S.C.D. $\to$ !`Única solución!}      \\
+                      \rango( \green{A^*} ) < \red{n} & \to & \mbox{S.C.I. $\to$ !`$\infty$ soluciones!}
+                    }
+                  }
+                $$
+        \end{enumerate}
 \end{enumerate}
 
