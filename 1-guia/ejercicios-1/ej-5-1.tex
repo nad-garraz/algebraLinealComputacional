@@ -1,35 +1,58 @@
 \begin{enunciado}{\ejercicio}
   Encontrar un sistema de generadores para los siguientes espacios vectoriales:
   \begin{enumerate}[label=(\alph*)]
-    \item $\set{(x,y,z) \en \reales^3 : x + y - z = 0;\; x - y = 0}$
+    \item $\set{
+              (x,y,z) \en \reales^3 : x + y - z = 0;\; x - y = 0
+            }$
 
-    \item $\set{\mathbf{A} \en \complejos^{3 \times 3} : \mathbf{A} = - \mathbf{A}^t}$
+    \item $\set{
+              \bm{A} \en \complejos^{3 \times 3} : \bm{A} = - \bm{A}^t
+            }$
 
-    \item $\set{\mathbf{A} \en \reales^{3 \times 3} : tr(\mathbf{A}) = 0}$
+    \item $\set{
+              \bm{A} \en \reales^{3 \times 3} : tr(\bm{A}) = 0
+            }$
 
-    \item $\set{x \en \complejos^4 : x_1 + x_2 - i x_4 = 0; ix_1 + (1+i)x_2 - x_3 = 0}$
+    \item $\set{
+              x \en \complejos^4 : x_1 + x_2 - i x_4 = 0;
+              ix_1 + (1+i)x_2 - x_3 = 0
+            }$
   \end{enumerate}
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-  \item $\ket{1,1,2}$
-
-  \item Describo a $\mathbf{A}$ y a $-\mathbf{A}^t$ como :
+  \item  Para encontrar un sistema de generadores se resuelven las ecuaciones que definen a los espacios:
         $$
-          \mathbf{A} = \set{a_{ij} \en \complejos : 1\leq i, j \leq 3}
+          \llave{rcl}{
+            x + y - z & = & 0\\
+            x - y & = &  0
+          }
+          \sii
+          \ket{1,1,2}
+        $$
+        Por lo tanto un sistema de generadores del subespacio es:
+        $$
+          \cajaResultado{
+            \ket{1,1,2}
+          }
+        $$
+
+  \item Describo a $\bm{A}$ y a $-\bm{A}^t$ como :
+        $$
+          \bm{A} = \set{a_{ij} \en \complejos : 1\leq i, j \leq 3}
           \ytext
-          -\mathbf{A}^t = \set{- a_{ji} \en \complejos : 1\leq i, j \leq 3}
+          -\bm{A}^t = \set{- a_{ji} \en \complejos : 1\leq i, j \leq 3}
         $$
         O escrito en idioma humano:
         $$
-          \mathbf{A} =
+          \bm{A} =
           \matriz{ccc}{
             a_{11} & a_{12} & a_{13} \\
             a_{21} & a_{12} & a_{23} \\
             a_{31} & a_{32} & a_{33}
           }
           \ytext
-          \mathbf{A}^T =
+          \bm{A}^T =
           \matriz{ccc}{
           -a_{11} & -a_{21} & -a_{31} \\
           -a_{12} & -a_{22} & -a_{32} \\
@@ -46,9 +69,9 @@
             0 & \text{ si } & i = j \\
             -a_{ji}  & \text{ si } & i \distinto j
           }
-          $$
-            Estoy buscando algo de la pinta:
-          $$
+        $$
+        Estoy buscando algo de la pinta:
+        $$
           \textstyle
           \matriz{ccc}{
             a_{11} & a_{12} & a_{13} \\
@@ -82,9 +105,9 @@
             0 & 0 & -1 \\
             0 & 1 & 0
           }
-          $$
-            El conjunto de generadores buscado:
-          $$
+        $$
+        El conjunto de generadores buscado:
+        $$
           \cajaResultado{
             \ket{
               \matriz{ccc}{
@@ -262,7 +285,30 @@
 
         Cualquier combinación lineal de esas matrices satisface que su traza sea cero.
 
-  \item \hacer
+  \item
+        Hay que resolver el sistema:
+        $$
+          \llave{ccl}{
+            x_1 + x_2 - i x_4 & = & 0\\
+            ix_1 + (1+i)x_2 - x_3 & = & 0
+          }
+          \Sii{$F_2 - iF_1 \to F_2$}
+          \llave{ccl}{
+            x_1 + x_2 - i x_4 & = & 0\\
+            x_2 - x_3 - x_4 & = & 0
+          }
+          \sii
+          \llave{ccl}{
+            x_1  & = & - x_2 + i x_4\\
+            x_2 & = &  x_3 + x_4
+          }
+        $$
+        Acomodando eso el sistema de generadores del subespacio:
+        $$
+          \cajaResultado{
+            \ket{(-1, 1, 1, 0), (-1+i, 1, 0, 1)}
+          }
+        $$
 \end{enumerate}
 
 \begin{aportes}
