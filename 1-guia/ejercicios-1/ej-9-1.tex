@@ -3,23 +3,42 @@
   de $V$ si y solo si $S \subseteq T$ o $T \subseteq S$.
 \end{enunciado}
 
-Si bien la tentación de pensar que
-$$
-  \cancel{S \union T = S + T}
-$$ es grande, eso no es en general así. $S+T$ es el subespacio que tiene a todos los elementos de la pinta $s_i + t_j$.
-Mientras que $S \union T$ es un conjunto con los elementos de $S$ y los elementos de $T$, no necesariamente está ahí el elemento $s_i + t_j$.
+\parrafoDestacado[\red{\atencion}]{
+  Si bien la tentación de pensar que
+  $$
+    S \union T = S + T,
+  $$
+  \ul{eso no es en general así}.
 
-\medskip
+  $S+T$ es el subespacio que tiene a todos los elementos de la pinta $s_i + t_j$.
 
-\textit{
-  Intuitivamente lo que este ejercicio sugiere, es que para que $S \union T$ sea un subespacio, $S$ no debería aportarle nada nuevo a $T$ y viceversa,
-  para que al sumar 2 elementos de $S \union T$, eso seguro caiga dentro dentro del mismo conjunto, porque estarías sumando
-  dos elementos de $S$ o dos de $T$. Ponele.
+  $S \union T$ es un conjunto con los elementos de $S$ y los elementos de $T$, no necesariamente está ahí el elemento $s_i + t_j$.
+
+  Lo que si sabés es que:
+  $$
+    S \union T \subseteq S+T
+  $$
 }
+
+\bigskip
+
+\parrafoDestacado{
+  \textit{
+    Intuitivamente lo que este ejercicio sugiere, es que para que $S \union T$ sea un subespacio, $S$ no debería aportarle nada nuevo a $T$ y viceversa,
+    para que al sumar 2 elementos de $S \union T$, eso seguro caiga dentro dentro del mismo conjunto, porque estarías sumando
+    dos elementos de $S$ o dos de $T$. Ponele.
+  }
+}
+
+\bigskip
+
+Para probar la \textit{doble implicación}, pruebo la ida y la vuelta. Arranco por la que parece más fácil:
 
 \begin{itemize}
   \item[(\red{$\Leftarrow$})]
-        Esta sale más directa. Si:
+        Esta sale más directa.
+
+        Si:
         $$
           \begin{array}{c}
             S \subseteq T \entonces S \union T = T \\
@@ -32,7 +51,11 @@ Mientras que $S \union T$ es un conjunto con los elementos de $S$ y los elemento
         Si $T$ es un subespacio por hipótesis de enunciado y $S \union T = T$, listo.
 
   \item[(\red{$\Rightarrow$})]
-        Vamos por el absurdo. Es decir que voy a probar \blue{$ p \entonces \neg q$} y voy a llegar a una contradicción.
+        Está es medio \href{\chinito}{chino}:
+
+        Vamos por el absurdo, en vez de laburar con $p \entonces q$, laburo con \blue{$ p \entonces \neg q$} llegando a una contradicción.
+
+\medskip
 
         Supongamos que:
         $$
@@ -53,21 +76,26 @@ Mientras que $S \union T$ es un conjunto con los elementos de $S$ y los elemento
             s_1 \en S  \Entonces{$S \union T$ es}[subespacio] s_1 \en S \union T \\
             t_1 \en T  \Entonces{$S \union T$ es}[subespacio] t_1 \en S \union T
           }
-          \entonces s_1 + t_1 \en S \union T,
+          \entonces
+          \ub{
+            s_1 + t_1 \en S \union T
+          }{\text{esto no tiene}\\\text{nada que ver}\\\text{con } S + T},
         $$
-        El subespacio $S \union T$ tiene elementos que pertenecen a $T$ o elementos que pertenecen a $S$, de forma tal que:
+        El subespacio $S \union T$ tiene elementos que pertenecen a $T$ o elementos que pertenecen a $S$, de forma tal que
+        que sumar 2 elementos \ul{cualesquiera} también están en $S \union T$, en \textit{particular} esos de $\llamada1$:
         $$
-          s_1 + t_1 \taa{\llamada2}{}{\en} S \otext s_1 + t_1 \taa{\llamada3}{}{\en} T
+          \ub{s_1 + t_1}{\en S \union T} \taa{\llamada2}{}{\en} S ~\lor~ \ub{s_1 + t_1}{\en S \union T} \taa{\llamada3}{}{\en} T
         $$
         En el caso $\llamada2$ tengo:
 
-        Dado que \underline{$S$ es un subespacio}, si $s_1 \en S
-          \Entonces{también}
-          -s_1 \en S $:
+        Dado que \underline{$S$ es un subespacio}, si $s_1 \en S$, entonces también $-s_1 \en S$, y nuevamente la suma de 2 elementos
+        \ul{cualesquiera} de $S$ también estarán en $S$:
         $$
-          s_1 + t_1 + (-s_1) \ua{\en}{\text{def. subespacio}} S \sisolosi s_1 + t_1 + (-s_1) = \red{t_1 \en S}
+          \ob{s_1 + t_1 + (-s_1)}{\en S \union T} \ua{\en}{\text{def. subespacio}} S
+          \sisolosi
+          \red{t_1 \en S}
         $$
-        Contradiciendo lo que se supuso en $\llamada1$. Llegar a la contradicción de que $s_1 \en T$ es análoga.
+        Contradiciendo lo que se supuso en $\llamada1$, donde $t_1 \en T$, pero $t_1 \not\en{S}$. Llegar a la contradicción de que $s_1 \en T$ es análoga.
 
 \end{itemize}
 
