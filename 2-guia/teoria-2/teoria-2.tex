@@ -1,3 +1,17 @@
+\tikzset{
+  plot settings/.style={
+      scale=1,
+      baseline=0,
+      grid/.style={ultra thin, gray!30},
+      flecha/.style={-latex}
+    },
+  add axes/.code={
+      \draw[grid] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
+      \draw[flecha] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
+      \draw[flecha] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
+    }
+}
+
 \textit{Transformaciones lineales}
 
 \begin{enumerate}[label=\tiny\purple{\faIcon{snowman}}]
@@ -86,11 +100,7 @@
                   \quad
                   \flecha{por ejemplo}
                   \norma{x}_2 = 1 \quad$
-                \begin{tikzpicture}[scale=1, baseline=0]
-                  \draw[gray!30, ultra thin] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
-                  \draw[-stealth] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
-                  \draw[-stealth] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
-
+                \begin{tikzpicture}[plot settings, add axes]
                   \draw[blue, thick] (0,0) circle (1);
                 \end{tikzpicture}
 
@@ -99,11 +109,7 @@
                   \quad
                   \flecha{por ejemplo}
                   \norma{x}_p = 1 \quad$
-                \begin{tikzpicture}[scale=1, baseline=0]
-                  \draw[gray!30, ultra thin] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
-                  \draw[-stealth] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
-                  \draw[-stealth] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
-
+                \begin{tikzpicture}[plot settings, add axes]
                   \draw[red, thick] (0,1) -- (1,0) -- (0,-1) -- (-1,0) -- cycle;
                 \end{tikzpicture}
 
@@ -112,11 +118,7 @@
                   \quad
                   \flecha{por ejemplo}
                   \norma{x}_{\infty} = 1 \quad$
-                \begin{tikzpicture}[scale=1, baseline=0]
-                  \draw[gray!30, ultra thin] (-1.5,-1.5) grid[step=0.25] (1.5,1.5);
-                  \draw[-stealth] (-1.5,0) -- (1.5,0) node[below]{$x_1$};
-                  \draw[-stealth] (0,-1.5) -- (0,1.5) node[left]{$x_2$};
-
+                \begin{tikzpicture}[plot settings, add axes]
                   \draw[green!70!black, thick] (-1,-1) -- (-1,1) -- (1,1) -- (1,-1) -- cycle;
                 \end{tikzpicture}
         \end{itemize}
@@ -310,18 +312,23 @@ $$
 En el gráfico veo lo que quiero lograr.
 
 $$
-  \begin{tikzpicture}[scale=1.5, every node/.style={font=\tiny}]
-    \draw[-latex] (-1.7,0) -- (1.7,0) node[below] {$x$};
-    \draw[-latex] (0,-1.7) -- (0,1.7) node[left] {$y$};
+  \begin{tikzpicture}[
+      scale=1.5,
+      every node/.style={font=\tiny},
+      flecha/.style={-latex, color=#1},
+      guias/.style={dotted, gray, thick},
+    ]
+    \draw[flecha={gray}] (-1.7,0) -- (1.7,0) node[below] {$x$};
+    \draw[flecha={gray}] (0,-1.7) -- (0,1.7) node[left] {$y$};
 
-    \draw[-latex, thick, blue] (0,0) -- (1.5,0);
-    \draw[-latex, thick, blue] (0,0) -- (0,1.5);
+    \draw[flecha={blue}, thick] (0,0) -- (1.5,0);
+    \draw[flecha={blue}, thick] (0,0) -- (0,1.5);
 
-    \draw[-latex, thick, red] (0,0) -- ({1.5*cos(30)},{1.5*sin(30)}) node[midway, right] {$u$};
-    \draw[dotted, thick, gray] (0,{1.5*sin(30)}) node[left] {$u_{y\theta}$} -- ({1.5*cos(30)},{1.5*sin(30)}) -- ({1.5*cos(30)},0) node[below] {$u_{x\theta}$};
+    \draw[flecha={red}, thick] (0,0) -- ({1.5*cos(30)},{1.5*sin(30)}) node[midway, right] {$u$};
+    \draw[guias] (0,{1.5*sin(30)}) node[left] {$u_{y\theta}$} -- ({1.5*cos(30)},{1.5*sin(30)}) -- ({1.5*cos(30)},0) node[below] {$u_{x\theta}$};
 
-    \draw[-latex, thick, red] (0,0) -- ({-1.5*sin(30)},{1.5*cos(30)}) node[midway, left] {$v$};
-    \draw[dotted, thick, gray] (0,{1.5*cos(30)}) node[right] {$v_{y\theta}$} -- ({-1.5*sin(30)},{1.5*cos(30)}) -- ({-1.5*sin(30)},0) node[below] {$v_{x\theta}$};
+    \draw[flecha={red}, thick] (0,0) -- ({-1.5*sin(30)},{1.5*cos(30)}) node[midway, left] {$v$};
+    \draw[guias] (0,{1.5*cos(30)}) node[right] {$v_{y\theta}$} -- ({-1.5*sin(30)},{1.5*cos(30)}) -- ({-1.5*sin(30)},0) node[below] {$v_{x\theta}$};
 
     \draw (0.6,0) arc (0:30:0.6) node[midway, right] {$\theta$};
     \draw (0,0.6) arc (90:120:0.6) node[midway, below] {$\theta$};

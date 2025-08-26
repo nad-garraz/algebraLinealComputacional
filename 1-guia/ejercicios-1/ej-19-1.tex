@@ -1,3 +1,191 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+  \begin{enumerate}[label=(\alph*)]
+    \begin{multicols}{3}
+      \item
+      $
+        A =
+        \matriz{ccc}{
+          1 & 1 & 1 \\
+          0 & 1 & 1 \\
+          0 & 0 & 1
+        }
+      $
+
+      \item
+      $
+        A =
+        \matriz{ccc}{
+          \cos(\theta) & -\sin(\theta) & 0 \\
+          \sin(\theta) & \cos(\theta) & 0 \\
+          0 & 0 & 1
+        }
+      $
+
+      \item
+      $
+        A =
+        \matriz{cccc}{
+          1 & 0 & -1 & 0 \\
+          0 & 0 & 1  & 0 \\
+          2 & 1 & -2 & 3 \\
+          3 & 1 & -1 & 3
+        }
+      $
+
+      \item
+      $
+        A =
+        \matriz{ccccc}{
+          2 & 1 & 3 & 1 & 2 \\
+          0 & 5 & -1& 8 & 2 \\
+          0 & 1 & 0 & 1 & 2 \\
+          0 & 1 & 0 & 1 & 2 \\
+          0 & 1 & 0 & 0 & 2
+        }
+      $
+
+      \item
+      $
+        A =
+        \matriz{cccc}{
+          a_{11} & 0 & \cdots  & 0 \\
+          0 & a_{22} & \cdots & 0  \\
+          \vdots & \ddots & \ddots & \vdots  \\
+          0 & 0 & \cdots & a_{nn}
+        }
+      $
+    \end{multicols}
+  \end{enumerate}
 \end{enunciado}
+\parrafoDestacado[\faIcon{calculator}]{
+  Una matriz inversible tiene determinante distinto de 0 y rango completo
+}
+Voy a estar calculando determinantes con \textit{Laplace}, \hyperlink{teoria-1:calculo-determinante}{acá en la teoría está como hacerlo \click}
+\begin{enumerate}[label=(\alph*)]
+  \item En una matriz \textit{triangular superior o inferior}: El determinante es el producto de los elementos diagonales.
+        $$
+          \det(A) = 1 \distinto 0 \entonces A \text{ es inversible}
+        $$
+        Resolviendo el sistema para $X \en \reales^{3 \times 3}$:
+        $$
+          A \cdot \ua{X}{A^{-1}} = I_3
+          \sii
+          \matriz{ccc|c|c|c}{
+            1 & 1 & 1 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 0 & 1 & 0 \\
+            0 & 0 & 1 & 0 & 0 & 1
+          }
+          \Sii{\magic}
+          X = A^{-1} =
+          \matriz{ccc}{
+            1 & -1 & 0 \\
+            0 & 1 & -1 \\
+            0 & 0 & 1
+          }
+        $$
+
+  \item Desarrollando por la 3era fila:
+        $$
+          \det(A) =
+          \deter{ccc}{
+            \cos(\theta) & -\sin(\theta) & 0 \\
+            \sin(\theta) & \cos(\theta)  & 0 \\ \rowcolor{red!5!white}
+            0            & 0             & 1
+          }
+          =
+          \deter{cc}{
+            \cos(\theta) & -\sin(\theta) \\
+            \sin(\theta) & \cos(\theta)
+          }
+          = \cos^2(\theta) + \sin^2(\theta) = 1 \distinto 0
+          \entonces A \text{ es inversible}
+        $$
+        Esta inversa sale \text{pensándolo geométricamente}, dado que $A$ es la matriz que rota un punto al rededor del eje $z$ en \textit{sentido
+          antihorario}, la inversa debería rotar en \textit{sentido horario}. Ese cambio de sentido en la rotación es \ul{cambiar el signo de $\theta$}:
+        $$
+          A^{-1}
+          =
+          \matriz{ccc}{
+            \cos(\red{-\theta}) & -\sin(\red{-\theta}) & 0 \\
+            \sin(\red{-\theta}) & \cos(\red{-\theta})  & 0 \\
+            0            & 0             & 1
+          }
+          \igual{\red{!}}
+          \matriz{ccc}{
+            \cos(\theta) & \sin(\theta) & 0 \\
+            -\sin(\theta) & \cos(\theta)  & 0 \\
+            0            & 0             & 1
+          }
+        $$
+        En \red{!} uso que el la paridad de las funciones:
+        $$
+          \llave{rcc}{
+            \cos(-\theta) & = & \cos(\theta)\\
+            \sin(-\theta) & = & -\sin(\theta)
+          }
+        $$
+
+        Obviamente podés calcular la inversa como a vos te pinte.
+
+  \item  Fijate que sumando
+        Calculo determinante:
+        $$
+          A =
+          \deter{cccc}{
+            1 & 0 & -1 & 0 \\ \rowcolor{red!5!white}
+            0 & 0 & 1  & 0 \\
+            2 & 1 & -2 & 3 \\
+            3 & 1 & -1 & 3
+          }
+          =
+          (-1)
+          \deter{ccc}{
+            \rowcolor{red!5!white}
+            1 & 0 & 0 \\
+            2 & 1 & 3 \\
+            3 & 1 & 3
+          }
+          =
+          (-1)
+          \deter{ccc}{
+            1 & 3 \\
+            1 & 3
+          }
+          =0
+        $$
+        Ya en el segundo paso se veía bien que las filas eran \textit{linealmente independientes}.
+        Como el $|A| = 0$, no existe la inversa de $A$.
+
+  \item
+        Una matriz cuadrada triangulada tiene por determinante le producto de sus elementos diagonales.
+        En este caso:
+        $$
+          \textstyle
+          |A| = \productoria{i=1}{n} a_{ii} = 0
+        $$
+        La matriz $A$ no tiene inversa.
+
+  \item Como en el ítem anterior:
+        $$
+          \textstyle
+          |A| = \productoria{i=1}{n} a_{ii}
+        $$
+        Tengo que pedir que:
+        $$
+          \text{La matriz $A$ es inversible} \sisolosi a_{ii} \distinto 0 \paratodo i \en[1, n]
+        $$
+        La inversa de $A$ es fácil de calcular en este caso:
+        $$
+          A^{-1} =
+          \matriz{cccc}{
+            \frac{1}{a_{11}} & 0 & \cdots  & 0 \\
+            0 & \frac{1}{a_{22}} & \cdots & 0  \\
+            \vdots & \ddots & \ddots & \vdots  \\
+            0 & 0 & \cdots & \frac{1}{a_{nn}}
+          }
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}

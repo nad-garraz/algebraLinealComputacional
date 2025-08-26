@@ -1,3 +1,18 @@
+%% Comandos para los gráficos
+\tikzset{
+  plot style/.style={
+      scale=0.8,
+      every node/.style={font={\tiny}},
+    },
+  nodo/.style 2 args={circle, fill=#1, inner sep=1pt, outer sep=0pt, label={[#1] #2}},
+  flecha/.style={dotted, color=#1, -latex},
+  eje/.style={-latex, gray, thin},
+  ejes/.code={
+      \draw[eje] (-1.5,0) -- (3,0) node[below] {$x_0$};
+      \draw[eje] (0,-1.5) -- (0,2) node[left] {$x_1$};
+    },
+}
+
 \begin{enunciado}{\ejercicio}
   Escribir la matriz de las siguientes transformaciones lineales en base canónica.
   Interpretar geométricamente cada transformación.
@@ -26,28 +41,18 @@
           Geométricamente estamos proyectando al eje $x_0$.
         \end{minipage}
         \begin{minipage}{0.5\textwidth}
-          \begin{tikzpicture}[scale=0.8, every node/.style={font={\tiny}}]
-            \draw[-latex] (-1.5,0) -- (3,0) node[below] {$x_0$};
-            \draw[-latex] (0,-1.5) -- (0,2) node[left] {$x_1$};
+          \begin{tikzpicture}[plot style, ejes]
+            \node[nodo={Cerulean}{above:{$(x_0,x_1)$}}] (P1a) at (2,1.15) {};
+            \node[nodo={Cerulean}{below:{$(x_0,0)$}}] (P1b) at (2, 0) {};
+            \draw[flecha={Cerulean}] (P1a) to node[midway, left]{$M$}(P1b) ;
 
-            \coordinate (P1) at (2,1.5);
-            \fill[Cerulean] (P1) circle (0.08) node[above right] {$(x_0,x_1)$};
-            \draw[dotted, Cerulean, -latex] (P1) -- ($(P1) -(0,1.5)$) node[midway, left] {$M$};
-
-            \fill[Cerulean] ($(P1) -(0,1.5)$) circle (0.05);
-            \node[below, Cerulean] at ($(P1) -(0,1.5)$) {$(x_0,0)$};
-
-            \coordinate (P2) at (-0.5,-1);
-            \fill[purple] (P2) circle (0.08) node[below left] {$(x_0',x_1')$};
-
-            \draw[dotted, purple, -latex] (P2) -- ($(P2) -(0,-1)$) node[midway, left] {$M$};
-
-            \fill[purple] ($(P2) -(0,-1)$) circle (0.05);
-            \node[above, purple] at ($(P2) -(0,-1)$) {$(x_0',0)$};
+            \node[nodo={magenta}{below:{$(x'_0,x'_1)$}}] (P2a) at (-0.5,-1) {};
+            \node[nodo={magenta}{above:{$(x'_0,0)$}}] (P2b) at (-0.5,0) {};
+            \draw[flecha={magenta}] (P2a) to node[midway, left]{$M$} (P2b);
           \end{tikzpicture}
         \end{minipage}
 
-        Con el siguiente código vas a poder ver mejor gráficamente le efecto que causa la transformación
+        Con el siguiente código vas a poder ver mejor gráficamente el efecto que causa la transformación
         \copyPaste
         \codigoPython{ej-2/codigo2-2-a.py}
 
@@ -67,19 +72,15 @@
           Geométricamente estamos haciendo una reflexión respecto del eje $x_0$.
         \end{minipage}
         \begin{minipage}{0.35\textwidth}
-          \begin{tikzpicture}[scale=0.8, every node/.style={font={\tiny}}]
-            \draw[-latex] (-1.5,0) -- (3,0) node[below] {$x_0$};
-            \draw[-latex] (0,-1.5) -- (0,2) node[left] {$x_1$};
+          \begin{tikzpicture}[plot style, ejes]
+            \node[nodo={Cerulean}{above:{$(x_0,x_1)$}}] (P1a) at (2,1.5) {};
+            \node[nodo={Cerulean}{below:{$(x_0,-x_1)$}}] (P1b) at (2, -1.5) {};
+            \draw[flecha={Cerulean}] (P1a) to node[midway, left]{$M$} (P1b);
 
-            \coordinate (P1) at (2,1.5);
-            \fill[Cerulean] (P1) circle (0.08) node[above right] {$(x_0,x_1)$};
-            \draw[dotted, Cerulean, -latex] (P1) -- (2,-1.5) node[midway, below left] {$M$};
-            \fill[Cerulean] (2,-1.5) circle (0.05) node[below, Cerulean] {$(x_0,-x_1)$};
+            \node[nodo={magenta}{below left:{$(x'_0,x'_1)$}}] (P2a) at (-0.5,-1) {};
+            \node[nodo={magenta}{above left:{$(x'_0,-x'_1)$}}] (P2b) at (-0.5, 1) {};
+            \draw[flecha={magenta}] (P2a) to node[midway, left]{$M$} (P2b);
 
-            \coordinate (P2) at (-0.5,-1);
-            \fill[purple] (P2) circle (0.08) node[below left] {$(x'_0,x'_1)$};
-            \draw[dotted, purple, -latex] (P2) -- (-0.5,1) node[midway,above left] {$M$};
-            \fill[purple] (-0.5, 1) circle (0.05)node[above left, purple] at (-0.5, 1) {$(x'_0,-x'_1)$};
           \end{tikzpicture}
         \end{minipage}
 
@@ -125,15 +126,10 @@
           Geométricamente estamos rotando en sentido antihorario al eje $\ua{x_2}{z}$.
         \end{minipage}
         \begin{minipage}{0.35\textwidth}
-          \begin{tikzpicture}[scale=0.8, every node/.style={font={\tiny}}]
-            \draw[-latex] (-1.5,0) -- (3,0) node[below] {$x_0$};
-            \draw[-latex] (0,-1.5) -- (0,2) node[left] {$x_1$};
-
-            \coordinate (P1) at (1,1);
-            \fill[Cerulean] (P1) circle (0.08) node[above right] {$(x_0,x_1)$};
-            \draw[dotted, Cerulean, -latex] (P1) arc (45:225:{sqrt(2)}) node[midway, left] {$M_{(t = \pi)}$};
-
-            \fill[Cerulean] (-1,-1) circle (0.05) node[below left, Cerulean] {$M_{(t = \pi)}(x_0,x_1)$};
+          \begin{tikzpicture}[plot style, ejes]
+            \node[nodo={Cerulean}{above right:{$(x_0,x_1)$}}] (Pa) at (1,1) {};
+            \node[nodo={Cerulean}{below left:{$(x'_0,x'_1)$}}] (Pb) at (-1,-1) {};
+            \draw[flecha={Cerulean}] (Pa) arc (45:225:{sqrt(2)}) node[midway, left] {$M_{(t = \pi)}$};
           \end{tikzpicture}
         \end{minipage}
 \end{enumerate}

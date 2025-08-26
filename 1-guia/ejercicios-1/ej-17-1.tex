@@ -9,8 +9,44 @@
   \end{enumerate}
 \end{enunciado}
 
-  \begin{enumerate}[label=(\alph*)]
-      \item \hacer
-      \item \hacer
-  \end{enumerate}
+\begin{enumerate}[label=(\alph*)]
+  \item Si $A$ es triangular inferior:
+        $$
+          [A]_{ij} =
+          \llave{rcl}{
+            0 & \text{si} & i < j \\
+            a_{ij} & \multicolumn{2}{r}{\text{en otro caso}}
+          }
+        $$
+        Es un subespacio cuyos elementos son matrices canónicas siempre triangulares inferiores de la pinta:
+        $$
+          S_1 = \set{E^{ij} \en \reales^{n \times n} \paratodo i > j} \ytext \dim(S_1) = \frac{n^2 + n}{2}
+        $$
+        La multiplicación y suma también resultará en matrices \textit{triangular inferiores}
+        $$
+          \alpha E^{ij} + \beta E^{kl} \en S_2
+        $$
 
+  \item También es un subespacio, una matriz simétrica:
+        $$
+          [A]_{ij} = [A]_{ji}  \paratodo i,\,j
+        $$
+        $S_2$ está generado por matrices de la forma:
+        $$
+          S_2^{ij} \en \reales^{n \times n}
+          \text{ tal que }
+          S_2^{ij} =
+          \llave{rcl}{
+            E^{ij} + E^{ij} & \text{si} & j \distinto i \\
+            1 & \text{si} & i = j
+          }
+        $$
+        Nuevamente la multiplicación por escalares y suma entre matrices simétricas tendrá como resultado a otra matriz simétrica:
+        $$
+          \alpha \cdot S_2^{ij} + \beta \cdot S_2^{kl} \en S_2
+        $$
+\end{enumerate}
+
+\begin{aportes}
+  \item \aporte{\dirRepo}{naD GarRaz \github}
+\end{aportes}
