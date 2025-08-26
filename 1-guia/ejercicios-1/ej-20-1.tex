@@ -25,7 +25,7 @@
 \end{enunciado}
 
 \begin{enumerate}[label=(\alph*)]
-  \item La hipótesis es que $A$ es inversible, es decir que $\existe A^{-1}$ tal que $A \cdot A^{-1} = I$
+  \item\label{ej-20:item-a} La hipótesis es que $A$ es inversible, es decir que $\existe A^{-1}$ tal que $A \cdot A^{-1} = I$
         $$
           \matriz{cc}{
             A & 0 \\
@@ -48,57 +48,76 @@
           }.
         $$
 
-  \item Quiero ver que
-  \[
-  \det(M) 
-  = \det(A D - A C A^{-1} B)
-  \]
-  por propiedad de determinantes:
-  \[
-  \det(A D - A C A^{-1} B) = \det(A) \det(D - C A^{-1} B)
-  \]
-  
-  
-  Por el apunte de bloques:
-  
-  Si la matriz tiene una estructura de la forma:
-  
-  \[
-  \det \begin{bmatrix} A & B \\ 0 & C \end{bmatrix} = \det(A) \det(C)
-  \]
-  
-  
-  También se cumple que:
-  
-  \[
-  \det \begin{bmatrix} A & 0 \\ C & D \end{bmatrix} = \det(A) \det(D)
-  \]
-  
-  Veamos si puedo armar la expresion que quiero partiendo del determinante de M usando las propiedades. Escribo a M usando la factorizacion del punto a:
-  
-  \[
-  \det(M) = \det \left( \begin{bmatrix} A & 0 \\ C & I \end{bmatrix}
-  \begin{bmatrix} I & A^{-1} B \\ 0 & D - C A^{-1} B \end{bmatrix} \right)
-  \] 
-  
-  Aplicando la propiedad de determinantes:
-  
-  \[
-  = \det \begin{bmatrix} A & 0 \\ C & I \end{bmatrix} \cdot \det \begin{bmatrix} I & A^{-1} B \\ 0 & D - C A^{-1} B \end{bmatrix}
-  \]
-  
-  Usando la propiedad antes mencionada:
-  
-  \[
-  = \det(A I) \cdot \det(I (D - C A^{-1} B))
-  = \det(A) \cdot \det(D - C A^{-1} B)
-  \]
-  
-  Que es lo que queríamos demostrar.
+  \item Quiero ver que:
+        $$
+          \det(M) = \det(A D - A C A^{-1} B)
+        $$
+        por propiedad de determinantes $\llamada1$:
+        $$
+          \det(A D - A C A^{-1} B)
+          \igual{\red{!}}
+          \det(A) \cdot \det(D - C A^{-1} B)
+        $$
+        Por el apunte de bloques:
+        Si la matriz está "diagonal" en bloques $\llamada2$:
+        $$
+          \deter{cc}{
+            A & B \\
+            0 & C
+          } = \det(A) \det(C)
+          \ytext
+          \deter{cc}{
+            A & 0 \\
+            C & D
+          }
+          = \det(A) \det(D)
+        $$
+        Veamos si puedo armar la expresión que quiero partiendo del determinante de $M$ usando las propiedades.
+        Escribo a $M$ usando la factorizacion del ítem \ref{ej-20:item-a}:
+        $$
+          \begin{array}{rcl}
+            \det(M) & =                   &
+            \det
+            \parentesis{
+              \matriz{cc}{
+            A       & 0                              \\
+            C       & I
+              }
+              \cdot
+              \matriz{cc}{
+            I       & A^{-1} B                       \\
+            0       & D - C A^{-1} B
+              }
+            }                                        \\
+                    & \igual{$\llamada1$} &
+            \deter{cc}{
+            A       & 0                              \\
+            C       & I
+            }
+            \cdot
+            \deter{cc}{
+            I       & A^{-1} B                       \\
+            0       & D - C A^{-1} B
+            }                                        \\
+                    & \igual{$\llamada2$} &
+            \det(A I) \cdot \det(I (D - C A^{-1} B)) \\
+                    & =                   &
+            \det(A) \cdot \det(D - C A^{-1} B)       \\
+                    & =                   &
+            \det(AD - A C A^{-1} B)                  \\
+          \end{array}
+        $$
+        Con esa última expresión, si $AC = CA$:
+        $$
+          \det(AD - \blue{A C} A^{-1} B)
+          \igual{\red{!}}
+          \det(AD - \blue{C A} A^{-1} B) =
+          \det(AD - CB)
+        $$
 
 \end{enumerate}
 
 \begin{aportes}
   \item \aporte{\dirRepo}{naD GarRaz \github}
-  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github} 
+  \item \aporte{https://github.com/juandelia03}{Juan D Elia \github}
 \end{aportes}
