@@ -11,25 +11,28 @@
   \end{enumerate}
 \end{enunciado}
 
-\begin{enumerate}[label=\alph*)]
-  \item $x_n = \frac{1}{n}
-          \entonces
-          \limite{n}{\infty} \frac{1}{n} = 0
-        $
+Hay que calcular los límites sin ninguna cosa rara, son ejercicios \textit{premonitorios} de los límites sin muchas complicaciones
+que hay para \textit{acotar} las condiciones de matrices.
 
-  \item $x_n = \frac{n^2 + 1}{n^2 - 1}
-          \entonces
+\begin{enumerate}[label=\alph*)]
+  \item $x_n = \frac{1}{n}$
+        $$
+          \limite{n}{\infty} \frac{1}{n} = 0
+        $$
+
+  \item $x_n = \frac{n^2 + 1}{n^2 - 1}$
+        $$
           \limite{n}{\infty} \frac{n^2 + 1}{n^2 - 1} = 1
-        $
+        $$
 
   \item\label{ej12-item-c} $x_n = (-1)^n$
 
         Uso subsucesiones, para mostrar que no existe. La idea es que de existir el límite, sin importar como me acerque a $\infty$ todo
-        camino debería llegar al mismo resultado.
+        camino debería llegar al mismo resultado:
         $$
-          \llave{rcl}{
-            \blue{a_{2n}} = (-1)^{2n} & \flecha{$n \to \infty$} & 1 \\
-            \green{a_{2n-1}} = (-1)^{2n-1} & \flecha{$n \to \infty$} & -1
+          \llave{rcccc}{
+            \blue{a_{2n}} & = & (-1)^{2n} & \flecha{$n \to \infty$} & 1 \\
+            \green{a_{2n-1}} & = & (-1)^{2n-1} & \flecha{$n \to \infty$} & -1
           }
         $$
         Calculo los límites
@@ -40,9 +43,10 @@
         $$
         Dado que los límites no coiciden el límite no existe.
 
-  \item $x_n = (-1)^n e^{-n}
-          \entonces
-          \limite{n}{\infty} (-1)^n \cdot \ua{\frac{1}{e^n}}{\to 0} = \text{acotado} \cdot 0 = 0 $.
+  \item $x_n = (-1)^n e^{-n}$
+        $$
+          \limite{n}{\infty} (-1)^n \cdot \ua{\frac{1}{e^n}}{\to 0} = \text{acotado} \cdot 0 = 0.
+        $$
 \end{enumerate}
 
 \begin{aportes}
