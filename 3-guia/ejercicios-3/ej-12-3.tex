@@ -46,20 +46,18 @@
         Intentamos con la definición de \textit{matriz definida positiva} y vemos que sale:
         $$
           \begin{array}{rcl}
-            I - A^t A
-            \Sii{$\times$}[$\bm{x} \distinto \bm{0}$]
-            \blue{\bm{x}^t (I - A^t A) \bm{x}} =
-            \norma{\bm{x}}_2^2 - \bm{x}^tA^t A \bm{x} =
-            \norma{\bm{x}}_2^2 - \bm{x}^tA^t A \bm{x}
-             & =                &
-            \norma{\bm{x}}_2^2 - \norma{A\bm{x}}_2^2                                                \\
-             & \igual{\red{!!}} &
-            \norma{\bm{x}}_2^2( 1 - \frac{\norma{A\bm{x}}_2^2}{\norma{\bm{x}}_2^2}) \quad \llamada1 \\
+            \blue{\bm{x}^t (I - A^t A) \bm{x}} & =                & \norma{\bm{x}}_2^2 - \bm{x}^tA^t A \bm{x} \\
+                                               & =                & \norma{\bm{x}}_2^2 - (A\bm{x})^t A \bm{x} \\
+                                               & =                &
+            \norma{\bm{x}}_2^2 - \norma{A\bm{x}}_2^2                                                          \\
+                                               & \igual{\red{!!}} &
+            \norma{\bm{x}}_2^2( 1 - \frac{\norma{A\bm{x}}_2^2}{\norma{\bm{x}}_2^2}) \quad \llamada1           \\
           \end{array}
         $$
         Y por la definición de la norma inducida:
         $$
-          \norma{A}_2 = \maximo_{\bm{x} \distinto \bm{0}} \frac{\norma{A\bm{x}}_2}{\norma{\bm{x}}_2} \ua{<}{\text{enunciado}} 1 \paratodo \bm{x} \en \reales^n
+          \norma{A}_2 = \maximo_{\bm{x} \distinto \bm{0}} \frac{\norma{A\bm{x}}_2}{\norma{\bm{x}}_2}
+          \ua{<}{\text{por}\\\text{enunciado}} 1 \paratodo \bm{x} \en \reales^n
         $$
         queda entonces $\llamada1
           \ob{\norma{\bm{x}}_2^2}{> 0} \ub{
