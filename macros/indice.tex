@@ -2,34 +2,30 @@
 % Un poco de Bling-Bling, carátula e índice
 %=========================
 
-%------IMPORTANTE
-%el comando "\guia" está definido en padres de este archivo
-%------
-
+%\guia está definido en padres de este archivo
 
 \vfill
 
 \begin{center}
   \hypertarget{indice-\guia}{\Large\textit{Choose your destiny: }}\par
-  {\tiny\texttt{(click click {\tiny\faIcon{mouse}} en el ejercicio para saltar) }}
+  {\tiny\textit{(dobleclick en los ejercicio para saltar) }}
 
   \begin{itemize}
-    \item[\tiny\mehBlank] \hyperlink{teoria-\guia}{Notas teóricas}
+    \item[\tiny\faIcon{meh-blank}] \hyperlink{teoria-\guia}{Notas teóricas}
 
-    \item[\tiny\meh]
-          Ejercicios de la guía:
-          \begin{multicols}{8}
+    \item[\tiny\faIcon{meh}] Ejercicios de la guía:
+          \parrafoDestacado{
             \foreach \ejer in {1,...,\cantidadEjerciciosGuia}{
-                \refEjercicio{ej:\ejer}\\
+                \refEjercicio{ej:\ejer} \hspace{2pt}
               }
-          \end{multicols}
+          }
 
-    \item[\tiny\angry] Ejercicios de Parciales
-          \begin{multicols}{8}
+    \item[\tiny\faIcon{angry}] Ejercicios de Parciales
+          \parrafoDestacado{
             \foreach \extras in {1,...,\cantidadEjerciciosExtras}{
-                \refEjExtra{ejExtra:\extras}\\
+                \refEjExtra{ejExtra:\extras} \hspace{2pt}
               }
-          \end{multicols}
+          }
 
   \end{itemize}
 \end{center}
