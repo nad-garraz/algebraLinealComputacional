@@ -43,23 +43,74 @@
         $$
           \norma{A}_\infty \leq M
         $$
-        Ahora, busquemos demostrar la igualdad encontrando un $x$ particular.
-        Sea $\tilde{x} = e_{\hat{i}}$ tal que $\norma{Ax}_\infty = M$.
-        Es decir, vemos que se cumple que
+                Ahora falta encontrar un $x$ particular con $\norma{x}_\infty = 1$
+        tal que $\norma{Ax}_\infty = M$.
+        Con esto, como $\norma{A}_\infty$ es el máximo sobre \textbf{todos}
+        los $x$ con $\norma{x}_\infty = 1$, alcanza con encontrar
+        \textbf{uno} que llegue a $M$ para concluir.
+
+        Identifiquemos una fila que logra el máximo: sea
+        $\hat{i} \in \set{1, \dots, n}$ tal que
         $$
-          \hat{i} = \max \set{i \in [1, n] : \sumatoria{j=1}{n}  |a_{ij}|}
+          \sumatoria{j=1}{n} |a_{\hat{i}j}| = M
         $$
-        Es decir, la fila cuya suma de módulos es la mayor.
-        Además, vemos que, por ser $\tilde{x}$ un vector canónico, se cumple que $\norma{x}_\infty = 1$.
-        Luego como sabemos que:
+        que sabemos que existe porque es un máximo entre finitas filas.
+
+        Ahora construyamos un vector $x$ usando los signos de esa fila:
+        $$
+          x_j =
+          \begin{cases}
+            \phantom{-}1 & \text{si } a_{\hat{i}j} > 0 \\
+            -1 & \text{si } a_{\hat{i}j} < 0 \\
+            \phantom{-}1 \ (\text{o cualquier valor}) & \text{si } a_{\hat{i}j} = 0
+          \end{cases}
+        $$
+
+        Veamos que $\norma{x}_\infty = 1$: como cada $x_j \in \set{-1, 1}$,
+        entonces $|x_j| = 1$ para todo $j$. Por lo tanto,
+        $$
+          \norma{x}_\infty = \maximo_{1 \leq j \leq n} |x_j| = 1
+        $$
+
+        Por construcción, $x_j$ tiene el \textbf{mismo signo} que
+        $a_{\hat{i}j}$. Entonces el producto siempre da el módulo,
+        sin cancelaciones de signo:
+        $$
+          a_{\hat{i}j} \cdot x_j = |a_{\hat{i}j}| \quad \text{para todo } j
+        $$
+
+        Calculemos entonces la fila $\hat{i}$ de $Ax$:
+        $$
+          (Ax)_{\hat{i}} = \sumatoria{j=1}{n} a_{\hat{i}j} \cdot x_j
+          = \sumatoria{j=1}{n} |a_{\hat{i}j}| = M
+        $$
+
+        Luego, por definición de norma infinito de un vector:
+        $$
+          \norma{Ax}_\infty = \maximo_{1 \leq i \leq n} |(Ax)_i|
+          \geq |(Ax)_{\hat{i}}| = |M| = M
+        $$
+
+        Pero además, por lo probado antes, sabemos que
+        $\norma{Ax}_\infty \leq M$. Combinando ambas desigualdades:
+        $$
+          \norma{Ax}_\infty = M
+        $$
+
+        Luego, como sabemos que:
         \begin{itemize}
-          \item $\norma{A}_\infty \leq M$ para todo $x$ con $\norma{x}_\infty = 1$
-          \item Existe un $\tilde{x}$ tal que $\norma{A\tilde{x}}_\infty = M$
+          \item $\norma{Ax}_\infty \leq M$ para todo $x$ con $\norma{x}_\infty = 1$
+          \item Existe un $x$ particular (el de signos) tal que
+                $\norma{Ax}_\infty = M$
         \end{itemize}
         $$
-          \norma{A}_\infty = \maximo_{\norma{x}_\infty = 1}{ \norma{Ax}_\infty} = M
+          \norma{A}_\infty = \maximo_{\norma{x}_\infty = 1} \norma{Ax}_\infty = M
         $$
-        Puesto que encontramos un $x$ que cumple la igualdad, y se que todo el resto son menores o iguales.
+        Puesto que encontramos un $x$ que cumple la igualdad, y sabemos
+        que el resto son menores o iguales, concluimos que
+        $$
+          \norma{A}_\infty = \maximo_{1 \leq i \leq n} \sumatoria{j=1}{n} |a_{ij}|
+        $$
 
   \item Quiero probar la fórmula cerrada:
         $$
