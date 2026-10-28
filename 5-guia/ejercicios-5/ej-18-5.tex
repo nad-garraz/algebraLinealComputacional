@@ -1,3 +1,125 @@
 \begin{enunciado}{\ejercicio}
-\hacer
+Hallar, si existe, una matriz $\boldsymbol{A}$ con coeficientes reales y del tamaño adecuado para que los valores singulares no nulos de $\boldsymbol{A}$ sean $\left\{\frac{3}{2}, 3\right\}$,
+$$
+\boldsymbol{A} \begin{pmatrix} 1 \\ -2 \\ 2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \quad \text{y} \quad \begin{pmatrix} 2 & 2 & 1 \end{pmatrix} \boldsymbol{A} = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}.
+$$
 \end{enunciado}
+
+Para construir la matriz $A$ primero notemos que información nos da el enunciado:
+- Sabemos que $\{3/2, 3\}$ son valores singulares de A, por lo tanto, estos van a ser algunos de los $\sigma_i$ de $\Sigma$.
+- El vector \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix} pertenece al núcleo de $A$, lo que quiere decir que este vector pertenece a $\{u_r+1, \dots, u_m\} \in Nu(A)$.
+- El vector \begin{pmatrix} 1 \\ -2 \\ 2 \end{pmatrix} pertenece al núcleo de $A^t$, esto se debe a que si hacemos algunas cuentas nos queda que:
+$$
+(A^t \begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix} ) ^t= \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} ^t
+\begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix}^t A^tt= \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} ^t
+\begin{pmatrix} 1 , 2, 2 \end{pmatrix} A = \begin{pmatrix} 0,0,0 \end{pmatrix}
+$$
+si dicho vector pertenece al nucleo de $A^t$ entonces es alguno del conjunto: $\{v_r+1, \dots, v_n\} \in Nu(A)$
+
+Ahora, usando esta información veamos que dimension tiene que tener $A$:
+$$
+    A = \ua{U}{m\times m} \ \oa{\Sigma}{m \times n} \ \ua{V^t}{n \times n}
+$$
+por lo dicho antes sabemos que $\begin{pmatrix} 1 \\ 2 \\ 2 \end{pmatrix} \in U$ y que $\begin{pmatrix} 1 , 2, 2 \end{pmatrix} \in V$, y como las dimensiones de U y V deben de ser cuadradas:
+seguro que $m = 3$ y $n =3$ entonces la SVD nos quedaria más o menos asi: (observemos que normalizamos los vectores)
+
+$$
+A = \hat{U} \hat{\Sigma} \hat{V}^*
+= \begin{pmatrix}
+    \mid & \mid & 2/3 \\
+    u_1 & u_2 & 2/3 \\
+    \mid & \mid & 1/3
+    \end{pmatrix}
+    \begin{pmatrix}
+    3 & 0 & 0 \\
+    0 & 3/2 & 0 \\
+    0 & 0 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+    \text{---} & v_1^* & \text{---} \\
+    \text{---} & v_2^* & \text{---} \\
+    1/3 & -2/3 & 2/3
+    \end{pmatrix}
+$$
+
+Notemos ademas que $\sigma_r$ debe de ser 0, si no, estarían en la imagen los vectores que dijimos que estaban en el núcleo.
+Ahora debemos buscar los vectores que nos faltan, arranquemos por completar $U$:
+
+Sabemos que $u_1, u_2, u3$ (con u3 ya conocido) debe de formar una base ortonormal, construyamosla: se puede hacer a ojo o usando Gram-Schmidt, a ojo saco a $u_1$:
+$$
+u_1 = \begin{pmatrix} 1/\sqrt(2) \\ -1/\sqrt(2) \\ 0\end{pmatrix}
+$$
+El vector $u_2$ no lo saco a ojo, usemos GS para hayarlo aplicándolo a un canónico cualquiera:
+$$
+u_3 = (0,0,1) −proy_{(0,0,1)}(u_3)−proy_{(0,0,1)}(u_3) = (0,0,1) - 0 u_1 - 1/3 (2/3, 2/3, 1/3) = (0,0,1) - (2/9, 2/9, -1/9) = (-2/9, -2/9, 8/9)
+$$
+Normalizándolo, nos queda:
+$$
+u_3 = \frac{u_3}{||u_3||} = \frac{(-2/9, -2/9, 8/9)}{ \frac{2 \sqrt{2}}{3}} = \frac{3}{2 \sqrt{2}} (-2/9, -2/9, 8/9) = (-\frac{1}{3\sqrt{2}},-\frac{1}{3\sqrt{2}},\frac{4}{3\sqrt{2}})
+$$
+Entonces, por ahora nuestra A va quedando de la siguiente manera:
+$$
+A = \hat{U} \hat{\Sigma} \hat{V}^*
+= \begin{pmatrix}
+    1/\sqrt{2} & -\frac{1}{3 \sqrt{2}} & 2/3 \\
+    -1/\sqrt{2} & -\frac{1}{3 \sqrt{2}} & 2/3 \\
+    0 & -\frac{4}{3 \sqrt{2}} & 2/3
+    \end{pmatrix}
+    \begin{pmatrix}
+    3 & 0 & 0 \\
+    0 & 3/2 & 0  \\
+    0 & 0 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+    \text{---} & v_1^* & \text{---} \\
+    \text{---} & v_2^* & \text{---} \\
+    1/3 & -2/3 & 2/3
+    \end{pmatrix}
+$$
+
+Debemos buscar los $v_i$ expandiendo $\{v_1, v_2, (1/3 , -2/3 , 2/3 )\}$ a una base ortonormal (como hicimos con $U$), por suerte los vectores son bastante parecidos, asi que elejimos los mismos vectores que antes, pero cambiando el signo ;)
+nos queda que $V$ como:
+
+$$
+V = \begin{pmatrix}
+\frac{4}{3 \sqrt{2}} & \frac{1}{3 \sqrt{2}} & -\frac{1}{3 \sqrt{2}} \\
+0 & -1/\sqrt{2} & -\frac{1}{2} \\
+\frac{1}{3} & - \frac{2}{3} & 2/3
+\end{pmatrix}
+$$
+
+Ahora nuestra A quedaria de la siguiente manera:
+
+$$
+A = \hat{U} \hat{\Sigma} \hat{V}^*
+    = \begin{pmatrix}
+        1/\sqrt{2} & -\frac{1}{3 \sqrt{2}} & 2/3 \\
+        -1/\sqrt{2} & -\frac{1}{3 \sqrt{2}} & 2/3 \\
+        0 & -\frac{4}{3 \sqrt{2}} & 2/3
+    \end{pmatrix}
+    \begin{pmatrix}
+        3 & 0 & 0 \\
+        0 & 3/2 & 0  \\
+        0 & 0 & 0
+    \end{pmatrix}
+    \begin{pmatrix}
+        \frac{4}{3 \sqrt{2}} & \frac{1}{3 \sqrt{2}} & -\frac{1}{3 \sqrt{2}} \\
+        0 & -1/\sqrt{2} & -\frac{1}{2} \\
+        \frac{1}{3} & - \frac{2}{3} & 2/3
+    \end{pmatrix}
+    = \begin{pmatrix}
+            1/\sqrt{2} & -\frac{1}{3 \sqrt{2}} & 2/3 \\
+            -1/\sqrt{2} & -\frac{1}{3 \sqrt{2}} & 2/3 \\
+            0 & -\frac{4}{3 \sqrt{2}} & 2/3
+            \end{pmatrix}
+            \begin{pmatrix}
+            2 \sqrt{2} & \frac{\sqrt{2}}{2} & -\frac{\sqrt{2}}{2} \\
+            0 & \frac{3 \sqrt{2}}{4} & - \frac{3 \sqrt{2}}{4}\\
+            0 & 0 & 0
+            \end{pmatrix}
+    = \begin{pmatrix}
+                -2 & 3/4 & -1/4 \\
+                -2 & - 1/4 & 3/4  \\
+                0 & -1 & -1
+        \end{pmatrix}
+$$
